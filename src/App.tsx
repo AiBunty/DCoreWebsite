@@ -29,6 +29,9 @@ import Consultants from "./pages/solutions/Consultants";
 import Events from "./pages/solutions/Events";
 import Agencies from "./pages/solutions/Agencies";
 
+// Admin Pages
+import ProcessMascot from "./pages/admin/ProcessMascot";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -60,6 +63,9 @@ const App = () => (
           <Route path="/solutions/consultants" element={<Consultants />} />
           <Route path="/solutions/events" element={<Events />} />
           <Route path="/solutions/agencies" element={<Agencies />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/process-mascot" element={<ProcessMascot />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
