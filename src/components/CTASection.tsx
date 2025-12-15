@@ -25,7 +25,7 @@ export function CTASection({
             <img 
               src={mascotImage} 
               alt="Ai Bunty mascot" 
-              className="w-24 h-24 mx-auto mb-6 animate-float"
+              className="w-24 h-24 mx-auto mb-6 animate-float drop-shadow-xl"
             />
           )}
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

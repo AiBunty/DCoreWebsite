@@ -11,7 +11,7 @@ export function MascotTip({ message, className = "" }: MascotTipProps) {
       <img 
         src={mascotImage} 
         alt="Ai Bunty mascot" 
-        className="w-16 h-16 object-contain flex-shrink-0"
+        className="w-16 h-16 object-contain flex-shrink-0 drop-shadow-lg"
       />
       <div className="flex-1">
         <p className="text-foreground font-medium italic">"{message}"</p>
