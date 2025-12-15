@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
 
 const compareLinks = [
   { name: "vs Flexifunnels", href: "/compare/flexifunnels" },
@@ -32,11 +33,12 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">🐢</span>
-            </div>
-            <span className="font-bold text-xl text-foreground">Ai Bunty</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={aiBuntyLogo} 
+              alt="Ai Bunty" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
 
 export function Footer() {
   return (
@@ -7,11 +8,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">🐢</span>
-              </div>
-              <span className="font-bold text-xl">Ai Bunty</span>
+            <div className="mb-4">
+              <img 
+                src={aiBuntyLogo} 
+                alt="Ai Bunty" 
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-background/70 text-sm">
               Your AI-Powered Business Growth Partner. Funnels, CRM, WhatsApp automation, and more.
