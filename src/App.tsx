@@ -31,6 +31,7 @@ import Agencies from "./pages/solutions/Agencies";
 
 // Admin Pages
 import ProcessMascot from "./pages/admin/ProcessMascot";
+import AdminBookings from "./pages/admin/Bookings";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => (
           
           {/* Admin Routes */}
           <Route path="/admin/process-mascot" element={<ProcessMascot />} />
+          <Route path="/admin/bookings" element={<AdminBookings />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
