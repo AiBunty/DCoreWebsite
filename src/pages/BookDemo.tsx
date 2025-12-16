@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { MascotTip } from "@/components/MascotTip";
+import { MascotFrame } from "@/components/MascotFrame";
 import { Calendar, Mail, Phone } from "lucide-react";
 
 export default function BookDemoPage() {
@@ -11,10 +12,10 @@ export default function BookDemoPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Book Your Free Demo
+                Book a 1 to 1 Call
               </h1>
               <p className="text-xl text-muted-foreground">
-                See how Ai Bunty can transform your business in just 30 minutes.
+                Get a personalized walkthrough of Ai Bunty in just 30 minutes.
               </p>
             </div>
 
@@ -22,7 +23,7 @@ export default function BookDemoPage() {
               {/* Contact Info */}
               <div className="space-y-8">
                 <MascotTip 
-                  message="I'll show you exactly how to automate your business growth!"
+                  message="Let's connect! I'll personally show you how to automate your business."
                 />
                 
                 <div className="space-y-4">
@@ -31,7 +32,7 @@ export default function BookDemoPage() {
                       <Calendar className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold">30-Minute Demo</p>
+                      <p className="font-semibold">30-Minute 1 to 1 Call</p>
                       <p className="text-muted-foreground text-sm">Personalized walkthrough</p>
                     </div>
                   </div>
@@ -42,7 +43,7 @@ export default function BookDemoPage() {
                     </div>
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-muted-foreground text-sm">hello@aibunty.com</p>
+                      <p className="text-muted-foreground text-sm">saas@aibunty.com</p>
                     </div>
                   </div>
                   
@@ -52,7 +53,7 @@ export default function BookDemoPage() {
                     </div>
                     <div>
                       <p className="font-semibold">WhatsApp</p>
-                      <p className="text-muted-foreground text-sm">+91 98765 43210</p>
+                      <p className="text-muted-foreground text-sm">+91 7003210880</p>
                     </div>
                   </div>
                 </div>
@@ -90,7 +91,7 @@ export default function BookDemoPage() {
                     <input 
                       type="tel" 
                       className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 7003210880"
                     />
                   </div>
                   
@@ -111,10 +112,23 @@ export default function BookDemoPage() {
                   </div>
                   
                   <Button variant="hero" size="xl" className="w-full">
-                    Book My Free Demo
+                    Book My 1 to 1 Call
                   </Button>
                 </form>
               </div>
+            </div>
+
+            {/* YouTube Demo Section */}
+            <div className="mt-16">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  Watch a Quick Demo First
+                </h2>
+                <p className="text-muted-foreground">
+                  See Ai Bunty in action before your 1 to 1 call
+                </p>
+              </div>
+              <MascotFrame youtubeUrl="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" />
             </div>
           </div>
         </div>
