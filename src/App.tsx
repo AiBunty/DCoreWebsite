@@ -11,6 +11,7 @@ import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import BookDemo from "./pages/BookDemo";
 import Compare from "./pages/Compare";
+import Testimonials from "./pages/Testimonials";
 
 // Comparison Pages
 import CompareFlexifunnels from "./pages/compare/Flexifunnels";
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/book-demo" element={<BookDemo />} />
+          <Route path="/testimonials" element={<Testimonials />} />
           
           {/* Compare Routes */}
           <Route path="/compare" element={<Compare />} />
