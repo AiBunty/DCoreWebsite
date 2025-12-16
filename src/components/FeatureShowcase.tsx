@@ -75,8 +75,8 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
                 }`}
               >
                 {/* Image */}
-                <div className={`${isReversed ? "lg:order-2" : "lg:order-1"}`}>
-                  <div className="relative rounded-2xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300">
+                <div className={`${isReversed ? "lg:order-2" : "lg:order-1"} flex items-center justify-center`}>
+                  <div className="relative rounded-2xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300 max-w-md">
                     <img
                       src={feature.image}
                       alt={feature.title}
