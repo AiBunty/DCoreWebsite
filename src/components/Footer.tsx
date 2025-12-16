@@ -57,7 +57,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/20 mt-12 pt-8 text-center text-sm text-background/60">
-          <p>© {new Date().getFullYear()} Ai Bunty. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DCore Systems LLP. All rights reserved.</p>
         </div>
       </div>
     </footer>
