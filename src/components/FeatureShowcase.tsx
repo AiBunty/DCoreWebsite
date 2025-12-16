@@ -62,7 +62,7 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
           </Tabs>
         </div>
 
-        <div className="space-y-24">
+        <div className="space-y-12">
           {filteredFeatures.map((feature, index) => {
             const isReversed = index % 2 === 1;
             const Icon = feature.icon;
@@ -70,13 +70,13 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             return (
               <div
                 key={feature.id}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
+                className={`grid lg:grid-cols-[280px_1fr] gap-6 items-center ${
                   isReversed ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                {/* Image */}
+                {/* Image - Smaller */}
                 <div className={`${isReversed ? "lg:order-2" : "lg:order-1"} flex items-center justify-center`}>
-                  <div className="relative rounded-2xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300 max-w-md">
+                  <div className="relative rounded-xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300 w-full max-w-[280px]">
                     <img
                       src={feature.image}
                       alt={feature.title}
@@ -87,22 +87,22 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
 
                 {/* Content */}
                 <div className={`${isReversed ? "lg:order-1" : "lg:order-2"}`}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-primary" />
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
                       {feature.title}
                     </h3>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-3">
                     {feature.points.map((point, pointIndex) => (
-                      <div key={pointIndex} className="bg-card rounded-xl p-5 border border-border">
-                        <h4 className="font-semibold text-primary mb-2">
+                      <div key={pointIndex} className="bg-card rounded-lg p-3 border border-border">
+                        <h4 className="font-semibold text-primary text-sm mb-1">
                           {point.heading}
                         </h4>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {point.description}
                         </p>
                       </div>
