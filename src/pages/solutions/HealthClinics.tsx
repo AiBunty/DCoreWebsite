@@ -7,36 +7,37 @@ import { MascotFrame } from "@/components/MascotFrame";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
-  "Leads not converting",
-  "Missed follow-ups",
-  "Manual call bookings",
-  "Payment chasing",
-  "Tool overload",
+  "Patient no-shows hurting revenue",
+  "Appointment scheduling chaos",
+  "Manual reminder calls eating staff time",
+  "Follow-up gaps after treatment",
+  "Scattered patient records",
+  "No system for health tips & engagement",
 ];
 
 const solutions = [
-  "High-converting coaching funnels",
-  "WhatsApp & email follow-ups",
-  "Calendar booking with reminders",
-  "Razorpay payments + invoices",
-  "CRM with lead stages",
-  "Post-sale upsell automations",
+  "Automated appointment reminders via WhatsApp",
+  "Online booking with instant confirmation",
+  "Patient CRM with complete history",
+  "Post-visit follow-up automation",
+  "Health tips & engagement broadcasts",
+  "Payment collection & invoicing",
 ];
 
-export default function CoachesPage() {
+export default function HealthClinicsPage() {
   return (
     <Layout>
       <section className="py-16 md:py-24 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty for Coaches
+              Ai Bunty for Health Clinics
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Stop losing leads and start scaling your coaching business with automation.
+              Reduce no-shows and improve patient engagement with smart automation for doctors & clinics.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <Link to="/book-demo">Book Free Demo for Coaches</Link>
+              <Link to="/book-demo">Book Free Demo</Link>
             </Button>
           </div>
         </div>
@@ -45,7 +46,6 @@ export default function CoachesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Pain Points */}
             <div className="bg-card rounded-2xl p-8 shadow-soft border border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <AlertCircle className="w-7 h-7 text-destructive" />
@@ -61,7 +61,6 @@ export default function CoachesPage() {
               </ul>
             </div>
 
-            {/* Solutions */}
             <div className="bg-accent rounded-2xl p-8 shadow-soft">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <CheckCircle2 className="w-7 h-7 text-primary" />
@@ -79,7 +78,7 @@ export default function CoachesPage() {
           </div>
 
           <MascotTip 
-            message="I follow up with your leads even when you're busy coaching."
+            message="I send appointment reminders to patients so your staff doesn't have to call them manually."
             className="mt-12 max-w-3xl mx-auto"
           />
 
@@ -91,9 +90,9 @@ export default function CoachesPage() {
       </section>
 
       <CTASection 
-        title="Automate Your Coaching Business"
-        subtitle="Join hundreds of coaches using Ai Bunty to scale their practice."
-        ctaText="Book Free Demo for Coaches"
+        title="Modernize Your Clinic Operations"
+        subtitle="Join clinics using Ai Bunty to reduce no-shows and engage patients."
+        ctaText="Book Free Demo"
       />
     </Layout>
   );

@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { LucideIcon } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+export type FeatureCategory = "all" | "marketing" | "sales" | "automation" | "education" | "team";
 
 export interface FeatureItem {
   id: string;
   title: string;
   icon: LucideIcon;
   image: string;
+  category?: FeatureCategory;
   points: { heading: string; description: string }[];
 }
 
@@ -12,11 +17,26 @@ interface FeatureShowcaseProps {
   features: FeatureItem[];
 }
 
+const categoryLabels: Record<FeatureCategory, string> = {
+  all: "All",
+  marketing: "Marketing",
+  sales: "Sales",
+  automation: "Automation",
+  education: "Education",
+  team: "Team & Branding",
+};
+
 export function FeatureShowcase({ features }: FeatureShowcaseProps) {
+  const [activeCategory, setActiveCategory] = useState<FeatureCategory>("all");
+
+  const filteredFeatures = activeCategory === "all" 
+    ? features 
+    : features.filter(f => f.category === activeCategory);
+
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Powerful Features to Scale Your Business
           </h2>
@@ -25,8 +45,25 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
           </p>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex justify-center mb-12">
+          <Tabs value={activeCategory} onValueChange={(v) => setActiveCategory(v as FeatureCategory)}>
+            <TabsList className="flex flex-wrap gap-2 h-auto bg-transparent">
+              {(Object.keys(categoryLabels) as FeatureCategory[]).map((category) => (
+                <TabsTrigger 
+                  key={category} 
+                  value={category}
+                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 rounded-full border border-border data-[state=inactive]:bg-card"
+                >
+                  {categoryLabels[category]}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        </div>
+
         <div className="space-y-24">
-          {features.map((feature, index) => {
+          {filteredFeatures.map((feature, index) => {
             const isReversed = index % 2 === 1;
             const Icon = feature.icon;
 
@@ -76,6 +113,12 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             );
           })}
         </div>
+
+        {filteredFeatures.length === 0 && (
+          <div className="text-center py-12 text-muted-foreground">
+            No features found in this category.
+          </div>
+        )}
       </div>
     </section>
   );

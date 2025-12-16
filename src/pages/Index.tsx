@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
-import { FeatureShowcase, FeatureItem } from "@/components/FeatureShowcase";
+import { FeatureShowcase, FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
+import { MascotFrame } from "@/components/MascotFrame";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 // Feature images
@@ -42,7 +43,16 @@ import {
   GraduationCap,
   BookOpen,
   Globe,
-  UserPlus
+  UserPlus,
+  Building2,
+  Dumbbell,
+  UserCheck,
+  PartyPopper,
+  Building,
+  Calculator,
+  HeartPulse,
+  Briefcase,
+  LucideIcon
 } from "lucide-react";
 
 const features = [
@@ -84,6 +94,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Agency Dashboard",
     icon: LayoutDashboard,
     image: agencyDashboard,
+    category: "sales",
     points: [
       { heading: "Streamlined Interface", description: "Designed for agencies to efficiently manage their operations with an intuitive layout, facilitating effective lead generation and task management." },
       { heading: "Lead & Task Management", description: "Facilitating effective lead generation and task management with a comprehensive overview of all agency activities in one place." }
@@ -94,6 +105,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Shop Builder",
     icon: Store,
     image: shopBuilder,
+    category: "sales",
     points: [
       { heading: "Effortless Store Creation", description: "Shop Builder offers an intuitive platform with customizable templates to quickly set up your online store." },
       { heading: "Boost Sales Effectively", description: "Showcase your products with professional designs and tools that drive customer engagement and increase sales." }
@@ -104,6 +116,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "CRM",
     icon: Users,
     image: crm,
+    category: "sales",
     points: [
       { heading: "Customer Interaction Management", description: "Centralizes interactions, ensuring all communication with customers is tracked and managed efficiently." },
       { heading: "Sales Tracking & Optimization", description: "CRM tools facilitate detailed analysis of sales processes, helping to streamline operations and increase customer satisfaction." }
@@ -114,6 +127,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Landing Page Builder",
     icon: FileCode,
     image: landingPageBuilder,
+    category: "marketing",
     points: [
       { heading: "Customization & Ease of Use", description: "Customizable templates and intuitive drag-and-drop functionality make it simple to create effective and aesthetically pleasing landing pages quickly." },
       { heading: "Lead Capture & Engagement", description: "Designed to effectively capture leads and increase user engagement, helping to convert visitors into loyal customers." }
@@ -124,6 +138,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Automation Workflow",
     icon: Workflow,
     image: automationWorkflow,
+    category: "automation",
     points: [
       { heading: "Enhanced Business Efficiency", description: "Streamlines your operations by automating repetitive tasks, allowing your team to focus on more strategic initiatives." },
       { heading: "Reduced Manual Effort", description: "Consolidate Email, WhatsApp, and SMS interactions through a unified platform, eliminating the hassle of juggling multiple tools." }
@@ -134,6 +149,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "WhatsApp Sender",
     icon: MessageSquare,
     image: whatsappSender,
+    category: "marketing",
     points: [
       { heading: "Efficiency in Messaging", description: "WhatsApp Sender automates the delivery of messages to your contacts, eliminating the need for manual texting." },
       { heading: "Streamlined Operations", description: "Helps streamline business operations, allowing you to focus on strategic tasks instead of routine communications." }
@@ -144,6 +160,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "WhatsApp Cloud API",
     icon: Cloud,
     image: whatsappCloudApi,
+    category: "automation",
     points: [
       { heading: "Scalable Messaging", description: "Scale your communication efforts seamlessly, catering to a large number of users without compromising speed or reliability." },
       { heading: "Enhanced Customer Interactions", description: "Provide a direct and efficient channel for automated interactions and real-time updates, enhancing user engagement." }
@@ -154,6 +171,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Email Automation",
     icon: Mail,
     image: emailAutomation,
+    category: "marketing",
     points: [
       { heading: "Targeted Engagement", description: "Reach specific segments of your audience with customized messages, enhancing the relevance and effectiveness of communications." },
       { heading: "Conversion Optimization", description: "Promote products and services directly to a receptive audience, significantly increasing conversion rates and driving sales." }
@@ -164,6 +182,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Mobile App (iOS & Android)",
     icon: Smartphone,
     image: mobileApp,
+    category: "automation",
     points: [
       { heading: "Cross-Platform Accessibility", description: "Users can interact with your services seamlessly across iOS and Android devices, enhancing user experience and engagement." },
       { heading: "On-the-Go Engagement", description: "Provides constant connectivity, allowing users to engage with the brand anytime and anywhere, boosting satisfaction and loyalty." }
@@ -174,6 +193,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Ad Launcher",
     icon: Megaphone,
     image: adLauncher,
+    category: "marketing",
     points: [
       { heading: "Simplified Campaign Management", description: "Ad Launcher enables businesses to easily create, launch, and manage advertising campaigns across multiple platforms in one place." },
       { heading: "Boost Traffic & Visibility", description: "Drive targeted traffic and enhance brand visibility with streamlined, effective ad campaigns." }
@@ -184,6 +204,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Sales and Finance",
     icon: TrendingUp,
     image: salesFinance,
+    category: "sales",
     points: [
       { heading: "Streamlined Revenue Management", description: "Integrate sales tracking with financial operations for a seamless overview of your business performance." },
       { heading: "Enhanced Decision-Making", description: "Access comprehensive financial reporting to drive informed decisions and foster business growth." }
@@ -194,6 +215,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "LMS",
     icon: GraduationCap,
     image: lms,
+    category: "education",
     points: [
       { heading: "Centralized Learning Hub", description: "A centralized platform where educational content and training programs are easily accessible to learners from any location." },
       { heading: "Tracking & Management", description: "Powerful tools for tracking learner progress and managing learning with comprehensive analytics." }
@@ -204,6 +226,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "Student Portal",
     icon: BookOpen,
     image: studentPortal,
+    category: "education",
     points: [
       { heading: "Enhanced Accessibility", description: "A centralized hub where students can access all necessary course materials, assignments, and resources in one place." },
       { heading: "Improved Engagement", description: "Track academic progress, complete assignments, and interact with course content to significantly enhance student engagement." }
@@ -214,6 +237,7 @@ const detailedFeatures: FeatureItem[] = [
     title: "White Label Domain",
     icon: Globe,
     image: whiteLabel,
+    category: "team",
     points: [
       { heading: "Branding Consistency", description: "Maintain branding consistency across digital platforms using your own domain names while utilizing another provider's technology." },
       { heading: "Cost-Effective Solution", description: "Leverage established platforms customized under your brand instead of developing technology from scratch." }
@@ -224,11 +248,31 @@ const detailedFeatures: FeatureItem[] = [
     title: "Add Staff",
     icon: UserPlus,
     image: addStaff,
+    category: "team",
     points: [
       { heading: "Streamlined Onboarding", description: "Simplifies the onboarding process by enabling quick and efficient addition of new team members to your organization's systems." },
       { heading: "Customizable Access Control", description: "Granular control over what each team member can see and do within the organization's systems with permissions feature." }
     ]
   }
+];
+
+const solutions: { name: string; href: string; icon: LucideIcon }[] = [
+  { name: "Coaches", href: "/solutions/coaches", icon: GraduationCap },
+  { name: "Real Estate", href: "/solutions/real-estate", icon: Building2 },
+  { name: "Fitness Clubs", href: "/solutions/fitness", icon: Dumbbell },
+  { name: "Consultants", href: "/solutions/consultants", icon: UserCheck },
+  { name: "Event Planners", href: "/solutions/events", icon: PartyPopper },
+  { name: "Agencies", href: "/solutions/agencies", icon: Building },
+  { name: "Financial Advisors", href: "/solutions/financial-advisors", icon: Calculator },
+  { name: "Health Clinics", href: "/solutions/health-clinics", icon: HeartPulse },
+  { name: "Freelancers", href: "/solutions/freelancers", icon: Briefcase },
+];
+
+const onboardingSteps = [
+  { number: "01", title: "Create account", description: "Sign up in under 2 minutes" },
+  { number: "02", title: "Install tracking", description: "Connect your website & WhatsApp" },
+  { number: "03", title: "Track analytics", description: "Monitor leads & conversions" },
+  { number: "04", title: "Integrate", description: "Connect payments & automations" },
 ];
 
 const Index = () => {
@@ -308,6 +352,40 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Dashboard Preview + Steps Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Steps */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Work smarter with easy access
+              </h2>
+              <p className="text-lg text-muted-foreground mb-10">
+                Get started in minutes, not days. Here's how simple it is.
+              </p>
+              
+              <div className="space-y-8">
+                {onboardingSteps.map((step) => (
+                  <div key={step.number} className="flex gap-6 items-start">
+                    <span className="text-5xl font-bold text-primary/30">{step.number}</span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-1">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dashboard Preview */}
+            <div>
+              <MascotFrame imageSrc={agencyDashboard} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Detailed Features Showcase */}
       <FeatureShowcase features={detailedFeatures} />
 
@@ -324,20 +402,18 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Coaches", href: "/solutions/coaches" },
-              { name: "Real Estate", href: "/solutions/real-estate" },
-              { name: "Fitness Clubs", href: "/solutions/fitness" },
-              { name: "Consultants", href: "/solutions/consultants" },
-              { name: "Event Planners", href: "/solutions/events" },
-              { name: "Agencies", href: "/solutions/agencies" },
-            ].map((solution) => (
+            {solutions.map((solution) => (
               <Link 
                 key={solution.name}
                 to={solution.href}
                 className="bg-card rounded-xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex items-center justify-between group border border-border"
               >
-                <span className="font-semibold text-foreground">{solution.name}</span>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                    <solution.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="font-semibold text-foreground">{solution.name}</span>
+                </div>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
             ))}
