@@ -54,10 +54,46 @@ import {
   Instagram,
   Sparkles,
   Share2,
+  Calendar,
+  CreditCard,
+  BarChart3,
+  Zap,
   LucideIcon
 } from "lucide-react";
 
 const features = [
+  // Original 6 Features
+  {
+    icon: MessageSquare,
+    title: "WhatsApp Automation",
+    description: "Auto-replies, follow-ups, and broadcasts that work 24/7",
+  },
+  {
+    icon: Calendar,
+    title: "Smart Booking",
+    description: "Calendar scheduling with automated reminders",
+  },
+  {
+    icon: CreditCard,
+    title: "Multiple Payment Gateway",
+    description: "Razorpay, Stripe & more with automatic invoicing",
+  },
+  {
+    icon: Users,
+    title: "CRM & Pipelines",
+    description: "Track every lead from first touch to close",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    description: "Real-time insights into your business growth",
+  },
+  {
+    icon: Zap,
+    title: "Marketing Funnels",
+    description: "High-converting landing pages in minutes",
+  },
+  // AI Features
   {
     icon: Brain,
     title: "AI Brain",
@@ -66,7 +102,7 @@ const features = [
   {
     icon: Bot,
     title: "AI-powered Chatbots & Staff",
-    description: "Smart virtual assistants that handle customer queries and work tirelessly 24/7",
+    description: "Smart virtual assistants that handle customer queries 24/7",
   },
   {
     icon: FileCode,
@@ -87,6 +123,22 @@ const features = [
     icon: Share2,
     title: "Multi-Platform Posting",
     description: "Schedule and post across all social platforms at once",
+  },
+  // New Features
+  {
+    icon: Mail,
+    title: "Email Automation",
+    description: "Drip campaigns, newsletters, and automated email sequences",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Application (Android/iOS)",
+    description: "Native apps for on-the-go business management",
+  },
+  {
+    icon: BookOpen,
+    title: "LMS + Vault",
+    description: "Course hosting, content vault, and student management",
   },
 ];
 
@@ -333,7 +385,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {features.map((feature, index) => (
               <div 
                 key={index}
