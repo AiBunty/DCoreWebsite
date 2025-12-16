@@ -385,19 +385,19 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-hover transition-all duration-300 border border-border hover:-translate-y-1"
+                className="bg-card rounded-xl p-4 shadow-soft hover:shadow-hover transition-all duration-300 border border-border hover:-translate-y-1"
               >
-                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center mb-3">
+                  <feature.icon className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+                <h3 className="text-sm font-semibold text-foreground mb-1">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </div>
