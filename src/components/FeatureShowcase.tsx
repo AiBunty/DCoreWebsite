@@ -70,13 +70,13 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             return (
               <div
                 key={feature.id}
-                className={`grid lg:grid-cols-[280px_1fr] gap-6 items-center ${
-                  isReversed ? "lg:flex-row-reverse" : ""
+                className={`grid gap-8 items-center ${
+                  isReversed ? "lg:grid-cols-[1fr_300px]" : "lg:grid-cols-[300px_1fr]"
                 }`}
               >
                 {/* Image - Smaller */}
                 <div className={`${isReversed ? "lg:order-2" : "lg:order-1"} flex items-center justify-center`}>
-                  <div className="relative rounded-xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300 w-full max-w-[280px]">
+                  <div className="relative rounded-xl overflow-hidden shadow-medium hover:shadow-hover transition-shadow duration-300 w-full max-w-[300px]">
                     <img
                       src={feature.image}
                       alt={feature.title}
