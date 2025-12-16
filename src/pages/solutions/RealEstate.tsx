@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
+import { MascotFrame } from "@/components/MascotFrame";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -77,6 +78,11 @@ export default function RealEstatePage() {
             message="I capture every lead from your ads and follow up until they book a site visit."
             className="mt-12 max-w-3xl mx-auto"
           />
+
+          <div className="mt-16 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-6 text-center">See How It Works</h3>
+            <MascotFrame youtubeUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+          </div>
         </div>
       </section>
 

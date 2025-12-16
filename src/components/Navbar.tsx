@@ -18,9 +18,12 @@ const solutionLinks = [
   { name: "For Coaches", href: "/solutions/coaches" },
   { name: "For Real Estate", href: "/solutions/real-estate" },
   { name: "For Fitness Clubs", href: "/solutions/fitness" },
-  { name: "For Consultants & Advisors", href: "/solutions/consultants" },
+  { name: "For Consultants", href: "/solutions/consultants" },
   { name: "For Event Planners", href: "/solutions/events" },
   { name: "For Agencies", href: "/solutions/agencies" },
+  { name: "For Financial Advisors", href: "/solutions/financial-advisors" },
+  { name: "For Health Clinics", href: "/solutions/health-clinics" },
+  { name: "For Freelancers", href: "/solutions/freelancers" },
 ];
 
 export function Navbar() {
@@ -29,7 +32,7 @@ export function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="sticky top-0 z-50 bg-primary">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -43,17 +46,17 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/features" className="text-white/90 hover:text-white transition-colors">
               Features
             </Link>
-            <Link to="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/pricing" className="text-white/90 hover:text-white transition-colors">
               Pricing
             </Link>
             
             {/* Compare Dropdown */}
             <div className="relative group">
               <button
-                className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-1 text-white/90 hover:text-white transition-colors"
                 onMouseEnter={() => setCompareOpen(true)}
                 onMouseLeave={() => setCompareOpen(false)}
               >
@@ -79,7 +82,7 @@ export function Navbar() {
             {/* Solutions Dropdown */}
             <div className="relative group">
               <button
-                className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-1 text-white/90 hover:text-white transition-colors"
                 onMouseEnter={() => setSolutionsOpen(true)}
                 onMouseLeave={() => setSolutionsOpen(false)}
               >
@@ -101,14 +104,14 @@ export function Navbar() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="cta" size="lg" asChild>
+            <Button className="bg-white text-primary hover:bg-white/90" size="lg" asChild>
               <Link to="/book-demo">Book Free Demo</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -117,33 +120,33 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
+          <div className="lg:hidden py-4 border-t border-white/20">
             <div className="flex flex-col gap-4">
-              <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link to="/features" className="text-white/90 hover:text-white transition-colors py-2">
                 Features
               </Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link to="/pricing" className="text-white/90 hover:text-white transition-colors py-2">
                 Pricing
               </Link>
-              <Link to="/compare" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link to="/compare" className="text-white/90 hover:text-white transition-colors py-2">
                 Compare
               </Link>
               <div className="pl-4 flex flex-col gap-2">
                 {compareLinks.map((link) => (
-                  <Link key={link.href} to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                  <Link key={link.href} to={link.href} className="text-sm text-white/70 hover:text-white transition-colors py-1">
                     {link.name}
                   </Link>
                 ))}
               </div>
-              <div className="text-muted-foreground py-2">Solutions</div>
+              <div className="text-white/90 py-2">Solutions</div>
               <div className="pl-4 flex flex-col gap-2">
                 {solutionLinks.map((link) => (
-                  <Link key={link.href} to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                  <Link key={link.href} to={link.href} className="text-sm text-white/70 hover:text-white transition-colors py-1">
                     {link.name}
                   </Link>
                 ))}
               </div>
-              <Button variant="cta" className="mt-4" asChild>
+              <Button className="bg-white text-primary hover:bg-white/90 mt-4" asChild>
                 <Link to="/book-demo">Book Free Demo</Link>
               </Button>
             </div>

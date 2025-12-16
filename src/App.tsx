@@ -28,6 +28,9 @@ import Fitness from "./pages/solutions/Fitness";
 import Consultants from "./pages/solutions/Consultants";
 import Events from "./pages/solutions/Events";
 import Agencies from "./pages/solutions/Agencies";
+import FinancialAdvisors from "./pages/solutions/FinancialAdvisors";
+import HealthClinics from "./pages/solutions/HealthClinics";
+import Freelancers from "./pages/solutions/Freelancers";
 
 // Admin Pages
 import ProcessMascot from "./pages/admin/ProcessMascot";
@@ -64,6 +67,9 @@ const App = () => (
           <Route path="/solutions/consultants" element={<Consultants />} />
           <Route path="/solutions/events" element={<Events />} />
           <Route path="/solutions/agencies" element={<Agencies />} />
+          <Route path="/solutions/financial-advisors" element={<FinancialAdvisors />} />
+          <Route path="/solutions/health-clinics" element={<HealthClinics />} />
+          <Route path="/solutions/freelancers" element={<Freelancers />} />
           
           {/* Admin Routes */}
           <Route path="/admin/process-mascot" element={<ProcessMascot />} />

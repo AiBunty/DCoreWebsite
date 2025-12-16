@@ -7,36 +7,37 @@ import { MascotFrame } from "@/components/MascotFrame";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
-  "Leads not converting",
-  "Missed follow-ups",
-  "Manual call bookings",
-  "Payment chasing",
-  "Tool overload",
+  "Inconsistent lead flow",
+  "Project tracking chaos",
+  "Chasing clients for payments",
+  "No professional portfolio showcase",
+  "Communication gaps with clients",
+  "Time wasted on admin tasks",
 ];
 
 const solutions = [
-  "High-converting coaching funnels",
-  "WhatsApp & email follow-ups",
-  "Calendar booking with reminders",
-  "Razorpay payments + invoices",
-  "CRM with lead stages",
-  "Post-sale upsell automations",
+  "Landing pages to capture leads",
+  "Project & task management tools",
+  "Automated invoicing & payment reminders",
+  "Professional portfolio builder",
+  "Client communication hub",
+  "Proposal & contract automation",
 ];
 
-export default function CoachesPage() {
+export default function FreelancersPage() {
   return (
     <Layout>
       <section className="py-16 md:py-24 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty for Coaches
+              Ai Bunty for Freelancers
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Stop losing leads and start scaling your coaching business with automation.
+              Get more clients and manage projects effortlessly as an independent business owner.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <Link to="/book-demo">Book Free Demo for Coaches</Link>
+              <Link to="/book-demo">Book Free Demo</Link>
             </Button>
           </div>
         </div>
@@ -45,7 +46,6 @@ export default function CoachesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Pain Points */}
             <div className="bg-card rounded-2xl p-8 shadow-soft border border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <AlertCircle className="w-7 h-7 text-destructive" />
@@ -61,7 +61,6 @@ export default function CoachesPage() {
               </ul>
             </div>
 
-            {/* Solutions */}
             <div className="bg-accent rounded-2xl p-8 shadow-soft">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <CheckCircle2 className="w-7 h-7 text-primary" />
@@ -79,7 +78,7 @@ export default function CoachesPage() {
           </div>
 
           <MascotTip 
-            message="I follow up with your leads even when you're busy coaching."
+            message="I automatically remind clients about pending invoices so you get paid on time."
             className="mt-12 max-w-3xl mx-auto"
           />
 
@@ -91,9 +90,9 @@ export default function CoachesPage() {
       </section>
 
       <CTASection 
-        title="Automate Your Coaching Business"
-        subtitle="Join hundreds of coaches using Ai Bunty to scale their practice."
-        ctaText="Book Free Demo for Coaches"
+        title="Scale Your Freelance Business"
+        subtitle="Join freelancers using Ai Bunty to get more clients and manage projects."
+        ctaText="Book Free Demo"
       />
     </Layout>
   );
