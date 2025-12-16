@@ -26,11 +26,6 @@ import addStaff from "@/assets/features/add-staff.png";
 
 import { 
   MessageSquare, 
-  Calendar, 
-  CreditCard, 
-  Users, 
-  BarChart3, 
-  Zap,
   ArrowRight,
   LayoutDashboard,
   Store,
@@ -53,39 +48,45 @@ import {
   Calculator,
   HeartPulse,
   Briefcase,
+  Users,
+  Brain,
+  Bot,
+  Instagram,
+  Sparkles,
+  Share2,
   LucideIcon
 } from "lucide-react";
 
 const features = [
   {
-    icon: MessageSquare,
-    title: "WhatsApp Automation",
-    description: "Auto-replies, follow-ups, and broadcasts that work 24/7",
+    icon: Brain,
+    title: "AI Brain",
+    description: "Central intelligence that learns your business and automates decisions",
   },
   {
-    icon: Calendar,
-    title: "Smart Booking",
-    description: "Calendar scheduling with automated reminders",
+    icon: Bot,
+    title: "AI-powered Chatbots & Staff",
+    description: "Smart virtual assistants that handle customer queries and work tirelessly 24/7",
   },
   {
-    icon: CreditCard,
-    title: "Payment Collection",
-    description: "Razorpay integration with automatic invoicing",
+    icon: FileCode,
+    title: "AI Landing Page Generator",
+    description: "Create high-converting pages with AI in seconds",
   },
   {
-    icon: Users,
-    title: "CRM & Pipelines",
-    description: "Track every lead from first touch to close",
+    icon: Instagram,
+    title: "Instagram Comment Automation",
+    description: "Auto-engage with followers and boost visibility",
   },
   {
-    icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Real-time insights into your business growth",
+    icon: Sparkles,
+    title: "Automatic Social Ads Generator",
+    description: "AI creates and optimizes your ad campaigns",
   },
   {
-    icon: Zap,
-    title: "Marketing Funnels",
-    description: "High-converting landing pages in minutes",
+    icon: Share2,
+    title: "Multi-Platform Posting",
+    description: "Schedule and post across all social platforms at once",
   },
 ];
 
