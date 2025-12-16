@@ -39,7 +39,7 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
                 <img 
                   src={imageSrc} 
                   alt="Dashboard Preview" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-card"
                 />
               ) : children ? (
                 <div className="w-full h-full">{children}</div>
