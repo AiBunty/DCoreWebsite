@@ -104,7 +104,7 @@ const detailedFeatures: FeatureItem[] = [
   },
   {
     id: "shop-builder",
-    title: "Shop Builder",
+    title: "Digital Shop Builder",
     icon: Store,
     image: shopBuilder,
     category: "sales",
