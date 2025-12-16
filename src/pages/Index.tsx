@@ -8,6 +8,7 @@ import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 // Feature images
 import agencyDashboard from "@/assets/features/agency-dashboard.png";
+import dashboardPreview from "@/assets/dashboard-preview.png";
 import shopBuilder from "@/assets/features/shop-builder.png";
 import crm from "@/assets/features/crm.png";
 import landingPageBuilder from "@/assets/features/landing-page-builder.png";
@@ -380,7 +381,7 @@ const Index = () => {
 
             {/* Dashboard Preview */}
             <div>
-              <MascotFrame imageSrc={agencyDashboard} />
+              <MascotFrame imageSrc={dashboardPreview} />
             </div>
           </div>
         </div>
