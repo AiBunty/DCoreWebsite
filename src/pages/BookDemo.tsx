@@ -59,62 +59,17 @@ export default function BookDemoPage() {
                 </div>
               </div>
 
-              {/* Demo Form */}
-              <div className="bg-card rounded-2xl p-8 shadow-medium border border-border">
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Full Name
-                    </label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email
-                    </label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="you@company.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Phone / WhatsApp
-                    </label>
-                    <input 
-                      type="tel" 
-                      className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                      placeholder="+91 7003210880"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Business Type
-                    </label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
-                      <option value="">Select your business type</option>
-                      <option value="coach">Coach / Trainer</option>
-                      <option value="real-estate">Real Estate</option>
-                      <option value="fitness">Fitness Club</option>
-                      <option value="consultant">Consultant / Advisor</option>
-                      <option value="events">Event Planner</option>
-                      <option value="agency">Agency</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  
-                  <Button variant="hero" size="xl" className="w-full">
-                    Book My 1 to 1 Call
-                  </Button>
-                </form>
+              {/* Demo Form - Embedded Ai Bunty Form */}
+              <div className="bg-card rounded-2xl p-4 shadow-medium border border-border overflow-hidden">
+                <iframe
+                  src="https://admin.aibunty.com/widget/form/f10238e5-a750-4bb5-80ea-46173140efb4"
+                  style={{ width: '100%', height: '600px', border: 'none', borderRadius: '3px' }}
+                  id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
+                  data-form-name="VSL Form"
+                  data-layout-iframe-id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
+                  data-form-id="f10238e5-a750-4bb5-80ea-46173140efb4"
+                  title="VSL Form"
+                />
               </div>
             </div>
 
