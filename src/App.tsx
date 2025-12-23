@@ -36,6 +36,8 @@ import Freelancers from "./pages/solutions/Freelancers";
 // Admin Pages
 import ProcessMascot from "./pages/admin/ProcessMascot";
 import AdminBookings from "./pages/admin/Bookings";
+import AdminLogin from "./pages/admin/Login";
+import { ProtectedAdminRoute } from "./components/ProtectedAdminRoute";
 
 const queryClient = new QueryClient();
 
@@ -73,9 +75,24 @@ const App = () => (
           <Route path="/solutions/health-clinics" element={<HealthClinics />} />
           <Route path="/solutions/freelancers" element={<Freelancers />} />
           
-          {/* Admin Routes */}
-          <Route path="/admin/process-mascot" element={<ProcessMascot />} />
-          <Route path="/admin/bookings" element={<AdminBookings />} />
+          {/* Admin Routes - Protected */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/process-mascot"
+            element={
+              <ProtectedAdminRoute>
+                <ProcessMascot />
+              </ProtectedAdminRoute>
+            }
+          />
+          <Route
+            path="/admin/bookings"
+            element={
+              <ProtectedAdminRoute>
+                <AdminBookings />
+              </ProtectedAdminRoute>
+            }
+          />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
