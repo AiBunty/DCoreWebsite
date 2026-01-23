@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { IPhoneFrame } from "@/components/IPhoneFrame";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { GlassSection } from "@/components/GlassCard";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -60,7 +61,7 @@ export default function Testimonials() {
       </section>
 
       {/* Testimonial Videos Grid */}
-      <section className="py-16 md:py-24 bg-background">
+      <GlassSection className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 justify-items-center">
             {testimonials.map((testimonial, index) => (
@@ -73,7 +74,7 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-      </section>
+      </GlassSection>
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-primary">

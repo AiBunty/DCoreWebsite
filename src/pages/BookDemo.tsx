@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { Calendar, Mail, Phone } from "lucide-react";
 
 export default function BookDemoPage() {
@@ -27,50 +28,58 @@ export default function BookDemoPage() {
                 />
                 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 text-foreground">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-                      <Calendar className="w-6 h-6 text-primary" />
+                  <GlassCard>
+                    <div className="glass-card-content p-4 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Calendar className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground">30-Minute 1 to 1 Call</p>
+                        <p className="text-muted-foreground text-sm">Personalized walkthrough</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold">30-Minute 1 to 1 Call</p>
-                      <p className="text-muted-foreground text-sm">Personalized walkthrough</p>
-                    </div>
-                  </div>
+                  </GlassCard>
                   
-                  <div className="flex items-center gap-4 text-foreground">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-primary" />
+                  <GlassCard>
+                    <div className="glass-card-content p-4 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground">Email</p>
+                        <p className="text-muted-foreground text-sm">saas@aibunty.com</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold">Email</p>
-                      <p className="text-muted-foreground text-sm">saas@aibunty.com</p>
-                    </div>
-                  </div>
+                  </GlassCard>
                   
-                  <div className="flex items-center gap-4 text-foreground">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-primary" />
+                  <GlassCard>
+                    <div className="glass-card-content p-4 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground">WhatsApp</p>
+                        <p className="text-muted-foreground text-sm">+91 7003210880</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold">WhatsApp</p>
-                      <p className="text-muted-foreground text-sm">+91 7003210880</p>
-                    </div>
-                  </div>
+                  </GlassCard>
                 </div>
               </div>
 
               {/* Demo Form - Embedded Ai Bunty Form */}
-              <div className="bg-card rounded-2xl p-4 shadow-medium border border-border overflow-hidden">
-                <iframe
-                  src="https://admin.aibunty.com/widget/form/f10238e5-a750-4bb5-80ea-46173140efb4"
-                  style={{ width: '100%', height: '600px', border: 'none', borderRadius: '3px' }}
-                  id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
-                  data-form-name="VSL Form"
-                  data-layout-iframe-id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
-                  data-form-id="f10238e5-a750-4bb5-80ea-46173140efb4"
-                  title="VSL Form"
-                />
-              </div>
+              <GlassCard className="h-full">
+                <div className="glass-card-content p-4 overflow-hidden h-full">
+                  <iframe
+                    src="https://admin.aibunty.com/widget/form/f10238e5-a750-4bb5-80ea-46173140efb4"
+                    style={{ width: '100%', height: '600px', border: 'none', borderRadius: '3px' }}
+                    id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
+                    data-form-name="VSL Form"
+                    data-layout-iframe-id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
+                    data-form-id="f10238e5-a750-4bb5-80ea-46173140efb4"
+                    title="VSL Form"
+                  />
+                </div>
+              </GlassCard>
             </div>
 
             {/* YouTube Demo Section */}

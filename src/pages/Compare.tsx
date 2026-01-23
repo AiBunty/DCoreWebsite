@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
+import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { ArrowRight } from "lucide-react";
 
 const comparisons = [
@@ -59,25 +60,26 @@ export default function ComparePage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <GlassSection className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {comparisons.map((comparison) => (
-              <Link
-                key={comparison.name}
-                to={comparison.href}
-                className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 border border-border group hover:-translate-y-1"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Ai Bunty vs {comparison.name}
-                  </h3>
-                  <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  {comparison.description}
-                </p>
-              </Link>
+              <GlassCard key={comparison.name} interactive>
+                <Link
+                  to={comparison.href}
+                  className="glass-card-content p-6 flex flex-col h-full"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold text-foreground">
+                      Ai Bunty vs {comparison.name}
+                    </h3>
+                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    {comparison.description}
+                  </p>
+                </Link>
+              </GlassCard>
             ))}
           </div>
 
@@ -86,7 +88,7 @@ export default function ComparePage() {
             className="max-w-2xl mx-auto"
           />
         </div>
-      </section>
+      </GlassSection>
 
       <CTASection 
         title="Ready to Switch to Ai Bunty?"

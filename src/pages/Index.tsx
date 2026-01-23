@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { FeatureShowcase, FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { MascotFrame } from "@/components/MascotFrame";
+import { GlassCard, GlassSection } from "@/components/GlassCard";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 // Feature images
@@ -374,7 +375,7 @@ const Index = () => {
       </section>
 
       {/* Solutions Preview - Built for Service Businesses (MOVED HERE) */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -387,26 +388,27 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((solution) => (
-              <Link 
-                key={solution.name}
-                to={solution.href}
-                className="bg-card rounded-xl p-6 shadow-soft hover:shadow-hover transition-all duration-300 flex items-center justify-between group border border-border"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                    <solution.icon className="w-5 h-5 text-primary" />
+              <GlassCard key={solution.name} interactive>
+                <Link 
+                  to={solution.href}
+                  className="glass-card-content p-6 flex items-center justify-between group h-full"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                      <solution.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="font-semibold text-foreground">{solution.name}</span>
                   </div>
-                  <span className="font-semibold text-foreground">{solution.name}</span>
-                </div>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                  <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </GlassCard>
             ))}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <GlassSection className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -419,27 +421,26 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="bg-card rounded-xl p-4 shadow-soft hover:shadow-hover transition-all duration-300 border border-border hover:-translate-y-1"
-              >
-                <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center mb-3">
-                  <feature.icon className="w-4 h-4 text-primary" />
+              <GlassCard key={index}>
+                <div className="glass-card-content p-4">
+                  <div className="w-9 h-9 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                    <feature.icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-sm font-semibold text-foreground mb-1">
-                  {feature.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </div>
-      </section>
+      </GlassSection>
 
       {/* Dashboard Preview + Steps Section */}
-      <section className="py-20 bg-secondary">
+      <GlassSection className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Steps */}
@@ -470,7 +471,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </GlassSection>
 
       {/* Detailed Features Showcase */}
       <FeatureShowcase features={detailedFeatures} />

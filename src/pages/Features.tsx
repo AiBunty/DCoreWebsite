@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { CTASection } from "@/components/CTASection";
+import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { 
   MessageSquare, 
   Calendar, 
@@ -86,20 +87,19 @@ export default function FeaturesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-hover transition-all duration-300 border border-border hover:-translate-y-1"
-              >
-                <div className="w-14 h-14 bg-accent rounded-xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+              <GlassCard key={index}>
+                <div className="glass-card-content p-8">
+                  <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+                    <feature.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {feature.description}
-                </p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </div>
