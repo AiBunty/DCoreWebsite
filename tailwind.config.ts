@@ -51,11 +51,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          red: "hsl(var(--brand-red))",
-          "red-dark": "hsl(var(--brand-red-dark))",
-          "red-light": "hsl(var(--brand-red-light))",
-          grey: "hsl(var(--brand-grey))",
-          "grey-dark": "hsl(var(--brand-grey-dark))",
+          orange: "hsl(var(--brand-orange))",
+          "orange-dark": "hsl(var(--brand-orange-dark))",
+          "orange-light": "hsl(var(--brand-orange-light))",
+          dark: "hsl(var(--brand-dark))",
+          "dark-card": "hsl(var(--brand-dark-card))",
         },
       },
       borderRadius: {
@@ -68,11 +68,13 @@ export default {
       boxShadow: {
         soft: "var(--shadow-soft)",
         medium: "var(--shadow-medium)",
-        hover: "var(--shadow-hover)",
+        glow: "var(--shadow-glow)",
+        "glow-strong": "var(--shadow-glow-strong)",
       },
       backgroundImage: {
-        "gradient-hero": "var(--gradient-hero)",
-        "gradient-cta": "var(--gradient-cta)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-bg": "var(--gradient-bg)",
+        "gradient-border": "var(--gradient-border)",
       },
       keyframes: {
         "accordion-down": {

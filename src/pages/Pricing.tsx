@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
+import { GlassCard, GlassBadge, GlassSection } from "@/components/GlassCard";
 import { Check } from "lucide-react";
 
 const plans = [
@@ -76,51 +77,50 @@ export default function PricingPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {plans.map((plan, index) => (
-              <div 
+              <GlassCard 
                 key={index}
-                className={`bg-card rounded-2xl p-8 shadow-soft border transition-all duration-300 hover:-translate-y-1 ${
-                  plan.popular 
-                    ? 'border-primary shadow-hover relative' 
-                    : 'border-border hover:shadow-hover'
-                }`}
+                premium={plan.popular}
+                className="flex flex-col"
               >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                    Most Popular
+                <div className="glass-card-content p-8 flex flex-col h-full">
+                  {plan.popular && (
+                    <div className="mb-4">
+                      <GlassBadge>Most Popular</GlassBadge>
+                    </div>
+                  )}
+                  
+                  <div className="text-center mb-6 flex-grow">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {plan.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {plan.description}
+                    </p>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                      <span className="text-muted-foreground">{plan.period}</span>
+                    </div>
                   </div>
-                )}
-                
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {plan.name}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {plan.description}
-                  </p>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
-                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-3 text-foreground">
+                        <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button 
+                    variant={plan.popular ? "default" : "outline"} 
+                    className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
+                    size="lg"
+                    asChild
+                  >
+                    <Link to="/book-demo">{plan.cta}</Link>
+                  </Button>
                 </div>
-
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3 text-foreground">
-                      <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button 
-                  variant={plan.popular ? "hero" : "outline"} 
-                  className="w-full" 
-                  size="lg"
-                  asChild
-                >
-                  <Link to="/book-demo">{plan.cta}</Link>
-                </Button>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </div>
