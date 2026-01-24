@@ -400,16 +400,16 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="solutions-grid md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="solutions-grid md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((solution, index) => (
               <GlassCard key={solution.name} interactive className="solution-card" style={{ ['--card-index' as string]: index }}>
                 <Link 
                   to={solution.href}
-                  className="glass-card-content p-4 md:p-6 flex items-center justify-between group h-full"
+                  className="glass-card-content p-3 md:p-4 flex items-center justify-between group h-full"
                 >
                   <div className="flex items-center gap-3 md:gap-4">
-                    <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <solution.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                    <div className="w-8 h-8 md:w-9 md:h-9 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <solution.icon className="w-4 h-4 text-primary" />
                     </div>
                     <span className="font-semibold text-foreground text-sm md:text-base">{solution.name}</span>
                   </div>

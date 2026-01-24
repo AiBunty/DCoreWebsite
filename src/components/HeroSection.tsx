@@ -21,9 +21,6 @@ export function HeroSection() {
           </p>
 
           <div className="hero-buttons">
-            <DCoreButton variant="primary" size="large">
-              Start Free Trial
-            </DCoreButton>
             <DCoreButton variant="secondary" size="large">
               Watch Demo
             </DCoreButton>

@@ -49,21 +49,21 @@ return (
         <h2 className="text-4xl md:text-5xl font-bold mb-3">
           Everything You Need to Grow
         </h2>
-        <p className="text-lg md:text-xl opacity-90">
+        <p className="text-lg md:text-xl text-black">
           Stop juggling multiple tools. Ai Bunty brings it all together.
         </p>
       </div>
 
       <div 
         ref={cardsRef}
-        className="stacking-cards-container max-w-7xl mx-auto px-5 py-10 md:py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:pt-20 md:pb-10"
+        className="stacking-cards-container max-w-7xl mx-auto px-5 py-8 md:py-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:pt-14 md:pb-8"
       >
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
             <div
               key={index}
-              className="stacking-card bg-card rounded-2xl p-8 shadow-soft border border-border transition-all duration-300 hover:shadow-hover hover:-translate-y-1"
+              className="stacking-card bg-card rounded-2xl p-6 shadow-soft border border-border transition-all duration-300 hover:shadow-hover hover:-translate-y-1"
               style={{
                 ['--card-index' as string]: index,
               }}
@@ -86,8 +86,8 @@ return (
         @media (max-width: 768px) {
           .stacking-cards-container {
             display: block;
-            padding-top: 100px;
-            min-height: 200vh;
+            padding-top: 80px;
+            min-height: 170vh;
           }
 
           .stacking-card {
@@ -97,21 +97,21 @@ return (
             transition: transform 0.3s ease, opacity 0.3s ease;
           }
 
-          .stacking-card:nth-child(1) { top: 80px; z-index: 12; }
-          .stacking-card:nth-child(2) { top: 85px; z-index: 11; }
-          .stacking-card:nth-child(3) { top: 90px; z-index: 10; }
-          .stacking-card:nth-child(4) { top: 95px; z-index: 9; }
-          .stacking-card:nth-child(5) { top: 100px; z-index: 8; }
-          .stacking-card:nth-child(6) { top: 105px; z-index: 7; }
-          .stacking-card:nth-child(7) { top: 110px; z-index: 6; }
-          .stacking-card:nth-child(8) { top: 115px; z-index: 5; }
-          .stacking-card:nth-child(9) { top: 120px; z-index: 4; }
-          .stacking-card:nth-child(10) { top: 125px; z-index: 3; }
-          .stacking-card:nth-child(11) { top: 130px; z-index: 2; }
-          .stacking-card:nth-child(12) { top: 135px; z-index: 1; }
-          .stacking-card:nth-child(13) { top: 140px; z-index: 0; }
-          .stacking-card:nth-child(14) { top: 145px; z-index: -1; }
-          .stacking-card:nth-child(15) { top: 150px; z-index: -2; }
+          .stacking-card:nth-child(1) { top: 60px; z-index: 12; }
+          .stacking-card:nth-child(2) { top: 64px; z-index: 11; }
+          .stacking-card:nth-child(3) { top: 68px; z-index: 10; }
+          .stacking-card:nth-child(4) { top: 72px; z-index: 9; }
+          .stacking-card:nth-child(5) { top: 76px; z-index: 8; }
+          .stacking-card:nth-child(6) { top: 80px; z-index: 7; }
+          .stacking-card:nth-child(7) { top: 84px; z-index: 6; }
+          .stacking-card:nth-child(8) { top: 88px; z-index: 5; }
+          .stacking-card:nth-child(9) { top: 92px; z-index: 4; }
+          .stacking-card:nth-child(10) { top: 96px; z-index: 3; }
+          .stacking-card:nth-child(11) { top: 100px; z-index: 2; }
+          .stacking-card:nth-child(12) { top: 104px; z-index: 1; }
+          .stacking-card:nth-child(13) { top: 108px; z-index: 0; }
+          .stacking-card:nth-child(14) { top: 112px; z-index: -1; }
+          .stacking-card:nth-child(15) { top: 116px; z-index: -2; }
 
           .stacking-card.stacking {
             transform: scale(0.95);

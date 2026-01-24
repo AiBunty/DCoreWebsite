@@ -124,11 +124,11 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
             {currentFeature && (
               <>
                 {/* Image Container */}
-                <div className="flex-shrink-0 mb-6 rounded-lg overflow-hidden bg-muted h-64 md:h-72 flex items-center justify-center">
+                <div className="flex-shrink-0 mb-6 rounded-lg overflow-hidden bg-white h-64 md:h-80 flex items-center justify-center">
                   <img
                     src={currentFeature.image}
                     alt={currentFeature.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-contain transition-transform duration-300"
                   />
                 </div>
 

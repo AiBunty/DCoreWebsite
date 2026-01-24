@@ -18,7 +18,7 @@ const plans = [
       "WhatsApp Integration",
       "Email Support",
     ],
-    cta: "Start Free Trial",
+    cta: "Book Demo",
     popular: false,
   },
   {
@@ -35,7 +35,7 @@ const plans = [
       "Payment Integration",
       "Priority Support",
     ],
-    cta: "Start Free Trial",
+    cta: "Book Demo",
     popular: true,
   },
   {
@@ -67,7 +67,7 @@ export default function PricingPage() {
               Simple, Transparent Pricing
             </h1>
             <p className="text-xl text-muted-foreground">
-              Choose the plan that fits your business. All plans include a 14-day free trial.
+              Choose the plan that fits your business.
             </p>
           </div>
         </div>
