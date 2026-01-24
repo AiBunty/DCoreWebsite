@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { FeatureCarousel } from "@/components/FeatureCarousel";
-import { StudentPortalCarousel } from "@/components/StudentPortalCarousel";
 import { MascotFrame } from "@/components/MascotFrame";
 import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { StackingCards } from "@/components/StackingCards";
@@ -487,9 +486,6 @@ const Index = () => {
 
       {/* Detailed Features Carousel */}
       <FeatureCarousel features={detailedFeatures} />
-
-      {/* Student Portal Carousel */}
-      <StudentPortalCarousel />
 
       {/* Comparison Preview */}
       <section className="py-20">
