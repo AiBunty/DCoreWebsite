@@ -101,14 +101,23 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
 
         {/* Carousel Container */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Left Arrow Button */}
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 z-10 p-2 rounded-full hover:bg-accent transition-colors duration-200"
-            aria-label="Previous feature"
-          >
-            <ChevronLeft className="w-8 h-8 text-primary" />
-          </button>
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2 md:px-0 pointer-events-none z-10">
+            <button
+              onClick={handlePrev}
+              className="pointer-events-auto md:-translate-x-16 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/90 backdrop-blur-md border border-black/10 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:bg-white hover:scale-110 active:scale-95"
+              aria-label="Previous feature"
+            >
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-foreground" strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={handleNext}
+              className="pointer-events-auto md:translate-x-16 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/90 backdrop-blur-md border border-black/10 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:bg-white hover:scale-110 active:scale-95"
+              aria-label="Next feature"
+            >
+              <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-foreground" strokeWidth={2.5} />
+            </button>
+          </div>
 
           {/* Carousel Card */}
           <div className="bg-card rounded-xl p-6 md:p-8 shadow-medium border border-border min-h-[500px] md:min-h-[450px] flex flex-col">
@@ -127,9 +136,9 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
                 <div className="flex-grow flex flex-col">
                   {/* Title with Icon */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
                       {currentFeature.icon && (
-                        <currentFeature.icon className="w-5 h-5 text-primary" />
+                        <currentFeature.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                       )}
                     </div>
                     <h3 className="text-xl md:text-2xl font-bold text-foreground">
@@ -177,15 +186,6 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
               </>
             )}
           </div>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 z-10 p-2 rounded-full hover:bg-accent transition-colors duration-200"
-            aria-label="Next feature"
-          >
-            <ChevronRight className="w-8 h-8 text-primary" />
-          </button>
         </div>
 
         {/* Mobile Navigation Hint */}

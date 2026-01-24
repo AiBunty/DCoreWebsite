@@ -1,5 +1,4 @@
 import { Check, X } from "lucide-react";
-import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
 
 interface ComparisonRow {
   useCase: string;
@@ -22,14 +21,7 @@ export function ComparisonTable({ competitorName, rows }: ComparisonTableProps) 
           <tr className="border-b border-border">
             <th className="text-left py-4 px-4 font-semibold text-foreground">Use Case</th>
             <th className="text-left py-4 px-4 font-semibold text-primary">
-              <div className="flex items-center gap-2">
-                <img 
-                  src={aiBuntyLogo} 
-                  alt="Ai Bunty" 
-                  className="h-6 w-auto"
-                />
-                Ai Bunty
-              </div>
+              Ai Bunty
             </th>
             <th className="text-left py-4 px-4 font-semibold text-muted-foreground">{competitorName}</th>
           </tr>

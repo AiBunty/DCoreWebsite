@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { FeatureCarousel } from "@/components/FeatureCarousel";
+import { StudentPortalCarousel } from "@/components/StudentPortalCarousel";
 import { MascotFrame } from "@/components/MascotFrame";
 import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { StackingCards } from "@/components/StackingCards";
@@ -341,11 +342,22 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                Meet <span className="text-primary">Ai Bunty</span> — Your AI-Powered Business Growth Partner
+                Automating Tomorrow's Business
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-                Funnels, CRM, WhatsApp automation, payments, team management & growth tools — all in one powerful platform.
-              </p>
+              <div className="space-y-4 mb-8 max-w-xl">
+                <div>
+                  <h2 className="text-xl md:text-2xl font-semibold text-primary mb-2">Our Vision</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground">
+                    To automate tomorrow's business with automated system.
+                  </p>
+                </div>
+                <div>
+                  <h2 className="text-xl md:text-2xl font-semibold text-primary mb-2">Our Mission</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground">
+                    To help modern business work smarter faster and better through the cloud.
+                  </p>
+                </div>
+              </div>
               <div className="flex flex-wrap gap-4 mb-8">
                 <Button variant="hero" size="xl" asChild>
                   <Link to="/book-demo">Book Free Demo</Link>
@@ -388,24 +400,51 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solutions.map((solution) => (
-              <GlassCard key={solution.name} interactive>
+          <div className="solutions-grid md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {solutions.map((solution, index) => (
+              <GlassCard key={solution.name} interactive className="solution-card" style={{ ['--card-index' as string]: index }}>
                 <Link 
                   to={solution.href}
-                  className="glass-card-content p-6 flex items-center justify-between group h-full"
+                  className="glass-card-content p-4 md:p-6 flex items-center justify-between group h-full"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                      <solution.icon className="w-5 h-5 text-primary" />
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <solution.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                     </div>
-                    <span className="font-semibold text-foreground">{solution.name}</span>
+                    <span className="font-semibold text-foreground text-sm md:text-base">{solution.name}</span>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-primary group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </Link>
               </GlassCard>
             ))}
           </div>
+
+          <style>{`
+            @media (max-width: 768px) {
+              .solutions-grid {
+                display: block;
+                padding-top: 60px;
+                min-height: 120vh;
+              }
+
+              .solution-card {
+                position: sticky;
+                margin-bottom: 16px;
+                transform-origin: center top;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+              }
+
+              .solution-card:nth-child(1) { top: 60px; z-index: 9; }
+              .solution-card:nth-child(2) { top: 65px; z-index: 8; }
+              .solution-card:nth-child(3) { top: 70px; z-index: 7; }
+              .solution-card:nth-child(4) { top: 75px; z-index: 6; }
+              .solution-card:nth-child(5) { top: 80px; z-index: 5; }
+              .solution-card:nth-child(6) { top: 85px; z-index: 4; }
+              .solution-card:nth-child(7) { top: 90px; z-index: 3; }
+              .solution-card:nth-child(8) { top: 95px; z-index: 2; }
+              .solution-card:nth-child(9) { top: 100px; z-index: 1; }
+            }
+          `}</style>
         </div>
       </section>
 
@@ -448,6 +487,9 @@ const Index = () => {
 
       {/* Detailed Features Carousel */}
       <FeatureCarousel features={detailedFeatures} />
+
+      {/* Student Portal Carousel */}
+      <StudentPortalCarousel />
 
       {/* Comparison Preview */}
       <section className="py-20">

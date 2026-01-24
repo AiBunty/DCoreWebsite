@@ -43,7 +43,7 @@ export function StackingCards({ features }: StackingCardsProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
+return (
     <section className="stacking-section">
       <div className="stacking-section-header bg-gradient-to-br from-primary to-purple-600 text-white text-center py-16 px-5">
         <h2 className="text-4xl md:text-5xl font-bold mb-3">
