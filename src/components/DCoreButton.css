@@ -1,0 +1,50 @@
+.dcore-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 14px;
+  display: inline-block;
+}
+
+.dcore-btn:hover {
+  transform: scale(1.05);
+}
+
+.dcore-btn:active {
+  transform: scale(0.98);
+}
+
+.dcore-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dcore-btn-primary {
+  background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-light) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(91, 155, 213, 0.3);
+}
+
+.dcore-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(91, 155, 213, 0.5);
+}
+
+.dcore-btn-secondary {
+  background: var(--glass-light);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.dcore-btn-secondary:hover {
+  border-color: var(--blue-primary);
+  background: rgba(91, 155, 213, 0.1);
+}
+
+.dcore-btn-large {
+  padding: 14px 32px;
+  font-size: 16px;
+}

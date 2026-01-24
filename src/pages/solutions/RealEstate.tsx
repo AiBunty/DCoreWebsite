@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -73,6 +74,8 @@ export default function RealEstatePage() {
               </ul>
             </div>
           </div>
+
+          <SolutionNav />
 
           <MascotTip 
             message="I capture every lead from your ads and follow up until they book a site visit."

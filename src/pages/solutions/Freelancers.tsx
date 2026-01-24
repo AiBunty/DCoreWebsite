@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -76,6 +77,8 @@ export default function FreelancersPage() {
               </ul>
             </div>
           </div>
+
+          <SolutionNav />
 
           <MascotTip 
             message="I automatically remind clients about pending invoices so you get paid on time."

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -76,6 +77,8 @@ export default function HealthClinicsPage() {
               </ul>
             </div>
           </div>
+
+          <SolutionNav />
 
           <MascotTip 
             message="I send appointment reminders to patients so your staff doesn't have to call them manually."

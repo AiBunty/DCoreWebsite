@@ -1,82 +1,28 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
+import './GlassCard.css';
 
 interface GlassCardProps {
-  children: React.ReactNode;
+  children: ReactNode;
+  variant?: 'default' | 'large' | 'hover';
   className?: string;
   premium?: boolean;
-  interactive?: boolean;
 }
 
-/**
- * GlassCard Component - Reusable frosted glass card with glowing effects
- * 
- * Features:
- * - Frosted glass (glassmorphism) design
- * - Smooth hover animations with dramatic glow
- * - Optional premium/featured state with enhanced glow
- * - Responsive and accessible
- * 
- * Usage:
- * <GlassCard premium={true}>
- *   <div className="glass-card-content">
- *     Your content here
- *   </div>
- * </GlassCard>
- */
-export const GlassCard: React.FC<GlassCardProps> = ({
-  children,
-  className,
-  premium = false,
-  interactive = true,
-}) => {
-  return (
-    <div
-      className={cn(
-        'glass-card',
-        premium && 'premium',
-        interactive && 'cursor-pointer',
-        className
-      )}
-    >
-      {premium && <div className="gradient-overlay" />}
-      {children}
-    </div>
-  );
-};
+export function GlassCard({ children, variant = 'default', className, premium }: GlassCardProps) {
+  const baseClass = 'glass-card';
+  const variantClass = `glass-card-${variant}`;
+  const premiumClass = premium ? 'glass-card-premium' : undefined;
+  const allClasses = [baseClass, variantClass, premiumClass, className].filter(Boolean).join(' ');
 
-interface GlassBadgeProps {
-  children: React.ReactNode;
-  className?: string;
+  return <div className={allClasses}>{children}</div>;
 }
 
-export const GlassBadge: React.FC<GlassBadgeProps> = ({
-  children,
-  className,
-}) => {
-  return (
-    <span className={cn('glass-badge', className)}>
-      {children}
-    </span>
-  );
-};
-
-interface GlassSectionProps {
-  children: React.ReactNode;
-  className?: string;
+export function GlassBadge({ children, className }: { children: ReactNode; className?: string }) {
+  const all = ['glass-badge', className].filter(Boolean).join(' ');
+  return <span className={all}>{children}</span>;
 }
 
-/**
- * GlassSection - Background wrapper with gradient and radial glow effects
- * Use this as a container for multiple glass cards
- */
-export const GlassSection: React.FC<GlassSectionProps> = ({
-  children,
-  className,
-}) => {
-  return (
-    <div className={cn('glass-section-bg', className)}>
-      {children}
-    </div>
-  );
-};
+export function GlassSection({ children, className }: { children: ReactNode; className?: string }) {
+  const all = ['glass-section', className].filter(Boolean).join(' ');
+  return <section className={all}>{children}</section>;
+}

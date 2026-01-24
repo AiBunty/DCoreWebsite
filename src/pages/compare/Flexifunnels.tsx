@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { ComparisonTable } from "@/components/ComparisonTable";
+import { ComparisonNav } from "@/components/ComparisonNav";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 
@@ -62,6 +63,8 @@ export default function CompareFlexifunnels() {
           <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden mb-12">
             <ComparisonTable competitorName="Flexifunnels" rows={comparisonData} />
           </div>
+
+          <ComparisonNav />
 
           <MascotTip 
             message="Choose Ai Bunty if you want automation, CRM, payments, and WhatsApp follow-ups in one platform."

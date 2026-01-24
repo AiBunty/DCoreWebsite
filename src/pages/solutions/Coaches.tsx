@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -77,6 +78,8 @@ export default function CoachesPage() {
               </ul>
             </div>
           </div>
+
+          <SolutionNav />
 
           <MascotTip 
             message="I follow up with your leads even when you're busy coaching."

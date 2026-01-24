@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
-import { FeatureShowcase, FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
+import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
+import { FeatureCarousel } from "@/components/FeatureCarousel";
 import { MascotFrame } from "@/components/MascotFrame";
 import { GlassCard, GlassSection } from "@/components/GlassCard";
+import { StackingCards } from "@/components/StackingCards";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 // Feature images
@@ -407,37 +409,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <GlassSection className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Everything You Need to Grow
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Stop juggling multiple tools. Ai Bunty brings it all together.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {features.map((feature, index) => (
-              <GlassCard key={index}>
-                <div className="glass-card-content p-4">
-                  <div className="w-9 h-9 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
-                    <feature.icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </GlassSection>
+      {/* Features Section with Stacking Animation */}
+      <StackingCards features={features} />
 
       {/* Dashboard Preview + Steps Section */}
       <GlassSection className="py-20">
@@ -473,8 +446,8 @@ const Index = () => {
         </div>
       </GlassSection>
 
-      {/* Detailed Features Showcase */}
-      <FeatureShowcase features={detailedFeatures} />
+      {/* Detailed Features Carousel */}
+      <FeatureCarousel features={detailedFeatures} />
 
       {/* Comparison Preview */}
       <section className="py-20">

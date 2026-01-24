@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { SolutionNav } from "@/components/SolutionNav";
 import { CheckCircle2 } from "lucide-react";
 
 const features = [
@@ -50,6 +51,8 @@ export default function AgenciesPage() {
                 ))}
               </ul>
             </div>
+
+            <SolutionNav />
 
             <MascotTip 
               message="I help you manage multiple clients from one dashboard and even let you resell me!"

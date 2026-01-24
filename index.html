@@ -8,7 +8,16 @@
     <meta name="author" content="Ai Bunty" />
     <meta name="keywords" content="CRM software, WhatsApp automation, business growth, marketing funnels, lead management, Indian SaaS, coaching CRM, real estate CRM" />
     
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/dcore-favicon.png" />
+    <script type="module">
+      import faviconUrl from '/src/assets/favicon.png';
+      const existing = document.querySelector("link[rel='icon']");
+      const link = existing ?? document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = faviconUrl;
+      if (!existing) document.head.appendChild(link);
+    </script>
     <link rel="canonical" href="https://aibunty.com" />
 
     <meta property="og:title" content="Ai Bunty — AI-Powered Business Growth Platform" />

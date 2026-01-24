@@ -1,43 +1,30 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import mascotImage from "@/assets/ai-bunty-mascot.png";
+import { GlassCard } from './GlassCard';
+import { DCoreButton } from './DCoreButton';
+import './CTASection.css';
 
-interface CTASectionProps {
-  title?: string;
-  subtitle?: string;
-  ctaText?: string;
-  ctaLink?: string;
-  showMascot?: boolean;
-}
-
-export function CTASection({
-  title = "Ready to Grow Your Business?",
-  subtitle = "Join thousands of businesses using Ai Bunty to automate their growth.",
-  ctaText = "Book Free Demo",
-  ctaLink = "/book-demo",
-  showMascot = true,
-}: CTASectionProps) {
+export function CTASection() {
   return (
-    <section className="py-20 bg-gradient-hero">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          {showMascot && (
-            <img 
-              src={mascotImage} 
-              alt="Ai Bunty mascot" 
-              className="w-24 h-24 mx-auto mb-6 animate-float drop-shadow-xl"
-            />
-          )}
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {title}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {subtitle}
-          </p>
-          <Button variant="hero" size="xl" asChild>
-            <Link to={ctaLink}>{ctaText}</Link>
-          </Button>
-        </div>
+    <section className="cta">
+      <div className="container">
+        <GlassCard variant="large" className="cta-card">
+          <div className="cta-content">
+            <h2 className="cta-title">Ready to Transform Your Business?</h2>
+            <p className="cta-description">
+              Join thousands of companies already using D'CORE Systems to power their AI initiatives
+            </p>
+            <div className="cta-actions">
+              <DCoreButton variant="primary" size="large">
+                Start Free Trial
+              </DCoreButton>
+              <DCoreButton variant="secondary" size="large">
+                Schedule Demo
+              </DCoreButton>
+            </div>
+            <p className="cta-note">
+              No credit card required • 14-day free trial • Cancel anytime
+            </p>
+          </div>
+        </GlassCard>
       </div>
     </section>
   );

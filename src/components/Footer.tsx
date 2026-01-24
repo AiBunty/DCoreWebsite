@@ -1,63 +1,93 @@
-import { Link } from "react-router-dom";
-import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
+import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import './DcoreFooter.css';
+import aiBuntyLogo from '@/assets/ai-bunty-logo-new.png';
+
+const footerLinks = [
+  {
+    title: 'Products',
+    links: [
+      { name: 'AI Solutions', href: '/features' },
+      { name: 'Cloud Services', href: '/features' },
+      { name: 'Analytics', href: '/features' },
+      { name: 'Security', href: '/features' }
+    ]
+  },
+  {
+    title: 'Company',
+    links: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Press Kit', href: '/press' }
+    ]
+  },
+  {
+    title: 'Resources',
+    links: [
+      { name: 'Documentation', href: '/docs' },
+      { name: 'API Reference', href: '/api' },
+      { name: 'Guides', href: '/guides' },
+      { name: 'Support', href: '/support' }
+    ]
+  },
+  {
+    title: 'Legal',
+    links: [
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Cookie Policy', href: '/cookies' },
+      { name: 'Compliance', href: '/compliance' }
+    ]
+  }
+];
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="mb-4">
-              <img 
-                src={aiBuntyLogo} 
-                alt="Ai Bunty" 
-                className="h-12 w-auto"
+    <footer className="footer glass-section">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <div className="footer-logo-group">
+              <img
+                src={aiBuntyLogo}
+                alt="Logo"
+                className="footer-favicon"
               />
             </div>
-            <p className="text-background/70 text-sm">
-              Your AI-Powered Business Growth Partner. Funnels, CRM, WhatsApp automation, and more.
-            </p>
+            <p className="footer-tagline">Your AI-Powered Solutions Partner</p>
+            <div className="social-links">
+              <a href="https://facebook.com" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="https://twitter.com" aria-label="Twitter">
+                <Twitter size={20} />
+              </a>
+              <a href="https://linkedin.com" aria-label="LinkedIn">
+                <Linkedin size={20} />
+              </a>
+              <a href="https://instagram.com" aria-label="Instagram">
+                <Instagram size={20} />
+              </a>
+            </div>
           </div>
 
-          {/* Solutions */}
-          <div>
-            <h4 className="font-semibold mb-4">Solutions</h4>
-            <ul className="space-y-2 text-sm text-background/70">
-              <li><Link to="/solutions/coaches" className="hover:text-background transition-colors">For Coaches</Link></li>
-              <li><Link to="/solutions/real-estate" className="hover:text-background transition-colors">For Real Estate</Link></li>
-              <li><Link to="/solutions/fitness" className="hover:text-background transition-colors">For Fitness Clubs</Link></li>
-              <li><Link to="/solutions/consultants" className="hover:text-background transition-colors">For Consultants</Link></li>
-              <li><Link to="/solutions/events" className="hover:text-background transition-colors">For Event Planners</Link></li>
-              <li><Link to="/solutions/agencies" className="hover:text-background transition-colors">For Agencies</Link></li>
-            </ul>
-          </div>
-
-          {/* Compare */}
-          <div>
-            <h4 className="font-semibold mb-4">Compare</h4>
-            <ul className="space-y-2 text-sm text-background/70">
-              <li><Link to="/compare/flexifunnels" className="hover:text-background transition-colors">vs Flexifunnels</Link></li>
-              <li><Link to="/compare/tagmango" className="hover:text-background transition-colors">vs TagMango</Link></li>
-              <li><Link to="/compare/gohighlevel" className="hover:text-background transition-colors">vs GoHighLevel</Link></li>
-              <li><Link to="/compare/kajabi" className="hover:text-background transition-colors">vs Kajabi</Link></li>
-              <li><Link to="/compare/graphy" className="hover:text-background transition-colors">vs Graphy</Link></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-background/70">
-              <li><Link to="/features" className="hover:text-background transition-colors">Features</Link></li>
-              <li><Link to="/pricing" className="hover:text-background transition-colors">Pricing</Link></li>
-              <li><Link to="/book-demo" className="hover:text-background transition-colors">Book Demo</Link></li>
-            </ul>
+          <div className="footer-links">
+            {footerLinks.map((column) => (
+              <div key={column.title} className="footer-column">
+                <h4>{column.title}</h4>
+                {column.links.map((link) => (
+                  <Link key={link.name} to={link.href}>
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-12 pt-8 text-center text-sm text-background/60">
-          <p>© {new Date().getFullYear()} DCore Systems LLP. All rights reserved.</p>
+        <div className="footer-bottom">
+          <p>© 2026 D'CORE SYSTEMS. All rights reserved.</p>
         </div>
       </div>
     </footer>

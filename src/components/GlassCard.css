@@ -1,0 +1,46 @@
+.glass-card {
+  background: var(--glass-light);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all var(--transition-normal);
+}
+
+.glass-card-large {
+  padding: 60px;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px var(--shadow-color);
+  border-color: var(--blue-primary);
+}
+
+.glass-card-premium {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 1px rgba(91,155,213,0.25) inset, 0 12px 30px var(--shadow-color);
+}
+
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--blue-primary);
+  background: rgba(91, 155, 213, 0.12);
+  border: 1px solid rgba(91, 155, 213, 0.35);
+}
+
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(10px) saturate(180%);
+  }
+
+  .glass-card-large {
+    padding: 32px;
+  }
+}
