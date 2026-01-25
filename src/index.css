@@ -118,6 +118,10 @@
     box-shadow: var(--shadow-glow), inset 0 1px 1px rgba(91, 155, 213, 0.1);
     border: 1px solid rgb(91 155 213 / 0.3);
   }
+  .glow-card:hover {
+    box-shadow: var(--shadow-glow-strong), inset 0 1px 1px rgba(91, 155, 213, 0.2);
+    border-color: rgb(91 155 213 / 0.45);
+  }
 
   .glow-card-strong {
     box-shadow: var(--shadow-glow-strong), inset 0 1px 1px rgba(91, 155, 213, 0.1);
@@ -154,6 +158,7 @@
   .glass-card:hover {
     transform: scale(1.03);
     background: var(--glass-light);
+    backdrop-filter: none;
     border: 1px solid var(--blue-primary);
     box-shadow: 
       inset 0 1px 2px rgba(91, 155, 213, 0.2),
@@ -173,6 +178,7 @@
   }
 
   .glass-card.premium:hover {
+    backdrop-filter: none;
     box-shadow: 
       inset 0 1px 2px rgba(91, 155, 213, 0.3),
       0 0 25px rgba(91, 155, 213, 0.5),

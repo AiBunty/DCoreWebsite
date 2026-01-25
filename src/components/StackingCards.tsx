@@ -63,7 +63,7 @@ return (
           return (
             <div
               key={index}
-              className="stacking-card bg-card rounded-2xl p-6 shadow-soft border border-border transition-all duration-300 hover:shadow-hover hover:-translate-y-1"
+              className="stacking-card bg-card rounded-2xl p-6 shadow-soft border border-border glow-card transition-all duration-300 hover:-translate-y-1"
               style={{
                 ['--card-index' as string]: index,
               }}

@@ -34,14 +34,14 @@ export default function Support() {
               <div className="p-8 bg-card rounded-lg border border-border text-center">
                 <Mail className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">Email Support</h3>
-                <p className="text-muted-foreground mb-6">support@dcore.com</p>
+                <p className="text-muted-foreground mb-6">support@dcoresystems.com</p>
                 <p className="text-sm text-muted-foreground">Response time: 2-4 hours</p>
               </div>
 
               <div className="p-8 bg-card rounded-lg border border-border text-center">
                 <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">Phone Support</h3>
-                <p className="text-muted-foreground mb-6">+91-XXXXXXXXXX</p>
+                <p className="text-muted-foreground mb-6">+917003210880</p>
                 <p className="text-sm text-muted-foreground">Mon-Fri: 9 AM - 6 PM IST</p>
               </div>
 

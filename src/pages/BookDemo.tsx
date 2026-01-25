@@ -47,7 +47,7 @@ export default function BookDemoPage() {
                       </div>
                       <div>
                         <p className="font-semibold text-foreground">Email</p>
-                        <p className="text-muted-foreground text-sm">saas@aibunty.com</p>
+                        <p className="text-muted-foreground text-sm">support@dcoresystems.com</p>
                       </div>
                     </div>
                   </GlassCard>
@@ -59,7 +59,7 @@ export default function BookDemoPage() {
                       </div>
                       <div>
                         <p className="font-semibold text-foreground">WhatsApp</p>
-                        <p className="text-muted-foreground text-sm">+91 7003210880</p>
+                        <p className="text-muted-foreground text-sm">+917003210880</p>
                       </div>
                     </div>
                   </GlassCard>
