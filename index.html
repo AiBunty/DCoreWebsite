@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dcore Systems | Start Your Automation Journey</title>
+    <meta name="description" content="Ai Bunty is your AI-powered business growth partner. Funnels, CRM, WhatsApp automation, payments, team management & growth tools — all in one platform for Indian businesses." />
+    <meta name="author" content="Ai Bunty" />
+    <meta name="keywords" content="CRM software, WhatsApp automation, business growth, marketing funnels, lead management, Indian SaaS, coaching CRM, real estate CRM" />
+    
+    <link rel="icon" type="image/png" href="/dcore-favicon.png" />
+    <script type="module">
+      import faviconUrl from '/src/assets/favicon.png';
+      const existing = document.querySelector("link[rel='icon']");
+      const link = existing ?? document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = faviconUrl;
+      if (!existing) document.head.appendChild(link);
+    </script>
+    <link rel="canonical" href="https://aibunty.com" />
+
+    <meta property="og:title" content="Ai Bunty — AI-Powered Business Growth Platform" />
+    <meta property="og:description" content="Funnels, CRM, WhatsApp automation, payments & growth tools — all in one platform for Indian businesses." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aibunty.com" />
+    <meta property="og:image" content="https://aibunty.com/og-image.png" />
+    <meta property="og:site_name" content="Ai Bunty" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AiBunty" />
+    <meta name="twitter:title" content="Ai Bunty — AI-Powered Business Growth Platform" />
+    <meta name="twitter:description" content="Funnels, CRM, WhatsApp automation, payments & growth tools — all in one platform." />
+    <meta name="twitter:image" content="https://aibunty.com/og-image.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Ai Bunty",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI-powered business growth platform with CRM, WhatsApp automation, funnels, and payment collection for Indian businesses.",
+      "offers": {
+        "@type": "Offer",
+        "price": "4999",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+.pricing {
+  padding: 80px 0;
+  position: relative;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-header h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.pricing-header p {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 40px;
+}
+
+.pricing-card-popular {
+  transform: scale(1.05);
+  border: 2px solid var(--blue-primary);
+  box-shadow: 0 20px 40px rgba(91, 155, 213, 0.3);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+  color: white;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pricing-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.plan-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.currency {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.amount {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--blue-primary);
+}
+
+.period {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.plan-button {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.plan-features li:last-child {
+  margin-bottom: 0;
+}
+
+.plan-features svg {
+  color: var(--blue-primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .pricing {
+    padding: 60px 0;
+  }
+
+  .pricing-header h2 {
+    font-size: 28px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card-popular {
+    transform: scale(1);
+  }
+}
