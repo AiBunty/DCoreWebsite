@@ -504,6 +504,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Business Verification Block */}
+      <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto p-8 bg-card rounded-lg border border-border text-center">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Operated by DCORE SYSTEMS LLP
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              A legally registered Limited Liability Partnership, Incorporated on 05 January 2026
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <p className="text-muted-foreground">
+                <span className="font-semibold">LLPIN:</span> ACT-9625
+              </p>
+              <p className="text-muted-foreground">
+                <span className="font-semibold">Headquarters:</span> Pune, Maharashtra, India
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CTASection />
     </Layout>
   );

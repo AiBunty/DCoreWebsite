@@ -22,6 +22,7 @@ import Docs from "./pages/Docs";
 import Api from "./pages/Api";
 import Guides from "./pages/Guides";
 import Support from "./pages/Support";
+import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
@@ -80,6 +81,7 @@ const App = () => (
           <Route path="/api" element={<Api />} />
           <Route path="/guides" element={<Guides />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/contact" element={<Contact />} />
           
           {/* Legal Pages */}
           <Route path="/privacy" element={<Privacy />} />

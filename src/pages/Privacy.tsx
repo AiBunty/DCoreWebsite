@@ -5,6 +5,12 @@ export default function Privacy() {
     <Layout>
       <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4">
+          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+            <p className="text-sm font-semibold text-foreground">
+              This website is owned and operated by <strong>DCORE SYSTEMS LLP</strong>, a legally registered Limited Liability Partnership 
+              (LLPIN: ACT-9625) incorporated under the Limited Liability Partnership Act, 2008 (India).
+            </p>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Privacy Policy</h1>
         </div>
       </section>

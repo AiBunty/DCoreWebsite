@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import './DcoreFooter.css';
 import aiBuntyLogo from '@/assets/ai-bunty-logo-new.png';
+import { LegalFooter } from './LegalFooter';
 
 const footerLinks = [
   {
@@ -90,6 +91,8 @@ export function Footer() {
           <p>© 2026 D'CORE SYSTEMS. All rights reserved.</p>
         </div>
       </div>
+      
+      <LegalFooter />
     </footer>
   );
 }

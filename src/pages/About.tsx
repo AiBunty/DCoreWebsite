@@ -56,6 +56,45 @@ export default function About() {
         </div>
       </section>
 
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-foreground mb-8">Legal Business Information</h2>
+            <div className="space-y-6">
+              <p className="text-lg text-muted-foreground">
+                <strong>DCORE SYSTEMS LLP</strong> is a legally registered Limited Liability Partnership incorporated 
+                under the Limited Liability Partnership Act, 2008 (India).
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-card rounded-lg p-6 border border-border">
+                <div>
+                  <p className="text-muted-foreground mb-2">
+                    <span className="font-semibold">Date of Incorporation:</span> 05 January 2026 (05-01-2026)
+                  </p>
+                  <p className="text-muted-foreground mb-2">
+                    <span className="font-semibold">LLPIN:</span> ACT-9625
+                  </p>
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold">GSTIN:</span> 27AAZFD2232J1Z3
+                  </p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground font-semibold mb-2">Registered Office:</p>
+                  <p className="text-muted-foreground">
+                    BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P, Aundh Haveli, Pune – 411007, Maharashtra, India
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-lg text-muted-foreground">
+                DCORE SYSTEMS LLP provides SaaS solutions including CRM, WhatsApp Business API automation, 
+                customer engagement tools, and AI-driven business workflows for B2B and B2C customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-8">Ready to Get Started?</h2>
