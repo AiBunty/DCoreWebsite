@@ -14,6 +14,7 @@ import { canonicalUrl } from "@/seo/seoUtils";
 import { MascotFrame } from "@/components/MascotFrame";
 import { GlassSection } from "@/components/GlassCard";
 import { FeatureCarousel as PlatformFeatureCarousel } from "@/components/home/FeatureCarousel";
+import { GrowthCarousel } from "@/components/home/GrowthCarousel";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -380,6 +381,9 @@ const Index = () => {
 
       {/* Platform Capabilities */}
       <PlatformFeatureCarousel />
+
+      {/* Growth Proof (Demo) */}
+      <GrowthCarousel />
 
       {/* Dashboard Preview + Steps Section */}
       <GlassSection className="py-12 md:py-16">
