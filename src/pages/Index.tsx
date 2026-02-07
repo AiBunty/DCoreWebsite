@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
-import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
+import { FeatureItem } from "@/components/FeatureShowcase";
 import { FeatureCarousel } from "@/components/FeatureCarousel";
 import { Seo } from "@/components/seo/Seo";
 import {
@@ -12,12 +12,13 @@ import {
 } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/seoUtils";
 import { MascotFrame } from "@/components/MascotFrame";
-import { GlassCard, GlassSection } from "@/components/GlassCard";
-import { StackingCards } from "@/components/StackingCards";
+import { GlassSection } from "@/components/GlassCard";
+import { FeatureCarousel as PlatformFeatureCarousel } from "@/components/home/FeatureCarousel";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { TrustStrip } from "@/components/common/TrustStrip";
+import { IndustryTile } from "@/components/home/IndustryTile";
 
 // Feature images
 import agencyDashboard from "@/assets/features/agency-dashboard.png";
@@ -37,8 +38,8 @@ import studentPortal from "@/assets/features/student-portal.png";
 import whiteLabel from "@/assets/features/white-label.png";
 import addStaff from "@/assets/features/add-staff.png";
 
-import { 
-  MessageSquare, 
+import {
+  MessageSquare,
   ArrowRight,
   LayoutDashboard,
   Store,
@@ -62,98 +63,8 @@ import {
   HeartPulse,
   Briefcase,
   Users,
-  Brain,
-  Bot,
-  Instagram,
-  Sparkles,
-  Share2,
-  Calendar,
-  CreditCard,
-  BarChart3,
-  Zap,
-  LucideIcon
+  LucideIcon,
 } from "lucide-react";
-
-const features = [
-  // Original 6 Features
-  {
-    icon: MessageSquare,
-    title: "WhatsApp Automation",
-    description: "Auto-replies, follow-ups, and broadcasts that work 24/7",
-  },
-  {
-    icon: Calendar,
-    title: "Smart Booking",
-    description: "Calendar scheduling with automated reminders",
-  },
-  {
-    icon: CreditCard,
-    title: "Multiple Payment Gateway",
-    description: "Razorpay, Stripe & more with automatic invoicing",
-  },
-  {
-    icon: Users,
-    title: "CRM & Pipelines",
-    description: "Track every lead from first touch to close",
-  },
-  {
-    icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Real-time insights into your business growth",
-  },
-  {
-    icon: Zap,
-    title: "Marketing Funnels",
-    description: "High-converting landing pages in minutes",
-  },
-  // AI Features
-  {
-    icon: Brain,
-    title: "AI Brain",
-    description: "Central intelligence that learns your business and automates decisions",
-  },
-  {
-    icon: Bot,
-    title: "AI-powered Chatbots & Staff",
-    description: "Smart virtual assistants that handle customer queries 24/7",
-  },
-  {
-    icon: FileCode,
-    title: "AI Landing Page Generator",
-    description: "Create high-converting pages with AI in seconds",
-  },
-  {
-    icon: Instagram,
-    title: "Instagram Comment Automation",
-    description: "Auto-engage with followers and boost visibility",
-  },
-  {
-    icon: Sparkles,
-    title: "Automatic Social Ads Generator",
-    description: "AI creates and optimizes your ad campaigns",
-  },
-  {
-    icon: Share2,
-    title: "Multi-Platform Posting",
-    description: "Schedule and post across all social platforms at once",
-  },
-  // New Features
-  {
-    icon: Mail,
-    title: "Email Automation",
-    description: "Drip campaigns, newsletters, and automated email sequences",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Application (Android/iOS)",
-    description: "Native apps for on-the-go business management",
-  },
-  {
-    icon: BookOpen,
-    title: "LMS + Vault",
-    description: "Course hosting, content vault, and student management",
-  },
-];
 
 const detailedFeatures: FeatureItem[] = [
   {
@@ -323,16 +234,61 @@ const detailedFeatures: FeatureItem[] = [
   }
 ];
 
-const solutions: { name: string; href: string; icon: LucideIcon }[] = [
-  { name: "Coaches", href: "/solutions/coaches", icon: GraduationCap },
-  { name: "Real Estate", href: "/solutions/real-estate", icon: Building2 },
-  { name: "Fitness Clubs", href: "/solutions/fitness", icon: Dumbbell },
-  { name: "Consultants", href: "/solutions/consultants", icon: UserCheck },
-  { name: "Event Planners", href: "/solutions/events", icon: PartyPopper },
-  { name: "Agencies", href: "/solutions/agencies", icon: Building },
-  { name: "Financial Advisors", href: "/solutions/financial-advisors", icon: Calculator },
-  { name: "Health Clinics", href: "/solutions/health-clinics", icon: HeartPulse },
-  { name: "Freelancers", href: "/solutions/freelancers", icon: Briefcase },
+const solutions: { name: string; description: string; href: string; icon: LucideIcon }[] = [
+  {
+    name: "Coaches",
+    description: "Automate lead capture, bookings, and WhatsApp follow-ups.",
+    href: "/solutions/coaches",
+    icon: GraduationCap,
+  },
+  {
+    name: "Real Estate",
+    description: "Manage inquiries, site visits, and conversions automatically.",
+    href: "/solutions/real-estate",
+    icon: Building2,
+  },
+  {
+    name: "Fitness Clubs",
+    description: "Automate trials, renewals, reminders, and member engagement.",
+    href: "/solutions/fitness-clubs",
+    icon: Dumbbell,
+  },
+  {
+    name: "Consultants",
+    description: "Capture leads, qualify prospects, and schedule calls faster.",
+    href: "/solutions/consultants",
+    icon: UserCheck,
+  },
+  {
+    name: "Event Planners",
+    description: "Automate inquiries, quotations, follow-ups, and payments.",
+    href: "/solutions/event-planners",
+    icon: PartyPopper,
+  },
+  {
+    name: "Agencies",
+    description: "Manage clients, campaigns, and reporting in one workflow.",
+    href: "/solutions/agencies",
+    icon: Building,
+  },
+  {
+    name: "Financial Advisors",
+    description: "Automate lead intake, reminders, and compliance-friendly follow-ups.",
+    href: "/solutions/financial-advisors",
+    icon: Calculator,
+  },
+  {
+    name: "Health Clinics",
+    description: "Enable appointment booking, reminders, and patient follow-ups.",
+    href: "/solutions/health-clinics",
+    icon: HeartPulse,
+  },
+  {
+    name: "Freelancers",
+    description: "Streamline leads, proposals, payments, and follow-ups.",
+    href: "/solutions/freelancers",
+    icon: Briefcase,
+  },
 ];
 
 const onboardingSteps = [
@@ -399,65 +355,31 @@ const Index = () => {
       {/* Solutions Preview - Built for Service Businesses (MOVED HERE) */}
       <Section>
         <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Built for Service Businesses
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Trusted by coaches, consultants, real estate agents, and more across India.
+            <p className="text-sm md:text-base text-muted-foreground">
+              Industry-ready automation workflows for lead capture, follow-ups, bookings, and payments.
             </p>
           </div>
-          
-          <div className="solutions-grid md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map((solution, index) => (
-              <GlassCard key={solution.name} interactive className="solution-card" style={{ ['--card-index' as string]: index }}>
-                <Link 
-                  to={solution.href}
-                  className="glass-card-content p-3 md:p-4 flex items-center justify-between group h-full"
-                >
-                  <div className="flex items-center gap-3 md:gap-4">
-                    <div className="w-8 h-8 md:w-9 md:h-9 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <solution.icon className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="font-semibold text-foreground text-sm md:text-base">{solution.name}</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-primary group-hover:translate-x-1 transition-transform flex-shrink-0" />
-                </Link>
-              </GlassCard>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {solutions.map((solution) => (
+              <IndustryTile
+                key={solution.name}
+                title={solution.name}
+                description={solution.description}
+                icon={solution.icon}
+                href={solution.href}
+              />
             ))}
           </div>
-
-          <style>{`
-            @media (max-width: 768px) {
-              .solutions-grid {
-                display: block;
-                padding-top: 60px;
-                min-height: 120vh;
-              }
-
-              .solution-card {
-                position: sticky;
-                margin-bottom: 16px;
-                transform-origin: center top;
-                transition: transform 0.3s ease, opacity 0.3s ease;
-              }
-
-              .solution-card:nth-child(1) { top: 60px; z-index: 9; }
-              .solution-card:nth-child(2) { top: 65px; z-index: 8; }
-              .solution-card:nth-child(3) { top: 70px; z-index: 7; }
-              .solution-card:nth-child(4) { top: 75px; z-index: 6; }
-              .solution-card:nth-child(5) { top: 80px; z-index: 5; }
-              .solution-card:nth-child(6) { top: 85px; z-index: 4; }
-              .solution-card:nth-child(7) { top: 90px; z-index: 3; }
-              .solution-card:nth-child(8) { top: 95px; z-index: 2; }
-              .solution-card:nth-child(9) { top: 100px; z-index: 1; }
-            }
-          `}</style>
         </Container>
       </Section>
 
-      {/* Features Section with Stacking Animation */}
-      <StackingCards features={features} />
+      {/* Platform Capabilities */}
+      <PlatformFeatureCarousel />
 
       {/* Dashboard Preview + Steps Section */}
       <GlassSection className="py-12 md:py-16">
