@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const path = "/pabbly-integration";
 
 export default function PabblyIntegration() {
   return (
     <>
-      <SEO
+      <Seo
         title="Pabbly Integration | Native Connector | Dcore"
         description="Connect Dcore to thousands of apps with native Pabbly integration and workflow triggers."
         canonical={canonicalUrl(path)}
@@ -20,30 +22,30 @@ export default function PabblyIntegration() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 Pabbly Integration
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Native Pabbly Integration
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Connect Dcore to thousands of apps, sync leads instantly, and
                 orchestrate automation across your stack.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 One Integration Hub
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Trigger workflows, push CRM updates, and sync messaging events
                 through Pabbly connectors.
               </p>
@@ -55,10 +57,10 @@ export default function PabblyIntegration() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Combine with Webhooks
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Use webhooks alongside Pabbly to handle custom events or unique
                 integrations.
               </p>
@@ -74,8 +76,8 @@ export default function PabblyIntegration() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

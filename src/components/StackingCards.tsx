@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { LucideIcon } from "lucide-react";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 interface Feature {
   icon: LucideIcon;
@@ -45,49 +47,53 @@ export function StackingCards({ features }: StackingCardsProps) {
 
 return (
     <section className="stacking-section">
-      <div className="stacking-section-header bg-gradient-to-br from-primary to-purple-600 text-white text-center py-16 px-5">
-        <h2 className="text-4xl md:text-5xl font-bold mb-3">
+      <div className="stacking-section-header bg-gradient-to-br from-primary to-purple-600 text-white text-center py-12 px-5">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-2">
           Everything You Need to Grow
         </h2>
-        <p className="text-lg md:text-xl text-black">
-          Stop juggling multiple tools. Ai Bunty brings it all together.
+        <p className="text-sm md:text-base text-white/90">
+          Stop juggling multiple tools. Dcore brings it all together.
         </p>
       </div>
 
-      <div 
-        ref={cardsRef}
-        className="stacking-cards-container max-w-7xl mx-auto px-5 py-8 md:py-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:pt-14 md:pb-8"
-      >
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <div
-              key={index}
-              className="stacking-card bg-card rounded-2xl p-6 shadow-soft border border-border glow-card transition-all duration-300 hover:-translate-y-1"
-              style={{
-                ['--card-index' as string]: index,
-              }}
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          );
-        })}
-      </div>
+      <Section>
+        <Container>
+          <div 
+            ref={cardsRef}
+            className="stacking-cards-container grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          >
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="stacking-card bg-card rounded-2xl p-4 md:p-5 shadow-sm border border-border transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    ['--card-index' as string]: index,
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <h3 className="text-base font-medium text-foreground mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-snug">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
 
       <style>{`
         @media (max-width: 768px) {
           .stacking-cards-container {
             display: block;
-            padding-top: 80px;
-            min-height: 170vh;
+            padding-top: 64px;
+            min-height: 160vh;
           }
 
           .stacking-card {

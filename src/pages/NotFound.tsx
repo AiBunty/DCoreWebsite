@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { canonicalUrl } from "@/seo/seoUtils";
 
 const NotFound = () => {
@@ -12,7 +12,7 @@ const NotFound = () => {
 
   return (
     <>
-      <SEO
+      <Seo
         title="Page Not Found | Dcore Systems"
         description="The page you are looking for does not exist. Return to the Dcore Systems homepage."
         canonical={canonicalUrl("/404")}

@@ -1,6 +1,7 @@
-import { Zap, Shield, Gauge, Palette, Code, BarChart3 } from 'lucide-react';
-import { GlassCard } from './GlassCard';
-import './FeaturesSection.css';
+import { Zap, Shield, Gauge, Palette, Code, BarChart3 } from "lucide-react";
+import { FeatureCardCompact } from "./FeatureCardCompact";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const features = [
   {
@@ -37,26 +38,31 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="features">
-      <div className="container">
-        <div className="features-header">
-          <h2>Powerful Features</h2>
-          <p>Everything you need to succeed</p>
+    <Section>
+      <Container>
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+            Powerful Features
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground">
+            Everything you need to succeed.
+          </p>
         </div>
 
-        <div className="features-grid">
+        <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
-              <GlassCard key={feature.title} variant="hover" className="feature-card">
-                <Icon className="feature-icon" size={32} />
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </GlassCard>
+              <FeatureCardCompact
+                key={feature.title}
+                icon={<Icon className="h-4 w-4" />}
+                title={feature.title}
+                description={feature.description}
+              />
             );
           })}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

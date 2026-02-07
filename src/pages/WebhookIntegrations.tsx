@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const path = "/webhook-integrations";
 
 export default function WebhookIntegrations() {
   return (
     <>
-      <SEO
+      <Seo
         title="Webhook Integrations | Real-Time Automation | Dcore"
         description="Send and receive webhooks to automate lead routing, CRM updates, and omnichannel messaging."
         canonical={canonicalUrl(path)}
@@ -20,30 +22,30 @@ export default function WebhookIntegrations() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 Webhook Integrations
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Webhook Integrations for Real-Time Automation
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Push and receive real-time events to synchronize CRM updates,
                 workflow automation, and omnichannel messaging.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Built for Event-Driven Marketing
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Use webhooks to trigger WhatsApp, email, SMS, or IVR workflows
                 the moment a lead takes action.
               </p>
@@ -55,10 +57,10 @@ export default function WebhookIntegrations() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Extend with Pabbly Integrations
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Combine webhooks with Pabbly connectors to sync Dcore with your
                 broader tech stack.
               </p>
@@ -74,8 +76,8 @@ export default function WebhookIntegrations() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

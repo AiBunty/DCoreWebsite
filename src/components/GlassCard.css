@@ -4,12 +4,12 @@
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 32px;
+  padding: 16px;
   transition: all var(--transition-normal);
 }
 
 .glass-card-large {
-  padding: 60px;
+  padding: 28px;
 }
 
 .glass-card-hover:hover {
@@ -47,6 +47,12 @@
   }
 
   .glass-card-large {
-    padding: 32px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    padding: 20px;
   }
 }

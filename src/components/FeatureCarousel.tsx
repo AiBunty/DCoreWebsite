@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const categoryLabels: Record<FeatureCategory, string> = {
   all: "All",
@@ -59,31 +61,31 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
 
   if (filteredFeatures.length === 0) {
     return (
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+      <Section>
+        <Container>
           <div className="text-center py-12 text-muted-foreground">
             No features found in this category.
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     );
   }
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <Section>
+      <Container>
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
             Powerful Features to Scale Your Business
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-sm md:text-base text-muted-foreground">
             Discover all the tools Ai Bunty offers to help you grow, automate, and succeed.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <Tabs value={activeCategory} onValueChange={(v) => setActiveCategory(v as FeatureCategory)}>
             <TabsList className="flex flex-wrap gap-2 h-auto bg-transparent">
               {(Object.keys(categoryLabels) as FeatureCategory[]).map((category) => (
@@ -120,11 +122,11 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
           </div>
 
           {/* Carousel Card */}
-          <div className="bg-card rounded-xl p-6 md:p-8 shadow-medium border border-border min-h-[500px] md:min-h-[450px] flex flex-col">
+          <div className="bg-card rounded-xl p-4 md:p-5 shadow-sm border border-border min-h-[480px] md:min-h-[420px] flex flex-col">
             {currentFeature && (
               <>
                 {/* Image Container */}
-                <div className="flex-shrink-0 mb-6 rounded-lg overflow-hidden bg-white h-64 md:h-80 flex items-center justify-center">
+                <div className="flex-shrink-0 mb-4 rounded-lg overflow-hidden bg-white h-56 md:h-72 flex items-center justify-center">
                   <img
                     src={currentFeature.image}
                     alt={currentFeature.title}
@@ -135,13 +137,13 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
                 {/* Content Container */}
                 <div className="flex-grow flex flex-col">
                   {/* Title with Icon */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 md:w-9 md:h-9 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                       {currentFeature.icon && (
-                        <currentFeature.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                        <currentFeature.icon className="w-4 h-4 md:w-5 md:h-5 text-white" />
                       )}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground">
                       {currentFeature.title}
                     </h3>
                   </div>
@@ -153,7 +155,7 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
                         <h4 className="font-semibold text-primary text-sm mb-1">
                           {point.heading}
                         </h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-snug">
                           {point.description}
                         </p>
                       </div>
@@ -180,7 +182,7 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
                 </div>
 
                 {/* Feature Counter */}
-                <div className="text-center mt-4 text-sm text-muted-foreground">
+                <div className="text-center mt-4 text-xs text-muted-foreground">
                   {currentIndex + 1} / {filteredFeatures.length}
                 </div>
               </>
@@ -189,10 +191,10 @@ export function FeatureCarousel({ features }: FeatureCarouselProps) {
         </div>
 
         {/* Mobile Navigation Hint */}
-        <div className="text-center mt-8 text-xs text-muted-foreground md:hidden">
+        <div className="text-center mt-6 text-xs text-muted-foreground md:hidden">
           Swipe or use arrows to navigate
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

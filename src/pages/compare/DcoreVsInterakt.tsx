@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CTASection } from "@/components/CTASection";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const comparisonData = [
   {
@@ -48,7 +50,7 @@ export default function DcoreVsInterakt() {
 
   return (
     <>
-      <SEO
+      <Seo
         title="Dcore vs Interakt | Feature Comparison"
         description="See how Dcore compares on funnels, CRM, workflows, AI automation, ads, and payments."
         canonical={canonicalUrl(path)}
@@ -60,27 +62,27 @@ export default function DcoreVsInterakt() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Dcore vs Interakt
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 A feature-led comparison highlighting Dcore's all-in-one scope
                 across funnels, CRM, workflows, AI, ads, and payments.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden mb-10">
+        <Section>
+          <Container>
+            <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden mb-8">
               <ComparisonTable competitorName="Interakt" rows={comparisonData} />
             </div>
 
-            <p className="text-sm text-muted-foreground text-center mb-8">
+            <p className="text-xs md:text-sm text-muted-foreground text-center mb-6">
               Feature availability can vary by plan and integrations. This
               comparison focuses on platform scope.
             </p>
@@ -96,8 +98,8 @@ export default function DcoreVsInterakt() {
                 Dcore vs Twilio WhatsApp
               </Link>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <CTASection ctaText="Book Free Demo" />
       </Layout>

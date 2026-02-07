@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { FeatureCarousel } from "@/components/FeatureCarousel";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import {
   organizationSchema,
   softwareApplicationSchema,
@@ -15,6 +15,9 @@ import { MascotFrame } from "@/components/MascotFrame";
 import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { StackingCards } from "@/components/StackingCards";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { TrustStrip } from "@/components/common/TrustStrip";
 
 // Feature images
 import agencyDashboard from "@/assets/features/agency-dashboard.png";
@@ -342,7 +345,7 @@ const onboardingSteps = [
 const Index = () => {
   return (
     <>
-      <SEO
+      <Seo
         title="Dcore Systems | AI Omnichannel Marketing Automation"
         description="All-in-one AI-powered platform with WhatsApp Business API enabled, funnels, CRM, workflows, ads, and payments."
         canonical={canonicalUrl("/")}
@@ -350,32 +353,24 @@ const Index = () => {
       />
       <Layout>
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-hero overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <Section hero className="bg-gradient-hero overflow-hidden">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="animate-slide-up">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                Automating Tomorrow's Business
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight mb-4">
+                AI Omnichannel Automation for WhatsApp, Funnels, CRM, and Growth
               </h1>
-              <div className="space-y-4 mb-8 max-w-xl">
-                <div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-primary mb-2">Our Vision</h2>
-                  <p className="text-lg md:text-xl text-muted-foreground">
-                    To automate tomorrow's business with automated system.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-primary mb-2">Our Mission</h2>
-                  <p className="text-lg md:text-xl text-muted-foreground">
-                    To help modern business work smarter faster and better through the cloud.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-4 mb-8">
-                <Button variant="hero" size="xl" asChild>
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
+                Launch compliant automation across ads, funnels, CRM, payments, and messaging.
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-xl">
+                Dcore Systems unifies WhatsApp Business API onboarding, AI funnels, CRM pipelines, workflows, and omnichannel messaging into one enterprise-ready platform.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="default" size="lg" asChild>
                   <Link to="/book-demo">Book Free Demo</Link>
                 </Button>
-                <Button variant="hero-outline" size="xl" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <Link to="/compare">Compare Ai Bunty</Link>
                 </Button>
               </div>
@@ -398,12 +393,12 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Solutions Preview - Built for Service Businesses (MOVED HERE) */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <Section>
+        <Container>
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Built for Service Businesses
@@ -458,15 +453,15 @@ const Index = () => {
               .solution-card:nth-child(9) { top: 100px; z-index: 1; }
             }
           `}</style>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Features Section with Stacking Animation */}
       <StackingCards features={features} />
 
       {/* Dashboard Preview + Steps Section */}
-      <GlassSection className="py-20">
-        <div className="container mx-auto px-4">
+      <GlassSection className="py-12 md:py-16">
+        <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Steps */}
             <div>
@@ -495,15 +490,15 @@ const Index = () => {
               <MascotFrame imageSrc={dashboardPreview} />
             </div>
           </div>
-        </div>
+        </Container>
       </GlassSection>
 
       {/* Detailed Features Carousel */}
       <FeatureCarousel features={detailedFeatures} />
 
       {/* Comparison Preview */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <Section>
+        <Container>
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Why Use Multiple Tools When One Does It All?
@@ -515,32 +510,11 @@ const Index = () => {
               <Link to="/compare">View All Comparisons <ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Business Verification Block */}
-      <section className="py-16 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto p-8 bg-card rounded-lg border border-border text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Operated by DCORE SYSTEMS LLP
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              A legally registered Limited Liability Partnership, Incorporated on 05 January 2026
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <p className="text-muted-foreground">
-                <span className="font-semibold">LLPIN:</span> ACT-9625
-              </p>
-              <p className="text-muted-foreground">
-                <span className="font-semibold">Headquarters:</span> Pune, Maharashtra, India
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       <CTASection />
+      <TrustStrip />
     </Layout>
     </>
   );

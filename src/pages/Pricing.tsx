@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { GlassCard, GlassBadge } from "@/components/GlassCard";
 import { Check } from "lucide-react";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
 import { softwareApplicationSchema } from "@/seo/schema";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const plans = [
   {
@@ -62,7 +64,7 @@ const plans = [
 export default function PricingPage() {
   return (
     <>
-      <SEO
+      <Seo
         title="Dcore Pricing | WhatsApp API Included Plans"
         description="Simple pricing for AI automation, funnels, CRM, and WhatsApp Business API enabled onboarding."
         canonical={canonicalUrl("/pricing")}
@@ -75,49 +77,45 @@ export default function PricingPage() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Simple, Transparent Pricing
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Choose the plan that fits your business.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <Section>
+          <Container>
+            <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
               {plans.map((plan) => (
-                <GlassCard
-                  key={plan.name}
-                  premium={plan.popular}
-                  className="flex flex-col"
-                >
-                  <div className="glass-card-content p-8 flex flex-col h-full">
+                <GlassCard key={plan.name} premium={plan.popular} className="flex flex-col">
+                  <div className="glass-card-content p-6 flex flex-col h-full">
                     {plan.popular && (
-                      <div className="mb-4">
+                      <div className="mb-3">
                         <GlassBadge>Most Popular</GlassBadge>
                       </div>
                     )}
-                    <div className="text-center mb-6 flex-grow">
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
+
+                    <div className="text-center mb-4 flex-grow">
+                      <h3 className="text-base md:text-lg font-medium text-foreground mb-2">
                         {plan.name}
                       </h3>
-                      <p className="text-muted-foreground text-sm mb-4">
+                      <p className="text-muted-foreground text-sm mb-3">
                         {plan.description}
                       </p>
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-4xl font-bold text-foreground">
-                          {plan.price}
-                        </span>
+                        <span className="text-3xl font-semibold text-foreground">{plan.price}</span>
                         <span className="text-muted-foreground">{plan.period}</span>
                       </div>
                     </div>
-                    <ul className="space-y-3 mb-8">
+
+                    <ul className="space-y-2 mb-6">
                       {plan.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-3 text-foreground">
                           <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -125,6 +123,7 @@ export default function PricingPage() {
                         </li>
                       ))}
                     </ul>
+
                     <Button
                       variant={plan.popular ? "default" : "outline"}
                       className={`w-full ${plan.popular ? "bg-primary hover:bg-primary/90" : ""}`}
@@ -137,22 +136,10 @@ export default function PricingPage() {
                 </GlassCard>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <CTASection
-          title="Not Sure Which Plan?"
-          subtitle="Book a free demo and we'll help you choose the right plan for your business."
-        />
-        <address style={{ marginTop: 32, textAlign: "center" }}>
-          <strong>Dcore Systems</strong>
-          <br />
-          [Address Placeholder]
-          <br />
-          [Phone Placeholder]
-          <br />
-          [Legal Info Placeholder]
-        </address>
+        <CTASection ctaText="Book Free Demo" />
       </Layout>
     </>
   );

@@ -2,21 +2,23 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CTASection } from "@/components/CTASection";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const comparisonData = [
   {
-    useCase: "Omnichannel automation",
-    aiBunty: "WhatsApp, email, SMS, and IVR in one platform",
-    competitor: "Primarily WhatsApp-focused",
+    useCase: "WhatsApp enablement",
+    aiBunty: "API enabled during onboarding, included with subscription",
+    competitor: "API access with plan-specific setup",
     aiBuntyHas: true,
-    competitorHas: false,
+    competitorHas: true,
   },
   {
     useCase: "Funnels & landing pages",
     aiBunty: "AI funnel builder and AI landing pages included",
-    competitor: "Usually requires external tools",
+    competitor: "Requires separate funnel tools",
     aiBuntyHas: true,
     competitorHas: false,
   },
@@ -48,9 +50,9 @@ export default function DcoreVsZoko() {
 
   return (
     <>
-      <SEO
-        title="Dcore vs Zoko | Omnichannel Comparison"
-        description="Compare omnichannel automation, WhatsApp API enablement, CRM, and workflows."
+      <Seo
+        title="Dcore vs Zoko | WhatsApp Automation Comparison"
+        description="Compare WhatsApp automation scope, CRM, workflows, AI funnels, and payments."
         canonical={canonicalUrl(path)}
         jsonLd={[
           buildBreadcrumbJsonLd([
@@ -60,28 +62,27 @@ export default function DcoreVsZoko() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Dcore vs Zoko
               </h1>
-              <p className="text-xl text-muted-foreground">
-                A neutral comparison of omnichannel scope and automation depth.
+              <p className="text-sm md:text-base text-muted-foreground">
+                A neutral comparison of platform scope for automation-first teams.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden mb-10">
+        <Section>
+          <Container>
+            <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden mb-8">
               <ComparisonTable competitorName="Zoko" rows={comparisonData} />
             </div>
 
-            <p className="text-sm text-muted-foreground text-center mb-8">
-              Feature availability can vary by plan and integrations. This
-              comparison focuses on platform scope.
+            <p className="text-xs md:text-sm text-muted-foreground text-center mb-6">
+              Feature availability can vary by plan and integrations. This comparison focuses on platform scope.
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center">
@@ -95,8 +96,8 @@ export default function DcoreVsZoko() {
                 Dcore vs Twilio WhatsApp
               </Link>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <CTASection ctaText="Book Free Demo" />
       </Layout>

@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const path = "/ai-chatbots-whatsapp";
 
 export default function AiChatbotsWhatsapp() {
   return (
     <>
-      <SEO
+      <Seo
         title="AI Chatbots for WhatsApp | Dcore Systems"
         description="Deploy AI chatbots on WhatsApp with opt-in flows, CRM context, and workflow triggers."
         canonical={canonicalUrl(path)}
@@ -20,30 +22,30 @@ export default function AiChatbotsWhatsapp() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 AI Chatbots for WhatsApp
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 AI Chatbots with WhatsApp Integration
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Handle FAQs, qualify leads, and trigger automated journeys with
                 AI chatbots connected to WhatsApp and your CRM.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Context-Aware Conversations
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 AI chatbots use CRM data and automation triggers to deliver
                 personalized responses and route conversations to sales teams.
               </p>
@@ -55,10 +57,10 @@ export default function AiChatbotsWhatsapp() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Tie Chatbots to Funnels
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Use AI chatbots to move leads into AI funnels, landing pages,
                 and payments.
               </p>
@@ -74,8 +76,8 @@ export default function AiChatbotsWhatsapp() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

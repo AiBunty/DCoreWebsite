@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CTASection } from "@/components/CTASection";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const comparisonData = [
   {
@@ -48,9 +50,9 @@ export default function DcoreVsTwilioWhatsapp() {
 
   return (
     <>
-      <SEO
+      <Seo
         title="Dcore vs Twilio WhatsApp | Platform Comparison"
-        description="Compare WhatsApp enablement, CRM, automation, and funnel building in a neutral view."
+        description="Compare WhatsApp-only APIs with Dcore's full automation OS: funnels, CRM, workflows, AI, ads, and payments."
         canonical={canonicalUrl(path)}
         jsonLd={[
           buildBreadcrumbJsonLd([
@@ -60,29 +62,27 @@ export default function DcoreVsTwilioWhatsapp() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Dcore vs Twilio WhatsApp
               </h1>
-              <p className="text-xl text-muted-foreground">
-                A neutral comparison of platform scope for WhatsApp-centric
-                automation and growth workflows.
+              <p className="text-sm md:text-base text-muted-foreground">
+                A neutral comparison of platform scope for WhatsApp-centric automation and growth workflows.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden mb-10">
+        <Section>
+          <Container>
+            <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden mb-8">
               <ComparisonTable competitorName="Twilio WhatsApp" rows={comparisonData} />
             </div>
 
-            <p className="text-sm text-muted-foreground text-center mb-8">
-              Feature availability can vary by plan and integrations. This
-              comparison focuses on platform scope.
+            <p className="text-xs md:text-sm text-muted-foreground text-center mb-6">
+              Feature availability can vary by plan and integrations. This comparison focuses on platform scope.
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center">
@@ -96,8 +96,8 @@ export default function DcoreVsTwilioWhatsapp() {
                 Dcore vs Zoko
               </Link>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <CTASection ctaText="Book Free Demo" />
       </Layout>

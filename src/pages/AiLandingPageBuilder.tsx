@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const path = "/ai-landing-page-builder";
 
 export default function AiLandingPageBuilder() {
   return (
     <>
-      <SEO
+      <Seo
         title="AI Landing Page Builder | High-Converting Pages | Dcore"
         description="Create AI-powered landing pages with forms, payments, and CRM-ready lead capture."
         canonical={canonicalUrl(path)}
@@ -20,30 +22,30 @@ export default function AiLandingPageBuilder() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 AI Landing Page Builder
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 AI Landing Page Builder for Faster Launches
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Generate high-converting landing pages with AI, capture leads,
                 and trigger CRM workflows instantly.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Pages That Feed Your Funnel
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Every AI landing page connects to forms, CRM, and automation
                 flows so you can move leads from capture to conversion.
               </p>
@@ -55,10 +57,10 @@ export default function AiLandingPageBuilder() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Pair with Funnels and WhatsApp
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Combine AI landing pages with AI funnels and WhatsApp automation
                 for complete omnichannel journeys.
               </p>
@@ -74,8 +76,8 @@ export default function AiLandingPageBuilder() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

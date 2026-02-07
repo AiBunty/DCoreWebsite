@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
-import {
-  buildBreadcrumbJsonLd,
-  buildFaqJsonLd,
-  buildServiceJsonLd,
-  canonicalUrl,
-} from "@/seo/seoUtils";
+import { Seo } from "@/components/seo/Seo";
+import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildServiceJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const path = "/crm-with-whatsapp-automation";
 const faqs = [
@@ -30,7 +27,7 @@ const faqs = [
 export default function CrmWithWhatsappAutomation() {
   return (
     <>
-      <SEO
+      <Seo
         title="CRM with WhatsApp Automation | Dcore Systems"
         description="Track leads, pipelines, and lifecycle stages. Trigger compliant WhatsApp, email, SMS, and IVR workflows."
         canonical={canonicalUrl(path)}
@@ -50,30 +47,30 @@ export default function CrmWithWhatsappAutomation() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 CRM with WhatsApp Automation
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 CRM with WhatsApp Automation
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Track every lead, automate follow-ups, and connect omnichannel
                 workflows from a unified CRM platform.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Pipelines, Lifecycle, and Ownership
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Dcore CRM provides pipelines, lifecycle stages, and team
                 assignment so sales and marketing stay aligned.
               </p>
@@ -85,10 +82,10 @@ export default function CrmWithWhatsappAutomation() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Automation Chain: CRM → Workflows → Webhooks → Pabbly
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
                 Trigger workflows from CRM updates, push events via webhooks,
                 and connect with Pabbly for external apps.
               </p>
@@ -107,12 +104,12 @@ export default function CrmWithWhatsappAutomation() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <h2 className="text-2xl font-semibold text-foreground mb-4">
+        <Section muted>
+          <Container className="max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Frequently Asked Questions
             </h2>
             <dl className="space-y-6 text-muted-foreground">
@@ -123,8 +120,8 @@ export default function CrmWithWhatsappAutomation() {
                 </div>
               ))}
             </dl>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CTASection } from "@/components/CTASection";
-import SEO from "@/components/SEO";
+import { Seo } from "@/components/seo/Seo";
 import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 const comparisonData = [
   {
@@ -48,7 +50,7 @@ export default function DcoreVsWati() {
 
   return (
     <>
-      <SEO
+      <Seo
         title="Dcore vs WATI | WhatsApp Automation Comparison"
         description="Compare features, channels, funnels, CRM, workflows, AI, and payments in a neutral breakdown."
         canonical={canonicalUrl(path)}
@@ -60,28 +62,28 @@ export default function DcoreVsWati() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 Dcore vs WATI
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 A neutral comparison of platform scope: Dcore focuses on
                 omnichannel automation with funnels, CRM, workflows, AI, ads,
                 and payments.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden mb-10">
+        <Section>
+          <Container>
+            <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden mb-8">
               <ComparisonTable competitorName="WATI" rows={comparisonData} />
             </div>
 
-            <p className="text-sm text-muted-foreground text-center mb-8">
+            <p className="text-xs md:text-sm text-muted-foreground text-center mb-6">
               Feature availability can vary by plan and integrations. This
               comparison focuses on platform scope.
             </p>
@@ -97,8 +99,8 @@ export default function DcoreVsWati() {
                 Dcore vs Twilio WhatsApp
               </Link>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <CTASection ctaText="Book Free Demo" />
       </Layout>

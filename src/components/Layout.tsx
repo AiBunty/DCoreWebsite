@@ -1,8 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Navbar } from "./Navbar";
-import { Footer } from "./Footer";
-import { BackToTop } from "./BackToTop";
+import { PageShell } from "@/components/layout/PageShell";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,12 +19,9 @@ function ScrollToTop() {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <PageShell>
       <ScrollToTop />
-      <Navbar />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <BackToTop />
-    </div>
+      {children}
+    </PageShell>
   );
 }

@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import SEO from "@/components/SEO";
-import {
-  buildBreadcrumbJsonLd,
-  buildFaqJsonLd,
-  canonicalUrl,
-} from "@/seo/seoUtils";
+import { Seo } from "@/components/seo/Seo";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { buildBreadcrumbJsonLd, buildFaqJsonLd, canonicalUrl } from "@/seo/seoUtils";
 
 const path = "/whatsapp-business-api-included";
 const faqs = [
@@ -29,7 +27,7 @@ const faqs = [
 export default function WhatsappBusinessApiIncluded() {
   return (
     <>
-      <SEO
+      <Seo
         title="WhatsApp Business API Included | Dcore Systems"
         description="Get WhatsApp Business API enabled during onboarding. API access is included with subscription, not sold separately."
         canonical={canonicalUrl(path)}
@@ -42,34 +40,33 @@ export default function WhatsappBusinessApiIncluded() {
         ]}
       />
       <Layout>
-        <section className="py-16 md:py-24 bg-gradient-hero">
-          <div className="container mx-auto px-4">
+        <Section hero className="bg-gradient-hero">
+          <Container>
             <div className="max-w-3xl">
               <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
                 WhatsApp Business API Enablement
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
                 WhatsApp Business API Included
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Dcore Systems provides WhatsApp Business API enablement during
-                subscription onboarding. API access is included with Dcore
-                plans and is not sold separately.
+                subscription onboarding. API access is included with Dcore plans
+                and is not sold separately.
               </p>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <Section>
+          <Container className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Official Enablement with Compliance
               </h2>
-              <p className="text-muted-foreground mb-6">
-                Our onboarding team helps with verification, template setup,
-                and compliance rules so you can launch WhatsApp journeys
-                confidently.
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
+                Our onboarding team helps with verification, template setup, and
+                compliance rules so you can launch WhatsApp journeys confidently.
               </p>
               <ul className="space-y-2 text-muted-foreground">
                 <li>API included with subscription</li>
@@ -79,12 +76,12 @@ export default function WhatsappBusinessApiIncluded() {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                 Connect WhatsApp to Your Entire Stack
               </h2>
-              <p className="text-muted-foreground mb-6">
-                Use WhatsApp automation alongside AI funnels, landing pages,
-                CRM pipelines, and omnichannel workflows.
+              <p className="text-sm md:text-base text-muted-foreground mb-4">
+                Use WhatsApp automation alongside AI funnels, landing pages, CRM
+                pipelines, and omnichannel workflows.
               </p>
               <div className="space-y-3">
                 <Link className="text-primary underline" to="/whatsapp-marketing-software">
@@ -101,12 +98,12 @@ export default function WhatsappBusinessApiIncluded() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <h2 className="text-2xl font-semibold text-foreground mb-4">
+        <Section muted>
+          <Container className="max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Frequently Asked Questions
             </h2>
             <dl className="space-y-6 text-muted-foreground">
@@ -117,8 +114,8 @@ export default function WhatsappBusinessApiIncluded() {
                 </div>
               ))}
             </dl>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     </>
   );

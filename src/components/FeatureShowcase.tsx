@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { LucideIcon } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
 
 export type FeatureCategory = "all" | "marketing" | "sales" | "automation" | "education" | "team";
 
@@ -34,19 +36,19 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
     : features.filter(f => f.category === activeCategory);
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <Section>
+      <Container>
+        <div className="text-center max-w-3xl mx-auto mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
             Powerful Features to Scale Your Business
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-sm md:text-base text-muted-foreground">
             Discover all the tools Ai Bunty offers to help you grow, automate, and succeed.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <Tabs value={activeCategory} onValueChange={(v) => setActiveCategory(v as FeatureCategory)}>
             <TabsList className="flex flex-wrap gap-2 h-auto bg-transparent">
               {(Object.keys(categoryLabels) as FeatureCategory[]).map((category) => (
@@ -62,7 +64,7 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
           </Tabs>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-10">
           {filteredFeatures.map((feature, index) => {
             const isReversed = index % 2 === 1;
             const Icon = feature.icon;
@@ -70,7 +72,7 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             return (
               <div
                 key={feature.id}
-                className={`grid gap-8 items-center ${
+                className={`grid gap-6 items-center ${
                   isReversed ? "lg:grid-cols-[1fr_300px]" : "lg:grid-cols-[300px_1fr]"
                 }`}
               >
@@ -87,22 +89,22 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
 
                 {/* Content */}
                 <div className={`${isReversed ? "lg:order-1" : "lg:order-2"}`}>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" />
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground">
                       {feature.title}
                     </h3>
                   </div>
 
                   <div className="space-y-3">
                     {feature.points.map((point, pointIndex) => (
-                      <div key={pointIndex} className="bg-card rounded-lg p-3 border border-border">
+                      <div key={pointIndex} className="bg-card rounded-lg p-4 border border-border">
                         <h4 className="font-semibold text-primary text-sm mb-1">
                           {point.heading}
                         </h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-snug">
                           {point.description}
                         </p>
                       </div>
@@ -119,7 +121,7 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             No features found in this category.
           </div>
         )}
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
