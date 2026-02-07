@@ -29,7 +29,7 @@ export function HeroSection() {
           <div className="hero-mascot">
             <img
               src={mascotImage}
-              alt="Ai Bunty"
+              alt="Dcore AI automation mascot - WhatsApp CRM workflows"
               className="mascot-image"
             />
           </div>

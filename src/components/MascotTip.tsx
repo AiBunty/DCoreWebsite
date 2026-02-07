@@ -10,7 +10,7 @@ export function MascotTip({ message, className = "" }: MascotTipProps) {
     <div className={`flex items-start gap-4 bg-accent rounded-2xl p-6 ${className}`}>
       <img 
         src={mascotImage} 
-        alt="Ai Bunty mascot" 
+        alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows" 
         className="w-16 h-16 object-contain flex-shrink-0 drop-shadow-lg"
       />
       <div className="flex-1">

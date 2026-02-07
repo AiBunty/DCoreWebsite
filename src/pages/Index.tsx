@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { FeatureItem, FeatureCategory } from "@/components/FeatureShowcase";
 import { FeatureCarousel } from "@/components/FeatureCarousel";
+import SEO from "@/components/SEO";
+import {
+  organizationSchema,
+  softwareApplicationSchema,
+  websiteSchema,
+} from "@/seo/schema";
+import { canonicalUrl } from "@/seo/seoUtils";
 import { MascotFrame } from "@/components/MascotFrame";
 import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { StackingCards } from "@/components/StackingCards";
@@ -334,7 +341,14 @@ const onboardingSteps = [
 
 const Index = () => {
   return (
-    <Layout>
+    <>
+      <SEO
+        title="Dcore Systems | AI Omnichannel Marketing Automation"
+        description="All-in-one AI-powered platform with WhatsApp Business API enabled, funnels, CRM, workflows, ads, and payments."
+        canonical={canonicalUrl("/")}
+        jsonLd={[organizationSchema, websiteSchema, softwareApplicationSchema]}
+      />
+      <Layout>
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-hero overflow-hidden">
         <div className="container mx-auto px-4">
@@ -371,7 +385,7 @@ const Index = () => {
               <div className="relative">
                 <img 
                   src={mascotImage} 
-                  alt="Ai Bunty - Your AI Business Assistant" 
+                  alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows, AI Business Assistant" 
                   className="w-72 md:w-96 h-auto animate-float drop-shadow-2xl"
                 />
                 {/* Speech bubble */}
@@ -528,6 +542,7 @@ const Index = () => {
 
       <CTASection />
     </Layout>
+    </>
   );
 };
 

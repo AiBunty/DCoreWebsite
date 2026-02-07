@@ -1,46 +1,46 @@
-import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import './DcoreFooter.css';
-import aiBuntyLogo from '@/assets/ai-bunty-logo-new.png';
-import { LegalFooter } from './LegalFooter';
+import { Link } from "react-router-dom";
+import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import "./DcoreFooter.css";
+import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
+import { LegalFooter } from "./LegalFooter";
 
 const footerLinks = [
   {
-    title: 'Products',
+    title: "Products",
     links: [
-      { name: 'AI Solutions', href: '/features' },
-      { name: 'Cloud Services', href: '/features' },
-      { name: 'Analytics', href: '/features' },
-      { name: 'Security', href: '/features' }
-    ]
+      { name: "AI Solutions", href: "/features" },
+      { name: "Cloud Services", href: "/features" },
+      { name: "Analytics", href: "/features" },
+      { name: "Security", href: "/features" },
+    ],
   },
   {
-    title: 'Company',
+    title: "Company",
     links: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Press Kit', href: '/press' }
-    ]
+      { name: "About Us", href: "/about" },
+      { name: "Careers", href: "/careers" },
+      { name: "Blog", href: "/blog" },
+      { name: "Press Kit", href: "/press" },
+    ],
   },
   {
-    title: 'Resources',
+    title: "Resources",
     links: [
-      { name: 'Documentation', href: '/docs' },
-      { name: 'API Reference', href: '/api' },
-      { name: 'Guides', href: '/guides' },
-      { name: 'Support', href: '/support' }
-    ]
+      { name: "Documentation", href: "/docs" },
+      { name: "API Reference", href: "/api" },
+      { name: "Guides", href: "/guides" },
+      { name: "Support", href: "/support" },
+    ],
   },
   {
-    title: 'Legal',
+    title: "Legal",
     links: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
-      { name: 'Compliance', href: '/compliance' }
-    ]
-  }
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Terms of Service", href: "/terms" },
+      { name: "Cookie Policy", href: "/cookies" },
+      { name: "Compliance", href: "/compliance" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -52,7 +52,7 @@ export function Footer() {
             <div className="footer-logo-group">
               <img
                 src={aiBuntyLogo}
-                alt="Logo"
+                alt="Dcore Systems AI automation platform logo"
                 className="footer-favicon"
               />
             </div>
@@ -88,10 +88,10 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 D'CORE SYSTEMS. All rights reserved.</p>
+          <p>(c) 2026 D'CORE SYSTEMS. All rights reserved.</p>
         </div>
       </div>
-      
+
       <LegalFooter />
     </footer>
   );

@@ -34,7 +34,7 @@ export function ShowcaseSection() {
           <GlassCard variant="large">
             <img
               src={mascotImage}
-              alt="Ai Bunty Mascot"
+              alt="Dcore AI automation mascot - WhatsApp CRM workflows"
               className="showcase-mascot"
             />
           </GlassCard>

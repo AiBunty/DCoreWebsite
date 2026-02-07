@@ -67,7 +67,7 @@ export function IPhoneFrame({ youtubeUrl, customerName, businessType, className 
         <div className="absolute -bottom-4 -right-8 z-10">
           <img 
             src={mascotImage} 
-            alt="Ai Bunty Mascot" 
+            alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows" 
             className="w-20 h-auto drop-shadow-lg"
           />
         </div>

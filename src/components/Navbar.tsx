@@ -40,7 +40,7 @@ export function Navbar() {
           <Link to="/" className="flex items-center">
             <img 
               src={aiBuntyLogo} 
-              alt="Ai Bunty" 
+              alt="Dcore Systems AI Automation Platform Logo - CRM, WhatsApp, Workflows" 
               className="h-12 w-auto"
             />
           </Link>

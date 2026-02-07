@@ -24,7 +24,7 @@ export function DCoreNavbar() {
         <div className="navbar-brand">
           <img
             src={aiBuntyLogo}
-            alt="Ai Bunty"
+            alt="Dcore Systems AI automation logo - WhatsApp CRM workflows"
             className="navbar-logo"
           />
           <span className="navbar-text">Ai Bunty</span>

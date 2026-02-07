@@ -28,6 +28,29 @@ import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Compliance from "./pages/Compliance";
 
+// SEO Landing Pages
+import AllInOneMarketingAutomationPlatform from "./pages/AllInOneMarketingAutomationPlatform";
+import WhatsappMarketingSoftware from "./pages/WhatsappMarketingSoftware";
+import WhatsappSenderSoftware from "./pages/WhatsappSenderSoftware";
+import WhatsappBusinessApiIncluded from "./pages/WhatsappBusinessApiIncluded";
+import InstagramAutomation from "./pages/InstagramAutomation";
+import AutomationFunnels from "./pages/AutomationFunnels";
+import AiFunnelBuilder from "./pages/AiFunnelBuilder";
+import AiLandingPageBuilder from "./pages/AiLandingPageBuilder";
+import AiChatbotsWhatsapp from "./pages/AiChatbotsWhatsapp";
+import CrmWithWhatsappAutomation from "./pages/CrmWithWhatsappAutomation";
+import WorkflowAutomation from "./pages/WorkflowAutomation";
+import FormBuilder from "./pages/FormBuilder";
+import WebhookIntegrations from "./pages/WebhookIntegrations";
+import PabblyIntegration from "./pages/PabblyIntegration";
+import PaymentGatewayIntegrations from "./pages/PaymentGatewayIntegrations";
+
+// Comparison Pages (SEO)
+import DcoreVsWati from "./pages/compare/DcoreVsWati";
+import DcoreVsInterakt from "./pages/compare/DcoreVsInterakt";
+import DcoreVsZoko from "./pages/compare/DcoreVsZoko";
+import DcoreVsTwilioWhatsapp from "./pages/compare/DcoreVsTwilioWhatsapp";
+
 // Comparison Pages
 import CompareFlexifunnels from "./pages/compare/Flexifunnels";
 import CompareTagMango from "./pages/compare/TagMango";
@@ -69,6 +92,26 @@ const App = () => (
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/book-demo" element={<BookDemo />} />
           <Route path="/testimonials" element={<Testimonials />} />
+
+          {/* SEO Landing Pages */}
+          <Route
+            path="/all-in-one-marketing-automation-platform"
+            element={<AllInOneMarketingAutomationPlatform />}
+          />
+          <Route path="/whatsapp-marketing-software" element={<WhatsappMarketingSoftware />} />
+          <Route path="/whatsapp-sender-software" element={<WhatsappSenderSoftware />} />
+          <Route path="/whatsapp-business-api-included" element={<WhatsappBusinessApiIncluded />} />
+          <Route path="/instagram-automation" element={<InstagramAutomation />} />
+          <Route path="/automation-funnels" element={<AutomationFunnels />} />
+          <Route path="/ai-funnel-builder" element={<AiFunnelBuilder />} />
+          <Route path="/ai-landing-page-builder" element={<AiLandingPageBuilder />} />
+          <Route path="/ai-chatbots-whatsapp" element={<AiChatbotsWhatsapp />} />
+          <Route path="/crm-with-whatsapp-automation" element={<CrmWithWhatsappAutomation />} />
+          <Route path="/workflow-automation" element={<WorkflowAutomation />} />
+          <Route path="/form-builder" element={<FormBuilder />} />
+          <Route path="/webhook-integrations" element={<WebhookIntegrations />} />
+          <Route path="/pabbly-integration" element={<PabblyIntegration />} />
+          <Route path="/payment-gateway-integrations" element={<PaymentGatewayIntegrations />} />
           
           {/* Company Pages */}
           <Route path="/about" element={<About />} />
@@ -98,6 +141,15 @@ const App = () => (
           <Route path="/compare/kajabi" element={<CompareKajabi />} />
           <Route path="/compare/aisensy" element={<CompareAiSensy />} />
           <Route path="/compare/skool" element={<CompareSkool />} />
+
+          {/* Comparison Routes (SEO) */}
+          <Route path="/dcore-vs-wati" element={<DcoreVsWati />} />
+          <Route path="/dcore-vs-interakt" element={<DcoreVsInterakt />} />
+          <Route path="/dcore-vs-zoko" element={<DcoreVsZoko />} />
+          <Route
+            path="/dcore-vs-twilio-whatsapp"
+            element={<DcoreVsTwilioWhatsapp />}
+          />
           
           {/* Solution Routes */}
           <Route path="/solutions/coaches" element={<Coaches />} />
@@ -129,6 +181,7 @@ const App = () => (
             }
           />
           
+          <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

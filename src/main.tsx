@@ -4,6 +4,7 @@ import "@fontsource/dm-sans/700.css";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { HelmetProvider } from 'react-helmet-async';
 import faviconUrl from '@/assets/favicon.png';
 
 // Ensure the favicon uses the updated asset
@@ -18,4 +19,14 @@ const ensureFavicon = () => {
 
 ensureFavicon();
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <HelmetProvider>
+    <App />
+  </HelmetProvider>
+);
+
+if (typeof window !== "undefined") {
+  requestAnimationFrame(() => {
+    document.dispatchEvent(new Event("prerender-ready"));
+  });
+}
