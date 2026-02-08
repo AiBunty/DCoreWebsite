@@ -18,6 +18,9 @@ export function MiniChart({ values, type, className }: MiniChartProps) {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) {
+      return;
+    }
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updatePreference = () => setReduceMotion(mediaQuery.matches);
     updatePreference();

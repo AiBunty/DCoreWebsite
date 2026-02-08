@@ -19,6 +19,19 @@ const ensureFavicon = () => {
 
 ensureFavicon();
 
+if (typeof window !== "undefined" && !window.matchMedia) {
+	window.matchMedia = () => ({
+		matches: false,
+		media: "",
+		onchange: null,
+		addListener: () => {},
+		removeListener: () => {},
+		addEventListener: () => {},
+		removeEventListener: () => {},
+		dispatchEvent: () => false,
+	});
+}
+
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
     <App />
@@ -26,7 +39,8 @@ createRoot(document.getElementById("root")!).render(
 );
 
 if (typeof window !== "undefined") {
-  requestAnimationFrame(() => {
-    document.dispatchEvent(new Event("prerender-ready"));
-  });
+	const schedule = window.requestAnimationFrame ?? ((cb: FrameRequestCallback) => window.setTimeout(cb, 0));
+	schedule(() => {
+		document.dispatchEvent(new Event("prerender-ready"));
+	});
 }
