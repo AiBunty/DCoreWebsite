@@ -1,0 +1,391 @@
+.service-businesses-section {
+  padding: 48px 0;
+  position: relative;
+  background: var(--bg-primary);
+  transition: background var(--transition-normal);
+}
+
+.service-businesses-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.service-businesses-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.service-businesses-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+  transition: color var(--transition-normal);
+}
+
+.service-businesses-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color var(--transition-normal);
+}
+
+/* Slider */
+.service-businesses-slider-wrapper {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.service-businesses-slider {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Cards */
+.service-business-card {
+  flex: 0 0 calc(100% / 3 - 14px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  color: inherit;
+  min-height: 140px;
+  position: relative;
+}
+
+.service-business-card:hover {
+  border-color: var(--blue-primary);
+  box-shadow: 0 8px 24px rgba(91, 155, 213, 0.15);
+  transform: translateY(-4px);
+}
+
+.service-business-card:focus-visible {
+  outline: 2px solid var(--blue-primary);
+  outline-offset: 2px;
+}
+
+/* Card Icon */
+.service-business-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.service-business-icon-emoji {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Card Content */
+.service-business-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.service-business-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+  transition: color var(--transition-normal);
+}
+
+.service-business-card-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  transition: color var(--transition-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Navigation Buttons */
+.service-businesses-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all var(--transition-normal);
+  z-index: 10;
+}
+
+.service-businesses-nav-button:hover {
+  background: var(--blue-primary);
+  color: white;
+  border-color: var(--blue-primary);
+  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.3);
+}
+
+.service-businesses-nav-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.service-businesses-nav-prev {
+  left: -50px;
+}
+
+.service-businesses-nav-next {
+  right: -50px;
+}
+
+/* Dot Indicators */
+.service-businesses-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.service-businesses-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  padding: 0;
+}
+
+.service-businesses-dot:hover {
+  background: var(--blue-light);
+  transform: scale(1.2);
+}
+
+.service-businesses-dot.active {
+  background: var(--blue-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Footer Link */
+.service-businesses-footer {
+  text-align: center;
+}
+
+.service-businesses-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue-primary);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.service-businesses-view-all:hover {
+  color: var(--blue-light);
+  gap: 12px;
+}
+
+.service-businesses-arrow-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-normal);
+  transform: rotate(90deg);
+}
+
+.service-businesses-view-all:hover .service-businesses-arrow-icon {
+  transform: rotate(90deg) translateX(2px);
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+  .service-businesses-title {
+    font-size: 28px;
+  }
+
+  .service-businesses-subtitle {
+    font-size: 15px;
+  }
+
+  .service-business-card {
+    flex: 0 0 calc(100% / 2 - 10px);
+  }
+
+  .service-businesses-nav-prev {
+    left: -40px;
+  }
+
+  .service-businesses-nav-next {
+    right: -40px;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .service-businesses-section {
+    padding: 40px 0;
+  }
+
+  .service-businesses-container {
+    padding: 0 16px;
+  }
+
+  .service-businesses-header {
+    margin-bottom: 24px;
+  }
+
+  .service-businesses-title {
+    font-size: 24px;
+  }
+
+  .service-businesses-subtitle {
+    font-size: 14px;
+  }
+
+  .service-business-card {
+    flex: 0 0 100%;
+    padding: 20px;
+    min-height: 130px;
+  }
+
+  .service-businesses-slider-wrapper {
+    margin-bottom: 24px;
+  }
+
+  /* Hide navigation arrows on mobile */
+  .service-businesses-nav-prev,
+  .service-businesses-nav-next {
+    display: none;
+  }
+
+  /* Enable swipe gesture hint */
+  .service-businesses-slider {
+    scroll-snap-type: x mandatory;
+  }
+
+  .service-business-card {
+    scroll-snap-align: start;
+  }
+
+  .service-businesses-dots {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .service-businesses-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .service-businesses-dot.active {
+    width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-businesses-section {
+    padding: 32px 0;
+  }
+
+  .service-businesses-container {
+    padding: 0 12px;
+  }
+
+  .service-businesses-header {
+    margin-bottom: 20px;
+  }
+
+  .service-businesses-title {
+    font-size: 20px;
+  }
+
+  .service-businesses-subtitle {
+    font-size: 13px;
+  }
+
+  .service-business-card {
+    padding: 16px;
+    gap: 10px;
+    min-height: 120px;
+  }
+
+  .service-business-icon-emoji {
+    font-size: 24px;
+  }
+
+  .service-business-card-title {
+    font-size: 15px;
+  }
+
+  .service-business-card-description {
+    font-size: 12px;
+  }
+
+  .service-businesses-slider-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .service-businesses-dots {
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .service-businesses-view-all {
+    font-size: 13px;
+  }
+}
+
+/* Dark Theme Support */
+:root[data-theme="dark"] .service-business-card {
+  background: var(--bg-secondary);
+  border-color: rgba(91, 155, 213, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .service-business-card:hover {
+  border-color: var(--blue-primary);
+  box-shadow: 0 8px 24px rgba(91, 155, 213, 0.2);
+}
+
+:root[data-theme="dark"] .service-businesses-nav-button {
+  background: var(--bg-secondary);
+  border-color: rgba(91, 155, 213, 0.1);
+}
+
+:root[data-theme="dark"] .service-businesses-nav-button:hover {
+  background: var(--blue-primary);
+  border-color: var(--blue-primary);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .service-business-card,
+  .service-businesses-nav-button,
+  .service-businesses-dot,
+  .service-businesses-view-all {
+    transition: none;
+  }
+
+  .service-business-card:hover {
+    transform: none;
+  }
+}
