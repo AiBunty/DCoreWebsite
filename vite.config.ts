@@ -61,13 +61,14 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === "development" && componentTagger(),
     seoFilesPlugin(),
-    prerender({
-      staticDir: "dist",
-      routes: SEO_ROUTES.map((route) => route.path),
-      renderer: new Renderer({
-        renderAfterDocumentEvent: "prerender-ready",
-      }),
-    }),
+    // Prerender disabled due to CSS parsing issues in Vercel build
+    // prerender({
+    //   staticDir: "dist",
+    //   routes: SEO_ROUTES.map((route) => route.path),
+    //   renderer: new Renderer({
+    //     renderAfterDocumentEvent: "prerender-ready",
+    //   }),
+    // }),
   ].filter(Boolean),
   resolve: {
     alias: {
