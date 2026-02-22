@@ -15,12 +15,10 @@ const footerLinks = [
     ],
   },
   {
-    title: "Solutions",
+    title: "Onboarding",
     links: [
-      { name: "Agencies", href: "/solutions/agencies" },
-      { name: "Consultants", href: "/solutions/consultants" },
-      { name: "Real Estate", href: "/solutions/real-estate" },
-      { name: "Coaches", href: "/solutions/coaches" },
+      { name: "Onboarding Form", href: "/onboarding-form.html" },
+      { name: "Onboarding Success", href: "/onboarding-success.html" },
     ],
   },
   {
