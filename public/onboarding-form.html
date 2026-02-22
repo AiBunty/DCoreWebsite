@@ -135,7 +135,7 @@
     <header class="sticky-header">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <img id="logo" src="https://storage.files-vault.com/uploads/1771740950-r9B7iWXuln.png" alt="DCore Systems" class="h-8 w-auto">
+                <img id="logo" src="/assets/logo-light.png" alt="DCore Systems" class="h-8 w-auto">
             </div>
             <div class="text-sm text-slate-400">
                 Your AI Automation Journey
@@ -326,6 +326,17 @@
                 html.classList.remove('light-theme');
                 icon.textContent = '🌙';
                 localStorage.setItem('theme', 'dark');
+            }
+            updateLogo(theme);
+        }
+
+        // Update logo based on theme
+        function updateLogo(theme) {
+            const logo = document.getElementById('logo');
+            if (theme === 'light') {
+                logo.src = '/assets/logo-dark.png';
+            } else {
+                logo.src = '/assets/logo-light.png';
             }
         }
 
