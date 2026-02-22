@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Form | DCore Systems AI Automation</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Start your AI Automation journey with DCore Systems. Fill out our quick onboarding form to get started with your AI sales system.">
+    <meta name="keywords" content="AI Automation, Onboarding, DCore Systems, Sales System">
+    <meta name="author" content="DCore Systems">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Onboarding Form | DCore Systems">
+    <meta property="og:description" content="Start your AI Automation journey. Fill out our onboarding form to get started.">
+    <meta property="og:image" content="https://storage.files-vault.com/uploads/1771740950-r9B7iWXuln.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .gradient-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+        
+        .gradient-accent {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Light Theme */
+        html.light-theme {
+            color-scheme: light;
+        }
+
+        html.light-theme body {
+            background: white;
+            color: #0f172a;
+        }
+
+        html.light-theme .sticky-header {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(0, 0, 0, 0.1);
+        }
+
+        html.light-theme .gradient-hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+        }
+
+        html.light-theme h1, html.light-theme h2, html.light-theme h3 {
+            color: #0f172a;
+        }
+
+        html.light-theme .text-slate-300,
+        html.light-theme .text-slate-400 {
+            color: #475569;
+        }
+
+        html.light-theme .glass-effect {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        html.light-theme .theme-toggle {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        /* Form Wrapper */
+        .form-wrapper {
+            min-height: 600px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-wrapper iframe {
+                height: 800px !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img id="logo" src="https://storage.files-vault.com/uploads/1771740950-r9B7iWXuln.png" alt="DCore Systems" class="h-8 w-auto">
+            </div>
+            <div class="text-sm text-slate-400">
+                Your AI Automation Journey
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-hero py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center space-y-4 fade-in">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+                Start Your AI Automation Journey 🚀
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 font-semibold">
+                Let's get you set up with your personal AI sales system
+            </p>
+            
+            <p class="text-base text-slate-400 max-w-2xl mx-auto">
+                Fill out this quick form to get started. Our team will review your details and launch your automation system within 5-7 days.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Form Section -->
+        <section class="mb-12">
+            <div class="glass-effect p-8 md:p-12 rounded-lg border border-indigo-500 border-opacity-30 fade-in">
+                <h2 class="text-2xl md:text-3xl font-black mb-8 text-center">Complete Your Onboarding</h2>
+                
+                <!-- Embedded Form -->
+                <div class="form-wrapper">
+                    <iframe
+                      src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
+                      style="width:100%;height:600px;border:none;border-radius:8px"
+                      id="inline-699acdf5d46f8"
+                      data-form-name="Onboarding form"
+                      data-layout-iframe-id="inline-699acdf5d46f8"
+                      data-form-id="699acdf5d46f8"
+                      data-height="600"
+                      title="Onboarding form">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Cards -->
+        <section class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="glass-effect p-6 rounded-lg text-center fade-in" style="animation-delay: 0.1s">
+                <div class="text-4xl mb-3">⚡</div>
+                <h3 class="font-bold mb-2">Quick Setup</h3>
+                <p class="text-sm text-slate-400">Fill this form in just 5-10 minutes with your business details.</p>
+            </div>
+            
+            <div class="glass-effect p-6 rounded-lg text-center fade-in" style="animation-delay: 0.2s">
+                <div class="text-4xl mb-3">✅</div>
+                <h3 class="font-bold mb-2">Instant Review</h3>
+                <p class="text-sm text-slate-400">Our team reviews your details and approves your account.</p>
+            </div>
+            
+            <div class="glass-effect p-6 rounded-lg text-center fade-in" style="animation-delay: 0.3s">
+                <div class="text-4xl mb-3">🚀</div>
+                <h3 class="font-bold mb-2">Go Live</h3>
+                <p class="text-sm text-slate-400">Launch your AI automation system in 5-7 days.</p>
+            </div>
+        </section>
+
+        <!-- What to Expect Section -->
+        <section class="mb-12">
+            <div class="glass-effect p-8 rounded-lg fade-in">
+                <h3 class="text-2xl font-black mb-6">What to Expect</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">📋</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Step 1: Fill the Form</h4>
+                            <p class="text-slate-400 text-sm">Provide your business details, contact information, and automation goals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">📧</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Step 2: We Review</h4>
+                            <p class="text-slate-400 text-sm">Our team reviews your information and approves your account (2-6 hours).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🎉</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Step 3: Get Credentials</h4>
+                            <p class="text-slate-400 text-sm">Receive login credentials via email and proceed to onboarding dashboard.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🚀</div>
+                        <div>
+                            <h4 class="font-bold mb-1">Step 4: Launch</h4>
+                            <p class="text-slate-400 text-sm">Our team sets up your automation system. Go live in 5-7 days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-black mb-6">Frequently Asked Questions</h3>
+            
+            <div class="space-y-4">
+                <div class="glass-effect p-6 rounded-lg fade-in">
+                    <h4 class="font-bold mb-2">How long does setup take?</h4>
+                    <p class="text-slate-400 text-sm">Account approval typically takes 2-6 hours. Your full system goes live in 5-7 days after approval.</p>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-lg fade-in" style="animation-delay: 0.1s">
+                    <h4 class="font-bold mb-2">What information do I need to provide?</h4>
+                    <p class="text-slate-400 text-sm">Business name, contact details, automation goals, and your preferred communication channels. You'll provide detailed setup requirements after approval.</p>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-lg fade-in" style="animation-delay: 0.2s">
+                    <h4 class="font-bold mb-2">Do you offer support?</h4>
+                    <p class="text-slate-400 text-sm">Yes! We provide dedicated support via WhatsApp, email, and phone throughout your onboarding and beyond.</p>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-lg fade-in" style="animation-delay: 0.3s">
+                    <h4 class="font-bold mb-2">What if I have questions during setup?</h4>
+                    <p class="text-slate-400 text-sm">Contact us via WhatsApp (+91 88560 91300), email (support@dcoresystems.com), or phone (+91 97665 21300).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="mb-12">
+            <div class="gradient-accent p-8 md:p-12 rounded-lg text-center">
+                <h3 class="text-2xl font-black text-white mb-4">Need Help?</h3>
+                <p class="text-white text-opacity-90 mb-6">Our team is here to support you every step of the way.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/918856091300" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-white text-indigo-600 font-bold rounded-lg hover:bg-slate-100 transition">
+                        💬 WhatsApp
+                    </a>
+                    <a href="mailto:support@dcoresystems.com" class="px-6 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                        📧 Email
+                    </a>
+                    <a href="tel:+919766521300" class="px-6 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                        ☎️ Call
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-12 px-4 mt-20">
+        <div class="max-w-6xl mx-auto text-center text-slate-400">
+            <p>&copy; 2026 DCore Systems. All rights reserved.</p>
+            <p class="text-sm mt-2">Empowering businesses with AI automation solutions.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 invisible transition-all duration-300" style="z-index: 1000;"></div>
+
+    <script>
+        // Initialize theme from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            applyTheme(theme);
+        });
+
+        // Apply theme
+        function applyTheme(theme) {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            if (theme === 'light') {
+                html.classList.add('light-theme');
+                icon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light-theme');
+                icon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.classList.contains('light-theme') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'invisible');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'invisible');
+            }, 3000);
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any modals if present
+            }
+        });
+    </script>
+</body>
+</html>
