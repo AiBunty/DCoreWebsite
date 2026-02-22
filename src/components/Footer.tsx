@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import aiBuntyLogo from "@/assets/ai-bunty-logo-new.png";
+import { useTheme } from "@/contexts/ThemeContext";
+import aiBuntyLogoLight from "@/assets/ai-bunty-logo-new.png";
+import aiBuntyLogoDark from "@/assets/ai-bunty-logo-dark.png";
 import { Container } from "@/components/layout/Container";
 
 const footerLinks = [
@@ -43,6 +45,7 @@ const footerLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
 
   return (
     <footer className="border-t border-border bg-background">
@@ -51,7 +54,7 @@ export function Footer() {
           <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
             <div className="space-y-3">
               <img
-                src={aiBuntyLogo}
+                src={theme === 'dark' ? aiBuntyLogoDark : aiBuntyLogoLight}
                 alt="Dcore Systems AI automation platform logo"
                 className="h-9 w-auto"
               />

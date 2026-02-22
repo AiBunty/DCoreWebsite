@@ -6,9 +6,11 @@ export function TrustStrip() {
     <div className="border-t border-muted/40">
       <Container>
         <div className="py-3 md:py-4 text-xs md:text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-2">
-          <span>Operated by DCORE SYSTEMS LLP</span>
+          <span>Owned and operated by DCORE SYSTEMS LLP</span>
           <span aria-hidden="true">•</span>
           <span>LLPIN: ACT-9625</span>
+          <span aria-hidden="true">•</span>
+          <span>GSTIN: 27AAZFD2232J1Z3</span>
           <span aria-hidden="true">•</span>
           <span>Pune, Maharashtra, India</span>
           <span aria-hidden="true">•</span>

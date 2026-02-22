@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { DCoreButton } from './DCoreButton';
+import { useTheme } from '@/contexts/ThemeContext';
 import './DCoreNavbar.css';
-import aiBuntyLogo from '@/assets/ai-bunty-logo-new.png';
+import aiBuntyLogoLight from '@/assets/ai-bunty-logo-new.png';
+import aiBuntyLogoDark from '@/assets/ai-bunty-logo-dark.png';
 
 export function DCoreNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +26,7 @@ export function DCoreNavbar() {
       <div className="container navbar-container">
         <div className="navbar-brand">
           <img
-            src={aiBuntyLogo}
+            src={theme === 'dark' ? aiBuntyLogoDark : aiBuntyLogoLight}
             alt="Dcore Systems AI automation logo - WhatsApp CRM workflows"
             className="navbar-logo"
           />

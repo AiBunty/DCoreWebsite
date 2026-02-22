@@ -27,6 +27,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Compliance from "./pages/Compliance";
+import CompanyDetails from "./pages/CompanyDetails";
 
 // SEO Landing Pages
 import AllInOneMarketingAutomationPlatform from "./pages/AllInOneMarketingAutomationPlatform";
@@ -133,6 +134,7 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/compliance" element={<Compliance />} />
+          <Route path="/legal/company" element={<CompanyDetails />} />
           
           {/* Compare Routes */}
           <Route path="/compare" element={<Compare />} />
