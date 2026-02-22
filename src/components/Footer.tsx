@@ -67,15 +67,30 @@ export function Footer() {
                     {column.title}
                   </p>
                   <div className="space-y-2">
-                    {column.links.map((link) => (
-                      <Link
-                        key={link.name}
-                        to={link.href}
-                        className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
+                    {column.links.map((link) => {
+                      // Use regular <a> tag for external HTML files
+                      if (link.href.endsWith('.html')) {
+                        return (
+                          <a
+                            key={link.name}
+                            href={link.href}
+                            className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {link.name}
+                          </a>
+                        );
+                      }
+                      // Use React Router Link for internal routes
+                      return (
+                        <Link
+                          key={link.name}
+                          to={link.href}
+                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
