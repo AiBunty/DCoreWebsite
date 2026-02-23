@@ -7,7 +7,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Pages
 import Index from "./pages/Index";
-import DcoreTheme from "./pages/DcoreTheme";
 import NotFound from "./pages/NotFound";
 import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";

@@ -9,7 +9,7 @@
  */
 
 export interface EventParams {
-  [key: string]: string | number | boolean | string[] | number[];
+  [key: string]: string | number | boolean | string[] | number[] | any;
 }
 
 /**
