@@ -12,7 +12,6 @@ import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import BookDemo from "./pages/BookDemo";
 import Compare from "./pages/Compare";
-import Testimonials from "./pages/Testimonials";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
@@ -93,7 +92,7 @@ const App = () => (
           <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/book-demo" element={<BookDemo />} />
-          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/testimonials" element={<NotFound />} />
 
           {/* SEO Landing Pages */}
           <Route

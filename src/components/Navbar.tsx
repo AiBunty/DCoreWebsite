@@ -53,9 +53,6 @@ export function Navbar() {
             <Link to="/pricing" className="text-primary hover:text-blue-700 transition-colors font-medium">
               Pricing
             </Link>
-            <Link to="/testimonials" className="text-primary hover:text-blue-700 transition-colors font-medium">
-              Testimonials
-            </Link>
             
             {/* Compare Dropdown */}
             <div className="relative group">
@@ -148,9 +145,6 @@ export function Navbar() {
               </Link>
               <Link to="/pricing" className="text-primary hover:text-blue-700 transition-colors py-2 font-medium">
                 Pricing
-              </Link>
-              <Link to="/testimonials" className="text-primary hover:text-blue-700 transition-colors py-2 font-medium">
-                Testimonials
               </Link>
               <Link to="/compare" className="text-primary hover:text-blue-700 transition-colors py-2 font-medium">
                 Compare
