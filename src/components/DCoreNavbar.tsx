@@ -42,6 +42,15 @@ export function DCoreNavbar() {
 
         <div className="navbar-actions">
           <ThemeToggle />
+          <a
+            href="https://login.aibunty.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar-login-link"
+            aria-label="Customer Login"
+          >
+            Customer Login
+          </a>
           <DCoreButton variant="primary" size="default">
             Get Started
           </DCoreButton>

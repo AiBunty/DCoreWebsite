@@ -54,6 +54,37 @@
     
     <!-- ================= SEO + AI + META OPTIMIZATION END ================= -->
     
+    <!-- ================= GA4 & GSC VERIFICATION START ================= -->
+    <!-- Google Analytics 4 (GA4) - Measurement ID: G-X5FDPZP2PT -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X5FDPZP2PT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X5FDPZP2PT', {
+        'page_path': window.location.pathname,
+        'anonymize_ip': true,
+        'allow_google_signals': true,
+        'allow_ad_personalization_signals': true
+      });
+      
+      /**
+       * Track custom events in GA4
+       * Usage: trackEvent('video_play', {video_title: 'My Video', video_duration: 120})
+       */
+      window.trackEvent = function(eventName, eventParams = {}) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', eventName, eventParams);
+        }
+      };
+    </script>
+    
+    <!-- Google Search Console Verification -->
+    <!-- TODO: Replace with your GSC verification token -->
+    <meta name="google-site-verification" content="PASTE_YOUR_GSC_TOKEN_HERE" />
+    
+    <!-- ================= GA4 & GSC VERIFICATION END ================= -->
+    
     <!-- Chat Widget -->
     <script src="https://myappzchat.com/production/master/widget/embed-widget.umd.js"
      data-widget-id="b79193de-b43f-44aa-b26c-a3ae1db9f61a"
@@ -69,7 +100,6 @@
       link.href = faviconUrl;
       if (!existing) document.head.appendChild(link);
     </script>
-    <meta name="google-site-verification" content="[Google Verification Placeholder]" />
     <meta name="facebook-domain-verification" content="[Meta Verification Placeholder]" />
   </head>
 

@@ -109,6 +109,14 @@ export function Navbar() {
           {/* Theme Toggle + CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle />
+            <a
+              href="https://login.aibunty.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-primary font-medium border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-all"
+            >
+              Customer Login
+            </a>
             <Button className="bg-primary text-white hover:bg-blue-700" size="lg" asChild>
               <Link to="/book-demo">Book Free Demo</Link>
             </Button>
@@ -162,6 +170,14 @@ export function Navbar() {
                   </Link>
                 ))}
               </div>
+              <a
+                href="https://login.aibunty.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-center text-primary font-medium border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-all"
+              >
+                Customer Login
+              </a>
               <Button className="bg-white text-primary hover:bg-white/90 mt-4" asChild>
                 <Link to="/book-demo">Book Free Demo</Link>
               </Button>
