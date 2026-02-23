@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { MascotTip } from "@/components/MascotTip";
@@ -6,6 +7,11 @@ import { GlassCard, GlassSection } from "@/components/GlassCard";
 import { Calendar, Mail, Phone } from "lucide-react";
 
 export default function BookDemoPage() {
+  const [isFormLoading, setIsFormLoading] = useState(true);
+
+  const handleFormLoad = () => {
+    setIsFormLoading(false);
+  };
   return (
     <Layout>
       <section className="py-16 md:py-24 bg-gradient-hero">
@@ -68,7 +74,15 @@ export default function BookDemoPage() {
 
               {/* Demo Form - Embedded Ai Bunty Form */}
               <GlassCard className="h-full">
-                <div className="glass-card-content p-4 overflow-hidden h-full">
+                <div className="glass-card-content p-4 overflow-hidden h-full relative min-h-[600px]">
+                  {isFormLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10 rounded-md">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+                        <p className="text-sm text-muted-foreground">Loading form...</p>
+                      </div>
+                    </div>
+                  )}
                   <iframe
                     src="https://admin.aibunty.com/widget/form/f10238e5-a750-4bb5-80ea-46173140efb4"
                     style={{ width: '100%', height: '600px', border: 'none', borderRadius: '3px' }}
@@ -77,6 +91,7 @@ export default function BookDemoPage() {
                     data-layout-iframe-id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
                     data-form-id="f10238e5-a750-4bb5-80ea-46173140efb4"
                     title="VSL Form"
+                    onLoad={handleFormLoad}
                   />
                 </div>
               </GlassCard>

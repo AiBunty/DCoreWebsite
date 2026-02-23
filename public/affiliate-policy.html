@@ -1,111 +1,392 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Affiliate Policy | DCORE SYSTEMS LLP</title>
-<meta name="description" content="Official Affiliate Program Policy for DCORE SYSTEMS LLP">
-<style>
-body {font-family: Arial, sans-serif; background:#0b0b0b; color:#f2f2f2; margin:40px; line-height:1.8;}
-h1,h2 {color:#d4af37;}
-a {color:#d4af37;}
-ul {margin-left:20px;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Affiliate Program Policy for DCORE SYSTEMS LLP">
+  <title>Affiliate Policy | DCore Systems</title>
+  <!-- DM Sans Font -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root[data-theme="light"] {
+      --bg-primary: #f5f7fa;
+      --bg-secondary: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --text-tertiary: #999999;
+      --blue-primary: #5B9BD5;
+      --blue-light: #74ADE0;
+      --border-color: rgba(91, 155, 213, 0.15);
+    }
+    :root[data-theme="dark"],
+    :root {
+      --bg-primary: #0a192f;
+      --bg-secondary: #0f1f35;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --text-tertiary: #808080;
+      --blue-primary: #5B9BD5;
+      --blue-light: #74ADE0;
+      --border-color: rgba(91, 155, 213, 0.2);
+    }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    .header {
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(10, 25, 47, 0.85);
+    }
+    .logo {
+      color: var(--blue-primary);
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue-primary);
+    }
+    .theme-toggle {
+      background: rgba(91, 155, 213, 0.2);
+      border: 1px solid rgba(91, 155, 213, 0.3);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+    .page-header {
+      border-bottom: 2px solid var(--border-color);
+    }
+    .page-header h1 {
+      color: var(--blue-primary);
+    }
+    h2, h3 {
+      color: var(--blue-primary);
+    }
+    p, li {
+      color: var(--text-secondary);
+    }
+    strong {
+      color: var(--text-primary);
+    }
+    a {
+      color: var(--blue-light);
+    }
+    a:hover {
+      color: var(--blue-primary);
+    }
+    .section {
+      background: rgba(91, 155, 213, 0.08);
+      border: 1px solid var(--border-color);
+    }
+    .footer {
+      border-top: 1px solid var(--border-color);
+      background: rgba(10, 25, 47, 0.85);
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+    }
+    .footer-bottom {
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--border-color);
+    }
+    .breadcrumb {
+      color: var(--text-secondary);
+    }
+    .breadcrumb a {
+      color: var(--blue-light);
+    }
+    .last-updated {
+      color: var(--text-secondary);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .page-header {
+      margin-bottom: 3rem;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 2rem;
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .last-updated {
+      color: #94a3b8;
+      font-size: 0.875rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #60a5fa;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: #cbd5e1;
+    }
+    strong {
+      color: #e2e8f0;
+    }
+    ul, ol {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      color: #cbd5e1;
+    }
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #a78bfa;
+      text-decoration: underline;
+    }
+    .section {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer {
+      border-top: 1px solid #334155;
+      background: rgba(15, 23, 42, 0.8);
+      margin-top: 4rem;
+      padding: 2rem;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: #60a5fa;
+    }
+    .footer-bottom {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.875rem;
+      border-top: 1px solid #334155;
+      padding-top: 1.5rem;
+    }
+    .breadcrumb {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .breadcrumb a {
+      color: #60a5fa;
+    }
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .page-header h1 {
+        font-size: 1.875rem;
+      }
+      .container {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="header">
+    <div class="header-content">
+      <a href="/" class="logo">
+        <img id="navbar-logo" src="/assets/ai-bunty-logo-new.png" alt="Dcore Systems" class="logo-img">
+        <span class="logo-text">Ai Bunty</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/">Features</a>
+        <a href="/">Pricing</a>
+        <a href="/">Compare</a>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
 
-<h1>Affiliate Policy</h1>
-<p><strong>Last Updated:</strong> February 2026</p>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> / Affiliate Policy
+    </div>
 
-<p>This Affiliate Policy is issued by <strong>DCORE SYSTEMS LLP</strong>, 
-LLPIN: ACT-9625, GSTIN: 27AAZFD2232J1Z3, Pune, Maharashtra, India.</p>
+    <div class="page-header">
+      <h1>Affiliate Policy</h1>
+      <p class="last-updated"><strong>Last Updated:</strong> February 2026</p>
+    </div>
 
-<h2>1. Program Overview</h2>
-<p>The DCore Systems Affiliate Program allows approved individuals or entities ("Affiliates") to earn commissions by referring new paying clients to DCore Systems LLP.</p>
+    <div class="section">
+      <p>This Affiliate Policy is issued by <strong>DCORE SYSTEMS LLP</strong>, LLPIN: ACT-9625, GSTIN: 27AAZFD2232J1Z3, Pune, Maharashtra, India.</p>
+    </div>
 
-<h2>2. Independent Contractor Status</h2>
-<ul>
-<li>Affiliates act as independent contractors.</li>
-<li>This program does NOT create partnership, employment, franchise, or agency relationship.</li>
-<li>Affiliates have no authority to bind DCore Systems LLP.</li>
-</ul>
+    <h2>1. Program Overview</h2>
+    <p>The DCore Systems Affiliate Program allows approved individuals or entities ("Affiliates") to earn commissions by referring new paying clients to DCore Systems LLP.</p>
 
-<h2>3. Commission Structure</h2>
-<ul>
-<li>Commission rates are defined separately in official communication or dashboard.</li>
-<li>DCore Systems LLP reserves the right to modify commission structures at any time without prior notice.</li>
-<li>Commission applies only to successfully completed and paid transactions.</li>
-<li>No commission is payable on refunded, cancelled, disputed, fraudulent, or chargeback transactions.</li>
-<li>Recurring commissions apply only while the referred client remains active and fully paid.</li>
-</ul>
+    <h2>2. Independent Contractor Status</h2>
+    <ul>
+      <li>Affiliates act as independent contractors.</li>
+      <li>This program does NOT create partnership, employment, franchise, or agency relationship.</li>
+      <li>Affiliates have no authority to bind DCore Systems LLP.</li>
+    </ul>
 
-<h2>4. Commission Lock & Approval Period</h2>
-<ul>
-<li>All commissions are subject to a minimum 30-day lock period before approval.</li>
-<li>This period allows verification against fraud, chargebacks, or refund requests.</li>
-<li>DCore reserves the right to extend review period if fraud is suspected.</li>
-</ul>
+    <h2>3. Commission Structure</h2>
+    <ul>
+      <li>Commission rates are defined separately in official communication or dashboard.</li>
+      <li>DCore Systems LLP reserves the right to modify commission structures at any time without prior notice.</li>
+      <li>Commission applies only to successfully completed and paid transactions.</li>
+      <li>No commission is payable on refunded, cancelled, disputed, fraudulent, or chargeback transactions.</li>
+      <li>Recurring commissions apply only while the referred client remains active and fully paid.</li>
+    </ul>
 
-<h2>5. Minimum Payout Threshold</h2>
-<p>Affiliate payouts will only be processed once the total approved commission balance reaches a minimum of ₹5,000 (or equivalent in other currency).</p>
+    <h2>4. Commission Lock & Approval Period</h2>
+    <ul>
+      <li>All commissions are subject to a minimum 30-day lock period before approval.</li>
+      <li>This period allows verification against fraud, chargebacks, or refund requests.</li>
+      <li>DCore reserves the right to extend review period if fraud is suspected.</li>
+    </ul>
 
-<h2>6. Payment Terms</h2>
-<ul>
-<li>Payouts are processed periodically as determined by DCore Systems LLP.</li>
-<li>Affiliates are solely responsible for their own tax compliance.</li>
-<li>Any transaction fees may be deducted from payouts where applicable.</li>
-</ul>
+    <h2>5. Minimum Payout Threshold</h2>
+    <p>Affiliate payouts will only be processed once the total approved commission balance reaches a minimum of ₹5,000 (or equivalent in other currency).</p>
 
-<h2>7. Strict Prohibited Activities</h2>
-Affiliates must NOT:
-<ul>
-<li>Engage in spam (email, WhatsApp, SMS, cold automation without consent)</li>
-<li>Make false income or performance claims</li>
-<li>Bid on DCore brand keywords (including "DCore Systems", "DCore SaaS", etc.) without written approval</li>
-<li>Run misleading paid ads impersonating DCore</li>
-<li>Create fake accounts or self-generate purchases</li>
-<li>Use self-referral links to earn commission on personal purchases</li>
-<li>Manipulate tracking systems</li>
-</ul>
+    <h2>6. Payment Terms</h2>
+    <ul>
+      <li>Payouts are processed periodically as determined by DCore Systems LLP.</li>
+      <li>Affiliates are solely responsible for their own tax compliance.</li>
+      <li>Any transaction fees may be deducted from payouts where applicable.</li>
+    </ul>
 
-<h2>8. Self-Referral Prohibition</h2>
-<p>Affiliates may NOT earn commission on their own purchases, purchases by their immediate family, employees, or businesses under their control.</p>
+    <h2>7. Strict Prohibited Activities</h2>
+    <p>Affiliates must NOT:</p>
+    <ul>
+      <li>Engage in spam (email, WhatsApp, SMS, cold automation without consent)</li>
+      <li>Make false income or performance claims</li>
+      <li>Bid on DCore brand keywords (including "DCore Systems", "DCore SaaS", etc.) without written approval</li>
+      <li>Run misleading paid ads impersonating DCore</li>
+      <li>Create fake accounts or self-generate purchases</li>
+      <li>Use self-referral links to earn commission on personal purchases</li>
+      <li>Manipulate tracking systems</li>
+    </ul>
 
-<h2>9. No Resale or White-Label Rights</h2>
-<p>This affiliate program does NOT grant rights to resell, sublicense, duplicate, reverse engineer, or white-label DCore software.</p>
+    <h2>8. Self-Referral Prohibition</h2>
+    <p>Affiliates may NOT earn commission on their own purchases, purchases by their immediate family, employees, or businesses under their control.</p>
 
-<h2>10. Brand & Trademark Usage</h2>
-<p>Affiliates may only use officially approved marketing materials. Unauthorized modification of logos, trademarks, messaging, or claims is strictly prohibited.</p>
+    <h2>9. No Resale or White-Label Rights</h2>
+    <p>This affiliate program does NOT grant rights to resell, sublicense, duplicate, reverse engineer, or white-label DCore software.</p>
 
-<h2>11. Fraud & Chargeback Protection</h2>
-<ul>
-<li>If a referred client initiates a chargeback, refund dispute, or fraud claim, associated commissions will be reversed immediately.</li>
-<li>Repeated fraudulent activity may result in permanent termination and forfeiture of unpaid commissions.</li>
-<li>DCore Systems LLP reserves the right to recover legal costs arising from affiliate fraud or misconduct.</li>
-</ul>
+    <h2>10. Brand & Trademark Usage</h2>
+    <p>Affiliates may only use officially approved marketing materials. Unauthorized modification of logos, trademarks, messaging, or claims is strictly prohibited.</p>
 
-<h2>12. Termination Rights</h2>
-<p>DCore Systems LLP reserves the right to suspend or terminate affiliate participation at its sole discretion for policy violations, reputational harm, or suspected abuse.</p>
+    <h2>11. Fraud & Chargeback Protection</h2>
+    <ul>
+      <li>If a referred client initiates a chargeback, refund dispute, or fraud claim, associated commissions will be reversed immediately.</li>
+      <li>Repeated fraudulent activity may result in permanent termination and forfeiture of unpaid commissions.</li>
+      <li>DCore Systems LLP reserves the right to recover legal costs arising from affiliate fraud or misconduct.</li>
+    </ul>
 
-<h2>13. Limitation of Liability</h2>
-<p>DCore Systems LLP shall not be liable for indirect, incidental, consequential, or punitive damages arising from participation in the affiliate program.</p>
+    <h2>12. Termination Rights</h2>
+    <p>DCore Systems LLP reserves the right to suspend or terminate affiliate participation at its sole discretion for policy violations, reputational harm, or suspected abuse.</p>
 
-<h2>14. Governing Law & Arbitration</h2>
-<p>This policy is governed by the laws of India. Exclusive jurisdiction: Pune, Maharashtra. Disputes shall be resolved via arbitration under the Arbitration and Conciliation Act, 1996.</p>
+    <h2>13. Limitation of Liability</h2>
+    <p>DCore Systems LLP shall not be liable for indirect, incidental, consequential, or punitive damages arising from participation in the affiliate program.</p>
 
-<h2>15. Contact</h2>
-<p>Email: support@dcoresystems.com</p>
+    <h2>14. Governing Law & Arbitration</h2>
+    <p>This policy is governed by the laws of India. Exclusive jurisdiction: Pune, Maharashtra. Disputes shall be resolved via arbitration under the Arbitration and Conciliation Act, 1996.</p>
 
-<hr style="margin-top:40px; border:none; border-top:1px solid #333;">
-<div style="margin-top:30px; padding-top:20px; text-align:center; border-top:1px solid #333;">
-<p style="color:#d4af37; font-weight:bold; margin-bottom:15px;">Legal & Policy Pages</p>
-<p>
-<a href="https://www.dcoresystems.com/">← Back to Homepage</a> | 
-<a href="https://www.dcoresystems.com/terms-of-use.html">Terms of Use</a> | 
-<a href="https://www.dcoresystems.com/privacy-policy.html">Privacy Policy</a> | 
-<a href="https://www.dcoresystems.com/refund-policy.html">Refund Policy</a> | 
-<a href="https://www.dcoresystems.com/disclaimer.html">Disclaimer</a>
-</p>
-<p style="color:#999; font-size:12px; margin-top:15px;">&copy; 2026 DCore Systems LLP. All rights reserved.</p>
-</div>
+    <h2>15. Contact</h2>
+    <p>Email: <a href="mailto:support@dcoresystems.com">support@dcoresystems.com</a></p>
+  </div>
 
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/refund-policy.html">Refund Policy</a>
+        <a href="/affiliate-policy.html">Affiliate Policy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DCore Systems LLP. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const theme = localStorage.getItem('dcore-theme') || 'light';
+      applyTheme(theme);
+    });
+
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      const logo = document.getElementById('navbar-logo');
+      
+      if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        icon.textContent = '🌙';
+        if (logo) logo.src = '/assets/ai-bunty-logo-new.png';
+        localStorage.setItem('dcore-theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        icon.textContent = '☀️';
+        if (logo) logo.src = '/assets/ai-bunty-logo-dark.png';
+        localStorage.setItem('dcore-theme', 'dark');
+      }
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      applyTheme(newTheme);
+    }
+  </script>
 </body>
 </html>

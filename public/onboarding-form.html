@@ -65,6 +65,56 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .navbar-brand:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .navbar-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-menu a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-menu a:hover {
+            color: #6366f1;
+        }
+
         /* Light Theme */
         html.light-theme {
             color-scheme: light;
@@ -78,6 +128,18 @@
         html.light-theme .sticky-header {
             background: rgba(255, 255, 255, 0.9);
             border-bottom-color: rgba(0, 0, 0, 0.1);
+        }
+
+        html.light-theme .navbar-text {
+            color: #0f172a;
+        }
+
+        html.light-theme .navbar-menu a {
+            color: #475569;
+        }
+
+        html.light-theme .navbar-menu a:hover {
+            color: #6366f1;
         }
 
         html.light-theme .gradient-hero {
@@ -120,12 +182,68 @@
         /* Form Wrapper */
         .form-wrapper {
             min-height: 600px;
+            position: relative;
+        }
+
+        /* Loading Spinner */
+        .form-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 8px;
+            z-index: 10;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .form-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(99, 102, 241, 0.2);
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner-text {
+            position: absolute;
+            bottom: 60px;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        html.light-theme .form-loader {
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        html.light-theme .spinner {
+            border-top-color: #6366f1;
+        }
+
+        html.light-theme .spinner-text {
+            color: #64748b;
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .form-wrapper iframe {
-                height: 800px !important;
+                height: 1900px !important;
             }
         }
     </style>
@@ -133,19 +251,20 @@
 <body class="bg-slate-950 text-slate-100">
     <!-- Sticky Header -->
     <header class="sticky-header">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <a href="/" class="flex items-center gap-2 hover:opacity-80 transition">
-                    <img id="logo" src="/assets/logo-light.png" alt="DCore Systems" class="h-8 w-auto">
-                </a>
-                <a href="/" class="text-sm font-semibold text-slate-300 hover:text-slate-100 transition">← Home</a>
-            </div>
-            <div class="text-sm text-slate-400">
-                Your AI Automation Journey
-            </div>
-            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light theme">
-                <span id="theme-icon">🌙</span>
-            </button>
+        <div class="header-content">
+            <a href="/" class="navbar-brand">
+                <img id="navbar-logo" src="/assets/ai-bunty-logo-new.png" alt="Dcore Systems" class="navbar-logo">
+                <span class="navbar-text">Ai Bunty</span>
+            </a>
+            <nav class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/">Features</a>
+                <a href="/">Pricing</a>
+                <a href="/">Compare</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </nav>
         </div>
     </header>
 
@@ -175,15 +294,22 @@
                 
                 <!-- Embedded Form -->
                 <div class="form-wrapper">
+                    <div class="form-loader" id="form-loader">
+                        <div>
+                            <div class="spinner"></div>
+                            <div class="spinner-text">Loading form...</div>
+                        </div>
+                    </div>
                     <iframe
                       src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
-                      style="width:100%;height:600px;border:none;border-radius:8px"
+                      style="width:100%;height:1800px;border:none;border-radius:8px"
                       id="inline-699acdf5d46f8"
                       data-form-name="Onboarding form"
                       data-layout-iframe-id="inline-699acdf5d46f8"
                       data-form-id="699acdf5d46f8"
                       data-height="600"
-                      title="Onboarding form">
+                      title="Onboarding form"
+                      onload="document.getElementById('form-loader').classList.add('hidden')">
                     </iframe>
                 </div>
             </div>
@@ -312,7 +438,7 @@
     <script>
         // Initialize theme from localStorage
         document.addEventListener('DOMContentLoaded', function() {
-            const theme = localStorage.getItem('theme') || 'dark';
+            const theme = localStorage.getItem('dcore-theme') || 'light';
             applyTheme(theme);
         });
 
@@ -320,33 +446,25 @@
         function applyTheme(theme) {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
+            const logo = document.getElementById('navbar-logo');
             
             if (theme === 'light') {
-                html.classList.add('light-theme');
-                icon.textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.remove('light-theme');
+                html.setAttribute('data-theme', 'light');
                 icon.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            }
-            updateLogo(theme);
-        }
-
-        // Update logo based on theme
-        function updateLogo(theme) {
-            const logo = document.getElementById('logo');
-            if (theme === 'light') {
-                logo.src = '/assets/logo-light.png';
+                if (logo) logo.src = '/assets/ai-bunty-logo-new.png';
+                localStorage.setItem('dcore-theme', 'light');
             } else {
-                logo.src = '/assets/logo-dark.png';
+                html.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                if (logo) logo.src = '/assets/ai-bunty-logo-dark.png';
+                localStorage.setItem('dcore-theme', 'dark');
             }
         }
 
         // Toggle theme
         function toggleTheme() {
             const html = document.documentElement;
-            const currentTheme = html.classList.contains('light-theme') ? 'light' : 'dark';
+            const currentTheme = html.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             applyTheme(newTheme);
         }

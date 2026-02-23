@@ -1,3 +1,4 @@
+import { useState } from "react";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 interface IPhoneFrameProps {
@@ -8,6 +9,8 @@ interface IPhoneFrameProps {
 }
 
 export function IPhoneFrame({ youtubeUrl, customerName, businessType, className = "" }: IPhoneFrameProps) {
+  const [isLoading, setIsLoading] = useState(!!youtubeUrl);
+
   const getYouTubeEmbedUrl = (url: string) => {
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?\s]+)/);
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
@@ -30,7 +33,15 @@ export function IPhoneFrame({ youtubeUrl, customerName, businessType, className 
             </div>
             
             {/* Screen Content - 16:9 aspect ratio */}
-            <div className="aspect-[9/16] w-56 sm:w-64 md:w-72 bg-black">
+            <div className="aspect-[9/16] w-56 sm:w-64 md:w-72 bg-black relative">
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-10 h-10 border-3 border-white/20 border-t-white rounded-full animate-spin" />
+                    <span className="text-xs text-white/60">Loading...</span>
+                  </div>
+                </div>
+              )}
               {youtubeUrl ? (
                 <iframe
                   src={getYouTubeEmbedUrl(youtubeUrl)}
@@ -38,6 +49,7 @@ export function IPhoneFrame({ youtubeUrl, customerName, businessType, className 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full"
+                  onLoad={() => setIsLoading(false)}
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent flex items-center justify-center">

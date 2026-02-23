@@ -1,3 +1,4 @@
+import { useState } from "react";
 import mascotImage from "@/assets/ai-bunty-mascot.png";
 
 interface MascotFrameProps {
@@ -8,6 +9,8 @@ interface MascotFrameProps {
 }
 
 export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: MascotFrameProps) {
+  const [isLoading, setIsLoading] = useState(!!youtubeUrl);
+
   const getYouTubeEmbedUrl = (url: string) => {
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?\s]+)/);
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
@@ -26,7 +29,15 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
               <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
             </div>
             {/* Content Area */}
-            <div className="bg-background rounded-lg overflow-hidden aspect-video">
+            <div className="bg-background rounded-lg overflow-hidden aspect-video relative">
+              {isLoading && youtubeUrl && (
+                <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-10 h-10 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
+                    <span className="text-xs text-muted-foreground">Loading video...</span>
+                  </div>
+                </div>
+              )}
               {youtubeUrl ? (
                 <iframe
                   src={getYouTubeEmbedUrl(youtubeUrl)}
@@ -34,6 +45,7 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full"
+                  onLoad={() => setIsLoading(false)}
                 />
               ) : imageSrc ? (
                 <img 
