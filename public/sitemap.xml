@@ -84,4 +84,24 @@
     <loc>https://www.dcoresystems.com/dcore-vs-twilio-whatsapp</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.dcoresystems.com/terms-of-use.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dcoresystems.com/privacy-policy.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dcoresystems.com/refund-policy.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dcoresystems.com/disclaimer.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dcoresystems.com/affiliate-policy.html</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>

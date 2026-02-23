@@ -39,6 +39,16 @@ const footerLinks = [
       { name: "Contact", href: "/contact" },
     ],
   },
+  {
+    title: "Legal",
+    links: [
+      { name: "Terms of Use", href: "/terms-of-use.html" },
+      { name: "Privacy Policy", href: "/privacy-policy.html" },
+      { name: "Refund Policy", href: "/refund-policy.html" },
+      { name: "Affiliate Policy", href: "/affiliate-policy.html" },
+      { name: "Disclaimer", href: "/disclaimer.html" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -60,7 +70,7 @@ export function Footer() {
                 AI-first omnichannel automation for WhatsApp, funnels, CRM, and growth teams.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
               {footerLinks.map((column) => (
                 <div key={column.title}>
                   <p className="text-xs font-semibold uppercase tracking-wide text-foreground mb-3">
@@ -104,15 +114,18 @@ export function Footer() {
           <div className="py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
             <span>© {currentYear} Dcore Systems LLP. All rights reserved.</span>
             <div className="flex items-center gap-4">
-              <Link to="/privacy" className="hover:text-foreground transition-colors">
+              <a href="/privacy-policy.html" className="hover:text-foreground transition-colors">
                 Privacy
-              </Link>
-              <Link to="/terms" className="hover:text-foreground transition-colors">
+              </a>
+              <a href="/terms-of-use.html" className="hover:text-foreground transition-colors">
                 Terms
-              </Link>
-              <Link to="/legal/company" className="hover:text-foreground transition-colors">
-                Company details
-              </Link>
+              </a>
+              <a href="/affiliate-policy.html" className="hover:text-foreground transition-colors">
+                Affiliate
+              </a>
+              <a href="/disclaimer.html" className="hover:text-foreground transition-colors">
+                Disclaimer
+              </a>
             </div>
           </div>
         </Container>
