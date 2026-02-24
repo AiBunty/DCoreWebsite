@@ -87,7 +87,7 @@ export default function FreelancersPage() {
 
           <div className="mt-16 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-foreground mb-6 text-center">See How It Works</h3>
-            <MascotFrame youtubeUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+            <MascotFrame youtubeUrl="https://youtu.be/6M6tS4nCN1Y" />
           </div>
         </div>
       </section>
