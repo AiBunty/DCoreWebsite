@@ -55,18 +55,18 @@ export function Navbar() {
             </Link>
             
             {/* Compare Dropdown */}
-            <div className="relative group">
+            <div
+              className="relative"
+              onMouseEnter={() => setCompareOpen(true)}
+              onMouseLeave={() => setCompareOpen(false)}
+            >
               <button
                 className="flex items-center gap-1 text-primary hover:text-blue-700 transition-colors font-medium"
-                onMouseEnter={() => setCompareOpen(true)}
-                onMouseLeave={() => setCompareOpen(false)}
               >
                 Compare <ChevronDown className="w-4 h-4" />
               </button>
               <div 
-                className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 transition-all duration-200 ${compareOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-                onMouseEnter={() => setCompareOpen(true)}
-                onMouseLeave={() => setCompareOpen(false)}
+                className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 transition-all duration-200 ${compareOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
               >
                 <Link to="/compare" className="block px-4 py-2 text-sm text-primary font-medium hover:bg-blue-50 transition-colors">
                   All Comparisons
@@ -81,18 +81,18 @@ export function Navbar() {
             </div>
 
             {/* Solutions Dropdown */}
-            <div className="relative group">
+            <div
+              className="relative"
+              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseLeave={() => setSolutionsOpen(false)}
+            >
               <button
                 className="flex items-center gap-1 text-primary hover:text-blue-700 transition-colors font-medium"
-                onMouseEnter={() => setSolutionsOpen(true)}
-                onMouseLeave={() => setSolutionsOpen(false)}
               >
                 Solutions <ChevronDown className="w-4 h-4" />
               </button>
               <div 
-                className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 transition-all duration-200 ${solutionsOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-                onMouseEnter={() => setSolutionsOpen(true)}
-                onMouseLeave={() => setSolutionsOpen(false)}
+                className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 transition-all duration-200 ${solutionsOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
               >
                 {solutionLinks.map((link) => (
                   <Link key={link.href} to={link.href} className="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-blue-50 transition-colors">
