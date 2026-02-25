@@ -39,10 +39,21 @@ export default function Contact() {
                 <div className="flex gap-4">
                   <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold text-foreground">Phone</p>
-                    <a href="tel:+918856091300" className="text-primary hover:underline">
-                      +91 88560 91300
-                    </a>
+                    <p className="font-semibold text-foreground">📱 Contact Numbers</p>
+                    <div className="mt-2 space-y-2">
+                      <div>
+                        <p className="text-sm text-muted-foreground">WhatsApp API</p>
+                        <a href="tel:+918856091300" className="text-primary hover:underline">
+                          +91 88560 91300
+                        </a>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">WhatsApp Business & Calling</p>
+                        <a href="tel:+919766521300" className="text-primary hover:underline">
+                          +91 97665 21300
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

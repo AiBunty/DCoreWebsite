@@ -64,8 +64,21 @@ export default function BookDemoPage() {
                         <Phone className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground">WhatsApp</p>
-                        <p className="text-muted-foreground text-sm">+917003210880</p>
+                        <p className="font-semibold text-foreground">📱 Contact Numbers</p>
+                        <div className="space-y-1 mt-2">
+                          <div>
+                            <p className="text-xs text-muted-foreground">WhatsApp API</p>
+                            <a href="tel:+918856091300" className="text-muted-foreground text-sm hover:text-primary">
+                              +918856091300
+                            </a>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">WhatsApp Business & Calling</p>
+                            <a href="tel:+919766521300" className="text-muted-foreground text-sm hover:text-primary">
+                              +919766521300
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </GlassCard>
@@ -107,7 +120,7 @@ export default function BookDemoPage() {
                   See Ai Bunty in action before your 1 to 1 call
                 </p>
               </div>
-              <MascotFrame youtubeUrl="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" />
+              <MascotFrame youtubeUrl="https://youtu.be/6M6tS4nCN1Y" />
             </div>
           </div>
         </div>
