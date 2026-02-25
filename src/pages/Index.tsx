@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
-import { FeatureItem } from "@/components/FeatureShowcase";
-import { FeatureCarousel } from "@/components/FeatureCarousel";
 import { Seo } from "@/components/seo/Seo";
 import {
   organizationSchema,
@@ -22,39 +20,11 @@ import { TrustStrip } from "@/components/common/TrustStrip";
 import { IndustryTile } from "@/components/home/IndustryTile";
 
 // Feature images
-import agencyDashboard from "@/assets/features/agency-dashboard.png";
 import dashboardPreview from "@/assets/dashboard-preview.png";
-import shopBuilder from "@/assets/features/shop-builder.png";
-import crm from "@/assets/features/crm.png";
-import landingPageBuilder from "@/assets/features/landing-page-builder.png";
-import automationWorkflow from "@/assets/features/automation-workflow.png";
-import whatsappSender from "@/assets/features/whatsapp-sender.png";
-import whatsappCloudApi from "@/assets/features/whatsapp-cloud-api.png";
-import emailAutomation from "@/assets/features/email-automation.png";
-import mobileApp from "@/assets/features/mobile-app.png";
-import adLauncher from "@/assets/features/ad-launcher.png";
-import salesFinance from "@/assets/features/sales-finance.png";
-import lms from "@/assets/features/lms.png";
-import studentPortal from "@/assets/features/student-portal.png";
-import whiteLabel from "@/assets/features/white-label.png";
-import addStaff from "@/assets/features/add-staff.png";
 
 import {
-  MessageSquare,
   ArrowRight,
-  LayoutDashboard,
-  Store,
-  FileCode,
-  Workflow,
-  Cloud,
-  Mail,
-  Smartphone,
-  Megaphone,
-  TrendingUp,
   GraduationCap,
-  BookOpen,
-  Globe,
-  UserPlus,
   Building2,
   Dumbbell,
   UserCheck,
@@ -63,177 +33,9 @@ import {
   Calculator,
   HeartPulse,
   Briefcase,
-  Users,
   LucideIcon,
 } from "lucide-react";
 
-const detailedFeatures: FeatureItem[] = [
-  {
-    id: "agency-dashboard",
-    title: "Agency Dashboard",
-    icon: LayoutDashboard,
-    image: agencyDashboard,
-    category: "sales",
-    points: [
-      { heading: "Streamlined Interface", description: "Designed for agencies to efficiently manage their operations with an intuitive layout, facilitating effective lead generation and task management." },
-      { heading: "Lead & Task Management", description: "Facilitating effective lead generation and task management with a comprehensive overview of all agency activities in one place." }
-    ]
-  },
-  {
-    id: "shop-builder",
-    title: "Digital Shop Builder",
-    icon: Store,
-    image: shopBuilder,
-    category: "sales",
-    points: [
-      { heading: "Effortless Store Creation", description: "Shop Builder offers an intuitive platform with customizable templates to quickly set up your online store." },
-      { heading: "Boost Sales Effectively", description: "Showcase your products with professional designs and tools that drive customer engagement and increase sales." }
-    ]
-  },
-  {
-    id: "crm",
-    title: "CRM",
-    icon: Users,
-    image: crm,
-    category: "sales",
-    points: [
-      { heading: "Customer Interaction Management", description: "Centralizes interactions, ensuring all communication with customers is tracked and managed efficiently." },
-      { heading: "Sales Tracking & Optimization", description: "CRM tools facilitate detailed analysis of sales processes, helping to streamline operations and increase customer satisfaction." }
-    ]
-  },
-  {
-    id: "landing-page-builder",
-    title: "Landing Page Builder",
-    icon: FileCode,
-    image: landingPageBuilder,
-    category: "marketing",
-    points: [
-      { heading: "Customization & Ease of Use", description: "Customizable templates and intuitive drag-and-drop functionality make it simple to create effective and aesthetically pleasing landing pages quickly." },
-      { heading: "Lead Capture & Engagement", description: "Designed to effectively capture leads and increase user engagement, helping to convert visitors into loyal customers." }
-    ]
-  },
-  {
-    id: "automation-workflow",
-    title: "Automation Workflow",
-    icon: Workflow,
-    image: automationWorkflow,
-    category: "automation",
-    points: [
-      { heading: "Enhanced Business Efficiency", description: "Streamlines your operations by automating repetitive tasks, allowing your team to focus on more strategic initiatives." },
-      { heading: "Reduced Manual Effort", description: "Consolidate Email, WhatsApp, and SMS interactions through a unified platform, eliminating the hassle of juggling multiple tools." }
-    ]
-  },
-  {
-    id: "whatsapp-sender",
-    title: "WhatsApp Sender",
-    icon: MessageSquare,
-    image: whatsappSender,
-    category: "marketing",
-    points: [
-      { heading: "Efficiency in Messaging", description: "WhatsApp Sender automates the delivery of messages to your contacts, eliminating the need for manual texting." },
-      { heading: "Streamlined Operations", description: "Helps streamline business operations, allowing you to focus on strategic tasks instead of routine communications." }
-    ]
-  },
-  {
-    id: "whatsapp-cloud-api",
-    title: "WhatsApp Cloud API",
-    icon: Cloud,
-    image: whatsappCloudApi,
-    category: "automation",
-    points: [
-      { heading: "Scalable Messaging", description: "Scale your communication efforts seamlessly, catering to a large number of users without compromising speed or reliability." },
-      { heading: "Enhanced Customer Interactions", description: "Provide a direct and efficient channel for automated interactions and real-time updates, enhancing user engagement." }
-    ]
-  },
-  {
-    id: "email-automation",
-    title: "Email Automation",
-    icon: Mail,
-    image: emailAutomation,
-    category: "marketing",
-    points: [
-      { heading: "Targeted Engagement", description: "Reach specific segments of your audience with customized messages, enhancing the relevance and effectiveness of communications." },
-      { heading: "Conversion Optimization", description: "Promote products and services directly to a receptive audience, significantly increasing conversion rates and driving sales." }
-    ]
-  },
-  {
-    id: "mobile-app",
-    title: "Mobile App (iOS & Android)",
-    icon: Smartphone,
-    image: mobileApp,
-    category: "automation",
-    points: [
-      { heading: "Cross-Platform Accessibility", description: "Users can interact with your services seamlessly across iOS and Android devices, enhancing user experience and engagement." },
-      { heading: "On-the-Go Engagement", description: "Provides constant connectivity, allowing users to engage with the brand anytime and anywhere, boosting satisfaction and loyalty." }
-    ]
-  },
-  {
-    id: "ad-launcher",
-    title: "Ad Launcher",
-    icon: Megaphone,
-    image: adLauncher,
-    category: "marketing",
-    points: [
-      { heading: "Simplified Campaign Management", description: "Ad Launcher enables businesses to easily create, launch, and manage advertising campaigns across multiple platforms in one place." },
-      { heading: "Boost Traffic & Visibility", description: "Drive targeted traffic and enhance brand visibility with streamlined, effective ad campaigns." }
-    ]
-  },
-  {
-    id: "sales-finance",
-    title: "Sales and Finance",
-    icon: TrendingUp,
-    image: salesFinance,
-    category: "sales",
-    points: [
-      { heading: "Streamlined Revenue Management", description: "Integrate sales tracking with financial operations for a seamless overview of your business performance." },
-      { heading: "Enhanced Decision-Making", description: "Access comprehensive financial reporting to drive informed decisions and foster business growth." }
-    ]
-  },
-  {
-    id: "lms",
-    title: "LMS",
-    icon: GraduationCap,
-    image: lms,
-    category: "education",
-    points: [
-      { heading: "Centralized Learning Hub", description: "A centralized platform where educational content and training programs are easily accessible to learners from any location." },
-      { heading: "Tracking & Management", description: "Powerful tools for tracking learner progress and managing learning with comprehensive analytics." }
-    ]
-  },
-  {
-    id: "student-portal",
-    title: "Student Portal",
-    icon: BookOpen,
-    image: studentPortal,
-    category: "education",
-    points: [
-      { heading: "Enhanced Accessibility", description: "A centralized hub where students can access all necessary course materials, assignments, and resources in one place." },
-      { heading: "Improved Engagement", description: "Track academic progress, complete assignments, and interact with course content to significantly enhance student engagement." }
-    ]
-  },
-  {
-    id: "white-label",
-    title: "White Label Domain",
-    icon: Globe,
-    image: whiteLabel,
-    category: "team",
-    points: [
-      { heading: "Branding Consistency", description: "Maintain branding consistency across digital platforms using your own domain names while utilizing another provider's technology." },
-      { heading: "Cost-Effective Solution", description: "Leverage established platforms customized under your brand instead of developing technology from scratch." }
-    ]
-  },
-  {
-    id: "add-staff",
-    title: "Add Staff",
-    icon: UserPlus,
-    image: addStaff,
-    category: "team",
-    points: [
-      { heading: "Streamlined Onboarding", description: "Simplifies the onboarding process by enabling quick and efficient addition of new team members to your organization's systems." },
-      { heading: "Customizable Access Control", description: "Granular control over what each team member can see and do within the organization's systems with permissions feature." }
-    ]
-  }
-];
 
 const solutions: { name: string; description: string; href: string; icon: LucideIcon }[] = [
   {
@@ -418,9 +220,6 @@ const Index = () => {
           </div>
         </Container>
       </GlassSection>
-
-      {/* Detailed Features Carousel */}
-      <FeatureCarousel features={detailedFeatures} />
 
       {/* Comparison Preview */}
       <Section>
