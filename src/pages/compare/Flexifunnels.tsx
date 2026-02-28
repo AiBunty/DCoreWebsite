@@ -49,10 +49,10 @@ export default function CompareFlexifunnels() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs Flexifunnels
+              Dcore Systems vs Flexifunnels
             </h1>
             <p className="text-xl text-muted-foreground">
-              Ai Bunty is a complete business operating system. Flexifunnels is primarily a page builder.
+              Dcore Systems is a complete business operating system. Flexifunnels is primarily a page builder.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareFlexifunnels() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you want automation, CRM, payments, and WhatsApp follow-ups in one platform."
+            message="Choose Dcore Systems if you want automation, CRM, payments, and WhatsApp follow-ups in one platform."
             className="max-w-3xl mx-auto"
           />
         </div>

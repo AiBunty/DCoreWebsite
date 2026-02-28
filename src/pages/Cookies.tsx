@@ -1,69 +1,59 @@
-import { Layout } from "@/components/Layout";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles } from "lucide-react";
 
-export default function Cookies() {
+export default function Legal() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-            <p className="text-sm font-semibold text-foreground">
-              This website is owned and operated by <strong>DCORE SYSTEMS LLP</strong>, a legally registered Limited Liability Partnership 
-              (LLPIN: ACT-9625) incorporated under the Limited Liability Partnership Act, 2008 (India).
-            </p>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Cookie Policy</h1>
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What Are Cookies?</h2>
-            <p className="text-muted-foreground mb-6">
-              Cookies are small files stored on your device when you visit a website. They help websites remember information about 
-              your visit, such as your language preferences or login information.
-            </p>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">How We Use Cookies</h2>
-            <p className="text-muted-foreground mb-6">D'CORE Systems uses cookies for:</p>
-            <ul className="list-disc pl-6 text-muted-foreground mb-6">
-              <li>Authentication and security purposes</li>
-              <li>Remembering your preferences and settings</li>
-              <li>Analyzing site usage and performance</li>
-              <li>Personalizing your experience</li>
-              <li>Marketing and advertising purposes</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Types of Cookies We Use</h2>
-            <div className="space-y-4 mb-6">
-              <div>
-                <h3 className="font-semibold text-foreground">Essential Cookies</h3>
-                <p className="text-muted-foreground">Required for basic website functionality</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Analytics Cookies</h3>
-                <p className="text-muted-foreground">Help us understand how visitors use our website</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Marketing Cookies</h3>
-                <p className="text-muted-foreground">Used to deliver personalized advertisements</p>
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Cookie Policy</span>
               </div>
             </div>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Managing Cookies</h2>
-            <p className="text-muted-foreground mb-6">
-              Most web browsers allow you to control cookies through browser settings. You can choose to reject cookies or set your 
-              browser to alert you when cookies are being sent. Please note that disabling cookies may affect the functionality of our website.
-            </p>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Changes to This Cookie Policy</h2>
-            <p className="text-muted-foreground mb-6">
-              We may update this Cookie Policy from time to time. We will notify you of any changes by posting the updated policy on 
-              this page.
-            </p>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Cookie Policy
+            </h1>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm prose prose-invert max-w-none text-gray-700 leading-relaxed">
+            <div className="space-y-6 text-gray-700">
+  <p>We use cookies and similar technologies to enhance your browsing experience and gather analytics.</p>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Types of Cookies</h2>
+    <p><strong>Essential:</strong> Required for platform functionality.<br/>
+    <strong>Analytics:</strong> Help us understand user behavior.<br/>
+    <strong>Marketing:</strong> Used for personalized content.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Cookie Control</h2>
+    <p>You can control cookies through your browser settings. Disabling essential cookies may affect platform functionality.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Third-Party Cookies</h2>
+    <p>Third-party services may place cookies for analytics and advertising purposes.</p>
+  </div>
+  
+  <p className="text-sm text-gray-500 mt-8">Last updated: February 2026</p>
+</div>
+          </div>
+        </Container>
+      </Section>
     </Layout>
   );
 }

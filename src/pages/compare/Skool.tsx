@@ -49,10 +49,10 @@ export default function CompareSkool() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs Skool
+              Dcore Systems vs Skool
             </h1>
             <p className="text-xl text-muted-foreground">
-              Skool is a community platform. Ai Bunty is an end-to-end business operating system.
+              Skool is a community platform. Dcore Systems is an end-to-end business operating system.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareSkool() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you need community PLUS sales funnels, CRM, and WhatsApp automation in one platform."
+            message="Choose Dcore Systems if you need community PLUS sales funnels, CRM, and WhatsApp automation in one platform."
             className="max-w-3xl mx-auto"
           />
         </div>

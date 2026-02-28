@@ -49,10 +49,10 @@ export default function CompareTagMango() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs TagMango
+              Dcore Systems vs TagMango
             </h1>
             <p className="text-xl text-muted-foreground">
-              TagMango is a course platform. Ai Bunty is a full-stack business automation system.
+              TagMango is a course platform. Dcore Systems is a full-stack business automation system.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareTagMango() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you need more than just course hosting — you need a complete business growth system."
+            message="Choose Dcore Systems if you need more than just course hosting - you need a complete business growth system."
             className="max-w-3xl mx-auto"
           />
         </div>

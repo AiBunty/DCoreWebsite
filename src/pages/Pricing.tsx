@@ -1,146 +1,107 @@
-import { Link } from "react-router-dom";
-import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { CTASection } from "@/components/CTASection";
-import { GlassCard, GlassBadge } from "@/components/GlassCard";
-import { Check } from "lucide-react";
-import { Seo } from "@/components/seo/Seo";
-import { buildBreadcrumbJsonLd, canonicalUrl } from "@/seo/seoUtils";
-import { softwareApplicationSchema } from "@/seo/schema";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { Sparkles, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const plans = [
   {
-    name: "Starter",
-    price: "INR 4,999",
-    period: "/month",
-    description: "Perfect for solopreneurs getting started",
+    name: "Starter Automation",
+    subtitle: "For early-stage teams and small businesses",
+    price: "Custom quote",
     features: [
-      "1 User",
-      "500 Contacts",
-      "Basic Funnels",
-      "WhatsApp Business API enabled",
-      "Email Support",
+      "WhatsApp Business API setup support",
+      "Basic CRM workflow configuration",
+      "Campaign and follow-up templates",
+      "Email and chat implementation support",
     ],
-    cta: "Book Demo",
-    popular: false,
   },
   {
-    name: "Growth",
-    price: "INR 9,999",
-    period: "/month",
-    description: "For growing businesses with teams",
+    name: "Growth Automation",
+    subtitle: "For scaling SMEs and multi-team operations",
+    price: "Custom quote",
     features: [
-      "5 Users",
-      "5,000 Contacts",
-      "Advanced Funnels",
-      "WhatsApp Automation",
-      "CRM & Pipelines",
-      "Payment Integration",
-      "Priority Support",
+      "Advanced CRM and ERP process mapping",
+      "Lead generation and conversion workflows",
+      "Bulk messaging and segmented campaigns",
+      "Performance dashboards and reporting",
     ],
-    cta: "Book Demo",
-    popular: true,
   },
   {
-    name: "Scale",
-    price: "INR 24,999",
-    period: "/month",
-    description: "For established businesses scaling up",
+    name: "Enterprise Transformation",
+    subtitle: "For large organizations and custom deployments",
+    price: "Custom quote",
     features: [
-      "Unlimited Users",
-      "Unlimited Contacts",
-      "All Features",
-      "White-label Option",
-      "Dedicated Support",
-      "Done-With-You Setup",
+      "Cloud-native custom software development",
+      "Enterprise integration architecture",
+      "Security and governance controls",
+      "Dedicated solution consulting and rollout",
     ],
-    cta: "Contact Sales",
-    popular: false,
   },
 ];
 
-export default function PricingPage() {
+export default function Pricing() {
   return (
-    <>
-      <Seo
-        title="Dcore Pricing | WhatsApp API Included Plans"
-        description="Simple pricing for AI automation, funnels, CRM, and WhatsApp Business API enabled onboarding."
-        canonical={canonicalUrl("/pricing")}
-        jsonLd={[
-          softwareApplicationSchema,
-          buildBreadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Pricing", path: "/pricing" },
-          ]),
-        ]}
-      />
-      <Layout>
-        <Section hero className="bg-gradient-hero">
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Simple, Transparent Pricing
-              </h1>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Choose the plan that fits your business.
-              </p>
+    <Layout>
+      <AntigravityBg />
+
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+              <Sparkles className="w-4 h-4 text-gray-900" />
+              <span className="text-sm font-semibold tracking-tight text-gray-800">Pricing</span>
             </div>
-          </Container>
-        </Section>
 
-        <Section>
-          <Container>
-            <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-              {plans.map((plan) => (
-                <GlassCard key={plan.name} premium={plan.popular} className="flex flex-col">
-                  <div className="glass-card-content p-6 flex flex-col h-full">
-                    {plan.popular && (
-                      <div className="mb-3">
-                        <GlassBadge>Most Popular</GlassBadge>
-                      </div>
-                    )}
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6">
+              Flexible engagement models
+              <br />
+              <span className="text-gray-900">for every growth stage</span>
+            </h1>
 
-                    <div className="text-center mb-4 flex-grow">
-                      <h3 className="text-base md:text-lg font-medium text-foreground mb-2">
-                        {plan.name}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-3">
-                        {plan.description}
-                      </p>
-                      <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-3xl font-semibold text-foreground">{plan.price}</span>
-                        <span className="text-muted-foreground">{plan.period}</span>
-                      </div>
-                    </div>
+            <p className="text-xl font-medium text-gray-600 max-w-3xl mx-auto leading-snug tracking-tight">
+              Pricing is scoped based on your process complexity, integration requirements, and
+              delivery timeline.
+            </p>
+          </div>
+        </Container>
+      </Section>
 
-                    <ul className="space-y-2 mb-6">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-3 text-foreground">
-                          <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button
-                      variant={plan.popular ? "default" : "outline"}
-                      className={`w-full ${plan.popular ? "bg-primary hover:bg-primary/90" : ""}`}
-                      size="lg"
-                      asChild
-                    >
-                      <Link to="/book-demo">{plan.cta}</Link>
-                    </Button>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {plans.map((plan) => (
+              <TiltWrapper key={plan.name}>
+                <div className="bg-white/85 backdrop-blur-sm p-10 rounded-[32px] border border-gray-200/60 shadow-sm flex flex-col h-full">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                  <p className="text-sm text-gray-600 mb-6">{plan.subtitle}</p>
+                  <div className="mb-8">
+                    <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                    <p className="text-gray-500 text-sm mt-2">Based on project scope</p>
                   </div>
-                </GlassCard>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        <CTASection ctaText="Book Free Demo" />
-      </Layout>
-    </>
+                  <Link
+                    to="/contact"
+                    className="w-full h-12 bg-gray-900 text-white rounded-xl font-bold mb-8 flex items-center justify-center hover:bg-gray-800 transition-all"
+                  >
+                    Request Proposal
+                  </Link>
+                  <div className="space-y-4 flex-1">
+                    {plan.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-gray-900 flex-shrink-0 mt-0.5" />
+                        <p className="text-gray-700">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </TiltWrapper>
+            ))}
+          </div>
+        </Container>
+      </Section>
+    </Layout>
   );
 }
+

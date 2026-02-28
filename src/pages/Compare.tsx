@@ -1,99 +1,81 @@
-import { Link } from "react-router-dom";
-import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { CTASection } from "@/components/CTASection";
-import { MascotTip } from "@/components/MascotTip";
-import { GlassCard, GlassSection } from "@/components/GlassCard";
-import { ArrowRight } from "lucide-react";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles, Check, X } from "lucide-react";
 
-const comparisons = [
-  {
-    name: "Flexifunnels",
-    href: "/compare/flexifunnels",
-    description: "Page builder vs complete business operating system",
-  },
-  {
-    name: "TagMango",
-    href: "/compare/tagmango",
-    description: "Course platform vs full-stack business automation",
-  },
-  {
-    name: "Graphy",
-    href: "/compare/graphy",
-    description: "Content hosting vs CRM-driven growth platform",
-  },
-  {
-    name: "GoHighLevel",
-    href: "/compare/gohighlevel",
-    description: "Agency tool vs India-first business platform",
-  },
-  {
-    name: "Kajabi",
-    href: "/compare/kajabi",
-    description: "Course platform vs WhatsApp-integrated CRM",
-  },
-  {
-    name: "AiSensy",
-    href: "/compare/aisensy",
-    description: "WhatsApp-only vs complete business suite",
-  },
-  {
-    name: "Skool",
-    href: "/compare/skool",
-    description: "Community platform vs end-to-end business OS",
-  },
-];
+export default function Compare() {
+  const features = [
+    { name: "WhatsApp Automation", dcore: true, others: false },
+    { name: "AI Chatbots", dcore: true, others: true },
+    { name: "CRM Integration", dcore: true, others: true },
+    { name: "24/7 Support", dcore: true, others: false },
+    { name: "Custom Workflows", dcore: true, others: false },
+    { name: "Enterprise Security", dcore: true, others: true },
+  ];
 
-export default function ComparePage() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-hero">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs Other Tools
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Comparison</span>
+              </div>
+            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Why Choose Dcore Systems
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Why use multiple tools when one platform does it all?
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              See how we compare to other automation platforms.
             </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <GlassSection className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {comparisons.map((comparison) => (
-              <GlassCard key={comparison.name} interactive>
-                <Link
-                  to={comparison.href}
-                  className="glass-card-content p-6 flex flex-col h-full"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-foreground">
-                      Ai Bunty vs {comparison.name}
-                    </h3>
-                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-muted-foreground text-sm">
-                    {comparison.description}
-                  </p>
-                </Link>
-              </GlassCard>
-            ))}
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white/80 backdrop-blur-xl rounded-[32px] border border-gray-200/60 shadow-sm overflow-hidden">
+              <thead>
+                <tr className="border-b border-gray-200/50">
+                  <th className="px-8 py-4 text-left font-bold text-gray-900">Feature</th>
+                  <th className="px-8 py-4 text-center font-bold text-gray-900">Dcore Systems</th>
+                  <th className="px-8 py-4 text-center font-bold text-gray-500">Other Platforms</th>
+                </tr>
+              </thead>
+              <tbody>
+                {features.map((feature, idx) => (
+                  <tr key={idx} className="border-b border-gray-200/50 last:border-b-0 hover:bg-gray-50/50 transition-colors">
+                    <td className="px-8 py-4 font-semibold text-gray-900">{feature.name}</td>
+                    <td className="px-8 py-4 text-center">
+                      {feature.dcore ? (
+                        <Check className="w-6 h-6 text-green-600 mx-auto" />
+                      ) : (
+                        <X className="w-6 h-6 text-gray-300 mx-auto" />
+                      )}
+                    </td>
+                    <td className="px-8 py-4 text-center">
+                      {feature.others ? (
+                        <Check className="w-6 h-6 text-gray-400 mx-auto" />
+                      ) : (
+                        <X className="w-6 h-6 text-gray-300 mx-auto" />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <MascotTip 
-            message="Comparisons are based on real use cases faced by service businesses in India."
-            className="max-w-2xl mx-auto"
-          />
-        </div>
-      </GlassSection>
-
-      <CTASection 
-        title="Ready to Switch to Ai Bunty?"
-        subtitle="Join thousands of businesses who chose one platform over many."
-      />
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

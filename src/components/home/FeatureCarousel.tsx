@@ -2,22 +2,21 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   BarChart3,
   Bot,
-  Brain,
-  BookOpen,
   Calendar,
-  CreditCard,
-  FileCode,
-  Instagram,
-  Mail,
-  MessageSquare,
-  Share2,
-  Smartphone,
-  Sparkles,
-  Users,
-  Zap,
   ChevronLeft,
   ChevronRight,
+  Cloud,
+  Cpu,
+  Database,
+  FileCode2,
+  Globe,
+  Headset,
   LucideIcon,
+  MessageSquare,
+  Send,
+  Shield,
+  ShoppingCart,
+  Workflow,
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -26,10 +25,10 @@ import { FeatureCardCompact } from "@/components/home/FeatureCardCompact";
 
 const categories = [
   { value: "all", label: "All" },
-  { value: "messaging", label: "Messaging" },
-  { value: "funnels", label: "Funnels" },
-  { value: "ai", label: "AI" },
-  { value: "ops", label: "Ops" },
+  { value: "communication", label: "Communication" },
+  { value: "automation", label: "Automation" },
+  { value: "development", label: "Development" },
+  { value: "ops", label: "Operations" },
 ] as const;
 
 type FeatureCategory = (typeof categories)[number]["value"];
@@ -43,102 +42,96 @@ type FeatureItem = {
 
 const features: FeatureItem[] = [
   {
-    title: "WhatsApp Automation",
-    description: "Automate replies, follow-ups, and broadcasts at scale.",
+    title: "WhatsApp Business API",
+    description: "Official API setup, templates, bot flows, and agent handoff.",
     icon: MessageSquare,
-    category: "messaging",
+    category: "communication",
   },
   {
-    title: "Instagram Comment Automation",
-    description: "Auto-respond to comments and drive DMs instantly.",
-    icon: Instagram,
-    category: "messaging",
+    title: "Bulk Messaging Systems",
+    description: "Run campaign broadcasts and alerts with delivery tracking.",
+    icon: Send,
+    category: "communication",
   },
   {
-    title: "Email Automation",
-    description: "Send lifecycle sequences with real-time triggers.",
-    icon: Mail,
-    category: "messaging",
-  },
-  {
-    title: "AI-powered Chatbots & Staff",
-    description: "Resolve FAQs and route leads 24/7 with AI.",
+    title: "AI Support Assistant",
+    description: "Auto-handle FAQs and route intent-based conversations.",
     icon: Bot,
-    category: "messaging",
+    category: "communication",
   },
   {
-    title: "Marketing Funnels",
-    description: "Launch VSL, webinar, and lead funnels fast.",
-    icon: Zap,
-    category: "funnels",
+    title: "CRM and ERP Development",
+    description: "Custom pipelines, lead stages, and operations modules.",
+    icon: Database,
+    category: "automation",
   },
   {
-    title: "Multiple Payment Gateway",
-    description: "Accept payments and sync revenue automatically.",
-    icon: CreditCard,
-    category: "funnels",
+    title: "Workflow Automation",
+    description: "Automate lead assignment, reminders, and escalation flows.",
+    icon: Workflow,
+    category: "automation",
   },
   {
-    title: "Smart Booking",
-    description: "Automate scheduling and reminders in minutes.",
+    title: "Smart Follow-up Engine",
+    description: "Use triggers and schedules to improve response rates.",
     icon: Calendar,
-    category: "funnels",
+    category: "automation",
   },
   {
-    title: "LMS + Vault",
-    description: "Deliver courses with access control and content vaults.",
-    icon: BookOpen,
-    category: "funnels",
+    title: "Cloud Software Development",
+    description: "Build secure and scalable cloud-native business platforms.",
+    icon: Cloud,
+    category: "development",
   },
   {
-    title: "AI Brain",
-    description: "Central intelligence that optimizes decisions.",
-    icon: Brain,
-    category: "ai",
+    title: "Web and E-Commerce Development",
+    description: "Launch conversion-focused websites and online stores.",
+    icon: ShoppingCart,
+    category: "development",
   },
   {
-    title: "AI Landing Page Generator",
-    description: "Generate landing pages with AI in seconds.",
-    icon: FileCode,
-    category: "ai",
+    title: "API and Integration Layer",
+    description: "Connect payment, CRM, ERP, and marketing tools in one flow.",
+    icon: Cpu,
+    category: "development",
   },
   {
-    title: "Automatic Social Ads Generator",
-    description: "Produce and optimize ads with AI workflows.",
-    icon: Sparkles,
-    category: "ai",
+    title: "Digital Presence Engineering",
+    description: "SEO-ready websites with forms, automation hooks, and analytics.",
+    icon: Globe,
+    category: "development",
   },
   {
-    title: "Analytics Dashboard",
-    description: "Monitor revenue, funnel, and messaging metrics.",
+    title: "Business Analytics Dashboard",
+    description: "Track leads, conversions, campaigns, and response quality.",
     icon: BarChart3,
-    category: "ai",
-  },
-  {
-    title: "CRM & Pipelines",
-    description: "Track every lead and pipeline stage centrally.",
-    icon: Users,
     category: "ops",
   },
   {
-    title: "Multi-Platform Posting",
-    description: "Schedule content across social channels together.",
-    icon: Share2,
+    title: "Support Operations Console",
+    description: "Resolve tickets faster with context-rich customer timelines.",
+    icon: Headset,
     category: "ops",
   },
   {
-    title: "Mobile Application (Android/iOS)",
-    description: "Manage operations from native mobile apps.",
-    icon: Smartphone,
+    title: "Data Security and Governance",
+    description: "Role-based controls and auditable communication workflows.",
+    icon: Shield,
+    category: "ops",
+  },
+  {
+    title: "Lead Qualification Assistant",
+    description: "Prioritize high-intent leads and improve conversion speed.",
+    icon: FileCode2,
     category: "ops",
   },
 ];
 
 const categoryLabels: Record<Exclude<FeatureCategory, "all">, string> = {
-  messaging: "Messaging",
-  funnels: "Funnels",
-  ai: "AI",
-  ops: "Ops",
+  communication: "Communication",
+  automation: "Automation",
+  development: "Development",
+  ops: "Operations",
 };
 
 export function FeatureCarousel() {
@@ -204,8 +197,8 @@ export function FeatureCarousel() {
     }
 
     const step = (timestamp: number) => {
-      const rail = railRef.current;
-      if (!rail || isPausedRef.current) {
+      const currentRail = railRef.current;
+      if (!currentRail || isPausedRef.current) {
         rafRef.current = null;
         return;
       }
@@ -218,21 +211,19 @@ export function FeatureCarousel() {
       lastTimestampRef.current = timestamp;
 
       if (!baseSpeedRef.current) {
-        const halfWidth = rail.scrollWidth / 2 || 1;
+        const halfWidth = currentRail.scrollWidth / 2 || 1;
         baseSpeedRef.current = halfWidth / 25000;
       }
 
       isAutoTickRef.current = true;
-      rail.scrollLeft += baseSpeedRef.current * delta;
+      currentRail.scrollLeft += baseSpeedRef.current * delta;
 
-      // Infinite loop: once we pass the midpoint, reset back to start seamlessly.
-      const halfWidth = rail.scrollWidth / 2;
-      if (rail.scrollLeft >= halfWidth) {
-        rail.style.scrollBehavior = "auto";
-        rail.scrollLeft -= halfWidth;
+      const halfWidth = currentRail.scrollWidth / 2;
+      if (currentRail.scrollLeft >= halfWidth) {
+        currentRail.style.scrollBehavior = "auto";
+        currentRail.scrollLeft -= halfWidth;
       }
 
-      // Allow user scroll detection after this tick.
       requestAnimationFrame(() => {
         isAutoTickRef.current = false;
       });
@@ -289,7 +280,7 @@ export function FeatureCarousel() {
             Platform capabilities
           </h2>
           <p className="text-sm md:text-base text-muted-foreground">
-            Automate acquisition, conversion, and retention across channels — in one system.
+            One operational stack for communication, automation, development, and support.
           </p>
         </div>
 

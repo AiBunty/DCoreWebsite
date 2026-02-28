@@ -1,6 +1,7 @@
 import { DCoreButton } from './DCoreButton';
 import './HeroSection.css';
-import mascotImage from '@/assets/ai-bunty-mascot.png';
+const heroConsultantImage =
+  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80";
 
 export function HeroSection() {
   return (
@@ -14,10 +15,10 @@ export function HeroSection() {
       <div className="container">
         <div className="hero-content">
           <h1 className="hero-title">
-            Unleash Your <span className="gradient-text">AI Potential</span>
+            Build Better <span className="gradient-text">Automation Systems</span>
           </h1>
           <p className="hero-subtitle">
-            Powerful AI solutions designed for businesses that dare to innovate
+            Practical technology execution for communication, CRM, and digital transformation
           </p>
 
           <div className="hero-buttons">
@@ -28,8 +29,8 @@ export function HeroSection() {
 
           <div className="hero-mascot">
             <img
-              src={mascotImage}
-              alt="Dcore AI automation mascot - WhatsApp CRM workflows"
+              src={heroConsultantImage}
+              alt="Dcore Systems automation consultant"
               className="mascot-image"
             />
           </div>

@@ -1,101 +1,54 @@
-import { Layout } from "@/components/Layout";
-import { IPhoneFrame } from "@/components/IPhoneFrame";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { GlassSection } from "@/components/GlassCard";
-import { Star } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Rajesh Kumar",
-    business: "Business Coach",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_1"
-  },
-  {
-    name: "Priya Sharma",
-    business: "Real Estate Agent",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_2"
-  },
-  {
-    name: "Amit Patel",
-    business: "Fitness Studio Owner",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_3"
-  },
-  {
-    name: "Sneha Gupta",
-    business: "Financial Advisor",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_4"
-  },
-  {
-    name: "Vikram Singh",
-    business: "Event Planner",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_5"
-  },
-  {
-    name: "Ananya Reddy",
-    business: "Digital Agency Owner",
-    youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID_6"
-  }
-];
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles, Star } from "lucide-react";
 
 export default function Testimonials() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-background via-secondary to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Star className="w-4 h-4 fill-primary" />
-              Customer Success Stories
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Success Stories</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              What Our Customers Are{" "}
-              <span className="text-primary">Saying</span>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Real Results from Real Clients
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Real stories from real business owners who transformed their operations with Ai Bunty.
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              See how businesses are transforming with our AI-powered automation solutions.
             </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Testimonial Videos Grid */}
-      <GlassSection className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 justify-items-center">
-            {testimonials.map((testimonial, index) => (
-              <IPhoneFrame
-                key={index}
-                youtubeUrl={testimonial.youtubeUrl}
-                customerName={testimonial.name}
-                businessType={testimonial.business}
-              />
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-gray-50/60">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[1, 2, 3, 4].map((num) => (
+              <div key={num} className="bg-white/80 backdrop-blur-sm p-8 rounded-[24px] border border-gray-200/60 shadow-sm">
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 italic">"This platform transformed how we handle customer communication. Results speak for themselves."</p>
+                <p className="font-semibold text-gray-900">Client {num}</p>
+                <p className="text-sm text-gray-500">Business Category</p>
+              </div>
             ))}
           </div>
-        </div>
-      </GlassSection>
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-primary">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-lg text-primary-foreground/80 mb-8">
-              Join thousands of business owners who are growing with Ai Bunty.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6"
-              asChild
-            >
-              <Link to="/book-demo">Book Your Free Demo</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

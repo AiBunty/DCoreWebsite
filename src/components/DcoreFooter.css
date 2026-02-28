@@ -60,7 +60,7 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: rgba(91, 155, 213, 0.1);
+  background: rgba(17, 24, 39, 0.1);
   color: var(--blue-primary);
   transition: all var(--transition-fast);
 }

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { MacbookBrowserCard } from "@/components/MacbookBrowserCard";
 import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
@@ -32,7 +33,7 @@ export default function FreelancersPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty for Freelancers
+              Dcore Systems for Freelancers
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Get more clients and manage projects effortlessly as an independent business owner.
@@ -47,11 +48,7 @@ export default function FreelancersPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            <div className="bg-card rounded-2xl p-8 shadow-soft border border-border">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <AlertCircle className="w-7 h-7 text-destructive" />
-                Common Pain Points
-              </h2>
+            <MacbookBrowserCard title="Common Pain Points" icon={AlertCircle} iconClassName="text-destructive">
               <ul className="space-y-4">
                 {painPoints.map((point, index) => (
                   <li key={index} className="flex items-center gap-3 text-muted-foreground">
@@ -60,13 +57,14 @@ export default function FreelancersPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MacbookBrowserCard>
 
-            <div className="bg-accent rounded-2xl p-8 shadow-soft">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <CheckCircle2 className="w-7 h-7 text-primary" />
-                How Ai Bunty Helps
-              </h2>
+            <MacbookBrowserCard
+              title="How Dcore Systems Helps"
+              icon={CheckCircle2}
+              iconClassName="text-primary"
+              bodyClassName="bg-accent/40"
+            >
               <ul className="space-y-4">
                 {solutions.map((solution, index) => (
                   <li key={index} className="flex items-center gap-3 text-foreground">
@@ -75,7 +73,7 @@ export default function FreelancersPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MacbookBrowserCard>
           </div>
 
           <SolutionNav />
@@ -94,7 +92,7 @@ export default function FreelancersPage() {
 
       <CTASection 
         title="Scale Your Freelance Business"
-        subtitle="Join freelancers using Ai Bunty to get more clients and manage projects."
+        subtitle="Join freelancers using Dcore Systems to get more clients and manage projects."
         ctaText="Book Free Demo"
       />
     </Layout>

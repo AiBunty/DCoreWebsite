@@ -1,74 +1,49 @@
-import { Layout } from "@/components/Layout";
-import { BookOpen, ArrowRight } from "lucide-react";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles, Book } from "lucide-react";
 
-const guides = [
-  {
-    title: "WhatsApp Automation Guide",
-    description: "Learn how to set up and manage WhatsApp automation for customer communication.",
-    duration: "15 min read"
-  },
-  {
-    title: "CRM Setup and Configuration",
-    description: "Complete guide to setting up your CRM system and managing customer relationships.",
-    duration: "20 min read"
-  },
-  {
-    title: "Payment Integration",
-    description: "Integrate Razorpay and other payment gateways with D'CORE.",
-    duration: "10 min read"
-  },
-  {
-    title: "Analytics and Reporting",
-    description: "Master analytics features to track business performance.",
-    duration: "12 min read"
-  },
-  {
-    title: "Team Collaboration",
-    description: "Set up teams, roles, and permissions for your organization.",
-    duration: "8 min read"
-  },
-  {
-    title: "Advanced Automations",
-    description: "Create complex workflows and automations to streamline operations.",
-    duration: "25 min read"
-  }
-];
-
-export default function Guides() {
+export default function Docs() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Guides & Tutorials
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Documentation</span>
+              </div>
+            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Developer & User Guides
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Step-by-step guides to help you get the most out of D'CORE Systems.
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              Comprehensive documentation to get you up and running.
             </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-6">
-            {guides.map((guide, idx) => (
-              <div key={idx} className="p-6 bg-card rounded-lg border border-border hover:border-primary transition cursor-pointer">
-                <div className="flex items-start justify-between mb-4">
-                  <BookOpen className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground font-medium">{guide.duration}</span>
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{guide.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{guide.description}</p>
-                <div className="flex items-center text-primary text-sm font-medium">
-                  Read Guide <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-gray-50/60">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {["Getting Started", "API Reference", "Integrations", "Troubleshooting"].map((topic, idx) => (
+              <div key={idx} className="bg-white/80 backdrop-blur-sm p-8 rounded-[24px] border border-gray-200/60 shadow-sm">
+                <Book className="w-6 h-6 text-gray-900 mb-4" />
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{topic}</h3>
+                <p className="text-gray-500 text-sm">Detailed guides and documentation coming soon.</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

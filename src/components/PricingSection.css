@@ -36,7 +36,7 @@
 .pricing-card-popular {
   transform: scale(1.05);
   border: 2px solid var(--blue-primary);
-  box-shadow: 0 20px 40px rgba(91, 155, 213, 0.3);
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.3);
 }
 
 .popular-badge {

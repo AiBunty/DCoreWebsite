@@ -1,248 +1,612 @@
+import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { Seo } from "@/components/seo/Seo";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
+import { VideoReviewsSection } from "@/components/home/VideoReviewsSection";
+import { ScrollImageSequenceSection } from "@/components/home/ScrollImageSequenceSection";
 import {
   organizationSchema,
   softwareApplicationSchema,
   websiteSchema,
 } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/seoUtils";
-import { MascotFrame } from "@/components/MascotFrame";
-import { GlassSection } from "@/components/GlassCard";
-import { FeatureCarousel as PlatformFeatureCarousel } from "@/components/home/FeatureCarousel";
-import { GrowthCarousel } from "@/components/home/GrowthCarousel";
-import mascotImage from "@/assets/ai-bunty-mascot.png";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { TrustStrip } from "@/components/common/TrustStrip";
 import { IndustryTile } from "@/components/home/IndustryTile";
-
-// Feature images
-import dashboardPreview from "@/assets/dashboard-preview.png";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   ArrowRight,
-  GraduationCap,
-  Building2,
-  Dumbbell,
-  UserCheck,
-  PartyPopper,
   Building,
-  Calculator,
+  Building2,
+  ChevronDown,
+  Cloud,
+  Database,
+  Dumbbell,
+  Globe,
   HeartPulse,
-  Briefcase,
-  LucideIcon,
+  Mail,
+  MessageSquare,
+  PartyPopper,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  TrendingUp,
+  UserCheck,
+  Workflow,
 } from "lucide-react";
 
+const heroHeadingText = "Experience growth with the\nnext-generation automation stack";
+const heroDescriptionText =
+  "WhatsApp API, CRM and ERP development, cloud software, and workflow systems built to move your team faster with less operational drag.";
+const dcoreHeadingText = "DCORE";
+let hasPlayedHeroTyping = false;
+let hasPlayedDcoreTyping = false;
 
-const solutions: { name: string; description: string; href: string; icon: LucideIcon }[] = [
+const solutions = [
   {
-    name: "Coaches",
-    description: "Automate lead capture, bookings, and WhatsApp follow-ups.",
-    href: "/solutions/coaches",
-    icon: GraduationCap,
-  },
-  {
-    name: "Real Estate",
-    description: "Manage inquiries, site visits, and conversions automatically.",
-    href: "/solutions/real-estate",
-    icon: Building2,
-  },
-  {
-    name: "Fitness Clubs",
-    description: "Automate trials, renewals, reminders, and member engagement.",
-    href: "/solutions/fitness-clubs",
-    icon: Dumbbell,
-  },
-  {
-    name: "Consultants",
-    description: "Capture leads, qualify prospects, and schedule calls faster.",
-    href: "/solutions/consultants",
-    icon: UserCheck,
-  },
-  {
-    name: "Event Planners",
-    description: "Automate inquiries, quotations, follow-ups, and payments.",
-    href: "/solutions/event-planners",
-    icon: PartyPopper,
-  },
-  {
-    name: "Agencies",
-    description: "Manage clients, campaigns, and reporting in one workflow.",
+    name: "Startups and Agencies",
+    description: "Launch fast with CRM, communication, and campaign workflows.",
     href: "/solutions/agencies",
     icon: Building,
   },
   {
-    name: "Financial Advisors",
-    description: "Automate lead intake, reminders, and compliance-friendly follow-ups.",
-    href: "/solutions/financial-advisors",
-    icon: Calculator,
+    name: "Real Estate Teams",
+    description: "Automate inquiry routing, site visit reminders, and follow-ups.",
+    href: "/solutions/real-estate",
+    icon: Building2,
   },
   {
-    name: "Health Clinics",
-    description: "Enable appointment booking, reminders, and patient follow-ups.",
+    name: "Fitness Businesses",
+    description: "Drive trials, membership renewals, and retention campaigns.",
+    href: "/solutions/fitness-clubs",
+    icon: Dumbbell,
+  },
+  {
+    name: "Consulting Firms",
+    description: "Qualify leads faster and schedule high-intent consultations.",
+    href: "/solutions/consultants",
+    icon: UserCheck,
+  },
+  {
+    name: "Event Businesses",
+    description: "Run inquiry-to-booking communication flows end-to-end.",
+    href: "/solutions/events",
+    icon: PartyPopper,
+  },
+  {
+    name: "Healthcare Providers",
+    description: "Reduce no-shows through automated reminders and support.",
     href: "/solutions/health-clinics",
     icon: HeartPulse,
   },
+];
+
+const serviceCards = [
   {
-    name: "Freelancers",
-    description: "Streamline leads, proposals, payments, and follow-ups.",
-    href: "/solutions/freelancers",
-    icon: Briefcase,
+    title: "WhatsApp Business API Solutions",
+    description: "Official API onboarding, template approvals, campaign flows, and chatbot support.",
+    icon: MessageSquare,
+  },
+  {
+    title: "CRM and ERP Development",
+    description: "Build custom CRM and ERP systems tailored to your operations and reporting model.",
+    icon: Database,
+  },
+  {
+    title: "Cloud-Based Software Development",
+    description: "Develop scalable cloud applications that support growth without rework.",
+    icon: Cloud,
+  },
+  {
+    title: "Bulk Messaging Systems",
+    description: "Run structured engagement campaigns across customer lifecycle stages.",
+    icon: Mail,
+  },
+  {
+    title: "Website and E-Commerce Development",
+    description: "Create conversion-focused websites and stores with strong technical foundations.",
+    icon: Globe,
+  },
+  {
+    title: "Digital Marketing and Automation Tools",
+    description: "Automate lead capture, nurturing, and conversion across channels.",
+    icon: TrendingUp,
   },
 ];
 
-const onboardingSteps = [
-  { number: "01", title: "Create account", description: "Sign up in under 2 minutes" },
-  { number: "02", title: "Install tracking", description: "Connect your website & WhatsApp" },
-  { number: "03", title: "Track analytics", description: "Monitor leads & conversions" },
-  { number: "04", title: "Integrate", description: "Connect payments & automations" },
+const faqItems = [
+  {
+    question: "How quickly can Dcore Systems start implementation?",
+    answer:
+      "Most projects can start in 3 to 7 business days after scope confirmation. Urgent WhatsApp API and campaign setups can be prioritized faster.",
+  },
+  {
+    question: "Do you build custom CRM and ERP systems or only templates?",
+    answer:
+      "We build custom CRM and ERP systems based on your workflow, team structure, and reporting requirements. We can also extend existing systems where needed.",
+  },
+  {
+    question: "Can you integrate WhatsApp API with our current tools?",
+    answer:
+      "Yes. We integrate WhatsApp API with CRM, ERP, websites, e-commerce, and support tools to automate follow-ups, updates, and customer communication.",
+  },
+  {
+    question: "Do you support both startups and established businesses?",
+    answer:
+      "Yes. We work with startups, SMEs, and enterprises, and we tailor architecture, automation depth, and rollout plans based on business stage and scale.",
+  },
+  {
+    question: "Will you help with lead conversion and follow-up automation?",
+    answer:
+      "Yes. We design complete lead journeys including capture, qualification, nurturing, reminders, and conversion-focused communication flows.",
+  },
+  {
+    question: "How do we get support after project delivery?",
+    answer:
+      "You can reach our team via support@dcoresystems.com or WhatsApp. We provide ongoing technical support, optimization, and system maintenance options.",
+  },
 ];
 
+interface MobileGridDrawerProps {
+  buttonLabel: string;
+  children: ReactNode;
+}
+
+function MobileGridDrawer({ buttonLabel, children }: MobileGridDrawerProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      <div className="md:hidden mb-5 flex justify-center">
+        <Button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="h-10 px-5 rounded-full bg-gray-900 hover:bg-black text-white font-semibold shadow-sm"
+        >
+          {isOpen ? "Hide Cards" : buttonLabel}
+          <ChevronDown
+            className={`ml-2 h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          />
+        </Button>
+      </div>
+
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-out md:overflow-visible ${
+          isOpen ? "max-h-[4200px] opacity-100" : "max-h-0 opacity-0"
+        } md:max-h-none md:opacity-100`}
+      >
+        <div
+          className={`transition-transform duration-500 ${isOpen ? "translate-y-0" : "-translate-y-2"} md:translate-y-0`}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Index = () => {
+  const [typedHeading, setTypedHeading] = useState("");
+  const [typedDescription, setTypedDescription] = useState("");
+  const [typedDcore, setTypedDcore] = useState("");
+  const [isDcoreInView, setIsDcoreInView] = useState(false);
+  const dcoreTriggerRef = useRef<HTMLParagraphElement | null>(null);
+  const dcoreLetterFx = useMemo(
+    () =>
+      dcoreHeadingText.split("").map(() => ({
+        duration: 1.4 + Math.random() * 1.8,
+        delay: Math.random() * 1.1,
+        variant: Math.floor(Math.random() * 3),
+      })),
+    []
+  );
+
+  useEffect(() => {
+    if (hasPlayedHeroTyping) {
+      setTypedHeading(heroHeadingText);
+      setTypedDescription(heroDescriptionText);
+      return;
+    }
+
+    hasPlayedHeroTyping = true;
+    let intervalTimer: number | null = null;
+    let index = 0;
+    setTypedHeading("");
+    setTypedDescription("");
+
+    const delayTimer = window.setTimeout(() => {
+      intervalTimer = window.setInterval(() => {
+        index += 1;
+        setTypedHeading(heroHeadingText.slice(0, index));
+        if (index >= heroHeadingText.length && intervalTimer) {
+          window.clearInterval(intervalTimer);
+        }
+      }, 48);
+    }, 420);
+
+    return () => {
+      window.clearTimeout(delayTimer);
+      if (intervalTimer) {
+        window.clearInterval(intervalTimer);
+      }
+    };
+  }, []);
+
+  const isHeadingDone = typedHeading.length === heroHeadingText.length;
+
+  useEffect(() => {
+    if (!isHeadingDone) {
+      setTypedDescription("");
+      return;
+    }
+
+    let intervalTimer: number | null = null;
+    let index = 0;
+    setTypedDescription("");
+
+    const delayTimer = window.setTimeout(() => {
+      intervalTimer = window.setInterval(() => {
+        index += 1;
+        setTypedDescription(heroDescriptionText.slice(0, index));
+        if (index >= heroDescriptionText.length && intervalTimer) {
+          window.clearInterval(intervalTimer);
+        }
+      }, 20);
+    }, 320);
+
+    return () => {
+      window.clearTimeout(delayTimer);
+      if (intervalTimer) {
+        window.clearInterval(intervalTimer);
+      }
+    };
+  }, [isHeadingDone]);
+
+  
+  const isDescriptionDone = typedDescription.length === heroDescriptionText.length;
+  const isDcoreDone = typedDcore.length === dcoreHeadingText.length;
+
+  useEffect(() => {
+    const target = dcoreTriggerRef.current;
+    if (!target) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setIsDcoreInView(true);
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isDcoreInView) {
+      return;
+    }
+
+    if (hasPlayedDcoreTyping) {
+      setTypedDcore(dcoreHeadingText);
+      return;
+    }
+
+    hasPlayedDcoreTyping = true;
+    setTypedDcore("");
+    let index = 0;
+    let intervalTimer: number | null = null;
+    const delayTimer = window.setTimeout(() => {
+      intervalTimer = window.setInterval(() => {
+        index += 1;
+        setTypedDcore(dcoreHeadingText.slice(0, index));
+        if (index >= dcoreHeadingText.length && intervalTimer) {
+          window.clearInterval(intervalTimer);
+        }
+      }, 160);
+    }, 160);
+
+    return () => {
+      window.clearTimeout(delayTimer);
+      if (intervalTimer) {
+        window.clearInterval(intervalTimer);
+      }
+    };
+  }, [isDcoreInView]);
+
   return (
     <>
       <Seo
-        title="Dcore Systems | AI Omnichannel Marketing Automation"
-        description="All-in-one AI-powered platform with WhatsApp Business API enabled, funnels, CRM, workflows, ads, and payments."
+        title="Business Automation and Digital Transformation | Dcore Systems"
+        description="Dcore Systems LLP helps startups, SMEs, and enterprises automate communication, improve conversions, and build scalable digital systems."
         canonical={canonicalUrl("/")}
         jsonLd={[organizationSchema, websiteSchema, softwareApplicationSchema]}
       />
       <Layout>
-      {/* Hero Section */}
-      <Section hero className="bg-gradient-hero overflow-hidden">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="animate-slide-up">
-              <h1 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight mb-4">
-                AI Omnichannel Automation for WhatsApp, Funnels, CRM, and Growth
+        <AntigravityBg />
+        <div className="relative z-10">
+          <Section className="relative isolate pt-20 md:pt-28 pb-20 md:pb-24 min-h-screen flex items-center">
+            <Container>
+              <div className="relative z-10 mx-auto max-w-5xl text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-gray-200/70 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">
+                  Dcore Systems Platform
+                </span>
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-gray-900 leading-[1.03] tracking-tight mb-6 whitespace-pre-line">
+                {typedHeading}
+                {!isHeadingDone && (
+                  <span className="ml-1 inline-block h-[0.95em] w-[0.06em] align-middle bg-gray-900 animate-pulse" />
+                )}
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-                Launch compliant automation across ads, funnels, CRM, payments, and messaging.
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-xl">
-                Dcore Systems unifies WhatsApp Business API onboarding, AI funnels, CRM pipelines, workflows, and omnichannel messaging into one enterprise-ready platform.
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
+                {typedDescription}
+                {isHeadingDone && !isDescriptionDone && (
+                  <span className="ml-1 inline-block h-[0.9em] w-[0.06em] align-middle bg-gray-500 animate-pulse" />
+                )}
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="default" size="lg" asChild>
+
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button
+                  className="h-12 px-7 rounded-full bg-gray-900 hover:bg-gray-800 text-white font-semibold shadow-sm"
+                  asChild
+                >
                   <Link to="/book-demo">Book Free Demo</Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link to="/compare">Compare Ai Bunty</Link>
+                <Button
+                  className="h-12 px-7 rounded-full bg-white/90 hover:bg-white text-gray-900 border border-gray-200 font-semibold shadow-sm"
+                  asChild
+                >
+                  <Link to="/features">
+                    Explore Services <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
                 </Button>
               </div>
-            </div>
-            
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                <img 
-                  src={mascotImage} 
-                  alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows, AI Business Assistant" 
-                  className="w-72 md:w-96 h-auto animate-float drop-shadow-2xl"
-                />
-                {/* Speech bubble */}
-                <div className="absolute -left-4 md:-left-12 bottom-20 bg-card rounded-2xl shadow-medium p-4 max-w-xs animate-fade-in border border-border">
-                  <p className="text-sm text-foreground">
-                    "I help you capture leads, follow up automatically, and close more sales — without juggling 10 tools."
-                  </p>
-                  <div className="absolute -bottom-2 left-8 w-4 h-4 bg-card border-r border-b border-border transform rotate-45" />
+              </div>
+            </Container>
+          </Section>
+
+          <ScrollImageSequenceSection />
+
+          <VideoReviewsSection />
+
+          <Section className="py-20 border-t border-gray-200/50 bg-white/40 backdrop-blur-md">
+            <Container>
+              <div className="text-center max-w-3xl mx-auto mb-14">
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Core Services
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Structured solutions designed to remove manual work and improve customer
+                  engagement.
+                </p>
+              </div>
+              <MobileGridDrawer buttonLabel="Show Core Services">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {serviceCards.map((service) => (
+                    <TiltWrapper key={service.title}>
+                      <div className="h-full p-7 rounded-[24px] bg-white/85 border border-gray-200/60 shadow-sm">
+                        <div className="w-11 h-11 rounded-xl bg-gray-100 border border-gray-200/70 flex items-center justify-center mb-4">
+                          <service.icon className="w-5 h-5 text-gray-900" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                      </div>
+                    </TiltWrapper>
+                  ))}
+                </div>
+              </MobileGridDrawer>
+            </Container>
+          </Section>
+
+          <Section className="py-20 border-t border-gray-200/50 bg-gray-50/60">
+            <Container>
+              <div className="text-center max-w-3xl mx-auto mb-14">
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Key Focus Areas
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Every delivery is optimized for speed, reliability, and measurable business
+                  outcomes.
+                </p>
+              </div>
+              <MobileGridDrawer buttonLabel="Show Focus Areas">
+                <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                  {[
+                    {
+                      title: "Automating customer communication",
+                      description:
+                        "Designing flows that keep leads and customers engaged across the entire lifecycle.",
+                      icon: MessageSquare,
+                    },
+                    {
+                      title: "Improving lead generation and conversion",
+                      description:
+                        "Building structured funnels, CRM pipelines, and follow-up systems that close faster.",
+                      icon: Target,
+                    },
+                    {
+                      title: "Building scalable cloud applications",
+                      description:
+                        "Shipping cloud-first systems ready for high throughput and long-term maintainability.",
+                      icon: Cloud,
+                    },
+                    {
+                      title: "Enhancing customer support operations",
+                      description:
+                        "Integrating support channels with workflows to reduce delays and improve resolution rates.",
+                      icon: Workflow,
+                    },
+                  ].map((item) => (
+                    <TiltWrapper key={item.title}>
+                      <div className="p-7 rounded-[24px] bg-white/90 border border-gray-200/70 shadow-sm flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200/70 flex items-center justify-center mt-1">
+                          <item.icon className="w-5 h-5 text-gray-900" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                        </div>
+                      </div>
+                    </TiltWrapper>
+                  ))}
+                </div>
+              </MobileGridDrawer>
+            </Container>
+          </Section>
+
+          <Section className="py-20 border-t border-gray-200/50">
+            <Container>
+              <div className="text-center max-w-3xl mx-auto mb-14">
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Industry-ready execution
+                </h2>
+                <p className="text-lg text-gray-600">
+                  The same engineering foundation adapted for different business environments.
+                </p>
+              </div>
+              <MobileGridDrawer buttonLabel="Show Industry Cards">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {solutions.map((solution) => (
+                    <IndustryTile
+                      key={solution.name}
+                      title={solution.name}
+                      description={solution.description}
+                      icon={solution.icon}
+                      href={solution.href}
+                    />
+                  ))}
+                </div>
+              </MobileGridDrawer>
+            </Container>
+          </Section>
+
+          <Section className="py-12">
+            <Container>
+              <div className="rounded-[30px] border border-gray-200/70 bg-white/80 backdrop-blur-xl p-8 md:p-12 shadow-sm">
+                <div className="grid md:grid-cols-[1fr_auto] items-center gap-6">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                      Built for reliable execution
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Dcore Systems LLP delivers cost-effective and scalable technology solutions
+                      that help businesses grow efficiently in competitive markets.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">
+                    <ShieldCheck className="w-4 h-4 text-gray-900" />
+                    LLPIN: ACT-9625
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
+            </Container>
+          </Section>
 
-      {/* Solutions Preview - Built for Service Businesses (MOVED HERE) */}
-      <Section>
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Built for Service Businesses
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Industry-ready automation workflows for lead capture, follow-ups, bookings, and payments.
-            </p>
-          </div>
+          <Section className="py-20 border-t border-gray-200/50 bg-white/45 backdrop-blur-md">
+            <Container>
+              <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
+                <div className="rounded-[24px] border border-lime-300/90 bg-gradient-to-br from-lime-300 via-lime-400 to-emerald-400 p-8 shadow-[0_0_0_1px_rgba(132,204,22,0.45),0_20px_60px_-20px_rgba(34,197,94,0.75)]">
+                  <h2 className="text-3xl md:text-4xl font-bold text-zinc-950 tracking-tight mb-4">
+                    Still not convinced?
+                  </h2>
+                  <p className="text-lg text-zinc-900/90 leading-relaxed mb-6">
+                    Talk to our specialist and find out why businesses love working with Dcore
+                    Systems.
+                  </p>
+                  <Button
+                    className="h-12 px-6 rounded-full bg-zinc-950 hover:bg-black text-white font-semibold shadow-md"
+                    asChild
+                  >
+                    <Link to="/book-demo">
+                      Book A Discovery Call <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {solutions.map((solution) => (
-              <IndustryTile
-                key={solution.name}
-                title={solution.name}
-                description={solution.description}
-                icon={solution.icon}
-                href={solution.href}
-              />
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Platform Capabilities */}
-      <PlatformFeatureCarousel />
-
-      {/* Growth Proof (Demo) */}
-      <GrowthCarousel />
-
-      {/* Dashboard Preview + Steps Section */}
-      <GlassSection className="py-12 md:py-16">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Steps */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Work smarter with easy access
-              </h2>
-              <p className="text-lg text-muted-foreground mb-10">
-                Get started in minutes, not days. Here's how simple it is.
-              </p>
-              
-              <div className="space-y-8">
-                {onboardingSteps.map((step) => (
-                  <div key={step.number} className="flex gap-6 items-start">
-                    <span className="text-5xl font-bold text-primary/30">{step.number}</span>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-1">{step.title}</h3>
-                      <p className="text-muted-foreground">{step.description}</p>
-                    </div>
-                  </div>
-                ))}
+                <div className="rounded-[24px] border border-gray-200/70 bg-white/90 px-6 md:px-8 shadow-sm">
+                  <Accordion type="single" collapsible className="w-full">
+                    {faqItems.map((item, index) => (
+                      <AccordionItem key={item.question} value={`faq-${index}`}>
+                        <AccordionTrigger className="text-left text-base md:text-lg font-semibold text-gray-900 hover:no-underline">
+                          {item.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-base text-gray-600 leading-relaxed">
+                          {item.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
               </div>
-            </div>
+            </Container>
+          </Section>
 
-            {/* Dashboard Preview */}
-            <div>
-              <MascotFrame imageSrc={dashboardPreview} />
-            </div>
-          </div>
-        </Container>
-      </GlassSection>
+          <CTASection
+            title="Need automation tailored to your business model?"
+            description="Share your current process with our team and we will map the right WhatsApp, CRM, ERP, and cloud solution architecture."
+            ctaText="Talk to Dcore Systems"
+            ctaHref="/contact"
+          />
 
-      {/* Comparison Preview */}
-      <Section>
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Use Multiple Tools When One Does It All?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              See how Ai Bunty compares to other platforms
-            </p>
-            <Button variant="cta" size="lg" asChild>
-              <Link to="/compare">View All Comparisons <ArrowRight className="w-4 h-4 ml-2" /></Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
+          <Section className="py-8 md:py-12 border-t border-gray-200/50 bg-zinc-100/85">
+            <Container>
+              <p
+                ref={dcoreTriggerRef}
+                className="text-center text-[22vw] sm:text-[16vw] md:text-[11vw] leading-[0.86] font-semibold tracking-tight text-[#070b17]"
+              >
+                {typedDcore.split("").map((letter, index) => (
+                  <span
+                    key={`${letter}-${index}`}
+                    className={
+                      isDcoreDone
+                        ? `inline-block dcore-letter-random dcore-letter-variant-${dcoreLetterFx[index]?.variant ?? 0}`
+                        : "inline-block"
+                    }
+                    style={
+                      isDcoreDone
+                        ? ({
+                            animationDuration: `${dcoreLetterFx[index]?.duration ?? 2}s`,
+                            animationDelay: `${dcoreLetterFx[index]?.delay ?? 0}s`,
+                            "--dcore-letter-duration": `${dcoreLetterFx[index]?.duration ?? 2}s`,
+                            "--dcore-letter-delay": `${dcoreLetterFx[index]?.delay ?? 0}s`,
+                          } as CSSProperties)
+                        : undefined
+                    }
+                  >
+                    {letter}
+                  </span>
+                ))}
+                {!isDcoreDone && isDcoreInView && (
+                  <span className="ml-2 inline-block align-middle h-[0.9em] w-[0.05em] bg-[#070b17] animate-pulse" />
+                )}
+              </p>
+            </Container>
+          </Section>
 
-      <CTASection />
-      <TrustStrip />
-    </Layout>
+        </div>
+      </Layout>
     </>
   );
 };
 
 export default Index;
+
+

@@ -48,7 +48,7 @@
 .showcase-mascot {
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 10px 30px rgba(91, 155, 213, 0.2));
+  filter: drop-shadow(0 10px 30px rgba(17, 24, 39, 0.2));
 }
 
 @media (max-width: 768px) {

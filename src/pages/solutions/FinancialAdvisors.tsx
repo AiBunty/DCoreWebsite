@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { MacbookBrowserCard } from "@/components/MacbookBrowserCard";
 import { SolutionNav } from "@/components/SolutionNav";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
@@ -32,7 +33,7 @@ export default function FinancialAdvisorsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty for Financial Advisors
+              Dcore Systems for Financial Advisors
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Streamline your practice with automation for CAs, Tax Consultants & Financial Advisors.
@@ -47,11 +48,7 @@ export default function FinancialAdvisorsPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            <div className="bg-card rounded-2xl p-8 shadow-soft border border-border">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <AlertCircle className="w-7 h-7 text-destructive" />
-                Common Pain Points
-              </h2>
+            <MacbookBrowserCard title="Common Pain Points" icon={AlertCircle} iconClassName="text-destructive">
               <ul className="space-y-4">
                 {painPoints.map((point, index) => (
                   <li key={index} className="flex items-center gap-3 text-muted-foreground">
@@ -60,13 +57,14 @@ export default function FinancialAdvisorsPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MacbookBrowserCard>
 
-            <div className="bg-accent rounded-2xl p-8 shadow-soft">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <CheckCircle2 className="w-7 h-7 text-primary" />
-                How Ai Bunty Helps
-              </h2>
+            <MacbookBrowserCard
+              title="How Dcore Systems Helps"
+              icon={CheckCircle2}
+              iconClassName="text-primary"
+              bodyClassName="bg-accent/40"
+            >
               <ul className="space-y-4">
                 {solutions.map((solution, index) => (
                   <li key={index} className="flex items-center gap-3 text-foreground">
@@ -75,7 +73,7 @@ export default function FinancialAdvisorsPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MacbookBrowserCard>
           </div>
 
           <SolutionNav />
@@ -94,7 +92,7 @@ export default function FinancialAdvisorsPage() {
 
       <CTASection 
         title="Automate Your Financial Practice"
-        subtitle="Join advisors using Ai Bunty to manage clients efficiently."
+        subtitle="Join advisors using Dcore Systems to manage clients efficiently."
         ctaText="Book Free Demo"
       />
     </Layout>

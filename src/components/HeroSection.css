@@ -99,7 +99,7 @@
   max-width: 280px;
   height: auto;
   animation: mascotFloat 6s ease-in-out infinite;
-  filter: drop-shadow(0 10px 30px rgba(91, 155, 213, 0.3));
+  filter: drop-shadow(0 10px 30px rgba(17, 24, 39, 0.3));
 }
 
 .hero-scroll {

@@ -38,7 +38,7 @@ export function LegalFooter() {
             <div>
               <p className="text-muted-foreground font-semibold mb-2">Registered Office:</p>
               <p className="text-muted-foreground">
-                BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P, Aundh Haveli, Pune – 411007, Maharashtra, India
+                BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P, Aundh Haveli, Pune - 411007, Maharashtra, India
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ export function LegalFooter() {
           {/* Copyright */}
           <div className="border-t border-border pt-4 text-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} DCORE SYSTEMS LLP. All rights reserved.
+              (c) {currentYear} DCORE SYSTEMS LLP. All rights reserved.
             </p>
           </div>
         </div>

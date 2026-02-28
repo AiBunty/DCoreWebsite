@@ -1,16 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
 import { DCoreButton } from './DCoreButton';
-import { useTheme } from '@/contexts/ThemeContext';
 import './DCoreNavbar.css';
-import aiBuntyLogoLight from '@/assets/ai-bunty-logo-new.png';
-import aiBuntyLogoDark from '@/assets/ai-bunty-logo-dark.png';
 
 export function DCoreNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +21,11 @@ export function DCoreNavbar() {
       <div className="container navbar-container">
         <div className="navbar-brand">
           <img
-            src={theme === 'dark' ? aiBuntyLogoDark : aiBuntyLogoLight}
-            alt="Dcore Systems AI automation logo - WhatsApp CRM workflows"
+            src="/assets/logo.png"
+            alt="Dcore Systems logo"
             className="navbar-logo"
           />
-          <span className="navbar-text">Ai Bunty</span>
+          <span className="navbar-text">Dcore Systems</span>
         </div>
 
         <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
@@ -41,15 +36,14 @@ export function DCoreNavbar() {
         </div>
 
         <div className="navbar-actions">
-          <ThemeToggle />
           <a
             href="https://login.aibunty.com"
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-login-link"
-            aria-label="Customer Login"
+            aria-label="Members Login"
           >
-            Customer Login
+            Members Login
           </a>
           <DCoreButton variant="primary" size="default">
             Get Started
@@ -67,3 +61,4 @@ export function DCoreNavbar() {
     </nav>
   );
 }
+

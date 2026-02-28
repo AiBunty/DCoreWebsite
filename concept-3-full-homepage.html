@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dcore Systems | 3D Concept Full Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background-color: #09090b; 
+            color: #fafafa; 
+            font-family: -apple-system, system-ui, sans-serif;
+            overflow-x: hidden;
+            perspective: 2000px;
+        }
+        /* Grid background for depth */
+        .scene-bg {
+            position: fixed;
+            inset: -50%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            transform: rotateX(60deg) translateY(-100px) translateZ(-500px);
+            transform-origin: center top;
+            z-index: -1;
+            mask-image: linear-gradient(to top, transparent, black);
+            -webkit-mask-image: radial-gradient(circle at center 20%, black, transparent 80%);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: rotateX(60deg) translateY(0px) translateZ(-500px); }
+            100% { transform: rotateX(60deg) translateY(100px) translateZ(-500px); }
+        }
+
+        /* 3D Container setup */
+        .hero-scene {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 2rem;
+            transform-style: preserve-3d;
+        }
+
+        .interactive-cube {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            transform: rotateX(10deg) rotateY(-10deg);
+        }
+
+        .layer {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .layer-base { 
+            background: rgba(20,20,25,0.8);
+            backdrop-filter: blur(20px);
+            transform: translateZ(0px);
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,1), inset 0 0 0 1px rgba(255,255,255,0.05);
+        }
+        .layer-mid {
+            transform: translateZ(40px) scale(0.95);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+            border: 1px solid rgba(255,255,255,0.1);
+            pointer-events: none;
+        }
+        .layer-top {
+            transform: translateZ(80px) scale(0.9);
+            padding: 2.5rem;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #a1a1aa 50%, #3f3f46 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+        
+        .cta-3d {
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 0 #3f3f46, 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .cta-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #3f3f46, 0 5px 10px rgba(0,0,0,0.5);
+        }
+
+        /* 3D Cards */
+        .card-3d-wrap {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        .card-3d:hover {
+            transform: rotateX(5deg) rotateY(-5deg) translateZ(10px);
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .card-content-3d {
+            transform: translateZ(30px);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="scene-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full p-6 px-10 flex justify-between items-center z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded bg-zinc-100 flex items-center justify-center text-black font-black">D</div>
+            <div class="text-xl font-bold tracking-widest text-white drop-shadow-md">DCORE</div>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+            <a href="#" class="hover:text-white transition">Features</a>
+            <a href="#" class="hover:text-white transition">Solutions</a>
+            <a href="#" class="hover:text-white transition">Compare</a>
+            <a href="#" class="hover:text-white transition">Pricing</a>
+        </div>
+        <div class="flex gap-4 items-center">
+            <a href="#" class="text-sm text-zinc-400 hover:text-white transition hidden md:block">Login</a>
+            <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,255,255,0.2)]">Book Free Demo</button>
+        </div>
+    </nav>
+
+    <div class="relative z-10 pt-32 pb-20">
+        
+        <!-- Hero Section -->
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+            <div class="text-left relative z-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-300 text-xs font-semibold mb-6 tracking-widest backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    AI CRM & AUTOMATION
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 gradient-text glow-text leading-[1.1]">
+                    AI Omnichannel <br/>Automation.
+                </h1>
+                <h2 class="text-xl md:text-2xl font-semibold text-zinc-200 mb-4">
+                    For WhatsApp, Funnels, CRM, and Growth.
+                </h2>
+                <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-xl">
+                    Dcore Systems unifies WhatsApp Business API onboarding, AI funnels, CRM pipelines, workflows, and omnichannel messaging into one enterprise-ready platform.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="cta-3d bg-white text-black font-bold text-lg px-8 py-3.5 rounded-xl">
+                        Book Free Demo
+                    </button>
+                    <button class="px-8 py-3.5 rounded-xl font-bold text-white border border-white/10 bg-white/5 hover:bg-white/10 transition backdrop-blur-sm">
+                        Compare Ai Bunty
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mascot / Dashboard 3D Scene Area -->
+            <div class="hero-scene w-full">
+                <div class="interactive-cube relative" id="tilt-box">
+                    <div class="layer layer-base p-6 flex flex-col justify-between">
+                        <div class="h-8 border-b border-white/10 mb-6 flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            <div class="ml-auto text-xs text-zinc-600 font-mono">DCORE_AI_CRM</div>
+                        </div>
+                        <div class="flex-1 rounded-xl bg-black/40 border border-white/5 p-4 flex gap-4">
+                            <div class="w-1/4 rounded-lg bg-white/5 border border-white/5 flex flex-col gap-2 p-2">
+                                <div class="h-4 w-1/2 bg-white/10 rounded"></div>
+                                <div class="h-4 w-3/4 bg-white/10 rounded"></div>
+                                <div class="h-4 w-full bg-white/10 rounded"></div>
+                            </div>
+                            <div class="w-3/4 flex flex-col gap-4">
+                                <div class="h-16 rounded-lg border border-green-500/20 bg-green-500/10 flex items-center px-4">
+                                    <span class="text-green-400 font-mono text-sm">> WhatsApp Automation Active</span>
+                                </div>
+                                <div class="flex-1 rounded-lg bg-white/5 border border-white/5 flex gap-2 p-2">
+                                    <div class="flex-1 bg-white/5 rounded"></div>
+                                    <div class="flex-1 bg-white/5 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Neural Grid Layer -->
+                    <div class="layer layer-mid rounded-2xl flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)]"></div>
+                        <div class="grid grid-cols-4 grid-rows-4 gap-2 w-full h-full p-8 opacity-30 pointer-events-none">
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                            <div class="rounded-full bg-white w-1 h-1 m-auto"></div>
+                        </div>
+                    </div>
+                    <!-- Top Float Layer - Mascot Chat -->
+                    <div class="layer layer-top absolute -right-10 bottom-10">
+                        <div class="bg-zinc-900 border border-zinc-700 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)] max-w-xs backdrop-blur-xl float-animation">
+                            <p class="text-sm text-zinc-200">
+                                "I help you capture leads, follow up automatically, and close more sales — without juggling 10 tools."
+                            </p>
+                            <div class="text-xs text-green-400 mt-2 font-mono">- AI Bunty Mascot</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solutions Preview - Built for Service Businesses -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Built for Service Businesses</h2>
+            <p class="text-zinc-400 text-lg">Industry-ready automation workflows for lead capture, follow-ups, bookings, and payments.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-3d-wrap">
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#127891;</div>
+                    <h3 class="text-xl font-bold mb-2">Coaches</h3>
+                    <p class="text-zinc-400 text-sm">Automate lead capture, bookings, and WhatsApp follow-ups.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#127970;</div>
+                    <h3 class="text-xl font-bold mb-2">Real Estate</h3>
+                    <p class="text-zinc-400 text-sm">Manage inquiries, site visits, and conversions automatically.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#127947;</div>
+                    <h3 class="text-xl font-bold mb-2">Fitness Clubs</h3>
+                    <p class="text-zinc-400 text-sm">Automate trials, renewals, reminders, and member engagement.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#128100;</div>
+                    <h3 class="text-xl font-bold mb-2">Consultants</h3>
+                    <p class="text-zinc-400 text-sm">Capture leads, qualify prospects, and schedule calls faster.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#127881;</div>
+                    <h3 class="text-xl font-bold mb-2">Event Planners</h3>
+                    <p class="text-zinc-400 text-sm">Automate inquiries, quotations, follow-ups, and payments.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#127970;</div>
+                    <h3 class="text-xl font-bold mb-2">Agencies</h3>
+                    <p class="text-zinc-400 text-sm">Manage clients, campaigns, and reporting in one workflow.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#128188;</div>
+                    <h3 class="text-xl font-bold mb-2">Financial Advisors</h3>
+                    <p class="text-zinc-400 text-sm">Automate lead intake, reminders, and compliance-friendly follow-ups.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#128151;</div>
+                    <h3 class="text-xl font-bold mb-2">Health Clinics</h3>
+                    <p class="text-zinc-400 text-sm">Enable appointment booking, reminders, and patient follow-ups.</p>
+                </div>
+            </div>
+            <div class="card-3d p-8 rounded-2xl">
+                <div class="card-content-3d">
+                    <div class="text-3xl mb-4">&#128187;</div>
+                    <h3 class="text-xl font-bold mb-2">Freelancers</h3>
+                    <p class="text-zinc-400 text-sm">Streamline leads, proposals, payments, and follow-ups.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding Steps & Dashboard Section -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+        <div class="card-3d rounded-3xl p-10 lg:p-16 border border-white/10 bg-white/5 overflow-hidden relative">
+            <!-- Subtle glow background -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-zinc-600/20 blur-3xl z-0"></div>
+            
+            <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Work smarter with easy access</h2>
+                    <p class="text-xl text-zinc-400 mb-12">Get started in minutes, not days. Here&#39;s how simple it is.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6 items-start">
+                            <span class="text-5xl font-black text-white/20">01</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Create account</h3>
+                                <p class="text-zinc-400">Sign up in under 2 minutes</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <span class="text-5xl font-black text-white/20">02</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Install tracking</h3>
+                                <p class="text-zinc-400">Connect your website & WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <span class="text-5xl font-black text-white/20">03</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Track analytics</h3>
+                                <p class="text-zinc-400">Monitor leads & conversions</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <span class="text-5xl font-black text-white/20">04</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Integrate</h3>
+                                <p class="text-zinc-400">Connect payments & automations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-scene w-full">
+                    <div class="interactive-cube-secondary w-full h-[450px] relative" style="transform-style: preserve-3d; transform: rotateX(5deg) rotateY(-15deg);">
+                        <!-- Dashboard UI Base -->
+                        <div class="absolute inset-0 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl p-4 flex flex-col" style="transform: translateZ(0);">
+                            <div class="h-6 border-b border-zinc-800 mb-4 flex gap-2">
+                                <div class="w-2 h-2 rounded-full bg-zinc-700"></div><div class="w-2 h-2 rounded-full bg-zinc-700"></div><div class="w-2 h-2 rounded-full bg-zinc-700"></div>
+                            </div>
+                            <div class="flex flex-1 gap-4">
+                                <div class="w-1/4 bg-zinc-800/50 rounded-lg"></div>
+                                <div class="w-3/4 flex flex-col gap-4">
+                                    <div class="h-24 bg-zinc-800/50 rounded-lg flex gap-4 p-4">
+                                        <div class="flex-1 bg-zinc-800 rounded"></div>
+                                        <div class="flex-1 bg-zinc-800 rounded"></div>
+                                        <div class="flex-1 bg-zinc-800 rounded"></div>
+                                    </div>
+                                    <div class="flex-1 bg-zinc-800/50 rounded-lg border border-zinc-800 p-4">
+                                        <div class="w-32 h-4 bg-zinc-700 mb-4 rounded"></div>
+                                        <div class="w-full h-24 bg-zinc-800 rounded mb-2"></div>
+                                        <div class="w-full h-12 bg-zinc-800 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Float Dashboard Element -->
+                        <div class="absolute -right-8 top-1/4 bg-zinc-800 border border-zinc-600 rounded-xl p-4 shadow-2xl" style="transform: translateZ(50px);">
+                            <div class="text-xs text-zinc-400 mb-1">New Pipeline Lead</div>
+                            <div class="font-bold text-white flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-xs">+</div>
+                                Captured from WhatsApp
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Call to Action -->
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Use Multiple Tools When One Does It All?</h2>
+        <p class="text-xl text-zinc-400 mb-10">See how Ai Bunty compares to other platforms in the market.</p>
+        <button class="cta-3d bg-white text-black font-bold text-lg px-8 py-3.5 rounded-xl inline-flex items-center gap-2">
+            View All Comparisons 
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+    </div>
+
+    <!-- Bottom CTA / Footer -->
+    <div class="relative z-10 bg-zinc-900 border-t border-zinc-800 py-20 mt-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to scale your business operations?</h2>
+            <p class="text-zinc-400 mb-10">Join thousands of service businesses automating their CRM and WhatsApp marketing.</p>
+            <button class="cta-3d bg-white text-black font-bold px-8 py-3.5 rounded-xl">Get Started Today</button>
+        </div>
+    </div>
+
+    <script>
+        const interactiveCube = document.getElementById("tilt-box");
+        
+        document.addEventListener("mousemove", (e) => {
+            if(!interactiveCube) return;
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+            
+            xAxis = Math.max(-20, Math.min(20, xAxis));
+            yAxis = Math.max(-20, Math.min(20, yAxis));
+
+            interactiveCube.style.transform = `rotateY(${xAxis - 10}deg) rotateX(${yAxis + 10}deg)`;
+        });
+
+        document.addEventListener("mouseleave", () => {
+            if(!interactiveCube) return;
+            interactiveCube.style.transform = "rotateY(-10deg) rotateX(10deg)";
+        });
+
+        // Small parallax for cards
+        document.querySelectorAll(".card-3d").forEach(card => {
+            card.addEventListener("mousemove", function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener("mouseleave", function() {
+                card.style.transform = `rotateX(0) rotateY(0) translateZ(0)`;
+            });
+        });
+    </script>
+</body>
+</html>

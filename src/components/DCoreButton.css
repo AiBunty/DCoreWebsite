@@ -25,11 +25,11 @@
 .dcore-btn-primary {
   background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-light) 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(91, 155, 213, 0.3);
+  box-shadow: 0 4px 15px rgba(17, 24, 39, 0.3);
 }
 
 .dcore-btn-primary:hover {
-  box-shadow: 0 6px 20px rgba(91, 155, 213, 0.5);
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.5);
 }
 
 .dcore-btn-secondary {
@@ -41,7 +41,7 @@
 
 .dcore-btn-secondary:hover {
   border-color: var(--blue-primary);
-  background: rgba(91, 155, 213, 0.1);
+  background: rgba(17, 24, 39, 0.1);
 }
 
 .dcore-btn-large {

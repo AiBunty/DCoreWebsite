@@ -53,7 +53,7 @@ export default function ProcessMascot() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-foreground mb-2">Mascot Background Remover</h1>
         <p className="text-muted-foreground mb-8">
-          Use AI to remove the background from the Ai Bunty mascot image (runs in your browser).
+          Use AI to remove the background from the Dcore Systems mascot image (runs in your browser).
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -67,7 +67,7 @@ export default function ProcessMascot() {
               <div className="bg-accent rounded-lg p-4 flex items-center justify-center">
                 <img
                   src={mascotImage}
-                  alt="Original Ai Bunty mascot"
+                  alt="Original Dcore Systems mascot"
                   className="max-w-full h-auto max-h-64 object-contain"
                 />
               </div>
@@ -110,7 +110,7 @@ export default function ProcessMascot() {
                 {processedImage ? (
                   <img
                     src={processedImage}
-                    alt="Processed Ai Bunty mascot"
+                    alt="Processed Dcore Systems mascot"
                     className="max-w-full h-auto max-h-64 object-contain"
                   />
                 ) : (

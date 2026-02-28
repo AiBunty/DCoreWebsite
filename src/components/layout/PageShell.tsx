@@ -12,7 +12,9 @@ export function PageShell({ children }: PageShellProps) {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <BackToTop />
     </div>
   );

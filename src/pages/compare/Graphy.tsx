@@ -49,10 +49,10 @@ export default function CompareGraphy() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs Graphy
+              Dcore Systems vs Graphy
             </h1>
             <p className="text-xl text-muted-foreground">
-              Graphy hosts your content. Ai Bunty grows your business with CRM-driven automation.
+              Graphy hosts your content. Dcore Systems grows your business with CRM-driven automation.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareGraphy() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you want to sell courses AND manage your entire business from one dashboard."
+            message="Choose Dcore Systems if you want to sell courses AND manage your entire business from one dashboard."
             className="max-w-3xl mx-auto"
           />
         </div>

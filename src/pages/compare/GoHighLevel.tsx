@@ -49,10 +49,10 @@ export default function CompareGoHighLevel() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs GoHighLevel
+              Dcore Systems vs GoHighLevel
             </h1>
             <p className="text-xl text-muted-foreground">
-              GoHighLevel is built for US agencies. Ai Bunty is built for Indian service businesses.
+              GoHighLevel is built for US agencies. Dcore Systems is built for Indian service businesses.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareGoHighLevel() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you want a powerful platform designed specifically for Indian market needs."
+            message="Choose Dcore Systems if you want a powerful platform designed specifically for Indian market needs."
             className="max-w-3xl mx-auto"
           />
         </div>

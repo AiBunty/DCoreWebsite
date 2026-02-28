@@ -21,7 +21,7 @@ export function ComparisonTable({ competitorName, rows }: ComparisonTableProps) 
           <tr className="border-b border-border">
             <th className="text-left py-4 px-4 font-semibold text-foreground">Use Case</th>
             <th className="text-left py-4 px-4 font-semibold text-primary">
-              Ai Bunty
+              Dcore Systems
             </th>
             <th className="text-left py-4 px-4 font-semibold text-muted-foreground">{competitorName}</th>
           </tr>

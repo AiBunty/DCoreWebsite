@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
+import { MacbookBrowserCard } from "@/components/MacbookBrowserCard";
 import { SolutionNav } from "@/components/SolutionNav";
 import { CheckCircle2 } from "lucide-react";
 
@@ -22,13 +23,13 @@ export default function AgenciesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty for Agencies & Digital Businesses
+              Dcore Systems for Agencies & Digital Businesses
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Launch your own SaaS. White-label Ai Bunty and resell to your clients.
+              Launch your own SaaS. White-label Dcore Systems and resell to your clients.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <Link to="/book-demo">Launch Your Own SaaS with Ai Bunty</Link>
+              <Link to="/book-demo">Launch Your Own SaaS with Dcore Systems</Link>
             </Button>
           </div>
         </div>
@@ -37,11 +38,12 @@ export default function AgenciesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-accent rounded-2xl p-8 shadow-soft">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <CheckCircle2 className="w-7 h-7 text-primary" />
-                What Agencies Get
-              </h2>
+            <MacbookBrowserCard
+              title="What Agencies Get"
+              icon={CheckCircle2}
+              iconClassName="text-primary"
+              bodyClassName="bg-accent/40"
+            >
               <ul className="space-y-4">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-3 text-foreground">
@@ -50,7 +52,7 @@ export default function AgenciesPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MacbookBrowserCard>
 
             <SolutionNav />
 
@@ -69,8 +71,8 @@ export default function AgenciesPage() {
 
       <CTASection 
         title="Scale Your Agency"
-        subtitle="White-label Ai Bunty and offer it to your clients as your own product."
-        ctaText="Launch Your Own SaaS with Ai Bunty"
+        subtitle="White-label Dcore Systems and offer it to your clients as your own product."
+        ctaText="Launch Your Own SaaS with Dcore Systems"
       />
     </Layout>
   );

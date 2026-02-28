@@ -1,108 +1,176 @@
-import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
+﻿import { Layout } from "@/components/Layout";
 import { Link } from "react-router-dom";
-import { Users, Target, Zap } from "lucide-react";
+import {
+  Cloud,
+  Database,
+  Mail,
+  MessageSquare,
+  Shield,
+  ShoppingCart,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Workflow,
+} from "lucide-react";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+
+const services = [
+  {
+    title: "WhatsApp Business API Solutions",
+    icon: MessageSquare,
+    desc: "Official API integration, automation workflows, and customer conversation management.",
+  },
+  {
+    title: "CRM and ERP Development",
+    icon: Database,
+    desc: "Custom software for leads, sales, operations, and internal team coordination.",
+  },
+  {
+    title: "Cloud-Based Software Development",
+    icon: Cloud,
+    desc: "Scalable cloud applications built for reliability, speed, and long-term growth.",
+  },
+  {
+    title: "Bulk Messaging Systems",
+    icon: Mail,
+    desc: "Campaign communication tools with audience segmentation and delivery control.",
+  },
+  {
+    title: "Website and E-Commerce Development",
+    icon: ShoppingCart,
+    desc: "Conversion-focused websites and e-commerce platforms with automation-ready architecture.",
+  },
+  {
+    title: "Digital Marketing and Automation Tools",
+    icon: TrendingUp,
+    desc: "Lead capture, nurturing, and conversion workflows with measurable performance tracking.",
+  },
+];
+
+const focusAreas = [
+  {
+    title: "Automating customer communication",
+    icon: MessageSquare,
+    desc: "Reduce manual follow-ups by implementing structured and responsive communication journeys.",
+  },
+  {
+    title: "Improving lead generation and conversion",
+    icon: Target,
+    desc: "Turn inbound demand into qualified opportunities through workflow-driven execution.",
+  },
+  {
+    title: "Building scalable cloud applications",
+    icon: Cloud,
+    desc: "Design systems that remain stable as business volume and process complexity increase.",
+  },
+  {
+    title: "Enhancing customer support systems",
+    icon: Workflow,
+    desc: "Connect customer data, communication, and team actions to speed up issue resolution.",
+  },
+];
 
 export default function About() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              About D'CORE Systems
+      <AntigravityBg />
+
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+              <Sparkles className="w-4 h-4 text-gray-900" />
+              <span className="text-sm font-semibold tracking-tight text-gray-800">
+                About Dcore Systems LLP
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-7">
+              Technology Solutions
+              <br />
+              <span className="text-gray-900">for sustainable business growth</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              We're building the future of AI-powered business automation for India.
+
+            <p className="text-xl md:text-2xl font-medium text-gray-600 max-w-3xl mx-auto leading-snug tracking-tight">
+              Dcore Systems LLP is an India-based technology solutions company specializing in
+              business automation, communication platforms, and digital transformation services.
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mt-6">
+              We help startups, SMEs, and enterprises streamline operations, improve customer
+              engagement, and scale with reliable, cost-effective digital systems.
             </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-8">Our Mission</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              To empower Indian businesses with cutting-edge AI technology that automates operations, 
-              reduces costs, and accelerates growth. We believe that powerful business tools should be 
-              affordable, accessible, and designed specifically for the Indian market.
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-white/40 backdrop-blur-md">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Core Services</h2>
+            <p className="text-lg text-gray-600">
+              End-to-end implementation across communication, automation, and cloud systems.
             </p>
-
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="p-6 bg-card rounded-lg border border-border">
-                <Users className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-semibold text-foreground mb-2">Team</h3>
-                <p className="text-muted-foreground">
-                  Experienced entrepreneurs and technologists dedicated to solving real business problems.
-                </p>
-              </div>
-              <div className="p-6 bg-card rounded-lg border border-border">
-                <Target className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-semibold text-foreground mb-2">Focus</h3>
-                <p className="text-muted-foreground">
-                  India-first approach with localized payment methods, language support, and pricing.
-                </p>
-              </div>
-              <div className="p-6 bg-card rounded-lg border border-border">
-                <Zap className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-semibold text-foreground mb-2">Innovation</h3>
-                <p className="text-muted-foreground">
-                  Continuous development of AI-powered features that drive real business results.
-                </p>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-8">Legal Business Information</h2>
-            <div className="space-y-6">
-              <p className="text-lg text-muted-foreground">
-                <strong>DCORE SYSTEMS LLP</strong> is a legally registered Limited Liability Partnership incorporated 
-                under the Limited Liability Partnership Act, 2008 (India).
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-card rounded-lg p-6 border border-border">
-                <div>
-                  <p className="text-muted-foreground mb-2">
-                    <span className="font-semibold">Date of Incorporation:</span> 05 January 2026 (05-01-2026)
-                  </p>
-                  <p className="text-muted-foreground mb-2">
-                    <span className="font-semibold">LLPIN:</span> ACT-9625
-                  </p>
-                  <p className="text-muted-foreground">
-                    <span className="font-semibold">GSTIN:</span> 27AAZFD2232J1Z3
-                  </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service) => (
+              <TiltWrapper key={service.title}>
+                <div className="bg-white/85 p-8 rounded-[24px] border border-gray-200/60 shadow-sm h-full transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6 border border-gray-200/50">
+                    <service.icon className="w-5 h-5 text-gray-900" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600">{service.desc}</p>
                 </div>
-                <div>
-                  <p className="text-muted-foreground font-semibold mb-2">Registered Office:</p>
-                  <p className="text-muted-foreground">
-                    BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P, Aundh Haveli, Pune – 411007, Maharashtra, India
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-lg text-muted-foreground">
-                DCORE SYSTEMS LLP provides SaaS solutions including CRM, WhatsApp Business API automation, 
-                customer engagement tools, and AI-driven business workflows for B2B and B2C customers.
-              </p>
-            </div>
+              </TiltWrapper>
+            ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-16 bg-card">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-8">Ready to Get Started?</h2>
-          <Button className="bg-primary text-white hover:bg-blue-700" size="lg" asChild>
-            <Link to="/book-demo">Book a Demo</Link>
-          </Button>
-        </div>
-      </section>
+      <Section className="py-24 relative z-10 bg-gray-50/60 border-t border-gray-200/50">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Key Focus Areas</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {focusAreas.map((area) => (
+              <TiltWrapper key={area.title}>
+                <div className="bg-white/90 backdrop-blur-sm p-8 rounded-[24px] border border-gray-200/80 shadow-sm flex items-start gap-4 h-full">
+                  <div className="mt-1 bg-gray-200 text-gray-800 p-2 rounded-lg">
+                    <area.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{area.title}</h3>
+                    <p className="text-gray-600">{area.desc}</p>
+                  </div>
+                </div>
+              </TiltWrapper>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="py-24 bg-gray-900 relative overflow-hidden text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-900/40 via-gray-900 to-gray-900" />
+        <Container className="relative z-10">
+          <h2 className="text-4xl font-bold text-white mb-6 tracking-tight">
+            Looking for a reliable technology partner?
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+            Work with a team focused on practical execution and long-term scalability.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block px-8 py-4 bg-white text-gray-900 rounded-full font-bold shadow-xl hover:bg-gray-100 transition-all"
+          >
+            Contact Dcore Systems
+          </Link>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

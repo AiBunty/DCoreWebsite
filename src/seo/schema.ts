@@ -25,10 +25,10 @@ export const organizationSchema = {
   address: {
     "@type": "PostalAddress",
     streetAddress: COMPANY_ADDRESS,
-    addressLocality: "[City Placeholder]",
-    addressRegion: "[State Placeholder]",
-    postalCode: "[Postal Code Placeholder]",
-    addressCountry: "[Country Placeholder]",
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    postalCode: "411007",
+    addressCountry: "IN",
   },
   additionalType: COMPANY_LEGAL,
 };

@@ -1,130 +1,63 @@
-import { useState } from "react";
-import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { MascotTip } from "@/components/MascotTip";
-import { MascotFrame } from "@/components/MascotFrame";
-import { GlassCard, GlassSection } from "@/components/GlassCard";
-import { Calendar, Mail, Phone } from "lucide-react";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles } from "lucide-react";
 
-export default function BookDemoPage() {
-  const [isFormLoading, setIsFormLoading] = useState(true);
-
-  const handleFormLoad = () => {
-    setIsFormLoading(false);
-  };
+export default function BookDemo() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-hero">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Book a 1 to 1 Call
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Get a personalized walkthrough of Ai Bunty in just 30 minutes.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Info */}
-              <div className="space-y-8">
-                <MascotTip 
-                  message="Let's connect! I'll personally show you how to automate your business."
-                />
-                
-                <div className="space-y-4">
-                  <GlassCard>
-                    <div className="glass-card-content p-4 flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Calendar className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground">30-Minute 1 to 1 Call</p>
-                        <p className="text-muted-foreground text-sm">Personalized walkthrough</p>
-                      </div>
-                    </div>
-                  </GlassCard>
-                  
-                  <GlassCard>
-                    <div className="glass-card-content p-4 flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground">Email</p>
-                        <p className="text-muted-foreground text-sm">support@dcoresystems.com</p>
-                      </div>
-                    </div>
-                  </GlassCard>
-                  
-                  <GlassCard>
-                    <div className="glass-card-content p-4 flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground">📱 Contact Numbers</p>
-                        <div className="space-y-1 mt-2">
-                          <div>
-                            <p className="text-xs text-muted-foreground">WhatsApp API</p>
-                            <a href="tel:+918856091300" className="text-muted-foreground text-sm hover:text-primary">
-                              +918856091300
-                            </a>
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">WhatsApp Business & Calling</p>
-                            <a href="tel:+919766521300" className="text-muted-foreground text-sm hover:text-primary">
-                              +919766521300
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </div>
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Demo</span>
               </div>
-
-              {/* Demo Form - Embedded Ai Bunty Form */}
-              <GlassCard className="h-full">
-                <div className="glass-card-content p-4 overflow-hidden h-full relative min-h-[600px]">
-                  {isFormLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10 rounded-md">
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
-                        <p className="text-sm text-muted-foreground">Loading form...</p>
-                      </div>
-                    </div>
-                  )}
-                  <iframe
-                    src="https://admin.aibunty.com/widget/form/f10238e5-a750-4bb5-80ea-46173140efb4"
-                    style={{ width: '100%', height: '600px', border: 'none', borderRadius: '3px' }}
-                    id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
-                    data-form-name="VSL Form"
-                    data-layout-iframe-id="inline-f10238e5-a750-4bb5-80ea-46173140efb4"
-                    data-form-id="f10238e5-a750-4bb5-80ea-46173140efb4"
-                    title="VSL Form"
-                    onLoad={handleFormLoad}
-                  />
-                </div>
-              </GlassCard>
             </div>
-
-            {/* YouTube Demo Section */}
-            <div className="mt-16">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  Watch a Quick Demo First
-                </h2>
-                <p className="text-muted-foreground">
-                  See Ai Bunty in action before your 1 to 1 call
-                </p>
-              </div>
-              <MascotFrame youtubeUrl="https://youtu.be/6M6tS4nCN1Y" />
-            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              See Dcore Systems in Action
+            </h1>
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              Schedule a personalized demo with our team to see how we can automate your business.
+            </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm">
+            <form className="space-y-6">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                <input type="text" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="Your name" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                <input type="email" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="your@email.com" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
+                <input type="text" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="Your company" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                <textarea className="w-full h-24 p-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none resize-none" placeholder="Tell us about your needs"></textarea>
+              </div>
+              <button type="button" className="w-full h-12 bg-gray-900 text-white rounded-xl font-bold shadow-md hover:bg-gray-800 transition-all">
+                Schedule Demo
+              </button>
+            </form>
+          </div>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

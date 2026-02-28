@@ -12,23 +12,22 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
   const [isLoading, setIsLoading] = useState(!!youtubeUrl);
 
   const getYouTubeEmbedUrl = (url: string) => {
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?\s]+)/);
+    const match = url.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?\s]+)/
+    );
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
 
   return (
     <div className={`relative flex items-end gap-0 ${className}`}>
-      {/* Screen/Monitor Frame */}
       <div className="relative flex-1">
         <div className="bg-card rounded-2xl border-4 border-foreground/10 shadow-hover overflow-hidden">
-          {/* Screen bezel */}
           <div className="bg-foreground/5 p-1">
             <div className="flex gap-1.5 mb-2 px-2 pt-1">
               <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
             </div>
-            {/* Content Area */}
             <div className="bg-background rounded-lg overflow-hidden aspect-video relative">
               {isLoading && youtubeUrl && (
                 <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">
@@ -48,11 +47,7 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
                   onLoad={() => setIsLoading(false)}
                 />
               ) : imageSrc ? (
-                <img 
-                  src={imageSrc} 
-                  alt="Dashboard Preview" 
-                  className="w-full h-full object-contain bg-card"
-                />
+                <img src={imageSrc} alt="Dashboard preview" className="w-full h-full object-contain bg-card" />
               ) : children ? (
                 <div className="w-full h-full">{children}</div>
               ) : (
@@ -63,7 +58,6 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
             </div>
           </div>
         </div>
-        {/* Monitor Stand */}
         <div className="flex justify-center">
           <div className="w-16 h-4 bg-foreground/10 rounded-b-lg" />
         </div>
@@ -72,11 +66,10 @@ export function MascotFrame({ imageSrc, youtubeUrl, children, className = "" }: 
         </div>
       </div>
 
-      {/* Mascot */}
       <div className="hidden md:block -ml-8 z-10">
-        <img 
-          src={mascotImage} 
-          alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows" 
+        <img
+          src={mascotImage}
+          alt="Dcore Systems mascot"
           className="w-32 lg:w-40 h-auto drop-shadow-lg"
         />
       </div>

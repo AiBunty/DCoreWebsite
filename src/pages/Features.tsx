@@ -1,111 +1,133 @@
-import { Layout } from "@/components/Layout";
-import { CTASection } from "@/components/CTASection";
-import { GlassCard, GlassSection } from "@/components/GlassCard";
-import { 
-  MessageSquare, 
-  Calendar, 
-  CreditCard, 
-  Users, 
-  BarChart3, 
-  Zap,
-  Mail,
-  FileText,
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import {
+  BarChart3,
+  Cloud,
+  Database,
   Globe,
-  Shield
+  MessageSquare,
+  Send,
+  Shield,
+  Sparkles,
+  Target,
+  Users,
+  Workflow,
+  Wrench,
 } from "lucide-react";
 
-const features = [
+const featureItems = [
   {
     icon: MessageSquare,
-    title: "WhatsApp Automation",
-    description: "Send automated follow-ups, broadcasts, and instant replies to leads 24/7.",
+    label: "WhatsApp API Enablement",
+    desc: "Official setup, template workflows, and agent routing.",
   },
   {
-    icon: Calendar,
-    title: "Smart Booking",
-    description: "Calendar scheduling with automated reminders to reduce no-shows.",
+    icon: Send,
+    label: "Bulk Messaging Engine",
+    desc: "Campaign communication with audience segmentation.",
   },
   {
-    icon: CreditCard,
-    title: "Payment Collection",
-    description: "Razorpay and UPI integration with automatic invoicing and payment reminders.",
+    icon: Database,
+    label: "CRM and ERP Modules",
+    desc: "Lead pipelines, operations boards, and reports.",
   },
   {
-    icon: Users,
-    title: "CRM & Pipelines",
-    description: "Track every lead from first touch to close with visual sales pipelines.",
+    icon: Workflow,
+    label: "Workflow Automation",
+    desc: "Trigger-based automation across business processes.",
   },
   {
-    icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Real-time insights into your business growth with actionable metrics.",
-  },
-  {
-    icon: Zap,
-    title: "Marketing Funnels",
-    description: "Build high-converting landing pages and funnels in minutes, not days.",
-  },
-  {
-    icon: Mail,
-    title: "Email Marketing",
-    description: "Automated email sequences that nurture leads while you focus on closing.",
-  },
-  {
-    icon: FileText,
-    title: "Proposals & Invoices",
-    description: "Create professional proposals and invoices with one-click payment links.",
+    icon: Cloud,
+    label: "Cloud Application Stack",
+    desc: "Scalable deployments for stable business operations.",
   },
   {
     icon: Globe,
-    title: "Website Builder",
-    description: "Build professional websites without any coding knowledge.",
+    label: "Web and Commerce Platforms",
+    desc: "Conversion-focused websites and e-commerce builds.",
+  },
+  {
+    icon: BarChart3,
+    label: "Analytics Dashboards",
+    desc: "Track lead flow, campaign outcomes, and support quality.",
+  },
+  {
+    icon: Target,
+    label: "Conversion Optimization",
+    desc: "Improve lead-to-sale performance with process tuning.",
+  },
+  {
+    icon: Users,
+    label: "Team Collaboration Controls",
+    desc: "Role-based access and shared action workflows.",
   },
   {
     icon: Shield,
-    title: "Team Management",
-    description: "Assign leads to team members, track performance, and manage permissions.",
+    label: "Data Security",
+    desc: "Secure operations with access governance and auditability.",
+  },
+  {
+    icon: Wrench,
+    label: "Custom Integrations",
+    desc: "Connect existing tools with APIs and webhook automation.",
+  },
+  {
+    icon: MessageSquare,
+    label: "Implementation Support",
+    desc: "Technical guidance during onboarding and rollout.",
   },
 ];
 
-export default function FeaturesPage() {
+export default function Features() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-hero">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              All-in-One Business Growth Platform
+      <AntigravityBg />
+
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+              <Sparkles className="w-4 h-4 text-gray-900" />
+              <span className="text-sm font-semibold tracking-tight text-gray-800">
+                Platform Features
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6">
+              Everything needed to run
+              <br />
+              <span className="text-gray-900">modern automation operations</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Everything you need to capture leads, nurture them, and close more sales — in one platform.
+
+            <p className="text-xl font-medium text-gray-600 max-w-3xl mx-auto leading-snug tracking-tight">
+              Dcore Systems combines communication infrastructure, automation workflows, and cloud
+              software development into one practical delivery stack.
             </p>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <GlassCard key={index}>
-                <div className="glass-card-content p-8">
-                  <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
-                    <feature.icon className="w-7 h-7 text-primary" />
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-gray-50/60">
+        <Container>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featureItems.map((feature) => (
+              <TiltWrapper key={feature.label}>
+                <div className="bg-white/85 backdrop-blur-sm p-7 rounded-[24px] border border-gray-200/60 shadow-sm flex flex-col items-start h-full">
+                  <div className="w-11 h-11 bg-gray-100 rounded-lg flex items-center justify-center mb-4 border border-gray-200/50">
+                    <feature.icon className="w-5 h-5 text-gray-900" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {feature.description}
-                  </p>
+                  <h3 className="font-bold text-gray-900 mb-2 text-lg">{feature.label}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{feature.desc}</p>
                 </div>
-              </GlassCard>
+              </TiltWrapper>
             ))}
           </div>
-        </div>
-      </section>
-
-      <CTASection />
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

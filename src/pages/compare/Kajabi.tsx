@@ -49,10 +49,10 @@ export default function CompareKajabi() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs Kajabi
+              Dcore Systems vs Kajabi
             </h1>
             <p className="text-xl text-muted-foreground">
-              Kajabi is a premium US course platform. Ai Bunty adds WhatsApp CRM for Indian businesses.
+              Kajabi is a premium US course platform. Dcore Systems adds WhatsApp CRM for Indian businesses.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareKajabi() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you want Kajabi-level features with WhatsApp automation at Indian pricing."
+            message="Choose Dcore Systems if you want Kajabi-level features with WhatsApp automation at Indian pricing."
             className="max-w-3xl mx-auto"
           />
         </div>

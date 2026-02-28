@@ -1,80 +1,60 @@
-import { Layout } from "@/components/Layout";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles } from "lucide-react";
 
 export default function CompanyDetails() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-            <p className="text-sm font-semibold text-foreground">
-              This website is owned and operated by <strong>DCORE SYSTEMS LLP</strong>, a legally registered Limited Liability Partnership
-              incorporated under the Limited Liability Partnership Act, 2008 (India).
-            </p>
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Company Details</span>
+              </div>
+            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              About Dcore Systems LLP
+            </h1>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Company Details</h1>
-          <p className="text-lg text-muted-foreground">
-            Official legal and verification information for DCORE SYSTEMS LLP.
-          </p>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid gap-6">
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">Legal Entity</h2>
-              <p className="text-muted-foreground">DCORE SYSTEMS LLP</p>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Legal Information</h2>
+              
+              <div className="space-y-4 text-gray-700">
+                <p><strong>Company Name:</strong> DCORE SYSTEMS LLP</p>
+                <p><strong>Date of Incorporation:</strong> 05 January 2026</p>
+                <p><strong>LLPIN:</strong> ACT-9625</p>
+                <p><strong>GSTIN:</strong> 27AAZFD2232J1Z3</p>
+                <p className="pt-4"><strong>Registered Office:</strong><br/>BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P<br/>Aundh Haveli, Pune - 411007<br/>Maharashtra, India</p>
+              </div>
             </div>
 
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">LLPIN</h2>
-              <p className="text-muted-foreground">ACT-9625</p>
-            </div>
-
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">GSTIN</h2>
-              <p className="text-muted-foreground">27AAZFD2232J1Z3</p>
-            </div>
-
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">Date of Incorporation</h2>
-              <p className="text-muted-foreground">05 January 2026</p>
-            </div>
-
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">Registered Office</h2>
-              <p className="text-muted-foreground">
-                BLDG C FLAT NO 7 S NO 244 BANER PUSHPANAGAR D P, Aundh Haveli, Pune - 411007,
-                Maharashtra, India
-              </p>
-            </div>
-
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">Contact</h2>
-              <p className="text-muted-foreground">
-                <span className="font-semibold">Email:</span>{" "}
-                <a className="text-primary hover:underline" href="mailto:support@dcoresystems.com">
-                  support@dcoresystems.com
-                </a>
-              </p>
-              <p className="text-muted-foreground mt-2">
-                <span className="font-semibold">Phone:</span>{" "}
-                <a className="text-primary hover:underline" href="tel:+918856091300">
-                  +91 88560 91300
-                </a>
-              </p>
-            </div>
-
-            <div className="p-6 bg-card rounded-lg border border-border">
-              <h2 className="text-xl font-semibold text-foreground mb-2">Business Description</h2>
-              <p className="text-muted-foreground">
-                DCORE SYSTEMS LLP provides SaaS solutions including CRM, WhatsApp Business API automation,
-                customer engagement tools, and AI-driven business workflows for B2B and B2C customers.
-              </p>
+            <div className="bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
+              
+              <div className="space-y-4 text-gray-700">
+                <p><strong>Support Email:</strong> support@dcoresystems.com</p>
+                <p><strong>WhatsApp API:</strong> +91 88560 91300</p>
+                <p><strong>WhatsApp Business & Calling:</strong> +91 97665 21300</p>
+                <p><strong>Website:</strong> www.dcoresystems.com</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

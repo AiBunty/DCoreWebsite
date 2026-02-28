@@ -1,24 +1,21 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "@/contexts/ThemeContext";
-import aiBuntyLogoLight from "@/assets/ai-bunty-logo-new.png";
-import aiBuntyLogoDark from "@/assets/ai-bunty-logo-dark.png";
 import { Container } from "@/components/layout/Container";
 
 const footerLinks = [
   {
-    title: "Product",
+    title: "Services",
     links: [
-      { name: "All-in-One Platform", href: "/all-in-one-marketing-automation-platform" },
-      { name: "WhatsApp Automation", href: "/whatsapp-marketing-software" },
-      { name: "AI Funnel Builder", href: "/ai-funnel-builder" },
-      { name: "CRM Automation", href: "/crm-with-whatsapp-automation" },
+      { name: "WhatsApp Business API", href: "/whatsapp-business-api-included" },
+      { name: "CRM and ERP Development", href: "/crm-with-whatsapp-automation" },
+      { name: "Workflow Automation", href: "/workflow-automation" },
+      { name: "Cloud Software Solutions", href: "/all-in-one-marketing-automation-platform" },
     ],
   },
   {
     title: "Onboarding",
     links: [
-      { name: "Onboarding Form", href: "/onboarding-form.html" },
-      { name: "Onboarding Success", href: "/onboarding-success.html" },
+      { name: "Onboarding Form", href: "/onboarding-form" },
+      { name: "Onboarding Success", href: "/onboarding-success" },
     ],
   },
   {
@@ -42,18 +39,17 @@ const footerLinks = [
   {
     title: "Legal",
     links: [
-      { name: "Terms of Use", href: "/terms-of-use.html" },
-      { name: "Privacy Policy", href: "/privacy-policy.html" },
-      { name: "Refund Policy", href: "/refund-policy.html" },
-      { name: "Affiliate Policy", href: "/affiliate-policy.html" },
-      { name: "Disclaimer", href: "/disclaimer.html" },
+      { name: "Terms of Use", href: "/terms-of-use" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Refund Policy", href: "/refund-policy" },
+      { name: "Affiliate Policy", href: "/affiliate-policy" },
+      { name: "Disclaimer", href: "/disclaimer" },
     ],
   },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const { theme } = useTheme();
 
   return (
     <footer className="border-t border-border bg-background">
@@ -62,12 +58,13 @@ export function Footer() {
           <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
             <div className="space-y-3">
               <img
-                src={theme === 'dark' ? aiBuntyLogoDark : aiBuntyLogoLight}
-                alt="Dcore Systems AI automation platform logo"
+                src="/assets/logo.png"
+                alt="Dcore Systems logo"
                 className="h-9 w-auto"
               />
               <p className="text-sm text-muted-foreground max-w-sm">
-                AI-first omnichannel automation for WhatsApp, funnels, CRM, and growth teams.
+                Dcore Systems LLP builds business automation, communication systems, and digital
+                transformation platforms for startups, SMEs, and enterprises.
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
@@ -77,30 +74,15 @@ export function Footer() {
                     {column.title}
                   </p>
                   <div className="space-y-2">
-                    {column.links.map((link) => {
-                      // Use regular <a> tag for external HTML files
-                      if (link.href.endsWith('.html')) {
-                        return (
-                          <a
-                            key={link.name}
-                            href={link.href}
-                            className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-                          >
-                            {link.name}
-                          </a>
-                        );
-                      }
-                      // Use React Router Link for internal routes
-                      return (
-                        <Link
-                          key={link.name}
-                          to={link.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          {link.name}
-                        </Link>
-                      );
-                    })}
+                    {column.links.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -112,20 +94,20 @@ export function Footer() {
       <div className="border-t border-border bg-muted/30">
         <Container>
           <div className="py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-            <span>© {currentYear} Dcore Systems LLP. All rights reserved.</span>
+            <span>(c) {currentYear} Dcore Systems LLP. All rights reserved.</span>
             <div className="flex items-center gap-4">
-              <a href="/privacy-policy.html" className="hover:text-foreground transition-colors">
+              <Link to="/privacy-policy" className="hover:text-foreground transition-colors">
                 Privacy
-              </a>
-              <a href="/terms-of-use.html" className="hover:text-foreground transition-colors">
+              </Link>
+              <Link to="/terms-of-use" className="hover:text-foreground transition-colors">
                 Terms
-              </a>
-              <a href="/affiliate-policy.html" className="hover:text-foreground transition-colors">
+              </Link>
+              <Link to="/affiliate-policy" className="hover:text-foreground transition-colors">
                 Affiliate
-              </a>
-              <a href="/disclaimer.html" className="hover:text-foreground transition-colors">
+              </Link>
+              <Link to="/disclaimer" className="hover:text-foreground transition-colors">
                 Disclaimer
-              </a>
+              </Link>
             </div>
           </div>
         </Container>
@@ -133,3 +115,4 @@ export function Footer() {
     </footer>
   );
 }
+

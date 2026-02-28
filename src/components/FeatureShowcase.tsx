@@ -43,7 +43,7 @@ export function FeatureShowcase({ features }: FeatureShowcaseProps) {
             Powerful Features to Scale Your Business
           </h2>
           <p className="text-sm md:text-base text-muted-foreground">
-            Discover all the tools Ai Bunty offers to help you grow, automate, and succeed.
+            Discover all the tools Dcore Systems offers to help you grow, automate, and succeed.
           </p>
         </div>
 

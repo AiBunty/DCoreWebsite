@@ -2,15 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useAuth } from "@/hooks/useAuth";
-import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Loader2, Lock, Mail, Shield } from "lucide-react";
-import logoLight from "@/assets/ai-bunty-logo-new.png";
-import logoDark from "@/assets/ai-bunty-logo-dark.png";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -23,7 +20,6 @@ export default function AdminLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const { signIn, signUp, user, isAdmin, loading } = useAuth();
-  const { theme } = useTheme();
   const navigate = useNavigate();
 
   // Redirect if already logged in as admin
@@ -91,7 +87,7 @@ export default function AdminLogin() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src={theme === 'dark' ? logoDark : logoLight} alt="Ai Bunty" className="h-12" />
+            <img src="/assets/logo.png" alt="Dcore Systems" className="h-12" />
           </div>
           <div className="flex items-center justify-center gap-2 mb-2">
             <Shield className="h-5 w-5 text-primary" />
@@ -128,7 +124,7 @@ export default function AdminLogin() {
                 <Input
                   id="password"
                   type="password"
-                  placeholder="••••••••"
+                  placeholder="||||||||"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10"
@@ -182,3 +178,4 @@ export default function AdminLogin() {
     </div>
   );
 }
+

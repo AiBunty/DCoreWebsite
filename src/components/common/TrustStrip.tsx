@@ -7,13 +7,13 @@ export function TrustStrip() {
       <Container>
         <div className="py-3 md:py-4 text-xs md:text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-2">
           <span>Owned and operated by DCORE SYSTEMS LLP</span>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">|</span>
           <span>LLPIN: ACT-9625</span>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">|</span>
           <span>GSTIN: 27AAZFD2232J1Z3</span>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">|</span>
           <span>Pune, Maharashtra, India</span>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">|</span>
           <Link to="/legal/company" className="underline underline-offset-4 hover:text-foreground">
             Company details
           </Link>

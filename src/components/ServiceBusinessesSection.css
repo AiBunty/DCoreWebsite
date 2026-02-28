@@ -67,7 +67,7 @@
 
 .service-business-card:hover {
   border-color: var(--blue-primary);
-  box-shadow: 0 8px 24px rgba(91, 155, 213, 0.15);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.15);
   transform: translateY(-4px);
 }
 
@@ -139,7 +139,7 @@
   background: var(--blue-primary);
   color: white;
   border-color: var(--blue-primary);
-  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.3);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.3);
 }
 
 .service-businesses-nav-button:active {
@@ -357,18 +357,18 @@
 /* Dark Theme Support */
 :root[data-theme="dark"] .service-business-card {
   background: var(--bg-secondary);
-  border-color: rgba(91, 155, 213, 0.1);
+  border-color: rgba(17, 24, 39, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 :root[data-theme="dark"] .service-business-card:hover {
   border-color: var(--blue-primary);
-  box-shadow: 0 8px 24px rgba(91, 155, 213, 0.2);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.2);
 }
 
 :root[data-theme="dark"] .service-businesses-nav-button {
   background: var(--bg-secondary);
-  border-color: rgba(91, 155, 213, 0.1);
+  border-color: rgba(17, 24, 39, 0.1);
 }
 
 :root[data-theme="dark"] .service-businesses-nav-button:hover {

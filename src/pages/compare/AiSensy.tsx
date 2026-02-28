@@ -49,10 +49,10 @@ export default function CompareAiSensy() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ai Bunty vs AiSensy
+              Dcore Systems vs AiSensy
             </h1>
             <p className="text-xl text-muted-foreground">
-              AiSensy is a WhatsApp-only tool. Ai Bunty is a complete business operating system.
+              AiSensy is a WhatsApp-only tool. Dcore Systems is a complete business operating system.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareAiSensy() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Ai Bunty if you need WhatsApp PLUS funnels, CRM, payments, and booking — not just messaging."
+            message="Choose Dcore Systems if you need WhatsApp PLUS funnels, CRM, payments, and booking - not just messaging."
             className="max-w-3xl mx-auto"
           />
         </div>

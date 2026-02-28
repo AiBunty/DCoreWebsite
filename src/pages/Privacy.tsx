@@ -1,73 +1,67 @@
-import { Layout } from "@/components/Layout";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles } from "lucide-react";
 
-export default function Privacy() {
+export default function Legal() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-            <p className="text-sm font-semibold text-foreground">
-              This website is owned and operated by <strong>DCORE SYSTEMS LLP</strong>, a legally registered Limited Liability Partnership 
-              (LLPIN: ACT-9625) incorporated under the Limited Liability Partnership Act, 2008 (India).
-            </p>
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Privacy Policy</span>
+              </div>
+            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Privacy Policy
+            </h1>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Privacy Policy</h1>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Introduction</h2>
-            <p className="text-muted-foreground mb-6">
-              D'CORE Systems ("we" or "us" or "our") operates the website. This page informs you of our policies 
-              regarding the collection, use, and disclosure of personal data when you use our Service and the choices 
-              you have associated with that data.
-            </p>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Information Collection and Use</h2>
-            <p className="text-muted-foreground mb-6">
-              We collect several different types of information for various purposes to provide and improve our Service to you.
-            </p>
-            <ul className="list-disc pl-6 text-muted-foreground mb-6">
-              <li>Personal Data: Name, email address, phone number</li>
-              <li>Usage Data: IP address, browser type, pages visited</li>
-              <li>Cookies and tracking technologies</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Use of Data</h2>
-            <p className="text-muted-foreground mb-6">
-              D'CORE Systems uses the collected data for various purposes:
-            </p>
-            <ul className="list-disc pl-6 text-muted-foreground mb-6">
-              <li>To provide and maintain our Service</li>
-              <li>To notify you about changes to our Service</li>
-              <li>To allow you to participate in interactive features</li>
-              <li>To provide customer support</li>
-              <li>To gather analysis or valuable information to improve our Service</li>
-              <li>To monitor the usage of our Service</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Security of Data</h2>
-            <p className="text-muted-foreground mb-6">
-              The security of your data is important to us but remember that no method of transmission over the Internet 
-              or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect 
-              your Personal Data, we cannot guarantee its absolute security.
-            </p>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Changes to This Privacy Policy</h2>
-            <p className="text-muted-foreground mb-6">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy 
-              Policy on this page and updating the "effective date" at the top of this Privacy Policy.
-            </p>
-
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Contact Us</h2>
-            <p className="text-muted-foreground mb-6">
-              If you have any questions about this Privacy Policy, please contact us at privacy@dcore.com
-            </p>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50">
+        <Container>
+          <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm prose prose-invert max-w-none text-gray-700 leading-relaxed">
+            <div className="space-y-6 text-gray-700">
+  <p>Your privacy is important to us. This policy explains how we collect, use, and protect your data.</p>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Data Collection</h2>
+    <p>We collect data that you voluntarily provide, including account information, contact details, and usage patterns.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Data Usage</h2>
+    <p>We use your data to provide and improve our services, communicate with you, and ensure platform security.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Data Protection</h2>
+    <p>We implement industry-standard security measures to protect your data from unauthorized access.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">4. GDPR Compliance</h2>
+    <p>We comply with GDPR and provide you with rights to access, modify, and delete your data.</p>
+  </div>
+  
+  <div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Contact Us</h2>
+    <p>For privacy questions, contact us at support@dcoresystems.com</p>
+  </div>
+  
+  <p className="text-sm text-gray-500 mt-8">Last updated: February 2026</p>
+</div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </Layout>
   );
 }

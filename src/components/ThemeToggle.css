@@ -15,7 +15,7 @@
 }
 
 .theme-toggle:hover {
-  background: rgba(91, 155, 213, 0.1);
+  background: rgba(17, 24, 39, 0.1);
   border-color: var(--blue-primary);
   transform: scale(1.1);
 }

@@ -11,10 +11,10 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  title = "Ready to transform your automation stack?",
+  title = "Ready to modernize your business workflows?",
   description =
-    "Launch AI-first omnichannel workflows, funnels, and CRM automation in one platform.",
-  ctaText = "Schedule Demo",
+    "Talk to Dcore Systems about WhatsApp API solutions, CRM and ERP development, cloud software, and end-to-end automation.",
+  ctaText = "Book a Consultation",
   ctaHref = "/book-demo",
 }: CTASectionProps) {
   return (

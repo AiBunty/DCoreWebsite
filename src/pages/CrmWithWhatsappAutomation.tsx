@@ -1,128 +1,67 @@
-import { Link } from "react-router-dom";
-import { Layout } from "@/components/Layout";
-import { Seo } from "@/components/seo/Seo";
-import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildServiceJsonLd, canonicalUrl } from "@/seo/seoUtils";
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { Sparkles, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const path = "/crm-with-whatsapp-automation";
-const faqs = [
-  {
-    question: "Does Dcore include a CRM?",
-    answer:
-      "Yes. Dcore includes a built-in CRM with pipelines, lifecycle tracking, and WhatsApp automation.",
-  },
-  {
-    question: "Can I automate WhatsApp messaging from CRM?",
-    answer:
-      "Yes. Workflow automation can trigger WhatsApp, email, SMS, and IVR messaging from CRM events.",
-  },
-  {
-    question: "Is messaging compliant?",
-    answer:
-      "All messaging is opt-in and template-based, aligned with WhatsApp policies.",
-  },
-];
-
-export default function CrmWithWhatsappAutomation() {
+export default function Solution() {
   return (
-    <>
-      <Seo
-        title="CRM with WhatsApp Automation | Dcore Systems"
-        description="Track leads, pipelines, and lifecycle stages. Trigger compliant WhatsApp, email, SMS, and IVR workflows."
-        canonical={canonicalUrl(path)}
-        jsonLd={[
-          buildServiceJsonLd({
-            name: "CRM & Workflow Automation",
-            serviceType: "CRM & Workflow Automation",
-            url: canonicalUrl(path),
-            description:
-              "CRM with WhatsApp automation, pipelines, lifecycle tracking, and omnichannel workflows.",
-          }),
-          buildFaqJsonLd(faqs),
-          buildBreadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "CRM with WhatsApp Automation", path },
-          ]),
-        ]}
-      />
-      <Layout>
-        <Section hero className="bg-gradient-hero">
-          <Container>
-            <div className="max-w-3xl">
-              <p className="text-sm uppercase tracking-wider text-primary/80 mb-4">
-                CRM with WhatsApp Automation
-              </p>
-              <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                CRM with WhatsApp Automation
-              </h1>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Track every lead, automate follow-ups, and connect omnichannel
-                workflows from a unified CRM platform.
-              </p>
-            </div>
-          </Container>
-        </Section>
-
-        <Section>
-          <Container className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-                Pipelines, Lifecycle, and Ownership
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground mb-4">
-                Dcore CRM provides pipelines, lifecycle stages, and team
-                assignment so sales and marketing stay aligned.
-              </p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>Unified lead, deal, and lifecycle tracking</li>
-                <li>WhatsApp automation tied to CRM events</li>
-                <li>Omnichannel workflows across email, SMS, and IVR</li>
-                <li>AI-assisted segmentation and routing</li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-                Automation Chain: CRM → Workflows → Webhooks → Pabbly
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground mb-4">
-                Trigger workflows from CRM updates, push events via webhooks,
-                and connect with Pabbly for external apps.
-              </p>
-              <div className="space-y-3">
-                <Link className="text-primary underline" to="/whatsapp-marketing-software">
-                  WhatsApp marketing software
-                </Link>
-                <Link className="text-primary underline" to="/workflow-automation">
-                  Workflow automation
-                </Link>
-                <Link className="text-primary underline" to="/webhook-integrations">
-                  Webhook integrations
-                </Link>
-                <Link className="text-primary underline" to="/pabbly-integration">
-                  Pabbly integration
-                </Link>
+    <Layout>
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Solution</span>
               </div>
             </div>
-          </Container>
-        </Section>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              CRM + WhatsApp Integration
+            </h1>
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              Unified customer relationship management with WhatsApp automation. Manage all interactions in one place.
+            </p>
+          </div>
+        </Container>
+      </Section>
 
-        <Section muted>
-          <Container className="max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-              Frequently Asked Questions
-            </h2>
-            <dl className="space-y-6 text-muted-foreground">
-              {faqs.map((faq) => (
-                <div key={faq.question}>
-                  <dt className="font-semibold text-foreground">{faq.question}</dt>
-                  <dd>{faq.answer}</dd>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-gray-50/60">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {["Automated workflows", "Real-time analytics", "24/7 intelligent support", "Seamless integrations"].map((feature, idx) => (
+              <TiltWrapper key={idx}>
+                <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[24px] border border-gray-200/60 shadow-sm flex items-start gap-4">
+                  <Check className="w-5 h-5 text-gray-900 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature}</h3>
+                    <p className="text-gray-500">Advanced automation built for modern businesses.</p>
+                  </div>
                 </div>
-              ))}
-            </dl>
-          </Container>
-        </Section>
-      </Layout>
-    </>
+              </TiltWrapper>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="py-24 bg-gray-900 relative overflow-hidden text-center z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-900/40 via-gray-900 to-gray-900"></div>
+        <Container className="relative z-10">
+          <h2 className="text-4xl font-bold text-white mb-8">Ready to transform your business?</h2>
+          <Link 
+            to="/book-demo" 
+            className="inline-block px-8 py-4 bg-white text-gray-900 rounded-full font-bold shadow-xl hover:bg-gray-100 transition-all"
+          >
+            Book a Demo
+          </Link>
+        </Container>
+      </Section>
+    </Layout>
   );
 }

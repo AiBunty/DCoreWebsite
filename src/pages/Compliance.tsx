@@ -1,64 +1,53 @@
-import { Layout } from "@/components/Layout";
-import { CheckCircle } from "lucide-react";
-
-const complianceItems = [
-  { title: "GDPR Compliant", description: "We comply with European data protection regulations" },
-  { title: "India Data Protection Act", description: "Adherence to Indian privacy laws and regulations" },
-  { title: "ISO 27001 Certified", description: "Information security management systems" },
-  { title: "SOC 2 Type II", description: "Service organization control standards" },
-  { title: "PCI DSS Compliant", description: "Payment card industry data security standards" },
-  { title: "Regular Security Audits", description: "Third-party security assessments and penetration testing" }
-];
+﻿import { Layout } from "@/components/Layout";
+import { AntigravityBg } from "@/components/home/AntigravityBg";
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { Sparkles, Shield } from "lucide-react";
 
 export default function Compliance() {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-            <p className="text-sm font-semibold text-foreground">
-              This website is owned and operated by <strong>DCORE SYSTEMS LLP</strong>, a legally registered Limited Liability Partnership 
-              (LLPIN: ACT-9625) incorporated under the Limited Liability Partnership Act, 2008 (India).
+      <AntigravityBg />
+      
+      <Section className="relative z-10 pt-32 pb-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-slide-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-gray-200/50 mb-8 backdrop-blur-xl shadow-sm">
+                <Sparkles className="w-4 h-4 text-gray-900" />
+                <span className="text-sm font-semibold tracking-tight text-gray-800">Compliance</span>
+              </div>
+            </div>
+            
+            <h1 className="animate-slide-up text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              Enterprise Security & Compliance
+            </h1>
+            
+            <p className="animate-slide-up text-xl font-medium text-gray-500 max-w-2xl mx-auto leading-snug tracking-tight" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+              Your data security and privacy are our top priorities. We implement industry-leading compliance standards.
             </p>
           </div>
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Compliance & Security</h1>
-            <p className="text-xl text-muted-foreground">
-              We take data protection and security seriously. Here's how we comply with regulations.
-            </p>
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-12">Our Compliance Standards</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {complianceItems.map((item, idx) => (
-                <div key={idx} className="flex gap-4 p-6 bg-card rounded-lg border border-border">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-16 p-8 bg-primary/5 rounded-lg border border-primary/20">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Data Security</h3>
-              <p className="text-muted-foreground mb-4">
-                We employ industry-standard encryption, regular security audits, and continuous monitoring to protect your data. 
-                Our infrastructure is hosted on secure, certified cloud providers with redundant systems.
-              </p>
-              <p className="text-muted-foreground">
-                For security concerns or to report a vulnerability, please contact our security team at security@dcore.com
-              </p>
-            </div>
+      <Section className="py-24 relative z-10 border-t border-gray-200/50 bg-gray-50/60">
+        <Container>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Data Security", desc: "Enterprise-grade encryption and secure infrastructure" },
+              { title: "GDPR Compliant", desc: "Full compliance with international data privacy regulations" },
+              { title: "Regular Audits", desc: "Continuous security assessments and compliance verification" }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white/80 backdrop-blur-sm p-8 rounded-[24px] border border-gray-200/60 shadow-sm">
+                <Shield className="w-6 h-6 text-gray-900 mb-4" />
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-500">{item.desc}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </Layout>
   );
 }
+

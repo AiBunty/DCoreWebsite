@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Pages
@@ -26,6 +26,11 @@ import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Compliance from "./pages/Compliance";
 import CompanyDetails from "./pages/CompanyDetails";
+import RefundPolicy from "./pages/RefundPolicy";
+import AffiliatePolicy from "./pages/AffiliatePolicy";
+import Disclaimer from "./pages/Disclaimer";
+import OnboardingForm from "./pages/OnboardingForm";
+import OnboardingSuccess from "./pages/OnboardingSuccess";
 
 // SEO Landing Pages
 import AllInOneMarketingAutomationPlatform from "./pages/AllInOneMarketingAutomationPlatform";
@@ -129,10 +134,28 @@ const App = () => (
           
           {/* Legal Pages */}
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/terms-of-use" element={<Terms />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/affiliate-policy" element={<AffiliatePolicy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/compliance" element={<Compliance />} />
           <Route path="/legal/company" element={<CompanyDetails />} />
+
+          {/* Onboarding Pages */}
+          <Route path="/onboarding-form" element={<OnboardingForm />} />
+          <Route path="/onboarding-success" element={<OnboardingSuccess />} />
+
+          {/* Legacy HTML URLs */}
+          <Route path="/onboarding-form.html" element={<Navigate to="/onboarding-form" replace />} />
+          <Route path="/onboarding-success.html" element={<Navigate to="/onboarding-success" replace />} />
+          <Route path="/terms-of-use.html" element={<Navigate to="/terms-of-use" replace />} />
+          <Route path="/privacy-policy.html" element={<Navigate to="/privacy-policy" replace />} />
+          <Route path="/refund-policy.html" element={<Navigate to="/refund-policy" replace />} />
+          <Route path="/affiliate-policy.html" element={<Navigate to="/affiliate-policy" replace />} />
+          <Route path="/disclaimer.html" element={<Navigate to="/disclaimer" replace />} />
           
           {/* Compare Routes */}
           <Route path="/compare" element={<Compare />} />

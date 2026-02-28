@@ -1,5 +1,6 @@
 import { useState } from "react";
-import mascotImage from "@/assets/ai-bunty-mascot.png";
+const advisorPhoto =
+  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=220&q=80";
 
 interface IPhoneFrameProps {
   youtubeUrl: string;
@@ -75,12 +76,12 @@ export function IPhoneFrame({ youtubeUrl, customerName, businessType, className 
           <div className="w-0.5 h-14 bg-zinc-700 rounded-r-sm" />
         </div>
         
-        {/* Mascot - positioned at bottom right */}
+        {/* Consultant portrait */}
         <div className="absolute -bottom-4 -right-8 z-10">
           <img 
-            src={mascotImage} 
-            alt="Dcore AI Automation Mascot - WhatsApp, CRM, Workflows" 
-            className="w-20 h-auto drop-shadow-lg"
+            src={advisorPhoto} 
+            alt="Dcore Systems consultant" 
+            className="w-20 h-20 rounded-2xl object-cover shadow-lg"
           />
         </div>
       </div>

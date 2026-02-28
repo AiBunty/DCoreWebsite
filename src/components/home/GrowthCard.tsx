@@ -37,7 +37,7 @@ export function GrowthCard({
         <div>
           <div className="text-sm font-medium text-foreground">{ownerName}</div>
           <div className="text-xs text-muted-foreground">
-            {role} • {industry}
+            {role} | {industry}
           </div>
           <div className="text-[10px] text-muted-foreground">Representative profile</div>
         </div>
@@ -47,9 +47,7 @@ export function GrowthCard({
         <div className="text-xs text-muted-foreground">{timeframe}</div>
       </div>
       <div className="mt-4 flex items-center justify-between gap-4">
-        <p className="text-xs text-muted-foreground leading-snug">
-          Used: {used}
-        </p>
+        <p className="text-xs text-muted-foreground leading-snug">Used: {used}</p>
         <MiniChart values={values} type={chartType} className="h-10 w-28 text-primary" />
       </div>
     </div>
