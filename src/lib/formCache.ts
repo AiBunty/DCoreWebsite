@@ -4,7 +4,8 @@
  */
 
 export const EMBEDDED_FORM_URLS = [
-  "https://admin.aibunty.com/widget/form/699acdf5d46f8",
+  "https://admin.aibunty.com/widget/form/699acdf5d46f8", // CRM Contact Form
+  "https://admin.aibunty.com/u2/76998/appointment-booking-from-website", // Appointment Booking Form
 ];
 
 export const FORM_DOMAIN = "https://admin.aibunty.com";

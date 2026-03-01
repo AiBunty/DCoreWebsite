@@ -32,28 +32,19 @@ export default function BookDemo() {
 
       <Section className="py-24 relative z-10 border-t border-gray-200/50">
         <Container>
-          <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-xl p-12 rounded-[32px] border border-gray-200/60 shadow-sm">
-            <form className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                <input type="text" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="Your name" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                <input type="email" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="your@email.com" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
-                <input type="text" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none" placeholder="Your company" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
-                <textarea className="w-full h-24 p-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-gray-700 outline-none resize-none" placeholder="Tell us about your needs"></textarea>
-              </div>
-              <button type="button" className="w-full h-12 bg-gray-900 text-white rounded-xl font-bold shadow-md hover:bg-gray-800 transition-all">
-                Schedule Demo
-              </button>
-            </form>
+          <div className="max-w-4xl mx-auto">
+            <iframe
+              src="https://admin.aibunty.com/u2/76998/appointment-booking-from-website?isEmbeded=1"
+              style={{
+                border: "none",
+                width: "100%",
+                height: "600px",
+                borderRadius: "32px",
+                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              }}
+              title="Book Demo Appointment"
+              loading="lazy"
+            />
           </div>
         </Container>
       </Section>
