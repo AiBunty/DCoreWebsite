@@ -608,6 +608,22 @@ const Index = () => {
             </Container>
           </Section>
 
+          {/* Hidden iframe to preload CRM form for faster navigation to /contact */}
+          <iframe
+            src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
+            style={{
+              display: "none",
+              visibility: "hidden",
+              height: 0,
+              width: 0,
+              border: "none",
+              padding: 0,
+              margin: 0,
+            }}
+            title="Preload CRM Form"
+            aria-hidden="true"
+            tabIndex={-1}
+          />
         </div>
       </Layout>
     </>
