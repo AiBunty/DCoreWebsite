@@ -8,37 +8,37 @@ const comparisonData = [
   {
     useCase: "Marketing Funnels",
     aiBunty: "Built-in high-converting funnels",
-    competitor: "Basic landing pages",
+    competitor: "AI website builder",
     aiBuntyHas: true,
-    competitorHas: false,
+    competitorHas: true,
   },
   {
     useCase: "CRM & Lead Tracking",
     aiBunty: "Full CRM with pipelines",
-    competitor: "Student database only",
+    competitor: "Learner database only",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "WhatsApp Integration",
-    aiBunty: "Native automation",
-    competitor: "Not available",
+    useCase: "WhatsApp Automation",
+    aiBunty: "Native CRM integration",
+    competitor: "White-label marketing only",
     aiBuntyHas: true,
-    competitorHas: false,
+    competitorHas: true,
   },
   {
-    useCase: "Booking & Appointments",
-    aiBunty: "Calendar + reminders",
+    useCase: "Sales Pipeline Management",
+    aiBunty: "Visual pipeline stages",
     competitor: "Not included",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "India Payment Focus",
-    aiBunty: "Razorpay + UPI native",
-    competitor: "Limited options",
+    useCase: "Business Focus",
+    aiBunty: "Complete business OS",
+    competitor: "Course creation platform",
     aiBuntyHas: true,
-    competitorHas: true,
+    competitorHas: false,
   },
 ];
 
@@ -52,7 +52,7 @@ export default function CompareGraphy() {
               Dcore Systems vs Graphy
             </h1>
             <p className="text-xl text-muted-foreground">
-              Graphy hosts your content. Dcore Systems grows your business with CRM-driven automation.
+              Graphy is an AI-powered course platform. Dcore Systems is a complete business operating system with sales CRM.
             </p>
           </div>
         </div>

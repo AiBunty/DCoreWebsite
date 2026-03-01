@@ -13,7 +13,7 @@ import {
   softwareApplicationSchema,
   websiteSchema,
 } from "@/seo/schema";
-import { canonicalUrl } from "@/seo/seoUtils";
+import { SEO_PAGE_PRESETS } from "@/seo/pagePresets";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { IndustryTile } from "@/components/home/IndustryTile";
@@ -44,9 +44,9 @@ import {
   Workflow,
 } from "lucide-react";
 
-const heroHeadingText = "Experience growth with the\nnext-generation automation stack";
+const heroHeadingText = "Business Automation Platform for Coaches, Freelancers & Real Estate";
 const heroDescriptionText =
-  "WhatsApp API, CRM and ERP development, cloud software, and workflow systems built to move your team faster with less operational drag.";
+  "Automate leads, follow-ups and sales using WhatsApp + CRM automation powered by WABA integration.";
 const dcoreHeadingText = "DCORE";
 let hasPlayedHeroTyping = false;
 let hasPlayedDcoreTyping = false;
@@ -195,6 +195,7 @@ function MobileGridDrawer({ buttonLabel, children }: MobileGridDrawerProps) {
 }
 
 const Index = () => {
+  const seo = SEO_PAGE_PRESETS.home;
   const [typedHeading, setTypedHeading] = useState("");
   const [typedDescription, setTypedDescription] = useState("");
   const [typedDcore, setTypedDcore] = useState("");
@@ -331,9 +332,15 @@ const Index = () => {
   return (
     <>
       <Seo
-        title="Business Automation and Digital Transformation | Dcore Systems"
-        description="Dcore Systems LLP helps startups, SMEs, and enterprises automate communication, improve conversions, and build scalable digital systems."
-        canonical={canonicalUrl("/")}
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        ogTitle={seo.ogTitle}
+        ogDescription={seo.ogDescription}
+        ogUrl={seo.ogUrl}
+        ogImage={seo.ogImage}
+        twitterCard={seo.twitterCard}
         jsonLd={[organizationSchema, websiteSchema, softwareApplicationSchema]}
       />
       <Layout>

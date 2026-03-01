@@ -6,37 +6,37 @@ import { MascotTip } from "@/components/MascotTip";
 
 const comparisonData = [
   {
-    useCase: "Coaching Funnel with Calendar & WhatsApp",
-    aiBunty: "Complete built-in system",
-    competitor: "Page builder only",
+    useCase: "WhatsApp CRM Integration",
+    aiBunty: "Native WhatsApp CRM",
+    competitor: "WhatsApp marketing tools only",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "Lead Nurturing Automation",
-    aiBunty: "WhatsApp + Email automation",
-    competitor: "Needs third-party tools",
+    useCase: "India-First Design & Pricing",
+    aiBunty: "Built for Indian businesses",
+    competitor: "Global focus",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "CRM with Team Assignment",
-    aiBunty: "Built-in CRM & pipelines",
-    competitor: "Not included",
+    useCase: "Integrated Booking Calendar",
+    aiBunty: "Built-in with WhatsApp sync",
+    competitor: "Available separately",
     aiBuntyHas: true,
-    competitorHas: false,
+    competitorHas: true,
   },
   {
     useCase: "Done-With-You Support",
-    aiBunty: "Yes",
-    competitor: "DIY only",
+    aiBunty: "Included",
+    competitor: "Self-service focused",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "Post-Sale Upsell Automation",
-    aiBunty: "Fully automated",
-    competitor: "Manual setup",
+    useCase: "All-in-One Business OS",
+    aiBunty: "CRM + Funnels + WhatsApp",
+    competitor: "Funnel-focused platform",
     aiBuntyHas: true,
     competitorHas: false,
   },
@@ -52,7 +52,7 @@ export default function CompareFlexifunnels() {
               Dcore Systems vs Flexifunnels
             </h1>
             <p className="text-xl text-muted-foreground">
-              Dcore Systems is a complete business operating system. Flexifunnels is primarily a page builder.
+              Flexifunnels is a powerful funnel platform. Dcore Systems adds native WhatsApp CRM for Indian businesses.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CompareFlexifunnels() {
           <ComparisonNav />
 
           <MascotTip 
-            message="Choose Dcore Systems if you want automation, CRM, payments, and WhatsApp follow-ups in one platform."
+            message="Choose Dcore Systems if you need integrated WhatsApp CRM with Indian market focus, not just funnel building."
             className="max-w-3xl mx-auto"
           />
         </div>

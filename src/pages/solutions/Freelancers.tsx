@@ -6,6 +6,13 @@ import { MascotTip } from "@/components/MascotTip";
 import { MascotFrame } from "@/components/MascotFrame";
 import { MacbookBrowserCard } from "@/components/MacbookBrowserCard";
 import { SolutionNav } from "@/components/SolutionNav";
+import { Seo } from "@/components/seo/Seo";
+import { SEO_PAGE_PRESETS } from "@/seo/pagePresets";
+import {
+  organizationSchema,
+  softwareApplicationSchema,
+  websiteSchema,
+} from "@/seo/schema";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
@@ -27,8 +34,22 @@ const solutions = [
 ];
 
 export default function FreelancersPage() {
+  const seo = SEO_PAGE_PRESETS.freelancers;
+
   return (
     <Layout>
+      <Seo
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        ogTitle={seo.ogTitle}
+        ogDescription={seo.ogDescription}
+        ogUrl={seo.ogUrl}
+        ogImage={seo.ogImage}
+        twitterCard={seo.twitterCard}
+        jsonLd={[organizationSchema, websiteSchema, softwareApplicationSchema]}
+      />
       <section className="py-16 md:py-24 bg-gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">

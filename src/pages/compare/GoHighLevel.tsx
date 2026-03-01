@@ -8,37 +8,37 @@ const comparisonData = [
   {
     useCase: "India-First Design",
     aiBunty: "Built for Indian businesses",
-    competitor: "US-focused platform",
+    competitor: "US agency-focused",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "WhatsApp Integration",
     aiBunty: "Native WhatsApp automation",
-    competitor: "Requires workarounds",
+    competitor: "Paid add-on ($10/mo)",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "Pricing",
     aiBunty: "Affordable for SMBs",
-    competitor: "Premium pricing ($297+/mo)",
+    competitor: "$297/month (₹24,000+)",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "Done-With-You Support",
     aiBunty: "Included",
-    competitor: "Extra cost",
+    competitor: "DIY with community",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "Indian Payment Gateways",
     aiBunty: "Razorpay + UPI native",
-    competitor: "Limited support",
+    competitor: "Razorpay via integration",
     aiBuntyHas: true,
-    competitorHas: false,
+    competitorHas: true,
   },
 ];
 

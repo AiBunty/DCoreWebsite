@@ -1,87 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.dcoresystems.com/</loc>
+    <loc>http://www.dcoresystems.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/all-in-one-marketing-automation-platform</loc>
+    <loc>http://www.dcoresystems.com/solutions/coaches</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.dcoresystems.com/solutions/real-estate</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.dcoresystems.com/solutions/freelancers</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.dcoresystems.com/all-in-one-marketing-automation-platform</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/whatsapp-marketing-software</loc>
+    <loc>http://www.dcoresystems.com/whatsapp-marketing-software</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/whatsapp-sender-software</loc>
+    <loc>http://www.dcoresystems.com/whatsapp-sender-software</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/whatsapp-business-api-included</loc>
+    <loc>http://www.dcoresystems.com/whatsapp-business-api-included</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/instagram-automation</loc>
+    <loc>http://www.dcoresystems.com/instagram-automation</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/automation-funnels</loc>
+    <loc>http://www.dcoresystems.com/automation-funnels</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/ai-funnel-builder</loc>
+    <loc>http://www.dcoresystems.com/ai-funnel-builder</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/ai-landing-page-builder</loc>
+    <loc>http://www.dcoresystems.com/ai-landing-page-builder</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/ai-chatbots-whatsapp</loc>
+    <loc>http://www.dcoresystems.com/ai-chatbots-whatsapp</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/crm-with-whatsapp-automation</loc>
+    <loc>http://www.dcoresystems.com/crm-with-whatsapp-automation</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/workflow-automation</loc>
+    <loc>http://www.dcoresystems.com/workflow-automation</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/form-builder</loc>
+    <loc>http://www.dcoresystems.com/form-builder</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/webhook-integrations</loc>
+    <loc>http://www.dcoresystems.com/webhook-integrations</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/pabbly-integration</loc>
+    <loc>http://www.dcoresystems.com/pabbly-integration</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/payment-gateway-integrations</loc>
+    <loc>http://www.dcoresystems.com/payment-gateway-integrations</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/pricing</loc>
+    <loc>http://www.dcoresystems.com/pricing</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/dcore-vs-wati</loc>
+    <loc>http://www.dcoresystems.com/dcore-vs-wati</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/dcore-vs-interakt</loc>
+    <loc>http://www.dcoresystems.com/dcore-vs-interakt</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/dcore-vs-zoko</loc>
+    <loc>http://www.dcoresystems.com/dcore-vs-zoko</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.dcoresystems.com/dcore-vs-twilio-whatsapp</loc>
+    <loc>http://www.dcoresystems.com/dcore-vs-twilio-whatsapp</loc>
     <priority>0.7</priority>
   </url>
 </urlset>

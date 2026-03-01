@@ -6,37 +6,37 @@ import { MascotTip } from "@/components/MascotTip";
 
 const comparisonData = [
   {
-    useCase: "Course + Coaching Hybrid",
-    aiBunty: "Funnels + CRM + WhatsApp in one",
-    competitor: "Course platform only",
+    useCase: "Marketing Funnels",
+    aiBunty: "High-converting funnels + CRM",
+    competitor: "Course landing pages",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "Lead Management",
     aiBunty: "Full CRM with pipelines",
-    competitor: "Basic student management",
+    competitor: "Basic student database",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
     useCase: "WhatsApp Automation",
-    aiBunty: "Built-in automation",
-    competitor: "Not available",
+    aiBunty: "Advanced automation + CRM",
+    competitor: "Basic campaigns only",
+    aiBuntyHas: true,
+    competitorHas: true,
+  },
+  {
+    useCase: "Sales Pipeline Tracking",
+    aiBunty: "Visual pipeline stages",
+    competitor: "Not included",
     aiBuntyHas: true,
     competitorHas: false,
   },
   {
-    useCase: "Payment Follow-ups",
-    aiBunty: "Automated reminders",
-    competitor: "Manual process",
-    aiBuntyHas: true,
-    competitorHas: false,
-  },
-  {
-    useCase: "Team Management",
-    aiBunty: "Multi-user with roles",
-    competitor: "Limited",
+    useCase: "Business OS",
+    aiBunty: "Complete operating system",
+    competitor: "Course hosting focus",
     aiBuntyHas: true,
     competitorHas: false,
   },
@@ -52,7 +52,7 @@ export default function CompareTagMango() {
               Dcore Systems vs TagMango
             </h1>
             <p className="text-xl text-muted-foreground">
-              TagMango is a course platform. Dcore Systems is a full-stack business automation system.
+              TagMango excels at course delivery. Dcore Systems adds sales funnels, CRM, and advanced WhatsApp automation.
             </p>
           </div>
         </div>

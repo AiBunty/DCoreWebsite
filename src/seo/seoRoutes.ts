@@ -5,6 +5,9 @@ export interface SeoRoute {
 
 export const SEO_ROUTES: SeoRoute[] = [
   { path: "/", priority: 1.0 },
+  { path: "/solutions/coaches", priority: 0.85 },
+  { path: "/solutions/real-estate", priority: 0.85 },
+  { path: "/solutions/freelancers", priority: 0.8 },
   { path: "/all-in-one-marketing-automation-platform", priority: 0.9 },
   { path: "/whatsapp-marketing-software", priority: 0.85 },
   { path: "/whatsapp-sender-software", priority: 0.85 },

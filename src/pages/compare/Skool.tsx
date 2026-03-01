@@ -29,14 +29,14 @@ const comparisonData = [
   {
     useCase: "Payment & Invoicing",
     aiBunty: "Razorpay + auto-invoicing",
-    competitor: "Basic Stripe only",
+    competitor: "Stripe only",
     aiBuntyHas: true,
     competitorHas: true,
   },
   {
     useCase: "India Market Focus",
     aiBunty: "Built for India",
-    competitor: "US-focused",
+    competitor: "US-focused ($99/mo)",
     aiBuntyHas: true,
     competitorHas: false,
   },

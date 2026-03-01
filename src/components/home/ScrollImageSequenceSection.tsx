@@ -3,14 +3,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 const FRAME_NUMBERS = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 const NAVBAR_HEIGHT_PX = 64;
 const SCROLL_STEP_RATIO = 0.65;
+const SCROLL_LOOP_COUNT = 2;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
+function getFrameIndex(step: number, frameCount: number) {
+  return ((step % frameCount) + frameCount) % frameCount;
+}
+
 export function ScrollImageSequenceSection() {
   const sequenceRef = useRef<HTMLDivElement | null>(null);
-  const [frameIndex, setFrameIndex] = useState(0);
+  const [targetFrameStep, setTargetFrameStep] = useState(0);
+  const [visibleFrameStep, setVisibleFrameStep] = useState(0);
+  const [incomingFrameStep, setIncomingFrameStep] = useState<number | null>(null);
+  const [slideDirection, setSlideDirection] = useState<"forward" | "backward">("forward");
+  const [isSlideActive, setIsSlideActive] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [isPreloaded, setIsPreloaded] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
 
@@ -67,26 +77,27 @@ export function ScrollImageSequenceSection() {
     }
 
     let ticking = false;
+    const totalScrollSteps = frames.length * SCROLL_LOOP_COUNT;
 
     const updateFrame = () => {
       const rect = section.getBoundingClientRect();
       const sectionScroll = NAVBAR_HEIGHT_PX - rect.top;
 
       if (sectionScroll <= 0) {
-        setFrameIndex(0);
+        setTargetFrameStep(0);
         return;
       }
 
       const scrollableHeight = section.offsetHeight - viewportHeight;
       if (scrollableHeight <= 0) {
-        setFrameIndex(0);
+        setTargetFrameStep(0);
         return;
       }
 
       const progress = clamp(sectionScroll / scrollableHeight, 0, 1);
-      const nextFrame = Math.min(frames.length - 1, Math.floor(progress * frames.length));
+      const nextStep = Math.min(totalScrollSteps - 1, Math.floor(progress * totalScrollSteps));
 
-      setFrameIndex((prev) => (prev === nextFrame ? prev : nextFrame));
+      setTargetFrameStep((prev) => (prev === nextStep ? prev : nextStep));
     };
 
     const handleScroll = () => {
@@ -112,9 +123,51 @@ export function ScrollImageSequenceSection() {
     };
   }, [frames.length, viewportHeight]);
 
+  useEffect(() => {
+    if (isAnimating || targetFrameStep === visibleFrameStep) {
+      return;
+    }
+
+    const isForward = targetFrameStep > visibleFrameStep;
+    const nextStep = isForward ? visibleFrameStep + 1 : visibleFrameStep - 1;
+
+    setSlideDirection(isForward ? "forward" : "backward");
+    setIncomingFrameStep(nextStep);
+    setIsAnimating(true);
+    setIsSlideActive(false);
+    const rafId = window.requestAnimationFrame(() => {
+      setIsSlideActive(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
+  }, [targetFrameStep, visibleFrameStep, isAnimating]);
+
+  useEffect(() => {
+    if (!isAnimating || incomingFrameStep === null) {
+      return;
+    }
+
+    const finishTimer = window.setTimeout(() => {
+      setVisibleFrameStep(incomingFrameStep);
+      setIncomingFrameStep(null);
+      setIsSlideActive(false);
+      setIsAnimating(false);
+    }, 620);
+
+    return () => {
+      window.clearTimeout(finishTimer);
+    };
+  }, [isAnimating, incomingFrameStep]);
+
+  const totalScrollSteps = frames.length * SCROLL_LOOP_COUNT;
   const scrollHeight = Math.round(
-    viewportHeight + (frames.length - 1) * viewportHeight * SCROLL_STEP_RATIO,
+    viewportHeight + (totalScrollSteps - 1) * viewportHeight * SCROLL_STEP_RATIO,
   );
+  const visibleFrameIndex = getFrameIndex(visibleFrameStep, frames.length);
+  const incomingFrameIndex =
+    incomingFrameStep === null ? null : getFrameIndex(incomingFrameStep, frames.length);
 
   return (
     <section className="relative z-20 border-t border-gray-200/40 bg-black">
@@ -132,12 +185,37 @@ export function ScrollImageSequenceSection() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 h-4 sm:h-5 w-24 sm:w-36 rounded-b-xl bg-black border-x border-b border-zinc-800 z-20" />
                   <div className="relative w-full aspect-[16/10] bg-black">
                     <img
-                      src={frames[frameIndex]}
-                      alt={`Dcore showcase frame ${frameIndex + 1}`}
-                      className="absolute inset-0 h-full w-full object-contain pointer-events-none select-none"
+                      src={frames[visibleFrameIndex]}
+                      alt={`Dcore showcase frame ${visibleFrameIndex + 1}`}
+                      className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none ${
+                        incomingFrameIndex !== null
+                          ? `will-change-transform transition-[transform,opacity] duration-700 ease-out ${
+                              slideDirection === "forward"
+                                ? isSlideActive
+                                  ? "translate-x-full opacity-85"
+                                  : "translate-x-0 opacity-100"
+                                : isSlideActive
+                                  ? "-translate-x-full opacity-85"
+                                  : "translate-x-0 opacity-100"
+                            }`
+                          : "translate-x-0 opacity-100"
+                      }`}
                       draggable={false}
                       loading="eager"
                     />
+                    {incomingFrameIndex !== null && (
+                      <img
+                        src={frames[incomingFrameIndex]}
+                        alt={`Dcore showcase frame ${incomingFrameIndex + 1}`}
+                        className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform transition-[transform,opacity] duration-700 ease-out ${
+                          isSlideActive
+                            ? "translate-x-0 opacity-100"
+                            : `${slideDirection === "forward" ? "-translate-x-full" : "translate-x-full"} opacity-85`
+                        }`}
+                        draggable={false}
+                        loading="eager"
+                      />
+                    )}
 
                     {!isPreloaded && (
                       <div className="absolute inset-0 grid place-items-center bg-black/65 text-white/85 text-sm font-medium">
@@ -157,7 +235,7 @@ export function ScrollImageSequenceSection() {
           </div>
 
           <div className="absolute bottom-5 right-5 rounded-full border border-white/25 bg-black/45 px-4 py-2 text-xs sm:text-sm font-semibold text-white tracking-wide backdrop-blur-md">
-            {frameIndex + 1} / {frames.length}
+            {visibleFrameIndex + 1} / {frames.length}
           </div>
         </div>
       </div>

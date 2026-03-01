@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { HelmetProvider } from 'react-helmet-async';
 import faviconUrl from '@/assets/favicon.png';
+import { initializeFormCache } from '@/lib/formCache';
 
 // Ensure the favicon uses the updated asset
 const ensureFavicon = () => {
@@ -37,6 +38,9 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </HelmetProvider>
 );
+
+// Initialize form caching after app loads
+initializeFormCache();
 
 if (typeof window !== "undefined") {
 	const schedule = window.requestAnimationFrame ?? ((cb: FrameRequestCallback) => window.setTimeout(cb, 0));
