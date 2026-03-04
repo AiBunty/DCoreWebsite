@@ -110,21 +110,18 @@ export function ScrollImageSequenceSection() {
     if (animation !== null || currentFrame === targetFrame) return; // Already animating or reached target
 
     if (currentFrame < targetFrame) {
-      // Move forward
-      const direction = currentFrame % 2 === 0 ? "left" : "right";
+      // Move forward - always use "left"
       setAnimation({
         frameIndex: currentFrame,
         progress: 0,
-        direction,
+        direction: "left",
       });
     } else if (currentFrame > targetFrame) {
-      // Move backward
-      const direction = currentFrame % 2 === 0 ? "left" : "right";
-      const oppositeDir = direction === "left" ? "right" : "left";
+      // Move backward - always use "right"
       setAnimation({
         frameIndex: currentFrame,
         progress: 0,
-        direction: oppositeDir,
+        direction: "right",
       });
     }
   }, [currentFrame, targetFrame, animation]);
