@@ -2,276 +2,280 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const FRAME_NUMBERS = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-const TRANSITION_MS = 520; // Increased for smoother, more natural feel
+const TRANSITION_DURATION = 520; // milliseconds
 const NAVBAR_HEIGHT_PX = 64;
-const SWIPE_THRESHOLD_PX = 50;
-
-// Smooth easing functions for cinematic transitions
-const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3); // Smooth deceleration
-const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Symmetric ease
+const SWIPE_THRESHOLD = 50;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
-type TransitionState = {
-  from: number;
-  to: number;
-  direction: "forward" | "backward";
-  visualDirection: "left" | "right";
-  active: boolean;
+type AnimationFrame = {
+  frameIndex: number;
+  progress: number; // 0 to 1
+  direction: "left" | "right";
 };
 
 export function ScrollImageSequenceSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef(0);
+  const animationFrameRef = useRef<number | null>(null);
+  const animationStartTimeRef = useRef<number | null>(null);
+
+  // State for current visible frame
+  const [currentFrame, setCurrentFrame] = useState(0);
   
-  const [visibleFrameStep, setVisibleFrameStep] = useState(0);
-  const [transitionState, setTransitionState] = useState<TransitionState | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isPreloaded, setIsPreloaded] = useState(false);
-  const [viewportHeight, setViewportHeight] = useState(0);
+  // State for ongoing animation
+  const [animation, setAnimation] = useState<AnimationFrame | null>(null);
+  
+  // State for loading
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const frames = useMemo(
-    () => FRAME_NUMBERS.map((frame) => `/${frame}.png`),
-    [],
-  );
+  const frames = useMemo(() => FRAME_NUMBERS.map((num) => `/${num}.png`), []);
 
-  // Preload all frames
+  // Preload images
   useEffect(() => {
-    let isCancelled = false;
+    let cancelled = false;
 
-    const preloadFrames = async () => {
-      const tasks = frames.map(
+    const preload = async () => {
+      const promises = frames.map(
         (src) =>
           new Promise<void>((resolve) => {
-            const image = new Image();
-            image.src = src;
-            image.onload = () => resolve();
-            image.onerror = () => resolve();
-          }),
+            const img = new Image();
+            img.src = src;
+            img.onload = img.onerror = () => resolve();
+          })
       );
 
-      await Promise.all(tasks);
-      if (!isCancelled) {
-        setIsPreloaded(true);
-      }
+      await Promise.all(promises);
+      if (!cancelled) setIsLoaded(true);
     };
 
-    preloadFrames();
-
+    preload();
     return () => {
-      isCancelled = true;
+      cancelled = true;
     };
   }, [frames]);
 
   // Set viewport height
+  const [viewportHeight, setViewportHeight] = useState(0);
+
   useEffect(() => {
-    const updateViewportHeight = () => {
-      const nextHeight = Math.max(320, window.innerHeight - NAVBAR_HEIGHT_PX);
-      setViewportHeight(nextHeight);
+    const updateHeight = () => {
+      setViewportHeight(Math.max(320, window.innerHeight - NAVBAR_HEIGHT_PX));
     };
 
-    updateViewportHeight();
-    window.addEventListener("resize", updateViewportHeight);
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
+  // Animation loop
+  useEffect(() => {
+    if (animation === null) return;
+
+    const animate = (currentTime: number) => {
+      if (animationStartTimeRef.current === null) {
+        animationStartTimeRef.current = currentTime;
+      }
+
+      const elapsed = currentTime - animationStartTimeRef.current;
+      const progress = Math.min(elapsed / TRANSITION_DURATION, 1);
+
+      setAnimation((prev) => (prev ? { ...prev, progress } : null));
+
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        // Animation complete
+        if (animation.direction === "left") {
+          setCurrentFrame(animation.frameIndex + 1);
+        } else {
+          setCurrentFrame(animation.frameIndex - 1);
+        }
+        setAnimation(null);
+        animationStartTimeRef.current = null;
+      }
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("resize", updateViewportHeight);
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
-  }, []);
+  }, [animation]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (animation) return;
+
       if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
         e.preventDefault();
-        goToNextFrame();
+        goNext();
       } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
         e.preventDefault();
-        goToPrevFrame();
+        goPrev();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [visibleFrameStep, isAnimating]);
+  }, [animation, currentFrame]);
 
   // Touch/swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
+    touchStartRef.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    
-    const deltaX = touchStartX.current - touchEndX;
-    const deltaY = Math.abs(touchStartY.current - touchEndY);
+    const touchEnd = e.changedTouches[0].clientX;
+    const delta = touchStartRef.current - touchEnd;
 
-    // Only trigger if horizontal swipe is dominant (not vertical scroll)
-    if (Math.abs(deltaX) > SWIPE_THRESHOLD_PX && Math.abs(deltaX) > deltaY) {
-      if (deltaX > 0) {
-        goToNextFrame(); // Swipe left = next frame
-      } else {
-        goToPrevFrame(); // Swipe right = prev frame
-      }
+    if (Math.abs(delta) > SWIPE_THRESHOLD) {
+      if (delta > 0) goNext();
+      else goPrev();
     }
   };
 
-  // Navigate to next frame
-  const goToNextFrame = () => {
-    if (isAnimating || visibleFrameStep >= frames.length - 1) return;
+  // Navigation functions
+  const goNext = () => {
+    if (animation || currentFrame >= frames.length - 1) return;
 
-    const nextStep = visibleFrameStep + 1;
-    const baseDirection = visibleFrameStep % 2 === 0 ? "left" : "right";
-
-    setIsAnimating(true);
-    setTransitionState({
-      from: visibleFrameStep,
-      to: nextStep,
-      direction: "forward",
-      visualDirection: baseDirection,
-      active: false,
+    const direction = currentFrame % 2 === 0 ? "left" : "right";
+    setAnimation({
+      frameIndex: currentFrame,
+      progress: 0,
+      direction,
     });
-
-    requestAnimationFrame(() => {
-      setTransitionState((prev) => (prev ? { ...prev, active: true } : prev));
-    });
+    animationStartTimeRef.current = null;
   };
 
-  // Navigate to previous frame
-  const goToPrevFrame = () => {
-    if (isAnimating || visibleFrameStep <= 0) return;
+  const goPrev = () => {
+    if (animation || currentFrame <= 0) return;
 
-    const nextStep = visibleFrameStep - 1;
-    const baseDirection = visibleFrameStep % 2 === 0 ? "left" : "right";
-    const visualDirection = baseDirection === "left" ? "right" : "left";
-
-    setIsAnimating(true);
-    setTransitionState({
-      from: visibleFrameStep,
-      to: nextStep,
-      direction: "backward",
-      visualDirection,
-      active: false,
+    const direction = currentFrame % 2 === 0 ? "left" : "right";
+    const oppositeDir = direction === "left" ? "right" : "left";
+    setAnimation({
+      frameIndex: currentFrame,
+      progress: 0,
+      direction: oppositeDir,
     });
-
-    requestAnimationFrame(() => {
-      setTransitionState((prev) => (prev ? { ...prev, active: true } : prev));
-    });
+    animationStartTimeRef.current = null;
   };
 
-  // Navigate to specific frame
-  const goToFrame = (frameIndex: number) => {
-    if (isAnimating || frameIndex < 0 || frameIndex >= frames.length || frameIndex === visibleFrameStep) return;
+  const goToFrame = (index: number) => {
+    if (animation || index === currentFrame || index < 0 || index >= frames.length) return;
 
-    // Determine direction based on current vs target
-    const isForward = frameIndex > visibleFrameStep;
-    const baseDirection = visibleFrameStep % 2 === 0 ? "left" : "right";
-    const visualDirection = isForward ? baseDirection : (baseDirection === "left" ? "right" : "left");
+    const direction = currentFrame % 2 === 0 ? "left" : "right";
+    const isMovingForward = index > currentFrame;
+    const finalDirection = isMovingForward ? direction : (direction === "left" ? "right" : "left");
 
-    setIsAnimating(true);
-    setTransitionState({
-      from: visibleFrameStep,
-      to: frameIndex,
-      direction: isForward ? "forward" : "backward",
-      visualDirection,
-      active: false,
+    setAnimation({
+      frameIndex: currentFrame,
+      progress: 0,
+      direction: finalDirection,
     });
-
-    requestAnimationFrame(() => {
-      setTransitionState((prev) => (prev ? { ...prev, active: true } : prev));
-    });
+    animationStartTimeRef.current = null;
   };
 
-  // Handle animation completion
-  useEffect(() => {
-    if (!isAnimating || !transitionState) {
-      return;
-    }
+  // Determine which frames to render
+  const renderFrameIndex = animation ? animation.frameIndex : currentFrame;
+  const nextFrameIndex = animation ? (animation.direction === "left" ? animation.frameIndex + 1 : animation.frameIndex - 1) : undefined;
+  const isAnimating = animation !== null;
+  const progress = animation?.progress ?? 0;
+  const direction = animation?.direction ?? "left";
+  const dirMult = direction === "left" ? -1 : 1;
 
-    const finishTimer = window.setTimeout(() => {
-      setVisibleFrameStep(transitionState.to);
-      setTransitionState(null);
-      setIsAnimating(false);
-    }, TRANSITION_MS);
+  // Calculate transforms
+  const outgoingTransform = isAnimating
+    ? `translateX(${55 * dirMult}%) rotateY(${-24 * dirMult}deg) translateZ(-180px) scale(0.82)`
+    : "translateX(0) rotateY(0) translateZ(0) scale(1)";
 
-    return () => {
-      window.clearTimeout(finishTimer);
-    };
-  }, [isAnimating, transitionState]);
+  const incomingFrom = `translateX(${-62 * dirMult}%) rotateY(${26 * dirMult}deg) translateZ(-190px) scale(0.8)`;
+  const incomingTo = "translateX(0) rotateY(0) translateZ(0) scale(1)";
+  const incomingTransform = isAnimating ? incomingTo : incomingFrom;
 
-  const visibleFrameIndex = clamp(visibleFrameStep, 0, frames.length - 1);
-  const incomingFrameIndex = transitionState ? clamp(transitionState.to, 0, frames.length - 1) : null;
-  const directionMultiplier = transitionState?.visualDirection === "left" ? -1 : 1;
-  const progressPercentage = ((visibleFrameIndex + 1) / frames.length) * 100;
+  const outgoingOpacity = isAnimating ? 0.08 : 1;
+  const incomingOpacity = isAnimating ? 1 : 0.24;
+  const outgoingFilter = isAnimating ? "blur(2.2px) brightness(0.72)" : "blur(0) brightness(1)";
+  const incomingFilter = isAnimating ? "blur(0) brightness(1)" : "blur(2.4px) brightness(0.68)";
+
+  const progressPercentage = ((currentFrame + 1) / frames.length) * 100;
 
   return (
     <section className="relative z-20 border-t border-gray-200/40 bg-black">
       <div
         ref={containerRef}
-        className="relative w-full overflow-hidden bg-black"
-        style={{
-          height: `${viewportHeight}px`,
-          touchAction: "none",
-        }}
+        className="w-full bg-black"
+        style={{ height: `${viewportHeight}px` }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-black to-zinc-950" />
 
-        <div className="relative z-10 h-full w-full flex items-center justify-center px-3 sm:px-6 md:px-10" style={{ perspective: "1800px" }}>
+        {/* Main content */}
+        <div
+          className="relative z-10 h-full w-full flex items-center justify-center px-3 sm:px-6 md:px-10"
+          style={{ perspective: "1800px" }}
+        >
           <div className="w-full max-w-[1300px]">
+            {/* Device frame */}
             <div className="rounded-[18px] sm:rounded-[24px] border border-zinc-700/90 bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 p-[5px] sm:p-[7px] shadow-[0_35px_90px_-35px_rgba(0,0,0,0.85)]">
-              <div className="relative rounded-[14px] sm:rounded-[18px] bg-black border border-zinc-800 overflow-hidden shadow-inner" style={{ transformStyle: "preserve-3d" }}>
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-4 sm:h-5 w-24 sm:w-36 rounded-b-xl bg-black border-x border-b border-zinc-800 z-20" />
-                
-                <div className="relative w-full aspect-[16/10] bg-black" style={{ transformStyle: "preserve-3d" }}>
-                  {/* Current frame */}
-                  <img
-                    src={frames[visibleFrameIndex]}
-                    alt={`Dcore showcase frame ${visibleFrameIndex + 1}`}
-                    className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform"
-                    style={
-                      incomingFrameIndex !== null && transitionState
-                        ? {
-                            zIndex: transitionState.active ? 1 : 10,
-                            transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${TRANSITION_MS}ms ease-out, filter ${TRANSITION_MS}ms ease-out`,
-                            transform: transitionState.active
-                              ? `translateX(${55 * directionMultiplier}%) rotateY(${-24 * directionMultiplier}deg) translateZ(-180px) scale(0.82)`
-                              : "translateX(0%) rotateY(0deg) translateZ(0px) scale(1)",
-                            opacity: transitionState.active ? 0.08 : 1,
-                            filter: transitionState.active ? "blur(2.2px) brightness(0.72)" : "blur(0px) brightness(1)",
-                          }
-                        : { zIndex: 10 }
-                    }
-                    draggable={false}
-                    loading="eager"
-                  />
+              <div
+                className="relative rounded-[14px] sm:rounded-[18px] bg-black border border-zinc-800 overflow-hidden shadow-inner"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-4 sm:h-5 w-24 sm:w-36 rounded-b-xl bg-black border-x border-b border-zinc-800 z-40" />
 
-                  {/* Incoming frame */}
-                  {incomingFrameIndex !== null && (
+                {/* Frame display */}
+                <div
+                  className="relative w-full aspect-[16/10] bg-black overflow-hidden"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  {/* Outgoing frame */}
+                  {renderFrameIndex >= 0 && renderFrameIndex < frames.length && (
                     <img
-                      src={frames[incomingFrameIndex]}
-                      alt={`Dcore showcase frame ${incomingFrameIndex + 1}`}
-                      className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform"
+                      src={frames[renderFrameIndex]}
+                      alt={`Frame ${renderFrameIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
                       style={{
-                        zIndex: transitionState?.active ? 10 : 1,
-                        transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${TRANSITION_MS}ms ease-out, filter ${TRANSITION_MS}ms ease-out`,
-                        transform: transitionState?.active
-                          ? "translateX(0%) rotateY(0deg) translateZ(0px) scale(1)"
-                          : `translateX(${-62 * directionMultiplier}%) rotateY(${26 * directionMultiplier}deg) translateZ(-190px) scale(0.8)`,
-                        opacity: transitionState?.active ? 1 : 0.24,
-                        filter: transitionState?.active ? "blur(0px) brightness(1)" : "blur(2.4px) brightness(0.68)",
+                        zIndex: isAnimating ? 10 : 20,
+                        willChange: "transform opacity filter",
+                        transform: outgoingTransform,
+                        opacity: outgoingOpacity,
+                        filter: outgoingFilter,
+                        transition: isAnimating ? `all ${TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)` : "none",
                       }}
                       draggable={false}
                       loading="eager"
                     />
                   )}
 
-                  {!isPreloaded && (
+                  {/* Incoming frame */}
+                  {isAnimating && nextFrameIndex !== undefined && nextFrameIndex >= 0 && nextFrameIndex < frames.length && (
+                    <img
+                      src={frames[nextFrameIndex]}
+                      alt={`Frame ${nextFrameIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+                      style={{
+                        zIndex: isAnimating ? 20 : 10,
+                        willChange: "transform opacity filter",
+                        transform: incomingTransform,
+                        opacity: incomingOpacity,
+                        filter: incomingFilter,
+                        transition: `all ${TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
+                      }}
+                      draggable={false}
+                      loading="eager"
+                    />
+                  )}
+
+                  {/* Loading state */}
+                  {!isLoaded && (
                     <div className="absolute inset-0 grid place-items-center bg-black/65 text-white/85 text-sm font-medium">
                       Loading sequence...
                     </div>
@@ -280,45 +284,45 @@ export function ScrollImageSequenceSection() {
               </div>
             </div>
 
-            {/* Bezel reflection */}
+            {/* Bezel */}
             <div className="mx-auto h-3 sm:h-4 w-[88%] rounded-b-[40px] bg-gradient-to-b from-zinc-300 via-zinc-400 to-zinc-500 shadow-[inset_0_2px_3px_rgba(255,255,255,0.5),0_20px_32px_-18px_rgba(0,0,0,0.75)]" />
           </div>
 
-          {/* Left Arrow Button */}
+          {/* Left button */}
           <button
-            onClick={goToPrevFrame}
-            disabled={isAnimating || visibleFrameStep === 0}
-            className="absolute left-4 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2.5 sm:p-3 text-white/80 backdrop-blur-md transition-all duration-200 hover:bg-white/30 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:disabled:bg-white/20 z-30"
-            aria-label="Previous frame"
+            onClick={goPrev}
+            disabled={animation !== null || currentFrame === 0}
+            className="absolute left-4 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2.5 sm:p-3 text-white/80 backdrop-blur-md transition-all duration-200 hover:bg-white/30 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed z-30"
+            aria-label="Previous"
           >
-            <ChevronLeft size={24} className="sm:w-6 sm:h-6" />
+            <ChevronLeft size={24} />
           </button>
 
-          {/* Right Arrow Button */}
+          {/* Right button */}
           <button
-            onClick={goToNextFrame}
-            disabled={isAnimating || visibleFrameStep === frames.length - 1}
-            className="absolute right-4 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2.5 sm:p-3 text-white/80 backdrop-blur-md transition-all duration-200 hover:bg-white/30 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:disabled:bg-white/20 z-30"
-            aria-label="Next frame"
+            onClick={goNext}
+            disabled={animation !== null || currentFrame === frames.length - 1}
+            className="absolute right-4 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2.5 sm:p-3 text-white/80 backdrop-blur-md transition-all duration-200 hover:bg-white/30 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed z-30"
+            aria-label="Next"
           >
-            <ChevronRight size={24} className="sm:w-6 sm:h-6" />
+            <ChevronRight size={24} />
           </button>
 
           {/* Progress bar */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-[520ms] ease-out"
-              style={{ width: `${progressPercentage}%` }}
+              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+              style={{
+                width: `${progressPercentage}%`,
+                transition: isAnimating ? `width ${TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)` : "none",
+              }}
             />
           </div>
         </div>
 
-        {/* Frame counter badge */}
-        <div
-          key={visibleFrameIndex}
-          className={`absolute top-5 left-1/2 -translate-x-1/2 rounded-full border border-white/25 bg-black/45 px-4 py-2 text-[11px] sm:text-xs font-medium text-white/90 tracking-wide backdrop-blur-md transition-transform duration-200 ${isAnimating ? "scale-105" : "scale-100"}`}
-        >
-          {visibleFrameIndex + 1} / {frames.length}
+        {/* Frame counter */}
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 rounded-full border border-white/25 bg-black/45 px-4 py-2 text-xs sm:text-sm font-semibold text-white/90 tracking-wide backdrop-blur-md z-20">
+          {currentFrame + 1} / {frames.length}
         </div>
 
         {/* Dot indicators */}
@@ -327,11 +331,11 @@ export function ScrollImageSequenceSection() {
             <button
               key={idx}
               onClick={() => goToFrame(idx)}
-              disabled={isAnimating}
+              disabled={animation !== null}
               className={`rounded-full border backdrop-blur-md transition-all duration-300 ${
-                idx === visibleFrameIndex
-                  ? "bg-blue-500/80 border-blue-400/60 w-2.5 h-2.5 sm:w-3 sm:h-3"
-                  : "bg-white/15 border-white/20 w-1.5 h-1.5 sm:w-2 sm:h-2 hover:bg-white/25 disabled:cursor-not-allowed"
+                idx === currentFrame
+                  ? "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-500/80 border-blue-400/60"
+                  : "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/15 border-white/20 hover:bg-white/25 disabled:cursor-not-allowed"
               }`}
               aria-label={`Go to frame ${idx + 1}`}
             />
