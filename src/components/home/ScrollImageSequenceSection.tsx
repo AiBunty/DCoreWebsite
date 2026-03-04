@@ -20,10 +20,10 @@ export function ScrollImageSequenceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
-  const animationStartTimeRef = useRef<number | null>(null);
 
   // State for current visible frame
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [targetFrame, setTargetFrame] = useState(0); // For multi-frame navigation
   
   // State for ongoing animation
   const [animation, setAnimation] = useState<AnimationFrame | null>(null);
@@ -74,27 +74,25 @@ export function ScrollImageSequenceSection() {
   useEffect(() => {
     if (animation === null) return;
 
-    const animate = (currentTime: number) => {
-      if (animationStartTimeRef.current === null) {
-        animationStartTimeRef.current = currentTime;
-      }
+    const startTime = Date.now();
+    const animationData = { ...animation }; // Capture initial values
 
-      const elapsed = currentTime - animationStartTimeRef.current;
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / TRANSITION_DURATION, 1);
 
       setAnimation((prev) => (prev ? { ...prev, progress } : null));
 
-      if (progress < 1) {
-        animationFrameRef.current = requestAnimationFrame(animate);
-      } else {
-        // Animation complete
-        if (animation.direction === "left") {
-          setCurrentFrame(animation.frameIndex + 1);
-        } else {
-          setCurrentFrame(animation.frameIndex - 1);
-        }
+      if (progress >= 1) {
+        // Animation complete - update frame based on direction
+        const nextFrame = animationData.direction === "left"
+          ? animationData.frameIndex + 1
+          : animationData.frameIndex - 1;
+
+        setCurrentFrame(nextFrame);
         setAnimation(null);
-        animationStartTimeRef.current = null;
+      } else {
+        animationFrameRef.current = requestAnimationFrame(animate);
       }
     };
 
@@ -106,6 +104,30 @@ export function ScrollImageSequenceSection() {
       }
     };
   }, [animation]);
+
+  // Continue animating toward target frame
+  useEffect(() => {
+    if (animation !== null || currentFrame === targetFrame) return; // Already animating or reached target
+
+    if (currentFrame < targetFrame) {
+      // Move forward
+      const direction = currentFrame % 2 === 0 ? "left" : "right";
+      setAnimation({
+        frameIndex: currentFrame,
+        progress: 0,
+        direction,
+      });
+    } else if (currentFrame > targetFrame) {
+      // Move backward
+      const direction = currentFrame % 2 === 0 ? "left" : "right";
+      const oppositeDir = direction === "left" ? "right" : "left";
+      setAnimation({
+        frameIndex: currentFrame,
+        progress: 0,
+        direction: oppositeDir,
+      });
+    }
+  }, [currentFrame, targetFrame, animation]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -143,42 +165,17 @@ export function ScrollImageSequenceSection() {
   // Navigation functions
   const goNext = () => {
     if (animation || currentFrame >= frames.length - 1) return;
-
-    const direction = currentFrame % 2 === 0 ? "left" : "right";
-    setAnimation({
-      frameIndex: currentFrame,
-      progress: 0,
-      direction,
-    });
-    animationStartTimeRef.current = null;
+    setTargetFrame(currentFrame + 1);
   };
 
   const goPrev = () => {
     if (animation || currentFrame <= 0) return;
-
-    const direction = currentFrame % 2 === 0 ? "left" : "right";
-    const oppositeDir = direction === "left" ? "right" : "left";
-    setAnimation({
-      frameIndex: currentFrame,
-      progress: 0,
-      direction: oppositeDir,
-    });
-    animationStartTimeRef.current = null;
+    setTargetFrame(currentFrame - 1);
   };
 
   const goToFrame = (index: number) => {
-    if (animation || index === currentFrame || index < 0 || index >= frames.length) return;
-
-    const direction = currentFrame % 2 === 0 ? "left" : "right";
-    const isMovingForward = index > currentFrame;
-    const finalDirection = isMovingForward ? direction : (direction === "left" ? "right" : "left");
-
-    setAnimation({
-      frameIndex: currentFrame,
-      progress: 0,
-      direction: finalDirection,
-    });
-    animationStartTimeRef.current = null;
+    if (animation || index < 0 || index >= frames.length) return;
+    setTargetFrame(index);
   };
 
   // Determine which frames to render
