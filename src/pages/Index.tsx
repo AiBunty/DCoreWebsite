@@ -7,7 +7,7 @@ import { Seo } from "@/components/seo/Seo";
 import { AntigravityBg } from "@/components/home/AntigravityBg";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { VideoReviewsSection } from "@/components/home/VideoReviewsSection";
-import { ScrollImageSequenceSection } from "@/components/home/ScrollImageSequenceSection";
+import { FrameCarousel } from "@/components/home/FrameCarousel";
 import {
   organizationSchema,
   softwareApplicationSchema,
@@ -390,7 +390,7 @@ const Index = () => {
             </Container>
           </Section>
 
-          <ScrollImageSequenceSection />
+          <FrameCarousel />
 
           <VideoReviewsSection />
 
