@@ -233,6 +233,7 @@ export function ScrollImageSequenceSection() {
                     style={
                       incomingFrameIndex !== null && transitionState
                         ? {
+                            zIndex: transitionState.active ? 1 : 10,
                             transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity ${TRANSITION_MS}ms ease, filter ${TRANSITION_MS}ms ease`,
                             transform: transitionState.active
                               ? `translateX(${55 * directionMultiplier}%) rotateY(${-24 * directionMultiplier}deg) translateZ(-180px) scale(0.82)`
@@ -240,7 +241,7 @@ export function ScrollImageSequenceSection() {
                             opacity: transitionState.active ? 0.08 : 1,
                             filter: transitionState.active ? "blur(2.2px) brightness(0.72)" : "blur(0px) brightness(1)",
                           }
-                        : {}
+                        : { zIndex: 10 }
                     }
                     draggable={false}
                     loading="eager"
@@ -253,6 +254,7 @@ export function ScrollImageSequenceSection() {
                       alt={`Dcore showcase frame ${incomingFrameIndex + 1}`}
                       className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform"
                       style={{
+                        zIndex: transitionState?.active ? 10 : 1,
                         transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity ${TRANSITION_MS}ms ease, filter ${TRANSITION_MS}ms ease`,
                         transform: transitionState?.active
                           ? "translateX(0%) rotateY(0deg) translateZ(0px) scale(1)"
