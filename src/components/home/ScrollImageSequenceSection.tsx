@@ -2,9 +2,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const FRAME_NUMBERS = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-const TRANSITION_MS = 420;
+const TRANSITION_MS = 520; // Increased for smoother, more natural feel
 const NAVBAR_HEIGHT_PX = 64;
 const SWIPE_THRESHOLD_PX = 50;
+
+// Smooth easing functions for cinematic transitions
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3); // Smooth deceleration
+const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Symmetric ease
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -234,7 +238,7 @@ export function ScrollImageSequenceSection() {
                       incomingFrameIndex !== null && transitionState
                         ? {
                             zIndex: transitionState.active ? 1 : 10,
-                            transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity ${TRANSITION_MS}ms ease, filter ${TRANSITION_MS}ms ease`,
+                            transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${TRANSITION_MS}ms ease-out, filter ${TRANSITION_MS}ms ease-out`,
                             transform: transitionState.active
                               ? `translateX(${55 * directionMultiplier}%) rotateY(${-24 * directionMultiplier}deg) translateZ(-180px) scale(0.82)`
                               : "translateX(0%) rotateY(0deg) translateZ(0px) scale(1)",
@@ -255,7 +259,7 @@ export function ScrollImageSequenceSection() {
                       className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform"
                       style={{
                         zIndex: transitionState?.active ? 10 : 1,
-                        transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity ${TRANSITION_MS}ms ease, filter ${TRANSITION_MS}ms ease`,
+                        transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${TRANSITION_MS}ms ease-out, filter ${TRANSITION_MS}ms ease-out`,
                         transform: transitionState?.active
                           ? "translateX(0%) rotateY(0deg) translateZ(0px) scale(1)"
                           : `translateX(${-62 * directionMultiplier}%) rotateY(${26 * directionMultiplier}deg) translateZ(-190px) scale(0.8)`,
@@ -303,7 +307,7 @@ export function ScrollImageSequenceSection() {
           {/* Progress bar */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-[520ms] ease-out"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
