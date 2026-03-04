@@ -2,8 +2,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const FRAME_NUMBERS = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 const NAVBAR_HEIGHT_PX = 64;
-const SCROLL_STEP_RATIO = 0.65;
+const SCROLL_STEP_RATIO_DESKTOP = 0.65;
+const SCROLL_STEP_RATIO_MOBILE = 1.2; // Increased for mobile to slow down scrolling
 const SCROLL_LOOP_COUNT = 2;
+const MOBILE_BREAKPOINT = 768;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -11,6 +13,10 @@ function clamp(value: number, min: number, max: number) {
 
 function getFrameIndex(step: number, frameCount: number) {
   return ((step % frameCount) + frameCount) % frameCount;
+}
+
+function isMobileDevice() {
+  return window.innerWidth < MOBILE_BREAKPOINT;
 }
 
 export function ScrollImageSequenceSection() {
@@ -23,6 +29,9 @@ export function ScrollImageSequenceSection() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPreloaded, setIsPreloaded] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const scrollMomentumRef = useRef(0);
+  const lastScrollTimeRef = useRef(0);
 
   const frames = useMemo(
     () => FRAME_NUMBERS.map((frame) => `/${frame}.png`),
@@ -60,6 +69,7 @@ export function ScrollImageSequenceSection() {
     const updateViewportHeight = () => {
       const nextHeight = Math.max(320, window.innerHeight - NAVBAR_HEIGHT_PX);
       setViewportHeight(nextHeight);
+      setIsMobile(isMobileDevice());
     };
 
     updateViewportHeight();
@@ -78,6 +88,7 @@ export function ScrollImageSequenceSection() {
 
     let ticking = false;
     const totalScrollSteps = frames.length * SCROLL_LOOP_COUNT;
+    const scrollStepRatio = isMobile ? SCROLL_STEP_RATIO_MOBILE : SCROLL_STEP_RATIO_DESKTOP;
 
     const updateFrame = () => {
       const rect = section.getBoundingClientRect();
@@ -85,17 +96,40 @@ export function ScrollImageSequenceSection() {
 
       if (sectionScroll <= 0) {
         setTargetFrameStep(0);
+        scrollMomentumRef.current = 0;
         return;
       }
 
       const scrollableHeight = section.offsetHeight - viewportHeight;
       if (scrollableHeight <= 0) {
         setTargetFrameStep(0);
+        scrollMomentumRef.current = 0;
         return;
       }
 
       const progress = clamp(sectionScroll / scrollableHeight, 0, 1);
-      const nextStep = Math.min(totalScrollSteps - 1, Math.floor(progress * totalScrollSteps));
+      
+      // Add scroll momentum dampening for mobile
+      const now = performance.now();
+      const timeDelta = now - lastScrollTimeRef.current;
+      lastScrollTimeRef.current = now;
+      
+      if (isMobile && timeDelta > 0 && timeDelta < 100) {
+        // Dampen fast scrolling on mobile
+        const momentum = Math.abs(progress - scrollMomentumRef.current) / (timeDelta / 1000);
+        if (momentum > 2) {
+          // Too fast, slow it down
+          const dampedProgress = scrollMomentumRef.current + (progress - scrollMomentumRef.current) * 0.3;
+          scrollMomentumRef.current = dampedProgress;
+        } else {
+          scrollMomentumRef.current = progress;
+        }
+      } else {
+        scrollMomentumRef.current = progress;
+      }
+      
+      const effectiveProgress = isMobile ? scrollMomentumRef.current : progress;
+      const nextStep = Math.min(totalScrollSteps - 1, Math.floor(effectiveProgress * totalScrollSteps));
 
       setTargetFrameStep((prev) => (prev === nextStep ? prev : nextStep));
     };
@@ -121,7 +155,7 @@ export function ScrollImageSequenceSection() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [frames.length, viewportHeight]);
+  }, [frames.length, viewportHeight, isMobile]);
 
   useEffect(() => {
     if (isAnimating || targetFrameStep === visibleFrameStep) {
@@ -149,32 +183,46 @@ export function ScrollImageSequenceSection() {
       return;
     }
 
+    // Smoother transition timing for mobile
+    const transitionDuration = isMobile ? 500 : 620;
+    
     const finishTimer = window.setTimeout(() => {
       setVisibleFrameStep(incomingFrameStep);
       setIncomingFrameStep(null);
       setIsSlideActive(false);
       setIsAnimating(false);
-    }, 620);
+    }, transitionDuration);
 
     return () => {
       window.clearTimeout(finishTimer);
     };
-  }, [isAnimating, incomingFrameStep]);
+  }, [isAnimating, incomingFrameStep, isMobile]);
 
   const totalScrollSteps = frames.length * SCROLL_LOOP_COUNT;
+  const scrollStepRatio = isMobile ? SCROLL_STEP_RATIO_MOBILE : SCROLL_STEP_RATIO_DESKTOP;
   const scrollHeight = Math.round(
-    viewportHeight + (totalScrollSteps - 1) * viewportHeight * SCROLL_STEP_RATIO,
+    viewportHeight + (totalScrollSteps - 1) * viewportHeight * scrollStepRatio,
   );
   const visibleFrameIndex = getFrameIndex(visibleFrameStep, frames.length);
   const incomingFrameIndex =
     incomingFrameStep === null ? null : getFrameIndex(incomingFrameStep, frames.length);
 
   return (
-    <section className="relative z-20 border-t border-gray-200/40 bg-black">
+    <section 
+      className="relative z-20 border-t border-gray-200/40 bg-black"
+      style={{
+        scrollSnapAlign: isMobile ? 'start' : 'none',
+        scrollSnapStop: isMobile ? 'always' : 'normal',
+      }}
+    >
       <div ref={sequenceRef} className="relative" style={{ height: `${scrollHeight}px` }}>
         <div
           className="sticky w-full overflow-hidden bg-black"
-          style={{ top: `${NAVBAR_HEIGHT_PX}px`, height: `${viewportHeight}px` }}
+          style={{ 
+            top: `${NAVBAR_HEIGHT_PX}px`, 
+            height: `${viewportHeight}px`,
+            touchAction: isMobile ? 'pan-y' : 'auto',
+          }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-black to-zinc-950" />
 
@@ -189,7 +237,7 @@ export function ScrollImageSequenceSection() {
                       alt={`Dcore showcase frame ${visibleFrameIndex + 1}`}
                       className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none ${
                         incomingFrameIndex !== null
-                          ? `will-change-transform transition-[transform,opacity] duration-700 ease-out ${
+                          ? `will-change-transform transition-[transform,opacity] ${isMobile ? 'duration-500' : 'duration-700'} ease-out ${
                               slideDirection === "forward"
                                 ? isSlideActive
                                   ? "translate-x-full opacity-85"
@@ -207,7 +255,7 @@ export function ScrollImageSequenceSection() {
                       <img
                         src={frames[incomingFrameIndex]}
                         alt={`Dcore showcase frame ${incomingFrameIndex + 1}`}
-                        className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform transition-[transform,opacity] duration-700 ease-out ${
+                        className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none will-change-transform transition-[transform,opacity] ${isMobile ? 'duration-500' : 'duration-700'} ease-out ${
                           isSlideActive
                             ? "translate-x-0 opacity-100"
                             : `${slideDirection === "forward" ? "-translate-x-full" : "translate-x-full"} opacity-85`

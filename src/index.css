@@ -122,11 +122,27 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Smooth scroll snap for mobile devices */
+  @media (max-width: 767px) {
+    html {
+      scroll-snap-type: y proximity;
+      overscroll-behavior-y: contain;
+    }
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Mobile scroll optimization */
+  .mobile-scroll-smooth {
+    @media (max-width: 767px) {
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   .glow-card {
