@@ -121,9 +121,9 @@ export async function generateAgreementPDF(
     document.body.appendChild(container);
 
     try {
-      // Convert HTML to canvas with high DPI for print quality (2x scale = ~200dpi)
+      // Convert HTML to canvas with high DPI for print quality (3x scale = ~300dpi)
       const canvas = await html2canvas(container, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         logging: false,
         backgroundColor: "#ffffff",
@@ -291,7 +291,7 @@ export async function generateCombinedPDF(
 
       try {
         const canvas = await html2canvas(container, {
-          scale: 2,
+          scale: 3,
           useCORS: true,
           logging: false,
           backgroundColor: "#ffffff",

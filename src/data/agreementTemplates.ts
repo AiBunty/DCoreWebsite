@@ -79,7 +79,7 @@ Social Media Marketing & Presence: Management of digital profiles and engagement
       <!-- Header -->
       <div class="agreement-header">
         <div class="logo-section">
-          <img src="/assets/dcore-logo-clean.svg" alt="DCORE Systems Logo" class="agreement-logo" />
+          <img src="/assets/logo.png" alt="DCORE Systems Logo" class="agreement-logo" />
         </div>
         <h1 class="agreement-title">Statement of Work</h1>
         <h2 class="agreement-subtitle">Digital Marketing Services</h2>
@@ -278,7 +278,7 @@ Official banking and incorporation credentials for your compliance records.`,
       <!-- Header with Logo -->
       <div class="letter-header">
         <div class="letter-logo-section">
-          <img src="/assets/dcore-logo-clean.svg" alt="DCORE Systems Logo" class="letter-logo" />
+          <img src="/assets/logo.png" alt="DCORE Systems Logo" class="letter-logo" />
         </div>
         <div class="letter-company-info">
           <h2>DCORE SYSTEMS LLP</h2>
