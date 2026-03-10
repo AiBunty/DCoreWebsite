@@ -16,6 +16,7 @@ const footerLinks = [
     links: [
       { name: "Onboarding Form", href: "/onboarding-form" },
       { name: "Onboarding Success", href: "/onboarding-success" },
+      { name: "Agreement Generator", href: "/agreement-generator" },
     ],
   },
   {

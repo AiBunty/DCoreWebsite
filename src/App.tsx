@@ -31,6 +31,7 @@ import AffiliatePolicy from "./pages/AffiliatePolicy";
 import Disclaimer from "./pages/Disclaimer";
 import OnboardingForm from "./pages/OnboardingForm";
 import OnboardingSuccess from "./pages/OnboardingSuccess";
+import AgreementGenerator from "./pages/AgreementGenerator";
 
 // SEO Landing Pages
 import AllInOneMarketingAutomationPlatform from "./pages/AllInOneMarketingAutomationPlatform";
@@ -147,6 +148,9 @@ const App = () => (
           {/* Onboarding Pages */}
           <Route path="/onboarding-form" element={<OnboardingForm />} />
           <Route path="/onboarding-success" element={<OnboardingSuccess />} />
+
+          {/* Tools Pages */}
+          <Route path="/agreement-generator" element={<AgreementGenerator />} />
 
           {/* Legacy HTML URLs */}
           <Route path="/onboarding-form.html" element={<Navigate to="/onboarding-form" replace />} />

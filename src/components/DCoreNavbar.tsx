@@ -33,6 +33,7 @@ export function DCoreNavbar() {
           <a href="/features">Features</a>
           <a href="/pricing">Pricing</a>
           <a href="/compare">Compare</a>
+          <a href="/agreement-generator">Tools</a>
         </div>
 
         <div className="navbar-actions">
