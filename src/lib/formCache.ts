@@ -3,9 +3,13 @@
  * Preloads and caches embedded forms and scroll sequence frames when the website loads
  */
 
+export const CRM_CONTACT_FORM_URL = "https://admin.aibunty.com/widget/form/699acdf5d46f8";
+export const BOOK_DEMO_FORM_URL =
+  "https://admin.aibunty.com/u2/76998/appointment-booking-from-website?isEmbeded=1";
+
 export const EMBEDDED_FORM_URLS = [
-  "https://admin.aibunty.com/widget/form/699acdf5d46f8", // CRM Contact Form
-  "https://admin.aibunty.com/u2/76998/appointment-booking-from-website", // Appointment Booking Form
+  CRM_CONTACT_FORM_URL, // CRM Contact Form
+  BOOK_DEMO_FORM_URL, // Appointment Booking Form
 ];
 
 export const FORM_DOMAIN = "https://admin.aibunty.com";

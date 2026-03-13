@@ -5,6 +5,7 @@ import { AntigravityBg } from "@/components/home/AntigravityBg";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { EmbeddedFormLoader } from "@/components/EmbeddedFormLoader";
 
 export default function Contact() {
   const [isFormLoading, setIsFormLoading] = useState(true);
@@ -137,14 +138,7 @@ export default function Contact() {
                     Fill this booking CRM form and our team will contact you with the right solution plan.
                   </p>
                   <div className="relative rounded-2xl border border-gray-200 bg-white overflow-hidden">
-                    {isFormLoading && (
-                      <div className="absolute inset-0 z-10 bg-white/90 backdrop-blur-sm flex items-center justify-center">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-900 rounded-full animate-spin" />
-                          <p className="text-sm text-gray-600">Loading CRM form...</p>
-                        </div>
-                      </div>
-                    )}
+                    {isFormLoading ? <EmbeddedFormLoader label="Loading CRM form..." /> : null}
                     <iframe
                       src={bookingCrmFormUrl}
                       id="inline-699acdf5d46f8"

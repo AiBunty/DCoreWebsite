@@ -4,6 +4,7 @@ import { AntigravityBg } from "@/components/home/AntigravityBg";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
+import { EmbeddedFormLoader } from "@/components/EmbeddedFormLoader";
 import { Link } from "react-router-dom";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 
@@ -49,9 +50,10 @@ export default function OnboardingForm() {
           <div className="max-w-5xl mx-auto rounded-[28px] border border-gray-200/70 bg-white/85 backdrop-blur-xl p-4 sm:p-6 md:p-8 shadow-sm">
             <div className="relative min-h-[1700px] md:min-h-[1500px]">
               {showLoader && !isLoaded && (
-                <div className="absolute inset-0 z-10 rounded-2xl border border-gray-200/60 bg-white/90 flex items-center justify-center text-center px-6">
-                  <p className="text-gray-600 text-sm">Loading onboarding form...</p>
-                </div>
+                <EmbeddedFormLoader
+                  label="Loading onboarding form..."
+                  className="rounded-2xl"
+                />
               )}
               <iframe
                 src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
