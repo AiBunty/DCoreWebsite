@@ -24,7 +24,7 @@ type PricingPlan = {
 const plans: PricingPlan[] = [
   {
     name: "Pro Plan",
-    price: "₹4999",
+    price: "₹5999",
     suffix: "/monthly",
     description:
       "This plan is tailor-made for service providers to streamline their business processes using automation.",
@@ -45,7 +45,7 @@ const plans: PricingPlan[] = [
   },
   {
     name: "Impact Plan",
-    price: "₹6999",
+    price: "₹9999",
     suffix: "/monthly",
     description:
       "If you're a coach or consultant, this plan gives you a clear path to attract, nurture, and convert your ideal clients consistently.",

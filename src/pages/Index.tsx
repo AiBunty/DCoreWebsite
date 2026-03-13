@@ -2,7 +2,6 @@ import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useStat
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { CTASection } from "@/components/CTASection";
 import { Seo } from "@/components/seo/Seo";
 import { AntigravityBg } from "@/components/home/AntigravityBg";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
@@ -479,13 +478,23 @@ const Index = () => {
             </Container>
           </Section>
 
-          <Section className="py-20 border-t border-gray-200/50">
+          <Section className="relative isolate overflow-hidden py-20 border-t border-gray-200/50">
+            <div className="absolute inset-0 -z-10">
+              <img
+                src="https://storagev2.files-vault.com/uploads/blacklabel-765/sub-account-76998/ChatGPT%20Image%20Mar%2011,%202026,%2001_18_20%20PM.webp"
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#08101f]/58 via-[#0b1426]/46 to-[#0b1220]/62" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(91,155,213,0.18),transparent_34%)]" />
+            </div>
             <Container>
               <div className="text-center max-w-3xl mx-auto mb-14">
-                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                   Industry-ready execution
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-white drop-shadow-[0_10px_24px_rgba(0,0,0,0.48)]">
                   The same engineering foundation adapted for different business environments.
                 </p>
               </div>
@@ -566,48 +575,6 @@ const Index = () => {
             </Container>
           </Section>
 
-          <CTASection
-            title="Need automation tailored to your business model?"
-            description="Share your current process with our team and we will map the right WhatsApp, CRM, ERP, and cloud solution architecture."
-            ctaText="Talk to Dcore Systems"
-            ctaHref="/contact"
-          />
-
-          <Section className="py-8 md:py-12 border-t border-gray-200/50 bg-zinc-100/85">
-            <Container>
-              <p
-                ref={dcoreTriggerRef}
-                className="text-center text-[22vw] sm:text-[16vw] md:text-[11vw] leading-[0.86] font-semibold tracking-tight text-[#070b17]"
-              >
-                {typedDcore.split("").map((letter, index) => (
-                  <span
-                    key={`${letter}-${index}`}
-                    className={
-                      isDcoreDone
-                        ? `inline-block dcore-letter-random dcore-letter-variant-${dcoreLetterFx[index]?.variant ?? 0}`
-                        : "inline-block"
-                    }
-                    style={
-                      isDcoreDone
-                        ? ({
-                            animationDuration: `${dcoreLetterFx[index]?.duration ?? 2}s`,
-                            animationDelay: `${dcoreLetterFx[index]?.delay ?? 0}s`,
-                            "--dcore-letter-duration": `${dcoreLetterFx[index]?.duration ?? 2}s`,
-                            "--dcore-letter-delay": `${dcoreLetterFx[index]?.delay ?? 0}s`,
-                          } as CSSProperties)
-                        : undefined
-                    }
-                  >
-                    {letter}
-                  </span>
-                ))}
-                {!isDcoreDone && isDcoreInView && (
-                  <span className="ml-2 inline-block align-middle h-[0.9em] w-[0.05em] bg-[#070b17] animate-pulse" />
-                )}
-              </p>
-            </Container>
-          </Section>
-
           {/* Hidden iframe to preload CRM form for faster navigation to /contact */}
           <iframe
             src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
@@ -631,5 +598,4 @@ const Index = () => {
 };
 
 export default Index;
-
 
