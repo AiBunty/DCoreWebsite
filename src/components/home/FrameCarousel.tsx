@@ -19,6 +19,7 @@ export function FrameCarousel() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [frameWidth, setFrameWidth] = useState(0);
 
   // Refs
   const touchStartXRef = useRef(0);
@@ -48,8 +49,21 @@ export function FrameCarousel() {
   // Set container height on mount and resize
   useEffect(() => {
     const updateHeight = () => {
-      const height = Math.max(320, window.innerHeight - NAVBAR_HEIGHT);
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      const isDesktop = viewportWidth >= 1024;
+      const height = isDesktop
+        ? Math.max(560, Math.round(viewportHeight * 0.82))
+        : Math.max(320, viewportHeight - NAVBAR_HEIGHT);
+      const usableFrameHeight = Math.max(260, height - (isDesktop ? 72 : 120));
+      const width = Math.min(
+        viewportWidth * (isDesktop ? 0.9 : 0.96),
+        usableFrameHeight * 1.6,
+        1700
+      );
+
       setContainerHeight(height);
+      setFrameWidth(width);
     };
 
     updateHeight();
@@ -178,7 +192,7 @@ export function FrameCarousel() {
           className="relative z-10 h-full w-full flex items-center justify-center px-3 sm:px-6 md:px-10"
           style={{ perspective: "1800px" }}
         >
-          <div className="w-full max-w-[1300px]">
+          <div className="w-full max-w-full mx-auto" style={{ width: `${frameWidth}px` }}>
             {/* Device frame wrapper */}
             <div className="rounded-[18px] sm:rounded-[24px] border border-zinc-700/90 bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 p-[5px] sm:p-[7px] shadow-[0_35px_90px_-35px_rgba(0,0,0,0.85)]">
               <div

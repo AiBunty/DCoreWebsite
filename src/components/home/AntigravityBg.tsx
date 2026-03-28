@@ -31,6 +31,7 @@ export function AntigravityBg() {
     let dpr = 1;
     let dots: Dot[] = [];
     const pointer = { x: 0, y: 0, tx: 0, ty: 0, spin: 0 };
+    const motionScale = prefersReducedMotion ? 0.35 : 0.45;
 
     const createDots = () => {
       const count = width < 768 ? 420 : 900;
@@ -39,7 +40,7 @@ export function AntigravityBg() {
           angle: Math.random() * Math.PI * 2,
           ring: Math.pow(Math.random(), 0.62),
           height: (Math.random() - 0.5) * 1.85,
-          speed: 0.00045 + Math.random() * 0.0014,
+          speed: (0.00045 + Math.random() * 0.0014) * motionScale,
           size: 0.75 + Math.random() * 1.75,
           shade: 18 + Math.random() * 26,
           twinkle: Math.random() * Math.PI * 2,
@@ -78,22 +79,22 @@ export function AntigravityBg() {
     const draw = (time: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      const follow = prefersReducedMotion ? 0.03 : 0.1;
+      const follow = prefersReducedMotion ? 0.018 : 0.045;
       pointer.x += (pointer.tx - pointer.x) * follow;
       pointer.y += (pointer.ty - pointer.y) * follow;
-      pointer.spin += (pointer.x * 0.65 - pointer.spin) * 0.05;
+      pointer.spin += (pointer.x * 0.42 - pointer.spin) * 0.025;
 
       const sceneRadius = Math.min(width, height);
-      const cx = width * 0.5 + pointer.x * sceneRadius * 0.07;
-      const cy = height * 0.52 + pointer.y * sceneRadius * 0.04;
+      const cx = width * 0.5 + pointer.x * sceneRadius * 0.04;
+      const cy = height * 0.52 + pointer.y * sceneRadius * 0.025;
       const radius = Math.min(width, height) * 0.43;
       const verticalRadius = radius * 0.52;
       const depthRadius = radius * 1.15;
       const camera = radius * 3.4;
       const baseRotation =
-        time * (prefersReducedMotion ? 0.00003 : 0.00012) + pointer.spin * 0.5;
-      const rotY = pointer.x * 0.58;
-      const rotX = pointer.y * -0.32;
+        time * (prefersReducedMotion ? 0.000015 : 0.00005) + pointer.spin * 0.24;
+      const rotY = pointer.x * 0.36;
+      const rotX = pointer.y * -0.2;
       const cosY = Math.cos(rotY);
       const sinY = Math.sin(rotY);
       const cosX = Math.cos(rotX);
@@ -116,8 +117,8 @@ export function AntigravityBg() {
 
         const perspective = camera / (camera - z2);
         const depthParallax = z2 / depthRadius;
-        const x = cx + x1 * perspective + pointer.x * depthParallax * 34;
-        const y = cy + y1 * perspective + pointer.y * depthParallax * 20;
+        const x = cx + x1 * perspective + pointer.x * depthParallax * 18;
+        const y = cy + y1 * perspective + pointer.y * depthParallax * 11;
 
         if (x < -20 || x > width + 20 || y < -20 || y > height + 20) {
           continue;

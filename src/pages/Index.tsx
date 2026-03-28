@@ -43,7 +43,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-const heroHeadingText = "Business Automation Platform for Coaches, Freelancers & Real Estate";
+const heroHeadingText = "The All-in-One AI Engine for Lead Generation, Marketing & Sales Automation";
 const heroDescriptionText =
   "Automate leads, follow-ups and sales using WhatsApp + CRM automation powered by WABA integration.";
 const dcoreHeadingText = "DCORE";
@@ -598,4 +598,3 @@ const Index = () => {
 };
 
 export default Index;
-
