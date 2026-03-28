@@ -32,7 +32,7 @@ export function ScrollImageSequenceSection() {
   const touchStartYRef = useRef(0);
 
   const frames = useMemo(
-    () => FRAME_NUMBERS.map((frame) => `/${frame}.png`),
+    () => FRAME_NUMBERS.map((frame) => `/${frame}.webp`),
     [],
   );
 

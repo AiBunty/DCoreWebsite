@@ -31,7 +31,7 @@ export function ScrollImageSequenceSection() {
   // State for loading
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const frames = useMemo(() => FRAME_NUMBERS.map((num) => `/${num}.png`), []);
+  const frames = useMemo(() => FRAME_NUMBERS.map((num) => `/${num}.webp`), []);
 
   // Preload images
   useEffect(() => {

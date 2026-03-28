@@ -1,4 +1,4 @@
-import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -46,9 +46,6 @@ import {
 const heroHeadingText = "The All-in-One AI Engine for Lead Generation, Marketing & Sales Automation";
 const heroDescriptionText =
   "Automate leads, follow-ups and sales using WhatsApp + CRM automation powered by WABA integration.";
-const dcoreHeadingText = "DCORE";
-let hasPlayedHeroTyping = false;
-let hasPlayedDcoreTyping = false;
 
 const solutions = [
   {
@@ -195,138 +192,6 @@ function MobileGridDrawer({ buttonLabel, children }: MobileGridDrawerProps) {
 
 const Index = () => {
   const seo = SEO_PAGE_PRESETS.home;
-  const [typedHeading, setTypedHeading] = useState("");
-  const [typedDescription, setTypedDescription] = useState("");
-  const [typedDcore, setTypedDcore] = useState("");
-  const [isDcoreInView, setIsDcoreInView] = useState(false);
-  const dcoreTriggerRef = useRef<HTMLParagraphElement | null>(null);
-  const dcoreLetterFx = useMemo(
-    () =>
-      dcoreHeadingText.split("").map(() => ({
-        duration: 1.4 + Math.random() * 1.8,
-        delay: Math.random() * 1.1,
-        variant: Math.floor(Math.random() * 3),
-      })),
-    []
-  );
-
-  useEffect(() => {
-    if (hasPlayedHeroTyping) {
-      setTypedHeading(heroHeadingText);
-      setTypedDescription(heroDescriptionText);
-      return;
-    }
-
-    hasPlayedHeroTyping = true;
-    let intervalTimer: number | null = null;
-    let index = 0;
-    setTypedHeading("");
-    setTypedDescription("");
-
-    const delayTimer = window.setTimeout(() => {
-      intervalTimer = window.setInterval(() => {
-        index += 1;
-        setTypedHeading(heroHeadingText.slice(0, index));
-        if (index >= heroHeadingText.length && intervalTimer) {
-          window.clearInterval(intervalTimer);
-        }
-      }, 48);
-    }, 420);
-
-    return () => {
-      window.clearTimeout(delayTimer);
-      if (intervalTimer) {
-        window.clearInterval(intervalTimer);
-      }
-    };
-  }, []);
-
-  const isHeadingDone = typedHeading.length === heroHeadingText.length;
-
-  useEffect(() => {
-    if (!isHeadingDone) {
-      setTypedDescription("");
-      return;
-    }
-
-    let intervalTimer: number | null = null;
-    let index = 0;
-    setTypedDescription("");
-
-    const delayTimer = window.setTimeout(() => {
-      intervalTimer = window.setInterval(() => {
-        index += 1;
-        setTypedDescription(heroDescriptionText.slice(0, index));
-        if (index >= heroDescriptionText.length && intervalTimer) {
-          window.clearInterval(intervalTimer);
-        }
-      }, 20);
-    }, 320);
-
-    return () => {
-      window.clearTimeout(delayTimer);
-      if (intervalTimer) {
-        window.clearInterval(intervalTimer);
-      }
-    };
-  }, [isHeadingDone]);
-
-  
-  const isDescriptionDone = typedDescription.length === heroDescriptionText.length;
-  const isDcoreDone = typedDcore.length === dcoreHeadingText.length;
-
-  useEffect(() => {
-    const target = dcoreTriggerRef.current;
-    if (!target) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setIsDcoreInView(true);
-          }
-        }
-      },
-      { threshold: 0.4 }
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isDcoreInView) {
-      return;
-    }
-
-    if (hasPlayedDcoreTyping) {
-      setTypedDcore(dcoreHeadingText);
-      return;
-    }
-
-    hasPlayedDcoreTyping = true;
-    setTypedDcore("");
-    let index = 0;
-    let intervalTimer: number | null = null;
-    const delayTimer = window.setTimeout(() => {
-      intervalTimer = window.setInterval(() => {
-        index += 1;
-        setTypedDcore(dcoreHeadingText.slice(0, index));
-        if (index >= dcoreHeadingText.length && intervalTimer) {
-          window.clearInterval(intervalTimer);
-        }
-      }, 160);
-    }, 160);
-
-    return () => {
-      window.clearTimeout(delayTimer);
-      if (intervalTimer) {
-        window.clearInterval(intervalTimer);
-      }
-    };
-  }, [isDcoreInView]);
 
   return (
     <>
@@ -356,17 +221,11 @@ const Index = () => {
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-gray-900 leading-[1.03] tracking-tight mb-6 whitespace-pre-line">
-                {typedHeading}
-                {!isHeadingDone && (
-                  <span className="ml-1 inline-block h-[0.95em] w-[0.06em] align-middle bg-gray-900 animate-pulse" />
-                )}
+                {heroHeadingText}
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
-                {typedDescription}
-                {isHeadingDone && !isDescriptionDone && (
-                  <span className="ml-1 inline-block h-[0.9em] w-[0.06em] align-middle bg-gray-500 animate-pulse" />
-                )}
+                {heroDescriptionText}
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
@@ -485,6 +344,8 @@ const Index = () => {
                 alt=""
                 aria-hidden="true"
                 className="h-full w-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#08101f]/58 via-[#0b1426]/46 to-[#0b1220]/62" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(91,155,213,0.18),transparent_34%)]" />
@@ -574,23 +435,6 @@ const Index = () => {
               </div>
             </Container>
           </Section>
-
-          {/* Hidden iframe to preload CRM form for faster navigation to /contact */}
-          <iframe
-            src="https://admin.aibunty.com/widget/form/699acdf5d46f8"
-            style={{
-              display: "none",
-              visibility: "hidden",
-              height: 0,
-              width: 0,
-              border: "none",
-              padding: 0,
-              margin: 0,
-            }}
-            title="Preload CRM Form"
-            aria-hidden="true"
-            tabIndex={-1}
-          />
         </div>
       </Layout>
     </>

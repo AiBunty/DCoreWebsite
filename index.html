@@ -18,13 +18,6 @@
     <!-- Resource Hints for Form Performance -->
     <link rel="dns-prefetch" href="https://admin.aibunty.com" />
     <link rel="preconnect" href="https://admin.aibunty.com" crossorigin />
-    <link rel="prefetch" href="https://admin.aibunty.com/widget/form/699acdf5d46f8" as="document" />
-    <link rel="prefetch" href="https://admin.aibunty.com/u2/76998/appointment-booking-from-website" as="document" />
-    
-    <!-- Prefetch Scroll Sequence Frames (Critical First Frames) -->
-    <link rel="prefetch" href="/1.png" as="image" />
-    <link rel="prefetch" href="/2.png" as="image" />
-    <link rel="prefetch" href="/3.png" as="image" />
     
     <!-- Open Graph (Meta / Facebook / WhatsApp Preview) -->
     <meta property="og:type" content="website" />
@@ -97,20 +90,54 @@
     <!-- ================= GA4 & GSC VERIFICATION END ================= -->
     
     <!-- Chat Widget -->
-    <script src="https://myappzchat.com/production/master/widget/embed-widget.umd.js"
-     data-widget-id="b79193de-b43f-44aa-b26c-a3ae1db9f61a"
-     defer></script>
+    <script>
+      (() => {
+        const WIDGET_ID = "b79193de-b43f-44aa-b26c-a3ae1db9f61a";
+        const WIDGET_SRC = "https://myappzchat.com/production/master/widget/embed-widget.umd.js";
+        let loaded = false;
+        let idleHandle = 0;
+
+        const loadWidget = () => {
+          if (loaded) return;
+          loaded = true;
+
+          const script = document.createElement("script");
+          script.src = WIDGET_SRC;
+          script.defer = true;
+          script.dataset.widgetId = WIDGET_ID;
+          document.head.appendChild(script);
+        };
+
+        const handleInteraction = () => {
+          cleanup();
+          loadWidget();
+        };
+
+        const cleanup = () => {
+          if ("cancelIdleCallback" in window) {
+            window.cancelIdleCallback(idleHandle);
+          } else {
+            window.clearTimeout(idleHandle);
+          }
+
+          window.removeEventListener("pointerdown", handleInteraction);
+          window.removeEventListener("keydown", handleInteraction);
+          window.removeEventListener("touchstart", handleInteraction);
+        };
+
+        if ("requestIdleCallback" in window) {
+          idleHandle = window.requestIdleCallback(loadWidget, { timeout: 4000 });
+        } else {
+          idleHandle = window.setTimeout(loadWidget, 4000);
+        }
+
+        window.addEventListener("pointerdown", handleInteraction, { once: true, passive: true });
+        window.addEventListener("keydown", handleInteraction, { once: true });
+        window.addEventListener("touchstart", handleInteraction, { once: true, passive: true });
+      })();
+    </script>
     
     <link rel="icon" type="image/png" href="/dcore-favicon.png" />
-    <script type="module">
-      import faviconUrl from '/src/assets/favicon.png';
-      const existing = document.querySelector("link[rel='icon']");
-      const link = existing ?? document.createElement('link');
-      link.rel = 'icon';
-      link.type = 'image/png';
-      link.href = faviconUrl;
-      if (!existing) document.head.appendChild(link);
-    </script>
     <meta name="facebook-domain-verification" content="[Meta Verification Placeholder]" />
   </head>
 

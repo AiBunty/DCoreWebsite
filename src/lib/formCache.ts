@@ -16,7 +16,7 @@ export const FORM_DOMAIN = "https://admin.aibunty.com";
 
 // Scroll sequence frame images (from ScrollImageSequenceSection)
 export const SCROLL_SEQUENCE_FRAMES = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(
-  (num) => `/${num}.png`
+  (num) => `/${num}.webp`
 );
 
 /**

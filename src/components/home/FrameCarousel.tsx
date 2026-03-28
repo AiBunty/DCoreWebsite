@@ -1,25 +1,47 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const FRAME_PATHS = ["/1.png", "/2.png", "/3.png", "/5.png", "/6.png", "/7.png", "/8.png", "/9.png", "/10.png", "/11.png", "/12.png", "/13.png"];
+const FRAME_PATHS = ["/1.webp", "/2.webp", "/3.webp", "/5.webp", "/6.webp", "/7.webp", "/8.webp", "/9.webp", "/10.webp", "/11.webp", "/12.webp", "/13.webp"];
 const TRANSITION_DURATION = 520;
 const NAVBAR_HEIGHT = 64;
 const SWIPE_MIN_DISTANCE = 50;
+const INITIAL_DESKTOP_WIDTH = 1200;
+const INITIAL_DESKTOP_HEIGHT = 860;
 
-interface TransitionState {
-  isActive: boolean;
-  fromIndex: number;
-  toIndex: number;
-  progress: number;
+function getInitialDimensions() {
+  if (typeof window === "undefined") {
+    return {
+      containerHeight: Math.max(560, Math.round(INITIAL_DESKTOP_HEIGHT * 0.82)),
+      frameWidth: Math.min(INITIAL_DESKTOP_WIDTH * 0.9, 1700),
+    };
+  }
+
+  const viewportHeight = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+  const isDesktop = viewportWidth >= 1024;
+  const containerHeight = isDesktop
+    ? Math.max(560, Math.round(viewportHeight * 0.82))
+    : Math.max(320, viewportHeight - NAVBAR_HEIGHT);
+  const usableFrameHeight = Math.max(260, containerHeight - (isDesktop ? 72 : 120));
+  const frameWidth = Math.min(
+    viewportWidth * (isDesktop ? 0.9 : 0.96),
+    usableFrameHeight * 1.6,
+    1700
+  );
+
+  return { containerHeight, frameWidth };
 }
 
 export function FrameCarousel() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
   // Core state
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(0);
-  const [frameWidth, setFrameWidth] = useState(0);
+  const [{ containerHeight, frameWidth }, setDimensions] = useState(getInitialDimensions);
+  const [shouldLoadFrames, setShouldLoadFrames] = useState(false);
 
   // Refs
   const touchStartXRef = useRef(0);
@@ -28,48 +50,84 @@ export function FrameCarousel() {
 
   const totalFrames = FRAME_PATHS.length;
 
-  // Preload all images
   useEffect(() => {
-    const loadImages = async () => {
-      const promises = FRAME_PATHS.map(
-        (src) =>
-          new Promise<void>((resolve) => {
-            const img = new Image();
-            img.src = src;
-            img.onload = img.onerror = () => resolve();
-          })
-      );
-      await Promise.all(promises);
-      setIsLoaded(true);
-    };
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
 
-    loadImages();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setShouldLoadFrames(true);
+            observer.disconnect();
+            return;
+          }
+        }
+      },
+      { rootMargin: "320px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   // Set container height on mount and resize
   useEffect(() => {
     const updateHeight = () => {
-      const viewportHeight = window.innerHeight;
-      const viewportWidth = window.innerWidth;
-      const isDesktop = viewportWidth >= 1024;
-      const height = isDesktop
-        ? Math.max(560, Math.round(viewportHeight * 0.82))
-        : Math.max(320, viewportHeight - NAVBAR_HEIGHT);
-      const usableFrameHeight = Math.max(260, height - (isDesktop ? 72 : 120));
-      const width = Math.min(
-        viewportWidth * (isDesktop ? 0.9 : 0.96),
-        usableFrameHeight * 1.6,
-        1700
-      );
-
-      setContainerHeight(height);
-      setFrameWidth(width);
+      setDimensions(getInitialDimensions());
     };
 
     updateHeight();
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
+
+  useEffect(() => {
+    if (!shouldLoadFrames) {
+      return;
+    }
+
+    const preloadIndexes = new Set([
+      currentIndex,
+      Math.max(currentIndex - 1, 0),
+      Math.min(currentIndex + 1, totalFrames - 1),
+      incomingIndex ?? currentIndex,
+    ]);
+    let isActive = true;
+
+    const loadImages = async () => {
+      const promises = [...preloadIndexes].map(
+        (index) =>
+          new Promise<void>((resolve) => {
+            const img = new Image();
+            img.src = FRAME_PATHS[index];
+            const done = () => resolve();
+
+            if ("decode" in img) {
+              img
+                .decode()
+                .then(done)
+                .catch(done);
+            } else {
+              img.onload = done;
+              img.onerror = done;
+            }
+          })
+      );
+
+      await Promise.all(promises);
+      if (isActive) {
+        setIsLoaded(true);
+      }
+    };
+
+    loadImages();
+    return () => {
+      isActive = false;
+    };
+  }, [currentIndex, incomingIndex, shouldLoadFrames, totalFrames]);
 
   // Handle next frame
   const handleNext = () => {
@@ -94,6 +152,7 @@ export function FrameCarousel() {
     if (isTransitioning) return;
 
     setIsTransitioning(true);
+    setIncomingIndex(to);
     transitionStartRef.current = null;
 
     // Animate to the target frame
@@ -109,6 +168,7 @@ export function FrameCarousel() {
       if (progress >= 1) {
         // Transition complete
         setCurrentIndex(to);
+        setIncomingIndex(null);
         setIsTransitioning(false);
         transitionStartRef.current = null;
       } else {
@@ -177,7 +237,7 @@ export function FrameCarousel() {
   const progressPercent = ((currentIndex + 1) / totalFrames) * 100;
 
   return (
-    <section className="relative z-20 border-t border-gray-200/40 bg-black">
+    <section ref={sectionRef} className="relative z-20 border-t border-gray-200/40 bg-black">
       <div
         className="relative w-full bg-black"
         style={{ height: `${containerHeight}px` }}
@@ -208,7 +268,7 @@ export function FrameCarousel() {
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {/* Current frame (always visible, transitions out) */}
-                  {isLoaded && (
+                  {isLoaded && shouldLoadFrames && (
                     <img
                       key={`current-${currentIndex}`}
                       src={FRAME_PATHS[currentIndex]}
@@ -225,15 +285,16 @@ export function FrameCarousel() {
                         willChange: isTransitioning ? "transform opacity filter" : "auto",
                       }}
                       draggable={false}
-                      loading="eager"
+                      decoding="async"
+                      loading="lazy"
                     />
                   )}
 
                   {/* Next/Previous frame (transitions in) */}
-                  {isTransitioning && (
+                  {isTransitioning && incomingIndex !== null && (
                     <img
-                      key={`incoming-${currentIndex + (currentIndex < 11 ? 1 : -1)}`}
-                      src={FRAME_PATHS[currentIndex < 11 ? Math.min(currentIndex + 1, totalFrames - 1) : Math.max(currentIndex - 1, 0)]}
+                      key={`incoming-${incomingIndex}`}
+                      src={FRAME_PATHS[incomingIndex]}
                       alt={`Incoming frame`}
                       className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
                       style={{
@@ -245,7 +306,8 @@ export function FrameCarousel() {
                         willChange: "transform opacity filter",
                       }}
                       draggable={false}
-                      loading="eager"
+                      decoding="async"
+                      loading="lazy"
                     />
                   )}
 

@@ -30,11 +30,12 @@ export function AntigravityBg() {
     let height = 0;
     let dpr = 1;
     let dots: Dot[] = [];
+    let idleId = 0;
     const pointer = { x: 0, y: 0, tx: 0, ty: 0, spin: 0 };
     const motionScale = prefersReducedMotion ? 0.35 : 0.45;
 
     const createDots = () => {
-      const count = width < 768 ? 420 : 900;
+      const count = width < 768 ? 140 : 260;
       dots = Array.from({ length: count }, () => {
         return {
           angle: Math.random() * Math.PI * 2,
@@ -139,17 +140,28 @@ export function AntigravityBg() {
     };
 
     resize();
-    raf = requestAnimationFrame(draw);
+    const startAnimation = () => {
+      raf = requestAnimationFrame(draw);
+    };
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(startAnimation, { timeout: 1200 });
+    } else {
+      idleId = window.setTimeout(startAnimation, 250);
+    }
 
     window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("mouseleave", onLeave);
 
     return () => {
+      if ("cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("mouseleave", onLeave);
     };
